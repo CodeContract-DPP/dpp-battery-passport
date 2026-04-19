@@ -10,7 +10,7 @@ const DPP = (() => {
     confirmed: { label: 'Confirmado',      cls: 'st-confirmed', icon: '\u2705' },
     partial:   { label: 'Parcial',         cls: 'st-partial',   icon: '\u26A0\uFE0F' },
     pending:   { label: 'Pendiente',       cls: 'st-pending',   icon: '\u274C' },
-    assumed:   { label: 'Asumido',         cls: 'st-assumed',   icon: '\u2796' },
+    assumed:   { label: 'Pendiente',       cls: 'st-pending',   icon: '\u274C' }  // legacy alias,
     dynamic:   { label: 'Dinámico (BMS)',  cls: 'st-dynamic',   icon: '\uD83D\uDCE1' }
   };
   const LEGAL_CLS = { 'LEY': 'legal-ley', 'PROYECCION': 'legal-proyeccion', 'PENDIENTE AD': 'legal-pendiente' };
