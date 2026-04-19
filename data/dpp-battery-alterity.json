@@ -6,48 +6,48 @@
     "generatedDate": "2026-04-10",
     "version": "0.4-piloto",
     "dppStatus": {
-      "value": "draft",
-      "_status": "assumed",
+      "value": null,
+      "_status": "pending",
       "_note": "#2 ESPR. Estado del pasaporte: draft | active | inactive | expired."
     },
     "dppGranularity": {
-      "value": "batch",
-      "_status": "assumed",
+      "value": null,
+      "_status": "pending",
       "_note": "#3 ESPR. Granularidad del DPP: model | batch | item."
     },
-    "notes": "Datos de piloto para Alterity LMT/LFP. Campos marcados con '_status': confirmed = verificado en fuente pública; partial = rango o dato genérico; assumed = coherente con la tecnología LFP, pendiente de confirmar; dynamic = requiere BMS en tiempo real.",
+    "notes": "Datos de piloto para Alterity LMT/LFP. Campos marcados con '_status': confirmed = verificado en fuente pública; partial = rango o dato genérico; pending = dato pendiente de confirmar por el fabricante; dynamic = requiere BMS en tiempo real.",
     "evidenceProvider": "Trackline by Code Contract S.L. (https://trackline.codecontract.com)"
   },
   "generalProductInformation": {
     "_icon": "🔋",
     "_title": "Identificación y datos generales",
     "productPassportIdentifier": {
-      "value": "urn:alterity:dpp:lmt-lfp-piloto-001",
-      "_status": "assumed",
+      "value": null,
+      "_status": "pending",
       "_note": "Identificador provisional para el piloto. Pendiente de sistema definitivo.",
       "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "batteryIdentifier": {
-      "value": "ALT-LMT-LFP-2025-001-SN-0001",
-      "_status": "assumed",
+      "value": null,
+      "_status": "pending",
       "_note": "#6. Número de serie provisional para el piloto.",
       "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "batteryModelIdentifier": {
-      "value": "ALT-LMT-LFP-27kWh",
-      "_status": "assumed",
+      "value": null,
+      "_status": "pending",
       "_note": "#7 Mandatory. Identificador del modelo de batería. Pendiente de confirmar con Alterity.",
       "_legalBasis": null,
       "_sourceDocument": null,
       "_evidence": null
     },
     "batterySerialNumber": {
-      "value": "SN-0001",
-      "_status": "assumed",
+      "value": null,
+      "_status": "pending",
       "_note": "#8 Mandatory. Número de serie individual de la batería.",
       "_legalBasis": null,
       "_sourceDocument": null,
@@ -89,82 +89,82 @@
       "_evidence": null
     },
     "manufacturingDate": {
-      "value": "2025-01-15",
-      "_status": "assumed",
+      "value": null,
+      "_status": "pending",
       "_note": "Fecha estimada para el piloto. Pendiente de confirmar con Alterity.",
       "_legalBasis": null,
       "_sourceDocument": null,
       "_evidence": null
     },
     "dateOfPuttingIntoService": {
-      "value": "2025-02-01",
-      "_status": "assumed",
+      "value": null,
+      "_status": "pending",
       "_note": "Fecha estimada de puesta en servicio. Dato dinámico por unidad.",
       "_legalBasis": null,
       "_sourceDocument": null,
       "_evidence": null
     },
     "batteryCategory": {
-      "value": "lmt",
-      "_status": "assumed",
-      "_note": "Light Means of Transport. Asumido para el piloto de movilidad ligera.",
+      "value": null,
+      "_status": "pending",
+      "_note": "Light Means of Transport. Pendiente de confirmar para el piloto de movilidad ligera.",
       "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "batteryStatus": {
-      "value": "Original",
-      "_status": "assumed",
+      "value": null,
+      "_status": "pending",
       "_note": "Batería nueva, primera vida.",
       "_legalBasis": null,
       "_sourceDocument": null,
       "_evidence": null
     },
     "batteryMass": {
-      "value": 27.5,
+      "value": null,
       "unit": "kg",
-      "_status": "assumed",
-      "_note": "Masa estimada para pack LFP de 27 kWh. Pendiente de confirmar con ficha técnica.",
+      "_status": "pending",
+      "_note": "Rango LFP LMT típico: 20–35 kg. Pendiente de confirmar con ficha técnica.",
       "_legalBasis": "Reg. 2023/1542 Annex XIII · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "warrantyPeriod": {
-      "value": 60,
+      "value": null,
       "unit": "months",
-      "_status": "assumed",
-      "_note": "5 años o 100.000 km, lo que ocurra antes. Pendiente de confirmar con Alterity.",
+      "_status": "pending",
+      "_note": "Rango típico: 24–60 meses. Pendiente de confirmar con Alterity.",
       "_legalBasis": null,
       "_sourceDocument": null,
       "_evidence": null
     },
     "uniqueEconomicOperatorIdentifier": {
-      "value": "ES-B95817234",
-      "_status": "assumed",
+      "value": null,
+      "_status": "pending",
       "_note": "#9 ESPR. Identificador único del operador económico (CIF/VAT). Pendiente de confirmar.",
       "_legalBasis": "ESPR 2024/1781 Art. 9 · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "uniqueManufacturerIdentifier": {
-      "value": "ES-B95817234-MFR",
-      "_status": "assumed",
+      "value": null,
+      "_status": "pending",
       "_note": "#10 Mandatory. Identificador único del fabricante según registro EU. Pendiente de asignación.",
       "_legalBasis": null,
       "_sourceDocument": null,
       "_evidence": null
     },
     "uniqueFacilityIdentifier": {
-      "value": "ES-FAC-ZAMUDIO-001",
-      "_status": "assumed",
+      "value": null,
+      "_status": "pending",
       "_note": "#11 ESPR. Identificador único de la planta de fabricación. Pendiente de registro.",
       "_legalBasis": "ESPR 2024/1781 Art. 2(33) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "economicOperator": {
-      "value": "SIX TO GO SOLUTIONS S.L. (Alterity Energy)",
-      "_status": "assumed",
+      "value": null,
+      "_status": "pending",
       "_note": "#12. Operador económico responsable de la comercialización.",
       "_legalBasis": null,
       "_sourceDocument": null,
@@ -204,8 +204,8 @@
           "casNumber": null
         }
       ],
-      "_status": "assumed",
-      "_note": "Presente en todas las baterías LFP. Clasificado como CRM por la UE.",
+      "_status": "pending",
+      "_note": "Tabla con datos estimados pendientes de confirmar por fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex XIII(17) · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -250,18 +250,18 @@
           "batteryMaterialWeight": 1.2
         }
       ],
-      "_status": "assumed",
-      "_note": null,
+      "_status": "pending",
+      "_note": "Tabla con datos estimados pendientes de confirmar por fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex XIII(17a-c) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "impactOfSubstances": {
-      "value": "El electrolito (LiPF6) es tóxico por ingestión y causa irritación cutánea. La batería sellada no presenta riesgo en uso normal. En caso de rotura del envolvente, evitar contacto directo con el electrolito. El LFP no contiene cobalto ni níquel, eliminando riesgos asociados a estos metales pesados.",
+      "value": null,
       "environmentalImpact": "Bajo impacto ambiental relativo gracias a la ausencia de cobalto/níquel. El litio requiere gestión adecuada al final de vida.",
       "humanHealthImpact": "Sin riesgo en condiciones normales de uso. Riesgo de irritación por contacto con electrolito en caso de daño estructural.",
       "safetyImpact": "Sin riesgo de thermal runaway. Química LFP inherentemente más estable que NMC/NCA.",
-      "_status": "assumed",
+      "_status": "pending",
       "_note": "#43 Mandatory. Impacto de sustancias en medio ambiente, salud humana y seguridad. Pendiente de evaluación formal.",
       "_legalBasis": "Reg. 2023/1542 Annex XIII(20) · LEY",
       "_sourceDocument": null,
@@ -293,8 +293,8 @@
           ]
         }
       ],
-      "_status": "assumed",
-      "_note": "Presente en celdas LFP estándar. Concentración exacta pendiente de ficha técnica.",
+      "_status": "pending",
+      "_note": "Tabla con datos estimados pendientes de confirmar por fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex XIII(19-23) · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -304,19 +304,19 @@
     "_icon": "⚡",
     "_title": "Rendimiento y durabilidad",
     "technicalSpecification__batteryChemistry": {
-      "value": "LFP",
-      "_status": "assumed",
-      "_note": null,
+      "value": null,
+      "_status": "pending",
+      "_note": "Química declarada por Alterity: LFP (LiFePO₄). Pendiente certificado.",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "technicalSpecification__ratedCapacity": {
-      "value": 27,
+      "value": null,
       "unit": "kWh",
       "range": "25.5–27 kWh (nominal/usable)",
-      "_status": "assumed",
-      "_note": "27 kWh nominal para el piloto LMT. Pendiente de confirmar con ficha técnica.",
+      "_status": "pending",
+      "_note": "Rango LFP LMT: 15–40 kWh. Ref. web Alterity: ~27 kWh.",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": {
         "name": "Fuente pública",
@@ -327,28 +327,28 @@
       "_evidence": null
     },
     "technicalSpecification__nominalVoltage": {
-      "value": 281.6,
+      "value": null,
       "unit": "V",
-      "_status": "assumed",
-      "_note": "Calculado como 3.5 V × 80 celdas en serie (configuración típica LFP 280V).",
+      "_status": "pending",
+      "_note": "Rango LFP LMT típico: 250–310 V (según celdas en serie).",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "technicalSpecification__minimumVoltage": {
-      "value": 240,
+      "value": null,
       "unit": "V",
-      "_status": "assumed",
-      "_note": "Tensión mínima de corte: 3.0 V/celda × 80 celdas.",
+      "_status": "pending",
+      "_note": "Rango LFP típico: 220–260 V.",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "technicalSpecification__maximumVoltage": {
-      "value": 292,
+      "value": null,
       "unit": "V",
-      "_status": "assumed",
-      "_note": "Tensión máxima de carga: 3.65 V/celda × 80 celdas.",
+      "_status": "pending",
+      "_note": "Rango LFP típico: 280–310 V.",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": {
         "name": "Fuente pública",
@@ -359,10 +359,10 @@
       "_evidence": null
     },
     "technicalSpecification__certifiedUsableBatteryEnergy": {
-      "value": 25.5,
+      "value": null,
       "unit": "kWh",
-      "_status": "assumed",
-      "_note": "Energía usable certificada: ~94.4% de la capacidad nominal.",
+      "_status": "pending",
+      "_note": "Típico: 90–95% de capacidad nominal.",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -427,10 +427,10 @@
       "_evidence": null
     },
     "roundtripEfficiency__roundTripEfficiencyAt50PercentCycleLife": {
-      "value": 94.5,
+      "value": null,
       "unit": "%",
-      "_status": "assumed",
-      "_note": "Degradación típica de eficiencia LFP al 50% de vida útil: ~1.5 puntos porcentuales.",
+      "_status": "pending",
+      "_note": "Rango LFP típico: 92–97%.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -454,10 +454,10 @@
       "_evidence": null
     },
     "roundtripEfficiency__initialSelfDischargingRate": {
-      "value": 3,
+      "value": null,
       "unit": "% / month",
-      "_status": "assumed",
-      "_note": "#78 Voluntary. Autodescarga típica de celdas LFP: 2–4% mensual.",
+      "_status": "pending",
+      "_note": "Rango LFP típico: 1–5%/mes.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -481,9 +481,9 @@
       "_evidence": null
     },
     "powerCapability__originalPowerCapability": {
-      "value": [],
-      "_status": "assumed",
-      "_note": null,
+      "value": null,
+      "_status": "pending",
+      "_note": "Dato pendiente de ficha técnica del fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -507,27 +507,27 @@
       "_evidence": null
     },
     "powerCapability__maximumPermittedBatteryPower": {
-      "value": 54,
+      "value": null,
       "unit": "kW",
-      "_status": "assumed",
-      "_note": "Potencia máxima estimada: 2C × 27 kWh = 54 kW.",
+      "_status": "pending",
+      "_note": "Rango LFP LMT: 30–80 kW.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "powerCapability__powerCapabilityRatio": {
-      "value": 2.0,
-      "_status": "assumed",
-      "_note": "Ratio potencia/energía: 2C (descarga nominal a 1C = 27 kW).",
+      "value": null,
+      "_status": "pending",
+      "_note": "Rango típico: 1.5–3.0 (P/E ratio).",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "internalResistance__initialInternalResistancePack": {
-      "value": 12.5,
+      "value": null,
       "unit": "mΩ",
-      "_status": "assumed",
-      "_note": "Resistencia interna inicial estimada para pack LFP 280V/100Ah.",
+      "_status": "pending",
+      "_note": "Rango LFP pack típico: 8–20 mΩ. Pendiente de medición real.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -542,51 +542,51 @@
       "_evidence": null
     },
     "batteryLifetime__expectedLifetimeYears": {
-      "value": 12,
+      "value": null,
       "unit": "years",
-      "_status": "assumed",
-      "_note": "Vida útil estimada para LFP en aplicación LMT. Típico 10–15 años.",
+      "_status": "pending",
+      "_note": "Rango LFP típico: 8–15 años.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "batteryLifetime__expectedNumberOfCycles": {
-      "value": 4000,
-      "_status": "assumed",
-      "_note": "Ciclos esperados hasta 80% SoH. LFP típicamente 3.000–6.000 ciclos.",
+      "value": null,
+      "_status": "pending",
+      "_note": "Rango LFP típico: 2000–6000 ciclos.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "batteryLifetime__warrantyPeriod": {
-      "value": 60,
+      "value": null,
       "unit": "months",
-      "_status": "assumed",
+      "_status": "pending",
       "_note": "Garantía estimada: 5 años o 100.000 km. Pendiente de confirmar.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "batteryLifetime__capacityThresholdExhaustion": {
-      "value": 80,
+      "value": null,
       "unit": "%",
-      "_status": "assumed",
-      "_note": "Umbral estándar del sector (80% SoH). Pendiente de confirmación por Alterity.",
+      "_status": "pending",
+      "_note": "Estándar industria: 70–80% SOH.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "batteryLifetime__cycleLifeReferenceTest": {
-      "value": "IEC 62660-1:2018",
-      "_status": "assumed",
+      "value": null,
+      "_status": "pending",
       "_note": "#86 Mandatory. Norma de referencia usada para el test de ciclos de vida. Pendiente de confirmar con Alterity.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "batteryLifetime__cRateOfRelevantCycleLifeTest": {
-      "value": "1C charge / 1C discharge",
-      "_status": "assumed",
+      "value": null,
+      "_status": "pending",
       "_note": "#87 Mandatory. C-rate usado en el test de referencia de ciclo de vida. Típico 1C/1C para LFP.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
@@ -627,9 +627,9 @@
       "_evidence": null
     },
     "temperatureConditions__temperatureInformation": {
-      "value": "Rango operativo: 0°C a 45°C (carga), -20°C a 55°C (descarga). Almacenamiento: -20°C a 55°C. Carga óptima: 15–35°C.",
-      "_status": "assumed",
-      "_note": "#91 Mandatory. Información general de condiciones de temperatura.",
+      "value": null,
+      "_status": "pending",
+      "_note": "Rango LFP típico: carga 0–45°C, descarga -20–55°C.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -638,7 +638,7 @@
       "lowerBoundary": -20,
       "upperBoundary": 55,
       "unit": "°C",
-      "_status": "assumed",
+      "_status": "pending",
       "_note": "#92-93 Mandatory. Rango de almacenamiento típico para LFP. Rango operativo: 0–45°C.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
@@ -697,9 +697,9 @@
       "_evidence": null
     },
     "negativeEvents__informationOnAccidents": {
-      "value": [],
-      "_status": "assumed",
-      "_note": null,
+      "value": null,
+      "_status": "pending",
+      "_note": "Pendiente de dato real del fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex XIII · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -709,10 +709,10 @@
     "_icon": "🌍",
     "_title": "Huella de carbono",
     "batteryCarbonFootprint": {
-      "value": 1647,
+      "value": null,
       "unit": "kg CO2e",
-      "_status": "assumed",
-      "_note": "Estimación: 61 gCO2eq/kWh × 27 kWh. Basado en valores medios publicados para LFP. Requiere estudio LCA oficial.",
+      "_status": "pending",
+      "_note": "Rango LFP típico: 40–80 kg CO₂eq/kWh.",
       "_legalBasis": "Reg. 2023/1542 Art. 7 · LEY",
       "_sourceDocument": {
         "name": "Declaración CO₂",
@@ -723,9 +723,9 @@
       "_evidence": null
     },
     "carbonFootprintPerformanceClass": {
-      "value": "A",
-      "_status": "assumed",
-      "_note": "Clase A corresponde a ≤100 gCO2eq/kWh. LFP típicamente 55–70 gCO2eq/kWh.",
+      "value": null,
+      "_status": "pending",
+      "_note": "Pendiente de clasificación oficial.",
       "_legalBasis": "Reg. 2023/1542 Art. 7(2) · PENDIENTE AD",
       "_sourceDocument": {
         "name": "Declaración CO₂",
@@ -737,7 +737,7 @@
     },
     "carbonFootprintStudy": {
       "url": "https://alterity.energy/carbon-footprint-lmt",
-      "_status": "assumed",
+      "_status": "pending",
       "_note": "URL provisional. Pendiente de publicación del estudio oficial.",
       "_legalBasis": "Reg. 2023/1542 Art. 7(1)(d) · LEY",
       "_sourceDocument": {
@@ -749,10 +749,10 @@
       "_evidence": null
     },
     "absoluteBatteryCarbonFootprint": {
-      "value": 1647,
+      "value": null,
       "unit": "kg CO2e",
-      "_status": "assumed",
-      "_note": "#35 Voluntary. Huella de carbono absoluta total de la batería (no por unidad funcional). 61 gCO2eq/kWh × 27 kWh.",
+      "_status": "pending",
+      "_note": "Rango para 27 kWh LFP: 1100–2200 kg CO₂eq total.",
       "_legalBasis": "Reg. 2023/1542 Art. 7 · LEY",
       "_sourceDocument": {
         "name": "Declaración CO₂",
@@ -791,8 +791,8 @@
           "unit": "gCO2eq/kWh"
         }
       ],
-      "_status": "assumed",
-      "_note": null,
+      "_status": "pending",
+      "_note": "Tabla con datos estimados pendientes de confirmar por fabricante.",
       "_legalBasis": "Reg. 2023/1542 Art. 7(1)(c) · LEY",
       "_sourceDocument": {
         "name": "Declaración CO₂",
@@ -835,17 +835,17 @@
           "postConsumerShare": null
         }
       ],
-      "_status": "assumed",
-      "_note": "Estimación coherente con la cadena de suministro europea de LFP.",
+      "_status": "pending",
+      "_note": "Tabla con datos estimados pendientes de confirmar por fabricante.",
       "_legalBasis": "Reg. 2023/1542 Art. 8 · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "renewableContent": {
-      "value": 12,
+      "value": null,
       "unit": "%",
-      "_status": "assumed",
-      "_note": "Estimación de energía renovable usada en fabricación. Pendiente de dato real.",
+      "_status": "pending",
+      "_note": "Rango típico fabricantes EU: 5–25%.",
       "_legalBasis": null,
       "_sourceDocument": null,
       "_evidence": null
@@ -881,8 +881,8 @@
           "mimeType": "application/pdf"
         }
       ],
-      "_status": "assumed",
-      "_note": "Alterity comunica capacidad de mantenimiento y segunda vida. URL provisional.",
+      "_status": "pending",
+      "_note": "Tabla con datos estimados pendientes de confirmar por fabricante.",
       "_legalBasis": "Reg. 2023/1542 Art. 11 · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -919,8 +919,8 @@
           ]
         }
       ],
-      "_status": "assumed",
-      "_note": null,
+      "_status": "pending",
+      "_note": "Tabla con datos estimados pendientes de confirmar por fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
       "_evidence": null
@@ -929,7 +929,7 @@
       "separateCollection": "Red SIGRE (España) — puntos limpios autorizados",
       "wastePrevention": "Mantenimiento correcto para prolongar vida útil. Evitar descarga profunda y sobrecarga.",
       "informationOnCollection": "Contenido 95% reciclable. LFP apta para segunda vida en aplicaciones estacionarias.",
-      "_status": "assumed",
+      "_status": "pending",
       "_note": "Alterity comunica remanufactura y segunda vida.",
       "_legalBasis": "Reg. 2023/1542 Art. 60(1) · LEY",
       "_sourceDocument": {
@@ -945,8 +945,8 @@
     "_icon": "✅",
     "_title": "Etiquetas y conformidad",
     "euDeclarationOfConformityId": {
-      "value": "DoC-ALT-LMT-LFP-2025-001",
-      "_status": "assumed",
+      "value": null,
+      "_status": "pending",
       "_note": "Número provisional. Pendiente de proceso de certificación formal.",
       "_legalBasis": "Reg. 2023/1542 Art. 18 · LEY",
       "_sourceDocument": {
@@ -959,7 +959,7 @@
     },
     "declarationOfConformity": {
       "url": "https://alterity.energy/conformity/lmt-lfp-2025",
-      "_status": "assumed",
+      "_status": "pending",
       "_note": null,
       "_legalBasis": "Reg. 2023/1542 Art. 18 · LEY",
       "_sourceDocument": {
@@ -987,7 +987,7 @@
       "symbol": "Wheeled bin symbol (WEEE crossed-out)",
       "description_es": "Este producto debe depositarse en un punto de recogida selectiva de baterías al final de su vida útil. Red de recogida: SIGRE (España).",
       "description_en": "This product must be deposited at a selective battery collection point at the end of its useful life. Collection network: SIGRE (Spain).",
-      "_status": "assumed",
+      "_status": "pending",
       "_note": "Símbolo estándar EU. Red SIGRE para España.",
       "_legalBasis": "Reg. 2023/1542 Art. 13(3) · LEY",
       "_sourceDocument": {
@@ -999,17 +999,17 @@
       "_evidence": null
     },
     "materialSymbols": {
-      "value": [],
-      "_status": "assumed",
-      "_note": null,
+      "value": null,
+      "_status": "pending",
+      "_note": "Pendiente de dato real del fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
       "_evidence": null
     },
     "carbonFootprintLabel": {
-      "value": "Class A",
+      "value": null,
       "url": "https://alterity.energy/carbon-footprint-label/lmt-lfp",
-      "_status": "assumed",
+      "_status": "pending",
       "_note": "#23 Mandatory. Etiqueta de huella de carbono visible en el producto. Formato y diseño según Delegated Act.",
       "_legalBasis": "Reg. 2023/1542 Art. 13(5) · LEY",
       "_sourceDocument": {
@@ -1021,9 +1021,9 @@
       "_evidence": null
     },
     "meaningOfLabelsAndSymbols": {
-      "value": "Explicación de todos los símbolos, etiquetas y marcas presentes en la batería y su embalaje.",
+      "value": null,
       "url": "https://alterity.energy/labels-guide/lmt-lfp",
-      "_status": "assumed",
+      "_status": "pending",
       "_note": "#25 Mandatory. Guía explicativa de todas las etiquetas del producto. URL provisional.",
       "_legalBasis": null,
       "_sourceDocument": {
@@ -1040,7 +1040,7 @@
     "_title": "Cadena de suministro y due diligence",
     "dueDiligenceReport": {
       "url": "https://alterity.energy/due-diligence-2025",
-      "_status": "assumed",
+      "_status": "pending",
       "_note": "URL provisional. Cadena de suministro con proveedores europeos certificados CCCA/RMI.",
       "_legalBasis": "Reg. 2023/1542 Arts. 48-52 · LEY",
       "_sourceDocument": {
@@ -1052,24 +1052,20 @@
       "_evidence": null
     },
     "thirdPartyAssurances": {
-      "value": [
-        "RMI Responsible Minerals Assurance Process (RMAP)"
-      ],
-      "_status": "assumed",
-      "_note": null,
+      "value": null,
+      "_status": "pending",
+      "_note": "Pendiente de dato real del fabricante.",
       "_legalBasis": "Reg. 2023/1542 Art. 48(d) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "supplyChainIndices": {
-      "value": [
-        "DRC Conflict Minerals: Not applicable — LFP cathode does not contain cobalt"
-      ],
-      "_status": "assumed",
-      "_note": null,
+      "value": null,
+      "_status": "pending",
+      "_note": "Pendiente de dato real del fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
       "_evidence": null
     }
   }
-}
+        }
