@@ -3,40 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ruta DPP Construccion — Guia para fabricantes de productos de construccion</title>
-<meta name="description" content="Guia paso a paso para implantar el Pasaporte Digital de Producto (DPP) en fabricantes de productos de construccion. Reglamento CPR 2024/3110, ESPR 2024/1781, Working Plan 2026-2029. Por Code Contract.">
-<meta name="keywords" content="DPP, pasaporte digital producto, construccion, CPR 2024/3110, ESPR, fabricantes, hormigon, ventanas, acero, suelos, ceramica, DAP, EPD, EN 15804, GS1 Digital Link, CIRPASS-2">
-<meta name="author" content="Code Contract S.L.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://codecontract-dpp.github.io/dpp-construccion/">
-
-<!-- Open Graph / Social -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://codecontract-dpp.github.io/dpp-construccion/">
-<meta property="og:title" content="Ruta DPP Construccion — Guia para fabricantes">
-<meta property="og:description" content="Guia practica para implantar el Pasaporte Digital de Producto en construccion. CPR 2024/3110, 4 oleadas del Working Plan, 10 familias de producto, checklist y FAQ.">
-<meta property="og:image" content="https://codecontract-dpp.github.io/dpp-construccion/og-image.png">
-<meta property="og:locale" content="es_ES">
-<meta property="og:site_name" content="Code Contract - DPP">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Ruta DPP Construccion — Guia para fabricantes">
-<meta name="twitter:description" content="Guia practica para implantar el Pasaporte Digital de Producto en construccion. CPR 2024/3110, Working Plan 2026-2029.">
-<meta name="twitter:image" content="https://codecontract-dpp.github.io/dpp-construccion/og-image.png">
-
-<!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F3D7;</text></svg>">
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DKW5YSTNB0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-DKW5YSTNB0');
-</script>
-
+<title>Ruta DPP Baterias — Guia para fabricantes</title>
 <style>
 :root {
   --dark: #1a1a2e;
@@ -50,8 +17,6 @@
   --red-light: #fef2f2;
   --purple: #7c3aed;
   --purple-light: #f5f3ff;
-  --teal: #0d9488;
-  --teal-light: #f0fdfa;
   --gray: #6b7280;
   --border: #e5e7eb;
   --bg: #f8fafc;
@@ -59,8 +24,9 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: #1f2937; line-height: 1.6; }
 
+/* HEADER */
 .header {
-  background: linear-gradient(135deg, #1a1a2e 0%, #1f4e79 100%);
+  background: linear-gradient(135deg, var(--dark) 0%, #16423c 100%);
   color: white; padding: 40px 20px 32px; text-align: center;
 }
 .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
@@ -71,6 +37,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
 }
 
+/* DOCUMENT STATUS BADGE */
 .doc-status-bar {
   max-width: 1100px; margin: -20px auto 0; padding: 0 20px; position: relative; z-index: 2;
 }
@@ -91,13 +58,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 }
 .doc-status-version strong { color: #1f2937; display: block; font-size: 12px; }
 
+/* DEADLINE BANNER */
 .deadline-banner {
-  background: linear-gradient(90deg, #1f4e79, #2e75b6);
+  background: linear-gradient(90deg, #dc2626, #b91c1c);
   color: white; text-align: center; padding: 14px 20px;
   font-size: 15px; font-weight: 600; margin-top: 20px;
 }
 .deadline-banner span { font-size: 20px; margin-right: 8px; }
 
+/* HIERARCHY BOX */
 .hierarchy-box {
   max-width: 1100px; margin: 24px auto 0; padding: 0 20px;
 }
@@ -138,6 +107,21 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   font-size: 11px; color: var(--gray); text-align: center; line-height: 1.5;
 }
 
+/* LEGEND */
+.legend {
+  max-width: 1100px; margin: 20px auto 0; padding: 0 20px;
+  display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
+}
+.legend-item {
+  display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray);
+  background: white; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border);
+}
+.legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+/* CONTAINER */
+.container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+
+/* IMPLEMENTATION TIMELINE */
 .impl-timeline {
   max-width: 1100px; margin: 24px auto 0; padding: 0 20px;
 }
@@ -174,50 +158,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   font-size: 11px; color: var(--gray); text-align: center; line-height: 1.5;
 }
 
-/* WAVES OVERVIEW */
-.waves-box {
-  max-width: 1100px; margin: 24px auto 0; padding: 0 20px;
-}
-.waves {
-  background: white; border-radius: 14px; border: 1px solid var(--border);
-  padding: 20px 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.waves h3 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 16px; text-align: center; }
-.waves-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
-}
-.wave-card {
-  border-radius: 12px; padding: 16px; border: 1px solid var(--border);
-  text-align: center;
-}
-.wave-card h4 { font-size: 14px; font-weight: 800; margin-bottom: 4px; }
-.wave-card .wave-year { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
-.wave-card p { font-size: 11px; color: var(--gray); line-height: 1.4; }
-.wave-1 { background: #fef2f2; }
-.wave-1 h4 { color: var(--red); }
-.wave-1 .wave-year { color: var(--red); }
-.wave-2 { background: var(--amber-light); }
-.wave-2 h4 { color: var(--amber); }
-.wave-2 .wave-year { color: var(--amber); }
-.wave-3 { background: var(--blue-light); }
-.wave-3 h4 { color: var(--blue); }
-.wave-3 .wave-year { color: var(--blue); }
-.wave-4 { background: var(--purple-light); }
-.wave-4 h4 { color: var(--purple); }
-.wave-4 .wave-year { color: var(--purple); }
-
-.legend {
-  max-width: 1100px; margin: 20px auto 0; padding: 0 20px;
-  display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
-}
-.legend-item {
-  display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray);
-  background: white; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border);
-}
-.legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
-
-.container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
-
+/* PHASE */
 .phase {
   margin-bottom: 32px; background: white; border-radius: 16px;
   border: 1px solid var(--border); overflow: hidden;
@@ -252,6 +193,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .phase-body { border-top: 1px solid var(--border); }
 .phase-body.hidden { display: none; }
 
+/* Color themes per phase */
 .phase-green .phase-number { background: var(--green); }
 .phase-green .phase-deadline { background: var(--green-light); color: var(--green); }
 .phase-blue .phase-number { background: var(--blue); }
@@ -262,9 +204,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .phase-red .phase-deadline { background: var(--red-light); color: var(--red); }
 .phase-purple .phase-number { background: var(--purple); }
 .phase-purple .phase-deadline { background: var(--purple-light); color: var(--purple); }
-.phase-teal .phase-number { background: var(--teal); }
-.phase-teal .phase-deadline { background: var(--teal-light); color: var(--teal); }
 
+/* STEP */
 .step {
   padding: 16px 24px; border-bottom: 1px solid #f3f4f6;
   display: flex; align-items: flex-start; gap: 16px;
@@ -279,6 +220,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .step-content h3 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
 .step-content p { font-size: 13px; color: #4b5563; }
 
+/* DOC GROUPS inside steps */
 .doc-group { margin-top: 10px; }
 .doc-group-label {
   font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
@@ -298,11 +240,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .doc-guia { background: #d1fae5; color: #065f46; }
 .doc-interno { background: #fef3c7; color: #92400e; }
 .doc-external { background: #e9d5ff; color: #6b21a8; }
-.doc-local { background: linear-gradient(135deg, #ede9fe, #e0e7ff); color: #4c1d95; cursor: pointer; border: 1px dashed #7c3aed; }
-.doc-local:hover { filter: brightness(0.95); transform: translateY(-1px); }
+.doc-local { background: #f3f4f6; color: #6b7280; cursor: default; }
+.doc-local:hover { filter: none; transform: none; }
 
+/* RESULTADO FINAL */
 .result-box {
-  background: linear-gradient(135deg, #1f4e79 0%, #2e75b6 100%);
+  background: linear-gradient(135deg, var(--green) 0%, #16423c 100%);
   color: white; border-radius: 16px; padding: 32px;
   text-align: center; margin-top: 8px;
 }
@@ -316,11 +259,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   border-radius: 10px; font-size: 13px; font-weight: 600;
 }
 
+/* CTA SECTION */
 .cta-section {
   max-width: 1100px; margin: 0 auto; padding: 0 20px 32px;
 }
 .cta-box {
-  background: white; border-radius: 16px; border: 2px solid #1f4e79;
+  background: white; border-radius: 16px; border: 2px solid var(--green);
   padding: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
 .cta-box h2 { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
@@ -334,7 +278,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   border: 1px solid var(--border);
 }
 .cta-step-num {
-  font-size: 11px; font-weight: 700; color: #1f4e79;
+  font-size: 11px; font-weight: 700; color: var(--green);
   text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
 }
 .cta-step h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
@@ -349,66 +293,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   border-radius: 8px; text-decoration: none; transition: all 0.15s;
 }
 .cta-link:hover { filter: brightness(0.95); transform: translateY(-1px); }
-.cta-link-primary { background: #1f4e79; color: white; }
-.cta-link-secondary { background: #dbeafe; color: #1f4e79; }
+.cta-link-primary { background: var(--green); color: white; }
+.cta-link-secondary { background: var(--green-light); color: var(--green); }
 
-/* FAMILY CARDS */
-.families-box {
-  max-width: 1100px; margin: 24px auto 0; padding: 0 20px;
-}
-.families {
-  background: white; border-radius: 14px; border: 1px solid var(--border);
-  padding: 20px 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.families h3 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 6px; text-align: center; }
-.families > p { font-size: 12px; color: var(--gray); text-align: center; margin-bottom: 16px; }
-.families-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;
-}
-.fam-card {
-  border-radius: 10px; padding: 14px; border: 1px solid var(--border);
-  cursor: pointer; transition: all 0.15s; position: relative;
-}
-.fam-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); transform: translateY(-1px); }
-.fam-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
-.fam-card .fam-wave { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 8px; display: inline-block; margin-bottom: 6px; }
-.fam-card .fam-norm { font-size: 11px; color: var(--gray); margin-bottom: 4px; }
-.fam-card .fam-risk { font-size: 11px; color: #b91c1c; font-weight: 600; }
-.fam-card .fam-detail { display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid #f3f4f6; font-size: 11px; color: #4b5563; line-height: 1.5; }
-.fam-card.expanded .fam-detail { display: block; }
-.fam-card .fam-expand { font-size: 10px; color: var(--blue); font-weight: 600; margin-top: 6px; }
-.fw-1 .fam-wave { background: #fef2f2; color: var(--red); }
-.fw-2 .fam-wave { background: var(--amber-light); color: var(--amber); }
-.fw-3 .fam-wave { background: var(--blue-light); color: var(--blue); }
-.fw-4 .fam-wave { background: var(--purple-light); color: var(--purple); }
-
-/* FAQ SECTION */
-.faq-box {
-  max-width: 1100px; margin: 0 auto; padding: 0 20px 32px;
-}
-.faq {
-  background: white; border-radius: 16px; border: 1px solid var(--border);
-  overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-}
-.faq-title {
-  padding: 20px 24px; font-size: 18px; font-weight: 700; color: var(--dark);
-  text-align: center; border-bottom: 1px solid var(--border);
-}
-.faq-item { border-bottom: 1px solid #f3f4f6; }
-.faq-item:last-child { border-bottom: none; }
-.faq-q {
-  padding: 16px 24px; display: flex; align-items: center; gap: 12px;
-  cursor: pointer; user-select: none; font-size: 14px; font-weight: 600; color: #1f2937;
-}
-.faq-q:hover { background: #fafbfc; }
-.faq-q .faq-icon { font-size: 18px; color: var(--blue); flex-shrink: 0; }
-.faq-q .faq-chevron { margin-left: auto; font-size: 12px; color: var(--gray); transition: transform 0.2s; }
-.faq-q.collapsed .faq-chevron { transform: rotate(-90deg); }
-.faq-a {
-  padding: 0 24px 16px 54px; font-size: 13px; color: #4b5563; line-height: 1.6;
-}
-.faq-a.hidden { display: none; }
-
+/* FOOTER */
 .footer {
   text-align: center; padding: 24px 20px 40px; font-size: 12px; color: var(--gray);
 }
@@ -424,17 +312,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   .doc-status { flex-wrap: wrap; }
   .tl-table { font-size: 11px; }
   .cta-steps { grid-template-columns: 1fr; }
-  .waves-grid { grid-template-columns: 1fr 1fr; }
-  .families-grid { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>Ruta hacia el DPP de Productos de Construccion</h1>
-  <p>Guia paso a paso para que un fabricante de productos de construccion cumpla con el Reglamento CPR 2024/3110 y tenga su Pasaporte Digital de Producto operativo</p>
-  <div class="reg-badge">CPR (EU) 2024/3110 &middot; ESPR (EU) 2024/1781 &middot; Plan de Trabajo 2026-2029</div>
+  <h1>Ruta hacia el Battery Passport (DPP)</h1>
+  <p>Guia paso a paso para que una empresa fabricante de baterias cumpla con el Reglamento EU 2023/1542 y tenga su Pasaporte Digital operativo</p>
+  <div class="reg-badge">EU Battery Regulation 2023/1542 &middot; ESPR 2024/1781</div>
 </div>
 
 <!-- DOCUMENT STATUS -->
@@ -443,20 +329,20 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="doc-status-icon">&#x1F7E1;</div>
     <div class="doc-status-text">
       <h3>Estado del documento: EN REVISION</h3>
-      <p>Version de trabajo alineada con el CPR 2024/3110, ESPR 2024/1781 y el Plan de Trabajo COM(2025) 772 a abril de 2026.</p>
+      <p>Version de trabajo alineada con la normativa vigente y su desarrollo tecnico conocido a abril de 2026.</p>
     </div>
     <div class="doc-status-version">
-      <strong>v1.1</strong>
-      19 abril 2026
+      <strong>v0.3</strong>
+      17 abril 2026
     </div>
   </div>
 </div>
 
 <div class="deadline-banner">
-  <span>&#x23F0;</span> Hito clave: 8 enero 2026 &mdash; Aplicacion de la mayoria de disposiciones del CPR 2024/3110. Fase 1 de caracteristicas ambientales (GWP) obligatoria. Registro DPP operativo antes del 19 julio 2026.
+  <span>&#x23F0;</span> Deadline obligatorio: 18 febrero 2027 &mdash; Todas las baterias EV, LMT e industriales (&gt;2 kWh) deben tener Battery Passport y estar cargadas en el registro ESPR
 </div>
 
-<!-- HIERARCHY -->
+<!-- HIERARCHY: LEY > GUIA > SOLUCION -->
 <div class="hierarchy-box">
   <div class="hierarchy">
     <h3>Tres niveles de documentacion (de mayor a menor rango)</h3>
@@ -464,26 +350,26 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="h-level h-ley">
         <div class="h-level-icon">&#x2696;&#xFE0F;</div>
         <div class="h-level-title">Nivel 1: LEY</div>
-        <div class="h-level-desc">Reglamento CPR (UE) 2024/3110, ESPR (UE) 2024/1781 y actos delegados. Obligatorio, no negociable. Publicado en el Diario Oficial de la UE.</div>
+        <div class="h-level-desc">Reglamento EU 2023/1542 y actos delegados. Obligatorio, no negociable. Publicado en el Diario Oficial de la UE.</div>
         <div class="h-level-badge">Obligatorio</div>
       </div>
       <div class="hierarchy-arrow">&#x25B6;</div>
       <div class="h-level h-guia">
         <div class="h-level-icon">&#x1F4D0;</div>
         <div class="h-level-title">Nivel 2: GUIA TECNICA</div>
-        <div class="h-level-desc">EN 15804+A2 (ACV), normas armonizadas, CIRPASS-2, Cobuilder, EPD Guide, GS1 Digital Link. Referencia de facto, no vinculante legalmente.</div>
+        <div class="h-level-desc">DIN DKE SPEC 99100, Content Guidance, Technical Guidance, position papers. Referencia de facto de la industria, no vinculante legalmente. Incluye campos obligatorios y voluntarios.</div>
         <div class="h-level-badge">Recomendado</div>
       </div>
       <div class="hierarchy-arrow">&#x25B6;</div>
       <div class="h-level h-solucion">
         <div class="h-level-icon">&#x1F6E0;&#xFE0F;</div>
         <div class="h-level-title">Nivel 3: SOLUCION PROPIA</div>
-        <div class="h-level-desc">Implementacion especifica: Trackline, plataforma DPP, mappings de datos, control de acceso, integracion ERP/PLM. Propuesta de Code Contract.</div>
+        <div class="h-level-desc">Implementacion especifica: Trackline, dpp.json, mappings, control de acceso. Propuesta de Code Contract para operativizar los niveles 1 y 2.</div>
         <div class="h-level-badge">Implementacion</div>
       </div>
     </div>
     <div class="hierarchy-note">
-      Cada documento enlazado esta marcado con su nivel: <span style="color:#1d4ed8;font-weight:700">LEY</span> (azul), <span style="color:#065f46;font-weight:700">GUIA</span> (verde), <span style="color:#92400e;font-weight:700">SOLUCION</span> (amarillo). Los enlaces morados son recursos externos de terceros.
+      Cada documento enlazado en esta guia esta marcado con su nivel: <span style="color:#1d4ed8;font-weight:700">LEY</span> (azul), <span style="color:#065f46;font-weight:700">GUIA</span> (verde), <span style="color:#92400e;font-weight:700">SOLUCION</span> (amarillo). Los enlaces morados son recursos externos de terceros.
     </div>
   </div>
 </div>
@@ -491,284 +377,93 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 <!-- IMPLEMENTATION TIMELINE -->
 <div class="impl-timeline">
   <div class="impl-timeline-box">
-    <h3>Calendario de implementacion del DPP de Construccion</h3>
+    <h3>Calendario de implementacion del Battery Passport</h3>
     <table class="tl-table">
       <thead>
-        <tr><th>Fecha</th><th>Hito</th><th>Quien publica / actua</th><th>Estado</th></tr>
+        <tr>
+          <th>Fecha</th>
+          <th>Hito</th>
+          <th>Quien publica / actua</th>
+          <th>Estado</th>
+        </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="tl-date-cell" style="color:#2e7d4f">Dic 2024</td>
+          <td class="tl-date-cell" style="color:#2e7d4f">Feb 2025</td>
           <td>
-            <div class="tl-milestone">Publicacion del CPR (UE) 2024/3110 en el DOUE</div>
-            <div class="tl-publisher">Art. 91 CPR</div>
+            <div class="tl-milestone">Declaracion de huella de carbono obligatoria (EV)</div>
+            <div class="tl-publisher">Art. 7 Reg. 2023/1542</div>
           </td>
-          <td class="tl-publisher">Parlamento Europeo y Consejo</td>
+          <td class="tl-publisher">Comision Europea (acto delegado sobre metodologia PEF) + Fabricante (declaracion)</td>
           <td><span class="tl-status-badge tl-past">En vigor</span></td>
         </tr>
         <tr>
-          <td class="tl-date-cell" style="color:#2e7d4f">Ene 2025</td>
+          <td class="tl-date-cell" style="color:#2563eb">Ago 2025</td>
           <td>
-            <div class="tl-milestone">Entrada en vigor del CPR 2024/3110 (7 enero)</div>
-            <div class="tl-publisher">Articulos generales y de desarrollo de normas</div>
+            <div class="tl-milestone">Etiquetado QR armonizado obligatorio</div>
+            <div class="tl-publisher">Art. 13 Reg. 2023/1542</div>
           </td>
-          <td class="tl-publisher">Comision Europea</td>
-          <td><span class="tl-status-badge tl-past">En vigor</span></td>
-        </tr>
-        <tr>
-          <td class="tl-date-cell" style="color:#2e7d4f">Dic 2025</td>
-          <td>
-            <div class="tl-milestone">Publicacion del Plan de Trabajo CPR 2026-2029 (COM(2025) 772)</div>
-            <div class="tl-publisher">4 oleadas de estandarizacion para las 36 familias de producto</div>
-          </td>
-          <td class="tl-publisher">Comision Europea</td>
-          <td><span class="tl-status-badge tl-past">Publicado</span></td>
-        </tr>
-        <tr>
-          <td class="tl-date-cell" style="color:#d97706">Ene 2026</td>
-          <td>
-            <div class="tl-milestone">Aplicacion de la mayoria de disposiciones CPR (8 enero). Fase 1 Anexo II: GWP obligatorio</div>
-            <div class="tl-publisher">Caracteristicas ambientales a-d (incluye huella de carbono GWP-total, GWP-fossil, GWP-bio, GWP-luluc)</div>
-          </td>
-          <td class="tl-publisher">Fabricantes (declaracion) + Organismos notificados (AVS 3+)</td>
+          <td class="tl-publisher">CEN/CENELEC (normas armonizadas de etiquetado) + Fabricante (etiqueta en producto)</td>
           <td><span class="tl-status-badge tl-upcoming">Proximo</span></td>
         </tr>
         <tr>
-          <td class="tl-date-cell" style="color:#d97706">Jul 2026</td>
+          <td class="tl-date-cell" style="color:#d97706">Ago 2026</td>
           <td>
-            <div class="tl-milestone">Fecha limite para establecer el Registro DPP de Construccion</div>
-            <div class="tl-publisher">Art. 75 CPR &mdash; Registro de identificadores unicos de producto</div>
+            <div class="tl-milestone">Declaracion CO&#x2082; obligatoria (industrial recargable &gt;2 kWh) + Clases de rendimiento CO&#x2082;</div>
+            <div class="tl-publisher">Art. 7 Reg. 2023/1542</div>
           </td>
-          <td class="tl-publisher">Comision Europea (registro) + Proveedores de servicios DPP</td>
+          <td class="tl-publisher">Comision Europea (actos delegados de clases de rendimiento) + Fabricante</td>
           <td><span class="tl-status-badge tl-upcoming">Proximo</span>
-            <div class="tl-da-note">Pendiente: acto delegado proveedores DPP (Q4 2026)</div>
+            <div class="tl-da-note">Pendiente: delegated act clases CO&#x2082;</div>
           </td>
         </tr>
         <tr>
-          <td class="tl-date-cell" style="color:#dc2626">2027-2028</td>
+          <td class="tl-date-cell" style="color:#dc2626">Feb 2027</td>
           <td>
-            <div class="tl-milestone">DPP obligatorio para productos Oleada 1 (18 meses tras registro)</div>
-            <div class="tl-publisher">Hormigon prefabricado, acero estructural, acero de refuerzo</div>
-            <div style="font-size:11px; color:#dc2626; font-weight:600; margin-top:4px;">&#x26A0; El DPP debe estar accesible via data carrier Y cargado en el Registro antes de la primera comercializacion</div>
+            <div class="tl-milestone">Battery Passport obligatorio (EV, LMT, industrial &gt;2 kWh)</div>
+            <div class="tl-publisher">Art. 77 Reg. 2023/1542 + Art. 12-13 ESPR 2024/1781</div>
+            <div style="font-size:11px; color:#dc2626; font-weight:600; margin-top:4px;">&#x26A0; El DPP debe estar accesible via data carrier Y cargado en el registro ESPR antes de la primera comercializacion</div>
           </td>
-          <td class="tl-publisher">Fabricantes (DPP completo + data carrier) + Comision (actos delegados por familia)</td>
+          <td class="tl-publisher">Comision Europea (registro ESPR operativo antes jul 2026) + CEN/CENELEC (normas tecnicas) + Fabricante (DPP completo + carga en registro)</td>
           <td><span class="tl-status-badge tl-future">Critico</span>
-            <div class="tl-da-note">Pendiente: actos delegados por familia de producto</div>
+            <div class="tl-da-note">Pendiente: delegated acts de contenido especifico</div>
           </td>
         </tr>
         <tr>
-          <td class="tl-date-cell" style="color:#7c3aed">Ene 2030</td>
+          <td class="tl-date-cell" style="color:#7c3aed">Ago 2027</td>
           <td>
-            <div class="tl-milestone">Fase 2 Anexo II: caracteristicas ambientales e-m obligatorias</div>
-            <div class="tl-publisher">ODP, AP, EP (3 categorias), POCP, ADP (minerales + fossil), WDP</div>
+            <div class="tl-milestone">Due diligence cadena de suministro obligatoria</div>
+            <div class="tl-publisher">Arts. 48-52 Reg. 2023/1542</div>
           </td>
-          <td class="tl-publisher">Fabricantes + Organismos notificados</td>
+          <td class="tl-publisher">Fabricante (informe due diligence) + Organismos notificados (verificacion terceros)</td>
           <td><span class="tl-status-badge tl-future">Futuro</span></td>
         </tr>
         <tr>
-          <td class="tl-date-cell" style="color:#7c3aed">Ene 2031</td>
+          <td class="tl-date-cell" style="color:#7c3aed">Feb 2028</td>
           <td>
-            <div class="tl-milestone">Los EADs heredados del CPR 305/2011 dejan de aplicarse</div>
-            <div class="tl-publisher">Transicion completa al nuevo marco</div>
+            <div class="tl-milestone">Contenido minimo reciclado obligatorio (cobalto, plomo, litio, niquel)</div>
+            <div class="tl-publisher">Art. 8 Reg. 2023/1542</div>
           </td>
-          <td class="tl-publisher">Comision Europea</td>
-          <td><span class="tl-status-badge tl-future">Futuro</span></td>
-        </tr>
-        <tr>
-          <td class="tl-date-cell" style="color:#7c3aed">Ene 2032</td>
-          <td>
-            <div class="tl-milestone">Fase 3: declaracion ambiental completa obligatoria (19 caracteristicas a-s)</div>
-            <div class="tl-publisher">Set completo de indicadores EN 15804+A2 incl. ecotoxicidad, radiacion ionizante, particulas</div>
+          <td class="tl-publisher">Comision Europea (acto delegado con porcentajes minimos) + Fabricante (declaracion y evidencia)</td>
+          <td><span class="tl-status-badge tl-future">Futuro</span>
+            <div class="tl-da-note">Pendiente: delegated act porcentajes</div>
           </td>
-          <td class="tl-publisher">Fabricantes + Organismos notificados</td>
-          <td><span class="tl-status-badge tl-future">Futuro</span></td>
         </tr>
       </tbody>
     </table>
     <div class="impl-timeline-note">
-      Las fechas de las oleadas dependen de actos delegados que la Comision publicara progresivamente. Las fechas del Anexo II (fases ambientales) son fijas en el reglamento.
+      Las fechas marcadas como <em>pendiente delegated act</em> dependen de actos delegados que la Comision Europea aun no ha publicado en su version definitiva. Las fechas del reglamento se mantienen salvo modificacion oficial.
     </div>
   </div>
 </div>
 
-<!-- 4 WAVES -->
-<div class="waves-box">
-  <div class="waves">
-    <h3>Las 4 oleadas del Plan de Trabajo 2026-2029 (COM(2025) 772)</h3>
-    <div class="waves-grid">
-      <div class="wave-card wave-1">
-        <h4>Oleada 1</h4>
-        <div class="wave-year">2026</div>
-        <p><strong>Hormigon prefabricado, acero estructural, acero de refuerzo.</strong> Mayor volumen y huella de carbono. Prioridad maxima.</p>
-      </div>
-      <div class="wave-card wave-2">
-        <h4>Oleada 2</h4>
-        <div class="wave-year">2027</div>
-        <p><strong>Cemento, ventanas y puertas.</strong> Cemento es input critico para hormigon. Ventanas clave para eficiencia energetica.</p>
-      </div>
-      <div class="wave-card wave-3">
-        <h4>Oleada 3</h4>
-        <div class="wave-year">2028</div>
-        <p><strong>Aislamiento, fachadas y revestimientos.</strong> Prioridad para la Oleada de Renovacion UE. Revision normas de fuego.</p>
-      </div>
-      <div class="wave-card wave-4">
-        <h4>Oleada 4</h4>
-        <div class="wave-year">2029</div>
-        <p><strong>Suelos, ceramica, plasticos, cubiertas, yeso, sanitarios, cables, fijaciones...</strong> La oleada mas amplia.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- FAMILY CARDS -->
-<div class="families-box">
-  <div class="families">
-    <h3>Guia rapida por familia de producto</h3>
-    <p>Haz clic en cada familia para ver detalle. La oleada indica cuando se espera la especificacion armonizada bajo el nuevo CPR.</p>
-    <div class="families-grid">
-
-      <div class="fam-card fw-1" onclick="this.classList.toggle('expanded')">
-        <h4>&#x1F3D7;&#xFE0F; Hormigon preparado</h4>
-        <span class="fam-wave">Oleada 1</span>
-        <div class="fam-norm">UNE-EN 206 + RD 163/2019</div>
-        <div class="fam-risk">&#x26A0; Variabilidad planta/receta/suministro</div>
-        <div class="fam-expand">&#x25BC; Ver detalle</div>
-        <div class="fam-detail">
-          <strong>PCR ambiental:</strong> UNE-EN 16757:2023<br>
-          <strong>Enfoque DPP:</strong> Tres capas de datos &mdash; (1) Fija: familia de mezcla, uso previsto, clase, exposiciones. (2) Semivariable: componentes de receta, origen de cemento, aridos, aditivos. (3) Dinamica: suministro, planta, camion, remesa, control.<br>
-          <strong>Dato maestro:</strong> Relacion familia de mezcla &rarr; planta &rarr; componentes &rarr; amasada &rarr; entrega.<br>
-          <strong>Riesgo:</strong> Publicar informacion demasiado agregada para clientes que piden trazabilidad por obra o planta.
-        </div>
-      </div>
-
-      <div class="fam-card fw-1" onclick="this.classList.toggle('expanded')">
-        <h4>&#x1F529; Acero estructural</h4>
-        <span class="fam-wave">Oleada 1</span>
-        <div class="fam-norm">Serie EN 1090</div>
-        <div class="fam-risk">&#x26A0; Integracion aceria/transformador/taller</div>
-        <div class="fam-expand">&#x25BC; Ver detalle</div>
-        <div class="fam-detail">
-          <strong>PCR ambiental:</strong> PCR sectoriales / prEN 17662<br>
-          <strong>Enfoque DPP:</strong> Certificados de colada/lote, propiedades mecanicas, soldadura, recubrimientos, clase de ejecucion y trazabilidad metalurgica.<br>
-          <strong>Clave:</strong> Estructurar DPP por niveles de acceso, distinguiendo datos publicos de certificados restringidos.
-        </div>
-      </div>
-
-      <div class="fam-card fw-1" onclick="this.classList.toggle('expanded')">
-        <h4>&#x1F3D7;&#xFE0F; Prefabricados de hormigon</h4>
-        <span class="fam-wave">Oleada 1</span>
-        <div class="fam-norm">UNE-EN 13225 / EN 13369</div>
-        <div class="fam-risk">&#x26A0; Separar datos familia vs pieza/lote</div>
-        <div class="fam-expand">&#x25BC; Ver detalle</div>
-        <div class="fam-detail">
-          <strong>PCR ambiental:</strong> UNE-EN 16757:2023<br>
-          <strong>Enfoque DPP:</strong> Geometria, armado/pretensado, curado, control dimensional, trazabilidad de prefabricacion. Roles criticos: ingenieria, fabrica, laboratorio, logistica.<br>
-          <strong>Clave:</strong> No mezclar modelo de hormigon in-situ con prefabricado; compartir gobernanza pero cambiar campos por tipologia.
-        </div>
-      </div>
-
-      <div class="fam-card fw-2" onclick="this.classList.toggle('expanded')">
-        <h4>&#x1FA9F; Ventanas y puertas</h4>
-        <span class="fam-wave">Oleada 2</span>
-        <div class="fam-norm">UNE-EN 14351-1</div>
-        <div class="fam-risk">&#x26A0; Explosion de variantes por configuracion</div>
-        <div class="fam-expand">&#x25BC; Ver detalle</div>
-        <div class="fam-detail">
-          <strong>PCR ambiental:</strong> EN 17213<br>
-          <strong>Enfoque DPP:</strong> Gobernar en torno a serie + configuracion de prestaciones + reglas de compatibilidad de componentes (perfil, vidrio, herrajes, juntas).<br>
-          <strong>Riesgo:</strong> No correspondencia entre lo ensayado y lo vendido. El configurador comercial y el DPP deben compartir las mismas restricciones tecnicas.<br>
-          <strong>Recurso ES:</strong> <a href="https://industria.gob.es/Calidad-Industrial/seguridadindustrial/productosindustriales/Productos-de-la-Construccion/DocumentosmarcadoCEproductosconstruccion/3-Instruccion_ventanas_puertas_exteriores_peatonales_v6.pdf" target="_blank" style="color:#2563eb">Instruccion ministerial ventanas</a>
-        </div>
-      </div>
-
-      <div class="fam-card fw-2" onclick="this.classList.toggle('expanded')">
-        <h4>&#x1F9F1; Cemento</h4>
-        <span class="fam-wave">Oleada 2</span>
-        <div class="fam-norm">UNE-EN 197-1</div>
-        <div class="fam-risk">&#x26A0; Alto impacto CO2; posible intervencion ESPR</div>
-        <div class="fam-expand">&#x25BC; Ver detalle</div>
-        <div class="fam-detail">
-          <strong>PCR ambiental:</strong> EN 16908<br>
-          <strong>Enfoque DPP:</strong> Tipo y clase, composicion, planta, lote, ensayos de conformidad. La capa ambiental es especialmente critica dado el alto impacto de CO2 del sector.<br>
-          <strong>Clave:</strong> El ESPR preve intervenir si el CPR no cubre suficientemente los objetivos de sostenibilidad para cemento.
-        </div>
-      </div>
-
-      <div class="fam-card fw-2" onclick="this.classList.toggle('expanded')">
-        <h4>&#x1F9CA; Aislamiento termico</h4>
-        <span class="fam-wave">Oleada 2</span>
-        <div class="fam-norm">EN 13162 a EN 13171</div>
-        <div class="fam-risk">&#x26A0; Diversidad de materiales (EPS, XPS, lana, PUR)</div>
-        <div class="fam-expand">&#x25BC; Ver detalle</div>
-        <div class="fam-detail">
-          <strong>PCR ambiental:</strong> PCR sectoriales<br>
-          <strong>Enfoque DPP:</strong> Conductividad termica, reaccion al fuego, resistencia a compresion, composicion. La norma de producto cambia segun material base.<br>
-          <strong>Clave:</strong> La capa ambiental es especialmente relevante dado el peso energetico del aislamiento en el ciclo de vida del edificio.
-        </div>
-      </div>
-
-      <div class="fam-card fw-3" onclick="this.classList.toggle('expanded')">
-        <h4>&#x1F4A0; Suelos resilientes/laminados</h4>
-        <span class="fam-wave">Oleada 3</span>
-        <div class="fam-norm">UNE-EN 14041</div>
-        <div class="fam-risk">&#x26A0; Quimica compleja + sistema de instalacion</div>
-        <div class="fam-expand">&#x25BC; Ver detalle</div>
-        <div class="fam-detail">
-          <strong>PCR ambiental:</strong> EN 16810<br>
-          <strong>Enfoque DPP:</strong> Composicion por capas, reaccion al fuego, resbaladicidad, emisiones, sistema de instalacion. Adhesivos, plastificantes y tratamientos pueden activar REACH/SCIP.<br>
-          <strong>Clave:</strong> Modelar tambien el sistema de colocacion y distinguir dato de producto vs dato de escenario de instalacion.
-        </div>
-      </div>
-
-      <div class="fam-card fw-3" onclick="this.classList.toggle('expanded')">
-        <h4>&#x1F3DA;&#xFE0F; Ceramica y azulejos</h4>
-        <span class="fam-wave">Oleada 3</span>
-        <div class="fam-norm">Reglas sectoriales propias</div>
-        <div class="fam-risk">&#x26A0; Demasiados SKUs con pobre disciplina de datos</div>
-        <div class="fam-expand">&#x25BC; Ver detalle</div>
-        <div class="fam-detail">
-          <strong>PCR ambiental:</strong> UNE-EN 17160<br>
-          <strong>Enfoque DPP:</strong> Serie, formato, acabado, absorcion, deslizamiento, resistencia. Perfil ambiental muy dependiente del proceso termico.<br>
-          <strong>Clave:</strong> Gobernar el DPP por familia industrial y solo bajar a SKU cuando cambia prestacion o parametro ambiental relevante.
-        </div>
-      </div>
-
-      <div class="fam-card fw-4" onclick="this.classList.toggle('expanded')">
-        <h4>&#x1F332; Madera estructural</h4>
-        <span class="fam-wave">Oleada 4</span>
-        <div class="fam-norm">EN 14081 / EN 14080</div>
-        <div class="fam-risk">&#x26A0; Trazabilidad de origen y cadena de custodia</div>
-        <div class="fam-expand">&#x25BC; Ver detalle</div>
-        <div class="fam-detail">
-          <strong>PCR ambiental:</strong> EN 16485<br>
-          <strong>Enfoque DPP:</strong> Clase resistente, especie, origen, tratamiento, certificacion forestal (FSC, PEFC). Potencial de almacenamiento de carbono.<br>
-          <strong>Clave:</strong> El DPP de madera es especialmente valioso para prescripcion en proyectos con objetivos de sostenibilidad.
-        </div>
-      </div>
-
-      <div class="fam-card fw-4" onclick="this.classList.toggle('expanded')">
-        <h4>&#x1F6A0; Plasticos y polimeros</h4>
-        <span class="fam-wave">Oleada 4</span>
-        <div class="fam-norm">Normas sectoriales especificas</div>
-        <div class="fam-risk">&#x26A0; Gestion quimica compleja + REACH/SCIP</div>
-        <div class="fam-expand">&#x25BC; Ver detalle</div>
-        <div class="fam-detail">
-          <strong>PCR ambiental:</strong> PCR sectoriales<br>
-          <strong>Enfoque DPP:</strong> Composicion detallada, reciclabilidad, durabilidad, emisiones. Atencion a cadena de suministro de compuestos y masterbatch.<br>
-          <strong>Clave:</strong> Aditivos, plastificantes y retardantes de llama pueden activar obligaciones REACH/SCIP.
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- LEGEND -->
+<!-- LEYENDA DOCUMENTOS -->
 <div class="legend">
-  <div class="legend-item"><div class="legend-dot" style="background:#dbeafe"></div> LEY: Normativa oficial (CPR, ESPR, actos delegados)</div>
-  <div class="legend-item"><div class="legend-dot" style="background:#d1fae5"></div> GUIA: Referencia tecnica (EN 15804, CIRPASS-2, Cobuilder)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#dbeafe"></div> LEY: Normativa oficial</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#d1fae5"></div> GUIA: Referencia tecnica (Battery Pass, DIN)</div>
   <div class="legend-item"><div class="legend-dot" style="background:#fef3c7"></div> SOLUCION: Implementacion propia</div>
   <div class="legend-item"><div class="legend-dot" style="background:#e9d5ff"></div> Recurso externo (terceros)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#f3f4f6"></div> Doc. interno (sin enlace publico)</div>
 </div>
 
 <div class="container">
@@ -780,8 +475,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="phase-header collapsed" onclick="toggle(this)">
     <div class="phase-number">1</div>
     <div class="phase-info">
-      <h2>Entender el marco regulatorio <span class="phase-status ps-partial">&#x26A0;&#xFE0F; En curso</span></h2>
-      <p>Conocer que exige el CPR 2024/3110, que familias de producto estan afectadas, oleadas y plazos</p>
+      <h2>Entender el marco regulatorio <span class="phase-status ps-complete">&#x2705; Completa</span></h2>
+      <p>Conocer que exige la ley, que baterias estan afectadas y cuales son los plazos</p>
     </div>
     <span class="phase-deadline">Conocimiento base</span>
     <span class="phase-chevron">&#x25BE;</span>
@@ -790,26 +485,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="step">
       <div class="step-icon">&#x1F4DC;</div>
       <div class="step-content">
-        <h3>Leer el Reglamento CPR (UE) 2024/3110</h3>
-        <p>El texto legal completo. Articulos clave: Arts. 75-79 (DPP de Construccion), Art. 6 (DoPC), Anexo II (19 caracteristicas ambientales en 3 fases), Anexo V (contenido DoPC), Anexo VII (36 familias de producto). Aplica a todos los productos de construccion con marcado CE.</p>
+        <h3>Leer el Reglamento EU 2023/1542</h3>
+        <p>El texto legal completo. Articulos clave: Art. 77 (Battery Passport), Art. 7 (huella de carbono), Art. 8 (contenido reciclado), Arts. 48-52 (due diligence cadena de suministro), Art. 11 (removibilidad y sustituibilidad). Aplica a EV, LMT e industriales &gt;2 kWh.</p>
         <div class="doc-group">
           <div class="doc-group-label dg-ley">LEY:</div>
           <div class="doc-group-links">
-            <a href="https://eur-lex.europa.eu/eli/reg/2024/3110/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; Reglamento CPR 2024/3110 (EUR-Lex)</a>
-            <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32024R3110" class="doc-link doc-normativa" target="_blank">&#x1F517; Texto HTML completo</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-icon">&#x1F30D;</div>
-      <div class="step-content">
-        <h3>Conocer el ESPR (UE) 2024/1781 y su conexion con el CPR</h3>
-        <p>El Reglamento de Ecodiseno para Productos Sostenibles establece el marco general del DPP europeo (Arts. 9-15). Para construccion, el CPR tiene prioridad, pero comparten el registro central y los principios de acceso. Si tus productos se usan en otros sectores (p.ej. acero en maquinaria), ambos pueden aplicar.</p>
-        <div class="doc-group">
-          <div class="doc-group-label dg-ley">LEY:</div>
-          <div class="doc-group-links">
-            <a href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj" class="doc-link doc-normativa" target="_blank">&#x1F517; ESPR 2024/1781 (EUR-Lex)</a>
+            <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; Reglamento EU 2023/1542 (EUR-Lex)</a>
           </div>
         </div>
       </div>
@@ -817,12 +498,14 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="step">
       <div class="step-icon">&#x1F4CB;</div>
       <div class="step-content">
-        <h3>Identificar tu oleada en el Plan de Trabajo 2026-2029</h3>
-        <p>La Comision publico el primer Plan de Trabajo (COM(2025) 772) que organiza las 36 familias del Anexo VII en 4 oleadas de estandarizacion. Identifica en que oleada estan tus productos para planificar plazos.</p>
+        <h3>Conocer los atributos del Battery Passport (aprox. 80&ndash;90 campos)</h3>
+        <p>La DIN DKE SPEC 99100 es una especificacion tecnica desarrollada por el consorcio Battery Pass que interpreta los requisitos del reglamento. Incluye atributos obligatorios y voluntarios. Es la referencia de facto de la industria, aunque no esta confirmada su adopcion formal por CEN/CENELEC o ISO/IEC. El Data Attribute Longlist v1.3 es la version filtrable en Excel.</p>
         <div class="doc-group">
-          <div class="doc-group-label dg-ley">LEY:</div>
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
           <div class="doc-group-links">
-            <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:52025DC0772" class="doc-link doc-normativa" target="_blank">&#x1F517; Plan de Trabajo COM(2025) 772 (EUR-Lex)</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; DIN DKE SPEC 99100 (Battery Pass)</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Data Attribute Longlist v1.3</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Content Requirements (position paper &mdash; recomendaciones a la Comision)</a>
           </div>
         </div>
       </div>
@@ -830,21 +513,22 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="step">
       <div class="step-icon">&#x1F3D7;&#xFE0F;</div>
       <div class="step-content">
-        <h3>Entender la arquitectura tecnica del DPP de Construccion</h3>
-        <p>Como funciona el sistema: data carrier (QR, Data Matrix, NFC) &rarr; identificador unico (GS1 Digital Link) &rarr; acceso al DPP &rarr; Registro central EU. La Comision estudio tres modelos (centralizado, federado, descentralizado); el modelo de proveedor autorizado fue recomendado.</p>
+        <h3>Entender la arquitectura tecnica del DPP</h3>
+        <p>Como funciona el sistema: data carrier (QR, Data Matrix, NFC) &rarr; identificador unico &rarr; acceso al passport &rarr; registro central EU. Las referencias tecnicas habituales se dividen en tres categorias:</p>
+        <p style="margin-top:6px"><strong>Normas e identificadores:</strong> ISO/IEC 15459 (identificadores unicos de producto). <strong>Marcos y modelos de datos:</strong> AAS (Asset Administration Shell), ECLASS (clasificacion de productos). <strong>Ecosistemas e iniciativas de referencia:</strong> Catena-X (ecosistema de intercambio de datos industrial).</p>
         <div class="doc-group">
           <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
           <div class="doc-group-links">
-            <a href="https://cobuilder.com/en/digital-product-passport-dpp/" class="doc-link doc-guia" target="_blank">&#x1F517; Cobuilder &mdash; DPP para Construccion</a>
-            <a href="https://cirpass2.eu/" class="doc-link doc-guia" target="_blank">&#x1F517; CIRPASS-2 (piloto UE construccion)</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Technical Standard Stack (Battery Pass)</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Technical Guidance</a>
           </div>
         </div>
         <div class="doc-group">
           <div class="doc-group-label" style="color:#6b21a8;">REFERENCIAS EXTERNAS:</div>
           <div class="doc-group-links">
-            <a href="https://www.gs1.org/standards/gs1-digital-link" class="doc-link doc-external" target="_blank">&#x1F517; GS1 Digital Link (ISO/IEC 18975)</a>
-            <a href="https://eclass.eu/" class="doc-link doc-external" target="_blank">&#x1F517; ECLASS (clasificacion productos)</a>
-            <a href="https://www.buildingsmart.org/standards/bsi-standards/bsdd/" class="doc-link doc-external" target="_blank">&#x1F517; bSDD (buildingSMART Data Dictionary)</a>
+            <a href="https://catena-x.net/en/" class="doc-link doc-external" target="_blank">&#x1F517; Catena-X (ecosistema)</a>
+            <a href="https://www.plattform-i40.de/IP/Navigation/EN/ThemesandRequirements/AdministrationShell/administration-shell.html" class="doc-link doc-external" target="_blank">&#x1F517; AAS (Asset Administration Shell)</a>
+            <a href="https://eclass.eu/" class="doc-link doc-external" target="_blank">&#x1F517; ECLASS</a>
           </div>
         </div>
       </div>
@@ -853,43 +537,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="step-icon">&#x1F4A1;</div>
       <div class="step-content">
         <h3>Entender el valor de negocio</h3>
-        <p>No solo es cumplimiento: el DPP aporta ventaja competitiva (transparencia ambiental), acceso al mercado UE, compatibilidad con certificaciones verdes (BREEAM, LEED, DGNB) y preparacion para la economia circular. Los productos sin DPP conforme no podran comercializarse en la UE.</p>
+        <p>No solo es cumplimiento: el Battery Passport aporta ventaja competitiva, transparencia en la cadena de suministro y acceso al mercado EU.</p>
         <div class="doc-group">
           <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
           <div class="doc-group-links">
-            <a href="https://op.europa.eu/en/publication-detail/-/publication/cf329d5e-3464-11f0-8a44-01aa75ed71a1/language-en" class="doc-link doc-guia" target="_blank">&#x1F517; Estudio viabilidad DPP CPR (EU Publications)</a>
-            <a href="https://ecochain.com/blog/cpr-regulation-why-manufacturers-cant-afford-to-ignore-it/" class="doc-link doc-external" target="_blank">&#x1F517; Ecochain &mdash; Guia CPR para fabricantes</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-icon">&#x1F1EA;&#x1F1F8;</div>
-      <div class="step-content">
-        <h3>Conocer la legislacion espanola aplicable</h3>
-        <p>Ademas de la normativa UE, en Espana conviven obligaciones nacionales que ya prefiguran parte del DPP: el CTE (exigencias basicas del edificio y registro ambiental), el Codigo Estructural (trazabilidad de materiales y remesas en obra), el RD 163/2019 (control documentado de produccion de hormigon en central), REACH art. 33 y SCIP (comunicacion de sustancias SVHC), CLP (clasificacion quimica) y la Ley 7/2022 (economia circular y residuos). La base operativa del DPP ya esta parcialmente preconstruida en estas obligaciones.</p>
-        <div class="doc-group">
-          <div class="doc-group-label dg-ley">LEGISLACION ESPANOLA:</div>
-          <div class="doc-group-links">
-            <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-5515" class="doc-link doc-normativa" target="_blank">&#x1F517; CTE &mdash; RD 314/2006 (BOE)</a>
-            <a href="https://www.boe.es/buscar/doc.php?id=BOE-A-2021-13681" class="doc-link doc-normativa" target="_blank">&#x1F517; Codigo Estructural &mdash; RD 470/2021 (BOE)</a>
-            <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2019-5332" class="doc-link doc-normativa" target="_blank">&#x1F517; RD 163/2019 Hormigon en central (BOE)</a>
-          </div>
-        </div>
-        <div class="doc-group">
-          <div class="doc-group-label dg-ley">QUIMICA Y RESIDUOS:</div>
-          <div class="doc-group-links">
-            <a href="https://www.boe.es/buscar/doc.php?id=DOUE-L-2006-82750" class="doc-link doc-normativa" target="_blank">&#x1F517; REACH &mdash; Reglamento 1907/2006</a>
-            <a href="https://echa.europa.eu/scip-database" class="doc-link doc-normativa" target="_blank">&#x1F517; Base SCIP &mdash; ECHA</a>
-            <a href="https://www.boe.es/buscar/doc.php?id=DOUE-L-2008-82637" class="doc-link doc-normativa" target="_blank">&#x1F517; CLP &mdash; Reglamento 1272/2008</a>
-            <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2022-5809" class="doc-link doc-normativa" target="_blank">&#x1F517; Ley 7/2022 Residuos (BOE)</a>
-          </div>
-        </div>
-        <div class="doc-group">
-          <div class="doc-group-label" style="color:#6b21a8;">GUIAS MINISTERIALES:</div>
-          <div class="doc-group-links">
-            <a href="https://industria.gob.es/Calidad-Industrial/seguridadindustrial/productosindustriales/Productos-de-la-Construccion/Paginas/Reglamento-Eu-Productos-Construccion.aspx" class="doc-link doc-external" target="_blank">&#x1F517; Ministerio &mdash; Productos de Construccion</a>
-            <a href="https://industria.gob.es/Calidad-Industrial/seguridadindustrial/productosindustriales/Productos-de-la-Construccion/Disposicionesgenerales/RPC_GUIA_documentacion_para_marcado_CE_Sep19.pdf" class="doc-link doc-external" target="_blank">&#x1F517; Guia documentacion marcado CE</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Value Assessment (Battery Pass)</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Value Assessment &mdash; LMT Spotlight</a>
           </div>
         </div>
       </div>
@@ -904,28 +557,24 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="phase-header collapsed" onclick="toggle(this)">
     <div class="phase-number">2</div>
     <div class="phase-info">
-      <h2>Mapear tus datos actuales <span class="phase-status ps-pending">&#x1F534; Pendiente</span></h2>
-      <p>Identificar que datos ya tienes, cuales faltan, y quien los genera en cada departamento</p>
+      <h2>Mapear tus datos actuales <span class="phase-status ps-complete">&#x2705; Completa</span></h2>
+      <p>Identificar que datos ya tienes, cuales faltan, y quien los genera</p>
     </div>
-    <span class="phase-deadline">Meses 1-3</span>
+    <span class="phase-deadline">Meses 1-2</span>
     <span class="phase-chevron">&#x25BE;</span>
   </div>
   <div class="phase-body hidden">
     <div class="step">
       <div class="step-icon">&#x1F50D;</div>
       <div class="step-content">
-        <h3>Auditoria de datos: Anexo II + Anexo V del CPR</h3>
-        <p>Cruzar cada campo requerido con tu informacion real. <strong>Anexo II:</strong> 19 caracteristicas ambientales (en 3 fases). <strong>Anexo V:</strong> contenido de la DoPC (prestaciones tecnicas + conformidad + datos ambientales). Resultado: mapa de brechas rojo/ambar/verde por campo y familia de producto.</p>
-        <div class="doc-group">
-          <div class="doc-group-label dg-ley">LEY:</div>
-          <div class="doc-group-links">
-            <a href="https://eur-lex.europa.eu/eli/reg/2024/3110/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; CPR 2024/3110 Anexo II y V (EUR-Lex)</a>
-          </div>
-        </div>
+        <h3>Auditoria de datos: las 7 secciones del Battery Passport</h3>
+        <p>Cruzar cada campo del Longlist con tu informacion real. Las 7 secciones son: <strong>General</strong>, <strong>Material Composition</strong>, <strong>Performance &amp; Durability</strong>, <strong>Carbon Footprint</strong>, <strong>Circularity</strong>, <strong>Compliance</strong>, <strong>Supply Chain</strong>. El numero exacto de campos varia segun categoria de bateria y version del modelo de datos (aprox. 80&ndash;90 atributos entre obligatorios y voluntarios).</p>
         <div class="doc-group">
           <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
           <div class="doc-group-links">
-            <a href="https://epd.guide/standards-and-schemas/construction-digital-product-passports-explained-fast" class="doc-link doc-guia" target="_blank">&#x1F517; EPD Guide &mdash; DPP Construccion explicado</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Content Guidance (Battery Pass)</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Content Guidance Q&amp;A</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Data Attribute Longlist v1.3</a>
           </div>
         </div>
       </div>
@@ -934,11 +583,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="step-icon">&#x1F4CA;</div>
       <div class="step-content">
         <h3>Clasificar cada campo por estado</h3>
-        <p>Marcar cada dato como: <strong>Disponible</strong> (en ERP/PLM, verificado), <strong>Parcial</strong> (dato generico, no por producto), <strong>Falta</strong> (no existe, requiere recogida), <strong>Proveedor</strong> (depende de DAP/datos de proveedor upstream). Priorizar por fase del Anexo II.</p>
+        <p>Marcar cada atributo como: <strong>Confirmado</strong> (dato verificado), <strong>Parcial</strong> (dato generico), <strong>Supuesto</strong> (coherente pero sin confirmar), <strong>Pendiente</strong> (sin dato), <strong>Dinamico</strong> (requiere BMS en tiempo real).</p>
         <div class="doc-group">
           <div class="doc-group-label dg-solucion">SOLUCION PROPIA:</div>
           <div class="doc-group-links">
-            <a href="mailto:adkady@gmail.com?subject=Consulta%20DPP%20Construccion%20-%20Mapping%20campos" class="doc-link doc-local">&#x1F4E9; Mapping campos DPP Construccion &mdash; solicitar a Code Contract</a>
+            <span class="doc-link doc-local">&#x1F4CA; Ejemplo: Mapping campos Alterity (doc. interno)</span>
           </div>
         </div>
       </div>
@@ -946,18 +595,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="step">
       <div class="step-icon">&#x1F3ED;</div>
       <div class="step-content">
-        <h3>Identificar responsables por departamento</h3>
-        <p>&iquest;Quien genera cada dato? <strong>Produccion:</strong> BOM, energia, residuos, lote, planta. <strong>Calidad:</strong> ensayos, FPC, liberacion. <strong>Compras:</strong> DAPs proveedores, contenido reciclado, SVHC. <strong>I+D:</strong> especificaciones, configuraciones. <strong>IT:</strong> integracion, GS1. <strong>Sostenibilidad:</strong> ACV, DAPs. <strong>Legal:</strong> DoPC, vigilancia, REACH. <strong>Comercial:</strong> fichas producto, BIM. <strong>Logistica:</strong> remesas, destino, trazabilidad.</p>
+        <h3>Identificar responsables y fuentes por campo</h3>
+        <p>&iquest;Quien genera cada dato? Ingenieria, calidad, compras, laboratorio externo, proveedor Tier 1, BMS&hellip; Cada campo tiene un responsable y un documento fuente.</p>
         <div class="doc-group">
           <div class="doc-group-label dg-solucion">SOLUCION PROPIA:</div>
           <div class="doc-group-links">
-            <a href="mailto:adkady@gmail.com?subject=Consulta%20DPP%20Construccion%20-%20Mapa%20datos%20departamento" class="doc-link doc-local">&#x1F4E9; Mapa de datos por departamento &mdash; solicitar a Code Contract</a>
-          </div>
-        </div>
-        <div class="doc-group">
-          <div class="doc-group-label" style="color:#6b21a8;">HERRAMIENTA DE ARRANQUE:</div>
-          <div class="doc-group-links">
-            <a href="mailto:adkady@gmail.com?subject=Consulta%20DPP%20Construccion%20-%20Pack%20practico%20Excel" class="doc-link doc-local">&#x1F4E9; Pack practico Excel: Checklist DPP + Marco 10 pasos + Mapa de datos + Timeline + Glosario &mdash; solicitar a Code Contract</a>
+            <span class="doc-link doc-local">&#x1F4CA; Ejemplo: Mapping Trackline &harr; DPP (doc. interno)</span>
           </div>
         </div>
       </div>
@@ -972,113 +615,29 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="phase-header collapsed" onclick="toggle(this)">
     <div class="phase-number">3</div>
     <div class="phase-info">
-      <h2>Completar los datos obligatorios <span class="phase-status ps-pending">&#x1F534; Pendiente</span></h2>
-      <p>Realizar el ACV, obtener DAPs, preparar la DoPC y recopilar datos de proveedores</p>
+      <h2>Completar los datos obligatorios <span class="phase-status ps-partial">&#x26A0;&#xFE0F; Parcial</span></h2>
+      <p>Obtener certificaciones, ensayos, calculos LCA y datos de proveedores</p>
     </div>
-    <span class="phase-deadline">Meses 3-12</span>
+    <span class="phase-deadline">Meses 3-8</span>
     <span class="phase-chevron">&#x25BE;</span>
   </div>
   <div class="phase-body hidden">
     <div class="step">
       <div class="step-icon">&#x1F30D;</div>
       <div class="step-content">
-        <h3>Analisis de Ciclo de Vida (ACV) segun EN 15804+A2</h3>
-        <p>Calcular la huella ambiental por producto segun EN 15804:2012+A2:2019 (la PCR obligatoria para construccion). Modulos: A1-A3 (producto, obligatorio), A4-A5 (construccion), B1-B7 (uso), C1-C4 (fin de vida, obligatorio con A2), D (beneficios). Software: SimaPro, GaBi/Sphera, openLCA, One Click LCA.</p>
-        <div class="doc-group">
-          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
-          <div class="doc-group-links">
-            <a href="https://epd.guide/standards-and-schemas/en-15804-core-rules-for-construction-products-explained" class="doc-link doc-guia" target="_blank">&#x1F517; EPD Guide &mdash; EN 15804 explicada</a>
-            <a href="https://oneclicklca.com/en/resources/articles/revised-construction-products-regulation-to-include-epd-data" class="doc-link doc-guia" target="_blank">&#x1F517; One Click LCA &mdash; Guia CPR y DAPs</a>
-          </div>
-        </div>
-        <div class="doc-group">
-          <div class="doc-group-label" style="color:#6b21a8;">SOFTWARE ACV:</div>
-          <div class="doc-group-links">
-            <a href="https://simapro.com/" class="doc-link doc-external" target="_blank">&#x1F517; SimaPro</a>
-            <a href="https://sphera.com/life-cycle-assessment-lca-software/" class="doc-link doc-external" target="_blank">&#x1F517; GaBi/Sphera</a>
-            <a href="https://www.openlca.org/" class="doc-link doc-external" target="_blank">&#x1F517; openLCA (gratuito)</a>
-            <a href="https://www.oneclicklca.com/" class="doc-link doc-external" target="_blank">&#x1F517; One Click LCA</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-icon">&#x1F4C4;</div>
-      <div class="step-content">
-        <h3>Obtener Declaraciones Ambientales de Producto (DAP/EPD)</h3>
-        <p>Producir DAPs verificadas por un programa reconocido. La DAP es el vehiculo para declarar los indicadores ambientales del Anexo II en el DPP. Seleccionar programa DAP (EPD International, IBU, INIES, BRE). Verificacion independiente obligatoria.</p>
-        <div class="doc-group">
-          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
-          <div class="doc-group-links">
-            <a href="https://www.environdec.com/pcr-library" class="doc-link doc-guia" target="_blank">&#x1F517; EPD International &mdash; Biblioteca de PCRs</a>
-            <a href="https://epd.guide/environmental-regulations-and-laws/eu-cpr-working-plan-2026-to-2029-what-to-do-now" class="doc-link doc-guia" target="_blank">&#x1F517; EPD Guide &mdash; Plan de Trabajo: que hacer ahora</a>
-          </div>
-        </div>
-        <div class="doc-group">
-          <div class="doc-group-label" style="color:#6b21a8;">PROGRAMAS DAP (INTERNACIONALES):</div>
-          <div class="doc-group-links">
-            <a href="https://www.environdec.com/" class="doc-link doc-external" target="_blank">&#x1F517; EPD International</a>
-            <a href="https://ibu-epd.com/" class="doc-link doc-external" target="_blank">&#x1F517; IBU</a>
-            <a href="https://www.inies.fr/" class="doc-link doc-external" target="_blank">&#x1F517; INIES</a>
-          </div>
-        </div>
-        <div class="doc-group">
-          <div class="doc-group-label" style="color:#6b21a8;">PROGRAMAS DAP (ESPANA):</div>
-          <div class="doc-group-links">
-            <a href="https://www.aenor.com/certificacion/producto/declaraciones-ambientales" class="doc-link doc-external" target="_blank">&#x1F517; AENOR GlobalEPD</a>
-            <a href="https://dfriedl.es/dapcons/" class="doc-link doc-external" target="_blank">&#x1F517; DAPcons (programa espanol)</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-icon">&#x2696;&#xFE0F;</div>
-      <div class="step-content">
-        <h3>Preparar la DoPC (Declaracion de Prestaciones y Conformidad)</h3>
-        <p>La DoPC sustituye a la antigua DoP desde enero 2026. Incluye prestaciones tecnicas + datos de seguridad + datos ambientales + datos climaticos. Formato electronico no editable obligatorio. La DoPC es el puente hacia el DPP: el mismo dataset alimenta ambos.</p>
+        <h3>Huella de carbono (Carbon Footprint)</h3>
+        <p>Calcular la huella CO&#x2082; por kWh segun metodologia PEF. Desglosar por etapa del ciclo de vida: extraccion materias primas, fabricacion, distribucion, fin de vida. Obligatorio desde Feb 2025 (EV), Ago 2026 (industrial recargable), Ago 2028 (LMT).</p>
         <div class="doc-group">
           <div class="doc-group-label dg-ley">LEY:</div>
           <div class="doc-group-links">
-            <a href="https://eur-lex.europa.eu/eli/reg/2024/3110/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; CPR 2024/3110 Arts. 13, 15, Anexo V (EUR-Lex)</a>
+            <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2023/1542 Art. 7 (EUR-Lex)</a>
           </div>
         </div>
-        <div class="doc-group">
-          <div class="doc-group-label" style="color:#6b21a8;">REFERENCIA:</div>
-          <div class="doc-group-links">
-            <a href="https://www.giordano.it/en/2c-584-dopc-declaration-of-performance-and-conformity.php" class="doc-link doc-external" target="_blank">&#x1F517; Giordano &mdash; DoPC explicada</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-icon">&#x1F517;</div>
-      <div class="step-content">
-        <h3>Recopilar datos de la cadena de suministro</h3>
-        <p>Solicitar DAPs de proveedores (cemento, acero, vidrio, aditivos). Documentar contenido reciclado (pre/post-consumo) por material. Registrar origen geografico de materias primas. Establecer SLAs de datos con proveedores estrategicos. Leccion clave de CIRPASS-2: la recogida de datos upstream es el principal cuello de botella.</p>
         <div class="doc-group">
           <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
           <div class="doc-group-links">
-            <a href="https://cobuilder.com/en/knowledge/article/dpp-workflows-take-shape/" class="doc-link doc-guia" target="_blank">&#x1F517; Cobuilder &mdash; Workflows DPP (CIRPASS-2)</a>
-            <a href="https://cirpassproject.eu/wp-content/uploads/2024/03/CIRPASS-A-study-on-DPP-costs-and-benefits-for-SMEs-v1.0-1.pdf" class="doc-link doc-guia" target="_blank">&#x1F517; CIRPASS &mdash; Costes DPP para PYMEs</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-icon">&#x2705;</div>
-      <div class="step-content">
-        <h3>Verificacion AVS 3+ (caracteristicas ambientales)</h3>
-        <p>El sistema AVS 3+ es nuevo en el CPR 2024/3110, especifico para caracteristicas ambientales predeterminadas. El fabricante recopila datos y realiza el ACV/DAP; un organismo notificado UE valida las declaraciones. Documentar: informe ACV, DAP, plan FPC, trazabilidad BOM, informes de ensayo, DoPC.</p>
-        <div class="doc-group">
-          <div class="doc-group-label dg-ley">LEY:</div>
-          <div class="doc-group-links">
-            <a href="https://eur-lex.europa.eu/eli/reg/2024/3110/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; CPR 2024/3110 &mdash; Sistema AVS (EUR-Lex)</a>
-          </div>
-        </div>
-        <div class="doc-group">
-          <div class="doc-group-label" style="color:#6b21a8;">REFERENCIA:</div>
-          <div class="doc-group-links">
-            <a href="https://www.giordano.it/en/2c-593-avs-systems-assessment-and-verification-of-stability-of-performance.php" class="doc-link doc-external" target="_blank">&#x1F517; Giordano &mdash; Sistemas AVS explicados</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Carbon Footprint Rules (Battery Pass)</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; End-of-Life Analysis (Battery Pass)</a>
           </div>
         </div>
       </div>
@@ -1086,20 +645,70 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="step">
       <div class="step-icon">&#x2697;&#xFE0F;</div>
       <div class="step-content">
-        <h3>Evaluar obligaciones quimicas: REACH, SCIP y CLP</h3>
-        <p>Si tu producto o sus componentes contienen sustancias SVHC (Substances of Very High Concern) por encima del 0,1% p/p, debes comunicar informacion suficiente para uso seguro (REACH art. 33) y, cuando aplique, notificar a la base SCIP de ECHA. Esto es especialmente critico para: ventanas (sellantes, gomas, perfiles), suelos (adhesivos, plastificantes, backing), aislamiento (retardantes de llama) y productos con aditivos quimicos. El modelo de datos del DPP debe prever esta capa desde el diseno, no anadirla al final.</p>
+        <h3>Composicion de materiales y sustancias peligrosas</h3>
+        <p>Documentar quimica de la celda, materias primas criticas (litio, grafito, cobalto&hellip;), sustancias peligrosas (REACH), y contenido reciclado por material (litio, cobalto, niquel, plomo).</p>
         <div class="doc-group">
           <div class="doc-group-label dg-ley">LEY:</div>
           <div class="doc-group-links">
-            <a href="https://www.boe.es/buscar/doc.php?id=DOUE-L-2006-82750" class="doc-link doc-normativa" target="_blank">&#x1F517; REACH &mdash; Reglamento 1907/2006</a>
-            <a href="https://www.boe.es/buscar/doc.php?id=DOUE-L-2008-82637" class="doc-link doc-normativa" target="_blank">&#x1F517; CLP &mdash; Reglamento 1272/2008</a>
+            <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2023/1542 Art. 8 (EUR-Lex)</a>
           </div>
         </div>
         <div class="doc-group">
-          <div class="doc-group-label" style="color:#6b21a8;">HERRAMIENTAS:</div>
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
           <div class="doc-group-links">
-            <a href="https://echa.europa.eu/scip-database" class="doc-link doc-external" target="_blank">&#x1F517; Base SCIP &mdash; ECHA</a>
-            <a href="https://echa.europa.eu/candidate-list-table" class="doc-link doc-external" target="_blank">&#x1F517; Candidate List SVHC &mdash; ECHA</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; DIN DKE SPEC 99100 &sect; Material Composition</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x26A1;</div>
+      <div class="step-content">
+        <h3>Rendimiento y durabilidad</h3>
+        <p>Datos tecnicos: capacidad nominal, voltaje, eficiencia round-trip, ciclos de vida esperados, umbral SoH. Preparar conexion BMS para datos dinamicos (SoC, ciclos completados, eventos negativos, temperaturas).</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Content Guidance &sect; Performance (Battery Pass)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x267B;&#xFE0F;</div>
+      <div class="step-content">
+        <h3>Circularidad y fin de vida</h3>
+        <p>Manual de desmontaje, contenido reciclado (pre/post consumidor), requisitos de seguridad, agentes extintores, informacion de segunda vida, red de recogida selectiva, piezas de recambio.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; End-of-Life Analysis (Battery Pass)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x1F517;</div>
+      <div class="step-content">
+        <h3>Due diligence en la cadena de suministro</h3>
+        <p>Informe de diligencia debida, verificacion de terceros (RMI/RMAP), declaracion de minerales de conflicto. Obligatorio desde agosto 2027 (Arts. 48-52 del Reglamento).</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY:</div>
+          <div class="doc-group-links">
+            <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2023/1542 Arts. 48-52 (EUR-Lex)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x2705;</div>
+      <div class="step-content">
+        <h3>Conformidad y certificacion</h3>
+        <p>Declaracion de conformidad UE, informes de ensayo, simbolo de recogida selectiva, etiqueta de huella de carbono. Evaluacion de conformidad segun criterios del Battery Pass.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Conformity Assessment (Battery Pass)</a>
           </div>
         </div>
       </div>
@@ -1114,48 +723,29 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="phase-header collapsed" onclick="toggle(this)">
     <div class="phase-number">4</div>
     <div class="phase-info">
-      <h2>Digitalizar: construir el DPP <span class="phase-status ps-pending">&#x1F534; Pendiente</span></h2>
-      <p>Estructurar los datos, generar identificadores unicos, implementar el data carrier y preparar el registro</p>
+      <h2>Digitalizar: construir el Battery Passport <span class="phase-status ps-partial">&#x26A0;&#xFE0F; Parcial</span></h2>
+      <p>Estructurar los datos en formato estandar, generar el data carrier y preparar el registro</p>
     </div>
-    <span class="phase-deadline">Meses 9-15</span>
+    <span class="phase-deadline">Meses 6-10</span>
     <span class="phase-chevron">&#x25BE;</span>
   </div>
   <div class="phase-body hidden">
     <div class="step">
       <div class="step-icon">&#x1F5C2;&#xFE0F;</div>
       <div class="step-content">
-        <h3>Estructurar datos en formato DPP</h3>
-        <p>Convertir tus datos en el formato requerido. DoPC en formato electronico no editable. Datos ambientales en ILCD+EPD (XML). DPP en JSON-LD (Schema.org) para interoperabilidad. Integrar con ERP/PLM como fuente unica de verdad.</p>
+        <h3>Estructurar datos segun BatteryPassDataModel</h3>
+        <p>Convertir tus datos en el formato JSON del Battery Pass (basado en DIN DKE SPEC 99100). 7 secciones, aprox. 80&ndash;90 campos segun categoria, con metadatos de estado y fuente. El modelo de datos esta en fase draft y sujeto a cambios.</p>
         <div class="doc-group">
           <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
           <div class="doc-group-links">
-            <a href="https://cobuilder.com/en/digital-product-passport-dpp/digital-product-passports-for-construction-what-the-eus-2026-2029-cpr-working-plan-means-for-stakeholders/" class="doc-link doc-guia" target="_blank">&#x1F517; Cobuilder &mdash; Plan CPR 2026-2029 para stakeholders</a>
+            <a href="https://github.com/batterypass/BatteryPassDataModel" class="doc-link doc-external" target="_blank">&#x1F517; GitHub: BatteryPassDataModel</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Technical Standard Stack (Battery Pass)</a>
           </div>
         </div>
         <div class="doc-group">
           <div class="doc-group-label dg-solucion">SOLUCION PROPIA:</div>
           <div class="doc-group-links">
-            <a href="mailto:adkady@gmail.com?subject=Consulta%20DPP%20Construccion%20-%20Modelo%20datos" class="doc-link doc-local">&#x1F4E9; Modelo de datos DPP Construccion &mdash; solicitar a Code Contract</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-icon">&#x1F4F2;</div>
-      <div class="step-content">
-        <h3>Implementar GS1 Digital Link y data carrier</h3>
-        <p>Registrar GTINs en GS1. Generar URIs web-resolubles: <code>https://[dominio]/01/[GTIN]/10/[lote]/21/[serie]</code>. Codificar en QR code (principal), Data Matrix (etiquetas pequenas) o NFC (productos embebidos). El URI debe permanecer resoluble durante toda la vida util del producto.</p>
-        <div class="doc-group">
-          <div class="doc-group-label dg-ley">LEY:</div>
-          <div class="doc-group-links">
-            <a href="https://eur-lex.europa.eu/eli/reg/2024/3110/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; CPR 2024/3110 Arts. 75-79 (EUR-Lex)</a>
-          </div>
-        </div>
-        <div class="doc-group">
-          <div class="doc-group-label" style="color:#6b21a8;">REFERENCIAS EXTERNAS:</div>
-          <div class="doc-group-links">
-            <a href="https://www.gs1.org/standards/gs1-digital-link" class="doc-link doc-external" target="_blank">&#x1F517; GS1 Digital Link Standard</a>
-            <a href="https://gs1.eu/wp-content/uploads/2024/07/GS1-Enabling-DPP-White-Paper-1.pdf" class="doc-link doc-external" target="_blank">&#x1F517; GS1 &mdash; White Paper DPP</a>
+            <span class="doc-link doc-local">&#x1F4CA; Ejemplo: dpp.json Alterity (doc. interno)</span>
           </div>
         </div>
       </div>
@@ -1163,27 +753,37 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="step">
       <div class="step-icon">&#x1F510;</div>
       <div class="step-content">
-        <h3>Implementar control de acceso por roles (RBAC)</h3>
-        <p>El DPP tiene acceso diferenciado (Art. 77 CPR): <strong>datos publicos</strong> (consumidor, especificador), <strong>datos cadena de suministro</strong> (recicladores, instaladores), <strong>datos confidenciales</strong> (autoridades, organismos notificados). Implementar RBAC + firmas digitales para integridad de datos.</p>
+        <h3>Implementar control de acceso por roles</h3>
+        <p>El Battery Passport tiene acceso diferenciado: datos publicos (consumidor), datos tecnicos (recicladores), datos confidenciales (autoridades). Definir que ve cada rol.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Technical Guidance &sect; Access Control (Battery Pass)</a>
+          </div>
+        </div>
         <div class="doc-group">
           <div class="doc-group-label dg-solucion">SOLUCION PROPIA:</div>
           <div class="doc-group-links">
-            <a href="mailto:adkady@gmail.com?subject=Consulta%20DPP%20Construccion%20-%20Control%20acceso%20roles" class="doc-link doc-local">&#x1F4E9; Control de acceso por roles DPP &mdash; solicitar a Code Contract</a>
+            <span class="doc-link doc-local">&#x1F4C4; Control de acceso por roles (doc. interno)</span>
           </div>
         </div>
       </div>
     </div>
     <div class="step">
-      <div class="step-icon">&#x2601;&#xFE0F;</div>
+      <div class="step-icon">&#x1F4F2;</div>
       <div class="step-content">
-        <h3>Seleccionar plataforma DPP</h3>
-        <p>Tres opciones de arquitectura: <strong>Centralizada (PaaS):</strong> Cobuilder, Circularise, Bluestone PIM &mdash; menor inversion IT, mas rapido. <strong>Descentralizada (self-hosted):</strong> mayor control, mayor esfuerzo IT. <strong>Hibrida (recomendada por CIRPASS-2):</strong> metadatos en Registro EU, datos completos en plataforma propia o proveedor. Para PYMEs se recomienda PaaS.</p>
+        <h3>Generar data carrier (QR code u otro)</h3>
+        <p>El reglamento exige que el battery passport sea accesible mediante un data carrier vinculado a un identificador unico (conforme a ISO/IEC 15459). Formatos posibles: QR code, Data Matrix o NFC. El formato especifico (p.ej. GS1 Digital Link) dependera de la implementacion elegida.</p>
         <div class="doc-group">
-          <div class="doc-group-label" style="color:#6b21a8;">PLATAFORMAS:</div>
+          <div class="doc-group-label dg-ley">LEY:</div>
           <div class="doc-group-links">
-            <a href="https://cobuilder.com/en/digital-product-passport-dpp/" class="doc-link doc-external" target="_blank">&#x1F517; Cobuilder</a>
-            <a href="https://www.circularise.com/" class="doc-link doc-external" target="_blank">&#x1F517; Circularise</a>
-            <a href="https://www.bluestonepim.com/blog/dpp-for-construction" class="doc-link doc-external" target="_blank">&#x1F517; Bluestone PIM</a>
+            <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2023/1542 Art. 77 (EUR-Lex)</a>
+          </div>
+        </div>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; DIN DKE SPEC 99100 &sect; Data Carrier</a>
           </div>
         </div>
       </div>
@@ -1192,7 +792,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="step-icon">&#x26D3;&#xFE0F;</div>
       <div class="step-content">
         <h3>Registrar evidencia (trazabilidad blockchain)</h3>
-        <p>Opcional: registrar datos verificados en blockchain para evidencia inmutable. No es un requisito legal, sino una capa adicional de confianza y trazabilidad. Especialmente valioso para contenido reciclado, origen de materias primas y datos de cadena de suministro.</p>
+        <p>Opcional: registrar datos verificados en blockchain para evidencia inmutable. No es un requisito legal, sino una capa adicional de confianza y trazabilidad.</p>
         <div class="doc-group">
           <div class="doc-group-label dg-solucion">SOLUCION PROPIA:</div>
           <div class="doc-group-links">
@@ -1211,36 +811,36 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="phase-header collapsed" onclick="toggle(this)">
     <div class="phase-number">5</div>
     <div class="phase-info">
-      <h2>Verificar, registrar y poner en produccion <span class="phase-status ps-pending">&#x1F534; Pendiente</span></h2>
-      <p>Validar conformidad, cargar en el Registro DPP de Construccion y activar el pasaporte</p>
+      <h2>Validar, registrar y poner en produccion <span class="phase-status ps-pending">&#x1F534; Pendiente</span></h2>
+      <p>Verificar conformidad, cargar el DPP en el registro ESPR y activar el passport</p>
     </div>
-    <span class="phase-deadline">Antes de comercializar</span>
+    <span class="phase-deadline">Antes Feb 2027</span>
     <span class="phase-chevron">&#x25BE;</span>
   </div>
   <div class="phase-body hidden">
     <div class="step">
       <div class="step-icon">&#x1F9EA;</div>
       <div class="step-content">
-        <h3>Piloto DPP para productos representativos</h3>
-        <p>Producir un DPP completo end-to-end para 1-3 productos representativos (uno por familia prioritaria). Poblar todos los campos, generar QR, crear DoPC, probar resolucion del URI. Documentar lecciones aprendidas. Leccion CIRPASS-2: empresas con ERP maduro logran piloto en 8-12 semanas; sin ERP: 12-18 meses.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-icon">&#x1F50E;</div>
-      <div class="step-content">
-        <h3>Simulacro de verificacion AVS 3+</h3>
-        <p>Simular el proceso de verificacion antes de la presentacion real al organismo notificado. Compilar dossier completo: informe ACV, DAP, plan FPC, trazabilidad BOM, informes ensayo, DoPC. Realizar auditoria interna. Remediar hallazgos. Sanciones aplicables desde enero 2027.</p>
+        <h3>Validar contra el test environment (BatteryPass-Ready)</h3>
+        <p>El proyecto BatteryPass-Ready esta desarrollando un entorno de test para verificar que tu passport cumple con los requisitos antes de ir a produccion.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; BatteryPass-Ready (Battery Pass)</a>
+            <a href="https://thebatterypass.io" class="doc-link doc-external" target="_blank">&#x1F517; Demo visor oficial</a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="step">
       <div class="step-icon">&#x1F3DB;&#xFE0F;</div>
       <div class="step-content">
-        <h3>Cargar en el Registro DPP de Construccion</h3>
-        <p>El Art. 75 CPR obliga a la Comision a crear el Registro antes de julio 2026. El fabricante debe cargar los <strong>identificadores unicos</strong> y metadatos del DPP en el Registro <strong>antes de la primera comercializacion</strong>. El contenido completo se aloja en el sistema del fabricante o proveedor autorizado, accesible via data carrier.</p>
+        <h3>Cargar el DPP en el registro central de la Comision Europea</h3>
+        <p>El ESPR (Art. 12-13) obliga a la Comision a crear un registro central antes de julio 2026. El fabricante debe cargar los <strong>identificadores unicos</strong> de producto y ciertos metadatos del pasaporte en este registro <strong>antes de la primera comercializacion</strong>. El contenido completo del DPP se aloja en el sistema del operador economico y se accede via el data carrier.</p>
         <div class="doc-group">
           <div class="doc-group-label dg-ley">LEY:</div>
           <div class="doc-group-links">
-            <a href="https://eur-lex.europa.eu/eli/reg/2024/3110/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; CPR 2024/3110 Arts. 75-80 (EUR-Lex)</a>
+            <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2023/1542 Art. 77 (EUR-Lex)</a>
             <a href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj" class="doc-link doc-normativa" target="_blank">&#x1F517; ESPR 2024/1781 Arts. 12-13 (EUR-Lex)</a>
           </div>
         </div>
@@ -1250,7 +850,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="step-icon">&#x1F504;</div>
       <div class="step-content">
         <h3>Mantener datos actualizados durante toda la vida util</h3>
-        <p>El DPP es un documento vivo. Los datos se actualizan cuando cambia la produccion, se renuevan DAPs (cada 5 anos) o se publican nuevos actos delegados. Establecer proceso de vigilancia regulatoria (alertas CEN TC, actos delegados). Revision anual de datos DPP. Contribuir a grupos de trabajo sectoriales.</p>
+        <p>El Battery Passport es un documento vivo. Los datos dinamicos (SoC, SoH, ciclos, eventos) deben actualizarse periodicamente via BMS. Los datos de modelo se actualizan cuando cambian.</p>
       </div>
     </div>
   </div>
@@ -1258,94 +858,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 
 <!-- RESULTADO -->
 <div class="result-box">
-  <h2>&#x1F3AF; DPP de Construccion operativo</h2>
-  <p>Tu producto de construccion tiene un Pasaporte Digital completo, accesible via data carrier, conforme al CPR 2024/3110, con datos ambientales verificados y cargado en el Registro de la UE</p>
+  <h2>&#x1F3AF; Battery Passport operativo</h2>
+  <p>Tu bateria tiene un pasaporte digital completo, accesible via data carrier, conforme a la regulacion EU, con datos verificables y cargado en el registro ESPR</p>
   <div class="result-items">
-    <div class="result-item">&#x1F4F2; Data carrier (QR) en producto</div>
-    <div class="result-item">&#x1F4C4; DoPC electronica conforme</div>
-    <div class="result-item">&#x1F30D; 19 indicadores ambientales</div>
-    <div class="result-item">&#x1F3DB;&#xFE0F; DPP en Registro UE</div>
-    <div class="result-item">&#x1F510; Acceso por roles (RBAC)</div>
-    <div class="result-item">&#x2705; AVS 3+ verificado</div>
+    <div class="result-item">&#x1F4F2; Data carrier en bateria</div>
+    <div class="result-item">&#x1F4CA; ~80-90 campos cubiertos</div>
+    <div class="result-item">&#x1F3DB;&#xFE0F; DPP en registro ESPR</div>
+    <div class="result-item">&#x1F504; Datos dinamicos BMS</div>
+    <div class="result-item">&#x1F510; Acceso por roles</div>
   </div>
 </div>
 
-</div>
-
-<!-- ============================================================ -->
-<!-- PREGUNTAS FRECUENTES -->
-<!-- ============================================================ -->
-<div class="faq-box">
-  <div class="faq">
-    <div class="faq-title">&#x2753; Preguntas frecuentes sobre el DPP en construccion</div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        <span class="faq-icon">&#x1F4AC;</span>
-        &iquest;El DPP ya es obligatorio hoy para todos los productos de construccion?
-        <span class="faq-chevron">&#x25BE;</span>
-      </div>
-      <div class="faq-a">
-        El marco juridico ya existe en el CPR 2024/3110, pero la transicion es paulatina por familia de producto. La obligacion operativa depende de las especificaciones tecnicas armonizadas y los actos delegados que la Comision publicara progresivamente. A abril de 2026, los actos delegados y de ejecucion del nuevo CPR estan vacios por el momento segun el Ministerio de Industria. La recomendacion es prepararse ahora con una arquitectura DPP-ready.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q collapsed" onclick="toggleFaq(this)">
-        <span class="faq-icon">&#x1F4C4;</span>
-        &iquest;Puedo limitarme a subir PDFs como DPP?
-        <span class="faq-chevron">&#x25BE;</span>
-      </div>
-      <div class="faq-a hidden">
-        No, si el objetivo es cumplir con el nuevo marco. El CPR exige que la informacion del DPP sea interoperable, basada en normas abiertas y, cuando proceda, legible por maquina, estructurada y transferible a traves de una red abierta. Un PDF no cumple estos requisitos. El DPP requiere datos estructurados, no documentos estaticos.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q collapsed" onclick="toggleFaq(this)">
-        <span class="faq-icon">&#x1F30D;</span>
-        &iquest;Una DAP/EPD basta como DPP?
-        <span class="faq-chevron">&#x25BE;</span>
-      </div>
-      <div class="faq-a hidden">
-        No. La DAP/EPD alimenta la capa ambiental del DPP, pero el pasaporte debe integrar ademas la DdPC, documentacion tecnica, instrucciones de uso y seguridad, marcado, identificadores unicos y documentacion exigida por otros actos de la UE (REACH, SCIP, etc.). La DAP es una pieza del puzzle, no el puzzle completo.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q collapsed" onclick="toggleFaq(this)">
-        <span class="faq-icon">&#x1F3ED;</span>
-        &iquest;Que gana una PYME si empieza ya?
-        <span class="faq-chevron">&#x25BE;</span>
-      </div>
-      <div class="faq-a hidden">
-        Tres cosas principales: (1) ordena documentacion que hoy ya necesita para marcado CE, REACH y normativa sectorial; (2) evita rehacer datos cuando llegue la obligacion plena por familia; y (3) compite mejor en proyectos donde se piden DAP, trazabilidad y documentacion digital. La diferencia con una gran empresa no esta en el que, sino en el como: la PYME suele empezar con una familia piloto y mas trabajo manual; la gran empresa, con integracion multi-planta.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q collapsed" onclick="toggleFaq(this)">
-        <span class="faq-icon">&#x2697;&#xFE0F;</span>
-        &iquest;El DPP debe incluir informacion quimica?
-        <span class="faq-chevron">&#x25BE;</span>
-      </div>
-      <div class="faq-a hidden">
-        Cuando el producto o sus componentes entren en el ambito de REACH/SCIP o CLP, si. REACH exige comunicar SVHC por encima del 0,1% p/p en articulos. SCIP usa esa misma informacion para trazabilidad de residuos y reciclado. El modelo de datos del DPP debe prever esta capa desde el diseno. Es especialmente relevante para ventanas (sellantes, gomas), suelos (adhesivos, plastificantes), aislamiento y cualquier producto con aditivos quimicos.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q collapsed" onclick="toggleFaq(this)">
-        <span class="faq-icon">&#x1F4F2;</span>
-        &iquest;Que estandar usar para el QR del DPP?
-        <span class="faq-chevron">&#x25BE;</span>
-      </div>
-      <div class="faq-a hidden">
-        GS1 Digital Link (ISO/IEC 18975) es el estandar de referencia promovido por el ESPR y el proyecto CIRPASS-2 para soportes de datos de DPP. Permite codificar en un unico QR un enlace web-resoluble que conecta con la informacion digital del producto, con niveles de acceso diferenciados. El fabricante debe registrar GTINs en GS1 y generar URIs persistentes.
-      </div>
-    </div>
-
-  </div>
 </div>
 
 <!-- ============================================================ -->
@@ -1358,41 +881,40 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="cta-steps">
       <div class="cta-step">
         <div class="cta-step-num">Paso 1</div>
-        <h4>Mapeo de datos</h4>
-        <p>Cargar los campos del DPP (Anexo II + V) en Trackline, asignar responsables por departamento y conectar con las fuentes de datos internas (ERP, PLM, laboratorio).</p>
+        <h4>Mapeo de campos</h4>
+        <p>Cargar los 80-90 atributos del DPP en Trackline, asignar responsables y conectar con las fuentes de datos internas (ERP, BMS, laboratorio).</p>
       </div>
       <div class="cta-step">
         <div class="cta-step-num">Paso 2</div>
         <h4>Recopilacion y evidencia</h4>
-        <p>Cada dato queda registrado con su evidencia: quien lo aporto, cuando, documento soporte. DAPs de proveedores, informes de ensayo, certificados. Trazabilidad completa.</p>
+        <p>Cada dato queda registrado con su evidencia en blockchain: quien lo aporto, cuando, y con que documento soporte. Trazabilidad inmutable.</p>
       </div>
       <div class="cta-step">
         <div class="cta-step-num">Paso 3</div>
         <h4>Generacion del DPP</h4>
-        <p>Trackline genera el DPP en formato estandar con DoPC electronica, datos ambientales ACV y metadatos de estado. Enlace a evidencias y DAPs verificadas.</p>
+        <p>Trackline genera el JSON del pasaporte en formato BatteryPassDataModel, con metadatos de estado (_confirmed, _partial, _assumed) y enlace a evidencias.</p>
       </div>
       <div class="cta-step">
         <div class="cta-step-num">Paso 4</div>
         <h4>Publicacion y registro</h4>
-        <p>Generar data carrier (QR/NFC con GS1 Digital Link), publicar el visor web del DPP y cargar identificadores en el Registro DPP de Construccion cuando este operativo.</p>
+        <p>Generar el data carrier (QR/NFC), publicar el visor web del DPP y preparar la carga de identificadores en el registro ESPR cuando este operativo.</p>
       </div>
     </div>
     <div class="cta-links">
       <a href="https://trackline.codecontract.com" class="cta-link cta-link-primary" target="_blank">&#x1F517; Acceder a Trackline</a>
       <a href="https://codecontract.com" class="cta-link cta-link-secondary" target="_blank">&#x1F517; Code Contract S.L.</a>
+      <a href="https://codecontract-dpp.github.io/dpp-battery-passport/" class="cta-link cta-link-secondary" target="_blank">&#x1F517; Ver ejemplo: DPP Alterity LMT</a>
     </div>
   </div>
 </div>
 
 <div class="footer">
   <strong>Fuentes oficiales:</strong>
-  <a href="https://eur-lex.europa.eu/eli/reg/2024/3110/oj/eng" target="_blank">CPR (EU) 2024/3110</a> &middot;
-  <a href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj" target="_blank">ESPR (EU) 2024/1781</a> &middot;
-  <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:52025DC0772" target="_blank">Plan de Trabajo COM(2025) 772</a> &middot;
-  <a href="https://cobuilder.com/en/digital-product-passport-dpp/" target="_blank">Cobuilder DPP</a> &middot;
-  <a href="https://cirpass2.eu/" target="_blank">CIRPASS-2</a> &middot;
-  <a href="https://epd.guide/" target="_blank">EPD Guide</a><br>
-  Elaborado por Code Contract S.L. &middot; v1.1 &middot; 19 abril 2026<br>
+  <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" target="_blank">EU Reg. 2023/1542</a> &middot;
+  <a href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj" target="_blank">ESPR 2024/1781</a> &middot;
+  <a href="https://thebatterypass.eu" target="_blank">Battery Pass Consortium</a> &middot;
+  <a href="https://github.com/batterypass/BatteryPassDataModel" target="_blank">BatteryPassDataModel (GitHub)</a><br>
+  Elaborado por Code Contract S.L. &middot; v0.3 &middot; 17 abril 2026<br>
   <em style="color:#b0b0b0">Nota: este documento no constituye asesoramiento juridico. Consultar siempre el texto oficial del reglamento y los actos delegados vigentes.</em>
 </div>
 
@@ -1400,10 +922,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 function toggle(header) {
   header.classList.toggle('collapsed');
   header.nextElementSibling.classList.toggle('hidden');
-}
-function toggleFaq(q) {
-  q.classList.toggle('collapsed');
-  q.nextElementSibling.classList.toggle('hidden');
 }
 </script>
 </body>
