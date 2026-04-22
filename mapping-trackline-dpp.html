@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mapping Trackline ↔ Battery Passport (DPP)</title>
+<title>Mapping Trackline &harr; DPP Bater&iacute;as</title>
 <style>
 :root {
   --dark: #1a1a2e;
@@ -27,7 +27,7 @@
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: #1f2937; line-height: 1.6; }
 
 .header {
-  background: linear-gradient(135deg, var(--dark) 0%, #16423c 100%);
+  background: linear-gradient(135deg, #0d3b2e 0%, #1a5276 100%);
   color: white; padding: 40px 20px 32px; text-align: center;
 }
 .header h1 { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
@@ -37,401 +37,489 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   background: rgba(255,255,255,0.15); padding: 6px 16px; border-radius: 20px;
   font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
 }
+.header .back-link {
+  display: inline-block; margin-top: 12px;
+  color: rgba(255,255,255,0.7); font-size: 12px; text-decoration: none;
+}
+.header .back-link:hover { color: white; }
 
-/* INTRO */
 .intro-bar {
   max-width: 1100px; margin: -20px auto 0; padding: 0 20px; position: relative; z-index: 2;
 }
-.intro-box {
-  background: white; border: 1px solid var(--border); border-radius: 12px;
-  padding: 20px 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+.intro-card {
+  background: white; border-radius: 12px; padding: 24px 28px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid var(--border);
 }
-.intro-box h3 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
-.intro-box p { font-size: 13px; color: #4b5563; margin-bottom: 8px; }
-.intro-flow {
-  display: flex; align-items: center; gap: 0; flex-wrap: wrap;
-  justify-content: center; margin: 16px 0 8px;
+.intro-card h2 { font-size: 16px; margin-bottom: 12px; color: var(--dark); }
+.workflow-steps {
+  display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+  font-size: 13px; color: var(--gray);
 }
-.flow-step {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--green-light); padding: 8px 14px; border-radius: 8px;
-  font-size: 12px; font-weight: 600; color: var(--green);
+.wf-step {
+  background: var(--green-light); color: var(--green); padding: 4px 12px;
+  border-radius: 6px; font-weight: 600; font-size: 12px;
 }
-.flow-arrow { font-size: 16px; color: var(--border); padding: 0 6px; }
+.wf-arrow { color: var(--border); font-size: 14px; }
 
-/* STATS BAR */
-.stats-bar {
-  max-width: 1100px; margin: 16px auto 0; padding: 0 20px;
-  display: flex; gap: 12px; flex-wrap: wrap;
-}
-.stat-card {
-  flex: 1; min-width: 140px; background: white; border-radius: 10px;
-  border: 1px solid var(--border); padding: 14px 16px; text-align: center;
-}
-.stat-num { font-size: 28px; font-weight: 800; }
-.stat-label { font-size: 11px; color: var(--gray); margin-top: 2px; }
-
-/* FILTERS */
-.filters-bar {
-  max-width: 1100px; margin: 20px auto 0; padding: 0 20px;
-  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
-}
-.filter-label { font-size: 12px; font-weight: 700; color: var(--gray); }
-.filter-btn {
-  font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 6px;
-  border: 1px solid var(--border); background: white; cursor: pointer;
-  transition: all 0.15s;
-}
-.filter-btn:hover { background: #f3f4f6; }
-.filter-btn.active { background: var(--dark); color: white; border-color: var(--dark); }
-.filter-search {
-  margin-left: auto; padding: 6px 12px; border: 1px solid var(--border);
-  border-radius: 8px; font-size: 12px; width: 200px;
-}
-
-/* TABLE CONTAINER */
 .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
 
-/* SECTION */
+/* Stats */
+.stats-bar {
+  display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
+}
+.stat-card {
+  flex: 1; min-width: 120px; background: white; border-radius: 10px;
+  padding: 16px; text-align: center; border: 1px solid var(--border);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.stat-card .num { font-size: 28px; font-weight: 800; }
+.stat-card .lbl { font-size: 11px; color: var(--gray); margin-top: 2px; }
+.stat-blue .num { color: var(--blue); }
+.stat-green .num { color: var(--green); }
+.stat-amber .num { color: var(--amber); }
+.stat-purple .num { color: var(--purple); }
+.stat-teal .num { color: var(--teal); }
+
+/* Filters */
+.filters {
+  display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; align-items: center;
+}
+.filter-btn {
+  font-size: 11px; padding: 5px 12px; border-radius: 6px;
+  border: 1px solid var(--border); background: white; cursor: pointer;
+  font-weight: 500; transition: all .15s;
+}
+.filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+.filter-btn.active { background: var(--dark); color: white; border-color: var(--dark); }
+.filter-search {
+  margin-left: auto; font-size: 12px; padding: 6px 12px;
+  border: 1px solid var(--border); border-radius: 6px; width: 200px;
+}
+
+/* Sections */
 .section {
-  margin-bottom: 24px; background: white; border-radius: 14px;
-  border: 1px solid var(--border); overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  background: white; border-radius: 12px; border: 1px solid var(--border);
+  margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); overflow: hidden;
 }
 .section-header {
-  padding: 16px 20px; display: flex; align-items: center; gap: 14px;
+  display: flex; align-items: center; gap: 12px; padding: 16px 20px;
   cursor: pointer; user-select: none;
 }
 .section-header:hover { background: #fafbfc; }
 .section-icon {
-  width: 40px; height: 40px; border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; color: white; flex-shrink: 0;
+  width: 40px; height: 40px; border-radius: 10px; display: flex;
+  align-items: center; justify-content: center; font-size: 18px;
+  flex-shrink: 0;
 }
-.section-info { flex: 1; }
-.section-info h2 { font-size: 16px; font-weight: 700; }
-.section-info p { font-size: 12px; color: var(--gray); }
+.section-header h2 { flex: 1; font-size: 15px; font-weight: 700; }
 .section-count {
-  font-size: 11px; font-weight: 700; padding: 4px 10px;
-  border-radius: 8px; background: #f3f4f6; color: var(--gray);
+  font-size: 12px; color: var(--gray); background: #f3f4f6;
+  padding: 2px 10px; border-radius: 10px; font-weight: 600;
 }
-.section-chevron { font-size: 14px; color: var(--gray); transition: transform 0.2s; }
+.section-chevron { font-size: 12px; color: var(--gray); transition: transform .2s; }
 .section-header.collapsed .section-chevron { transform: rotate(-90deg); }
 .section-body { border-top: 1px solid var(--border); }
 .section-body.hidden { display: none; }
+.section-subtitle {
+  padding: 12px 20px 0; font-size: 12px; color: var(--gray); font-style: italic;
+}
 
-/* MAPPING TABLE */
-.map-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+/* Table */
+.map-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .map-table th {
-  text-align: left; padding: 8px 12px; font-weight: 700; color: var(--gray);
-  border-bottom: 2px solid var(--border); font-size: 10px; text-transform: uppercase;
-  letter-spacing: 0.5px; background: #fafbfc;
+  text-align: left; padding: 8px 16px; font-size: 11px; font-weight: 700;
+  color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px;
+  background: #fafbfc; border-bottom: 1px solid var(--border);
 }
-.map-table td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
-.map-table tr:last-child td { border-bottom: none; }
-.map-table tr:hover { background: #fafbfc; }
+.map-table td { padding: 10px 16px; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
+.map-table tr:hover { background: #f8fafc; }
 .map-table tr[data-hidden="true"] { display: none; }
-.field-name { font-weight: 600; color: #1f2937; font-size: 12px; }
+.field-name { font-weight: 600; color: var(--dark); font-size: 13px; }
 .field-desc { color: var(--gray); font-size: 11px; margin-top: 2px; }
+.field-num { font-size: 10px; color: var(--purple); font-weight: 600; }
 
-/* SOURCE BADGES */
-.source-badge {
-  display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px;
-  border-radius: 6px; margin: 1px 2px; white-space: nowrap;
+/* Badges */
+.source-badge, .prov-badge {
+  display: inline-block; font-size: 10px; padding: 2px 8px;
+  border-radius: 6px; font-weight: 600; margin: 1px 0;
 }
-.src-datasheet { background: #dbeafe; color: #1d4ed8; }
-.src-test { background: #fce7f3; color: #be185d; }
-.src-lca { background: #d1fae5; color: #065f46; }
-.src-bms { background: #fef3c7; color: #92400e; }
-.src-supplier { background: #e9d5ff; color: #6b21a8; }
-.src-erp { background: #ccfbf1; color: #0d9488; }
-.src-manual { background: #f3f4f6; color: #6b7280; }
-.src-compliance { background: #fee2e2; color: #dc2626; }
+.src-ficha { background: #dbeafe; color: #1e40af; }
+.src-bms { background: var(--teal-light); color: #065f46; border: 1px dashed var(--teal); }
+.src-erp { background: #ccfbf1; color: #115e59; }
+.src-lab { background: #fce7f3; color: #9d174d; }
+.src-supplier { background: #e9d5ff; color: #5b21b6; }
+.src-acv { background: #d1fae5; color: #065f46; }
+.src-manual { background: #f3f4f6; color: #374151; }
+.src-registro { background: #fef3c7; color: #92400e; }
 
-/* PROVIDER BADGES */
-.prov-badge {
-  display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px;
-  border-radius: 6px; margin: 1px 2px; white-space: nowrap;
-}
-.prov-fab { background: var(--blue-light); color: var(--blue); }
-.prov-supplier { background: var(--purple-light); color: var(--purple); }
-.prov-lab { background: #fce7f3; color: #be185d; }
-.prov-bms { background: var(--amber-light); color: var(--amber); }
-.prov-lca { background: var(--green-light); color: var(--green); }
+.prov-fab { background: #dbeafe; color: #1e40af; }
+.prov-bms { background: var(--teal-light); color: #065f46; }
+.prov-supplier { background: #e9d5ff; color: #5b21b6; }
+.prov-lab { background: #fce7f3; color: #9d174d; }
+.prov-lca { background: #d1fae5; color: #065f46; }
+.prov-trackline { background: #f5f3ff; color: #7c3aed; }
+.prov-gestor { background: #fef3c7; color: #92400e; }
 
-/* TRACKLINE WORKFLOW */
-.tl-workflow {
-  display: flex; align-items: center; gap: 4px; flex-wrap: wrap;
-}
+/* Workflow mini */
+.tl-workflow { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
 .tl-step {
-  font-size: 10px; font-weight: 600; padding: 2px 6px;
-  border-radius: 4px; background: var(--green-light); color: var(--green);
-  white-space: nowrap;
+  font-size: 10px; background: var(--green-light); color: var(--green);
+  padding: 2px 6px; border-radius: 4px; font-weight: 600;
 }
 .tl-arrow { font-size: 10px; color: var(--border); }
 
-/* FOOTER */
+/* Footer */
 .footer {
-  text-align: center; padding: 24px 20px 40px; font-size: 12px; color: var(--gray);
+  max-width: 1100px; margin: 40px auto 0; padding: 24px 20px;
+  border-top: 1px solid var(--border); font-size: 12px; color: var(--gray);
+  text-align: center; line-height: 1.8;
 }
 .footer a { color: var(--blue); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
 
 @media (max-width: 640px) {
   .header h1 { font-size: 20px; }
-  .stats-bar { flex-direction: column; }
-  .filters-bar { flex-direction: column; }
+  .map-table th:nth-child(4), .map-table td:nth-child(4) { display: none; }
   .filter-search { width: 100%; margin-left: 0; }
-  .intro-flow { flex-direction: column; }
-  .flow-arrow { transform: rotate(90deg); }
-  .map-table { font-size: 11px; }
 }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>Mapping Trackline &#x2194; Battery Passport (DPP)</h1>
-  <p>Correspondencia entre los ~86 campos del Battery Passport (DIN DKE SPEC 99100 / BatteryPassDataModel v1.3) y el flujo de trabajo en Trackline</p>
-  <div class="reg-badge">Trackline by Code Contract &middot; BatteryPassDataModel v1.3</div>
+  <h1>&#x1F50B; Mapping Trackline &harr; DPP Bater&iacute;as</h1>
+  <p>C&oacute;mo se mapea cada campo del Pasaporte Digital de Bater&iacute;as (EU Battery Reg. 2023/1542) con las fuentes de datos de Trackline y los proveedores de informaci&oacute;n del fabricante.</p>
+  <div class="reg-badge">Trackline by Code Contract &middot; Battery Reg. 2023/1542 &middot; ESPR 2024/1781 &middot; BatteryPass v1.3</div>
+  <br>
+  <a class="back-link" href="index.html">&larr; Volver al Visor DPP Bater&iacute;as</a>
 </div>
 
 <div class="intro-bar">
-  <div class="intro-box">
-    <h3>&#x1F504; Como funciona Trackline para el Battery Passport</h3>
-    <p>Trackline gestiona todo el ciclo de datos del DPP: solicita los documentos necesarios (internamente o a terceros), extrae y estructura los datos de cada campo, los valida contra el esquema BatteryPassDataModel, y genera el JSON exportable listo para publicar.</p>
-    <div class="intro-flow">
-      <div class="flow-step">&#x1F4E9; Solicitar documento</div>
-      <div class="flow-arrow">&#x25B6;</div>
-      <div class="flow-step">&#x1F4E5; Recibir / cargar</div>
-      <div class="flow-arrow">&#x25B6;</div>
-      <div class="flow-step">&#x1F50D; Extraer datos</div>
-      <div class="flow-arrow">&#x25B6;</div>
-      <div class="flow-step">&#x2705; Validar</div>
-      <div class="flow-arrow">&#x25B6;</div>
-      <div class="flow-step">&#x1F4BE; Almacenar</div>
-      <div class="flow-arrow">&#x25B6;</div>
-      <div class="flow-step">&#x1F4E4; Exportar JSON</div>
+  <div class="intro-card">
+    <h2>&#x2699;&#xFE0F; &iquest;C&oacute;mo funciona Trackline para el DPP de Bater&iacute;as?</h2>
+    <div class="workflow-steps">
+      <span class="wf-step">1. Solicitar dato</span><span class="wf-arrow">&rarr;</span>
+      <span class="wf-step">2. Recibir de fuente</span><span class="wf-arrow">&rarr;</span>
+      <span class="wf-step">3. Extraer &amp; normalizar</span><span class="wf-arrow">&rarr;</span>
+      <span class="wf-step">4. Validar</span><span class="wf-arrow">&rarr;</span>
+      <span class="wf-step">5. Almacenar con evidencia</span><span class="wf-arrow">&rarr;</span>
+      <span class="wf-step">6. Exportar JSON-LD</span>
     </div>
-    <p style="font-size:11px; color:var(--gray); text-align:center; margin-top:8px;">Cada dato queda registrado con su evidencia: quien lo aporto, cuando, y con que documento soporte.</p>
   </div>
-</div>
-
-<div class="stats-bar">
-  <div class="stat-card"><div class="stat-num" style="color:var(--dark)">86</div><div class="stat-label">Campos DPP totales</div></div>
-  <div class="stat-card"><div class="stat-num" style="color:var(--green)">7</div><div class="stat-label">Secciones</div></div>
-  <div class="stat-card"><div class="stat-num" style="color:var(--amber)">6</div><div class="stat-label">Tipos de documento fuente</div></div>
-  <div class="stat-card"><div class="stat-num" style="color:var(--purple)">5</div><div class="stat-label">Proveedores de datos</div></div>
-</div>
-
-<div class="filters-bar">
-  <span class="filter-label">Filtrar por fuente:</span>
-  <button class="filter-btn active" onclick="filterBy('all')">Todos</button>
-  <button class="filter-btn" onclick="filterBy('datasheet')">Datasheet</button>
-  <button class="filter-btn" onclick="filterBy('test')">Ensayo/Test</button>
-  <button class="filter-btn" onclick="filterBy('lca')">LCA</button>
-  <button class="filter-btn" onclick="filterBy('bms')">BMS</button>
-  <button class="filter-btn" onclick="filterBy('supplier')">Proveedor</button>
-  <button class="filter-btn" onclick="filterBy('erp')">ERP/Admin</button>
-  <input type="text" class="filter-search" placeholder="&#x1F50D; Buscar campo..." oninput="searchFields(this.value)">
 </div>
 
 <div class="container">
 
-<!-- ==================== SECTION 1: General ==================== -->
+<div class="stats-bar">
+  <div class="stat-card stat-blue"><span class="num">107</span><div class="lbl">Campos DPP totales</div></div>
+  <div class="stat-card stat-green"><span class="num">10</span><div class="lbl">Secciones</div></div>
+  <div class="stat-card stat-amber"><span class="num">8</span><div class="lbl">Tipos de fuente</div></div>
+  <div class="stat-card stat-purple"><span class="num">6</span><div class="lbl">Proveedores de datos</div></div>
+  <div class="stat-card stat-teal"><span class="num">22</span><div class="lbl">Campos BMS din&aacute;micos</div></div>
+</div>
+
+<div class="filters">
+  <button class="filter-btn active" onclick="filterBy('all')">Todos</button>
+  <button class="filter-btn" onclick="filterBy('ficha')">&#x1F4C4; Ficha T&eacute;cnica</button>
+  <button class="filter-btn" onclick="filterBy('bms')">&#x1F4E1; BMS</button>
+  <button class="filter-btn" onclick="filterBy('erp')">&#x1F4BC; ERP/Admin</button>
+  <button class="filter-btn" onclick="filterBy('supplier')">&#x1F4E6; Proveedor</button>
+  <button class="filter-btn" onclick="filterBy('lab')">&#x1F52C; Laboratorio/ON</button>
+  <button class="filter-btn" onclick="filterBy('acv')">&#x1F331; ACV/LCA</button>
+  <button class="filter-btn" onclick="filterBy('manual')">&#x270D;&#xFE0F; Manual</button>
+  <button class="filter-btn" onclick="filterBy('registro')">&#x1F3DB;&#xFE0F; Registro EU</button>
+  <input class="filter-search" type="text" placeholder="&#x1F50D; Buscar campo..." oninput="searchFields(this.value)">
+</div>
+
+<!-- =============== SECTION 1: Identificacion =============== -->
 <div class="section">
-  <div class="section-header collapsed" onclick="toggleSection(this)">
-    <div class="section-icon" style="background:var(--blue)">&#x1F3F7;</div>
-    <div class="section-info">
-      <h2>General / Identificacion del producto</h2>
-      <p>Datos basicos del fabricante, modelo, identificadores unicos y fechas</p>
-    </div>
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#dbeafe;color:#1e40af">&#x1F50B;</div>
+    <h2>Identificaci&oacute;n y datos generales</h2>
     <span class="section-count">16 campos</span>
-    <span class="section-chevron">&#x25BE;</span>
+    <span class="section-chevron">&#x25BC;</span>
   </div>
-  <div class="section-body hidden">
+  <p class="section-subtitle">Datos b&aacute;sicos del fabricante, modelo, identificadores &uacute;nicos, categor&iacute;a y fechas</p>
+  <div class="section-body">
     <table class="map-table">
-      <thead><tr><th>Campo DPP</th><th>Documento fuente</th><th>Proveedor</th><th>Flujo Trackline</th></tr></thead>
+      <thead><tr><th>Campo DPP</th><th>Fuente</th><th>Proveedor</th><th>Flujo Trackline</th></tr></thead>
       <tbody>
-        <tr data-source="erp"><td><div class="field-name">productPassportIdentifier</div><div class="field-desc">Identificador unico del pasaporte digital</div></td><td><span class="source-badge src-erp">Sistema DPP</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Auto-generado</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">UUID + registro</span></div></td></tr>
-        <tr data-source="erp"><td><div class="field-name">batteryIdentifier</div><div class="field-desc">Identificador unico de la bateria</div></td><td><span class="source-badge src-erp">ERP / Produccion</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer S/N</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Validar</span></div></td></tr>
-        <tr data-source="erp"><td><div class="field-name">batteryModelIdentifier</div><div class="field-desc">Identificador del modelo de bateria</div></td><td><span class="source-badge src-erp">ERP / Produccion</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="erp"><td><div class="field-name">batterySerialNumber</div><div class="field-desc">Numero de serie</div></td><td><span class="source-badge src-erp">ERP / Produccion</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="erp"><td><div class="field-name">manufacturerIdentification</div><div class="field-desc">Nombre, direccion y datos del fabricante</div></td><td><span class="source-badge src-erp">Registro mercantil / web</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Verificar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="erp"><td><div class="field-name">manufacturingPlace</div><div class="field-desc">Planta de fabricacion (GPS)</div></td><td><span class="source-badge src-erp">ERP / Registro</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Geocodificar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="erp"><td><div class="field-name">manufacturingDate</div><div class="field-desc">Fecha de fabricacion</div></td><td><span class="source-badge src-erp">ERP / Produccion</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="erp"><td><div class="field-name">dateOfPuttingIntoService</div><div class="field-desc">Fecha de puesta en servicio</div></td><td><span class="source-badge src-erp">ERP / Cliente</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="datasheet"><td><div class="field-name">batteryCategory</div><div class="field-desc">Categoria: EV, LMT, industrial, SLI, portatil</div></td><td><span class="source-badge src-datasheet">Datasheet</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Clasificar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="erp"><td><div class="field-name">batteryStatus</div><div class="field-desc">Estado: original, reutilizada, refabricada, residuo</div></td><td><span class="source-badge src-erp">ERP / Ciclo vida</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Actualizar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="datasheet"><td><div class="field-name">batteryMass</div><div class="field-desc">Masa total de la bateria (kg)</div></td><td><span class="source-badge src-datasheet">Datasheet</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Validar</span></div></td></tr>
-        <tr data-source="datasheet"><td><div class="field-name">warrantyPeriod</div><div class="field-desc">Periodo de garantia</div></td><td><span class="source-badge src-datasheet">Ficha comercial</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="erp"><td><div class="field-name">uniqueEconomicOperatorIdentifier</div><div class="field-desc">ID unico del operador economico</div></td><td><span class="source-badge src-erp">Registro oficial</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Verificar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="erp"><td><div class="field-name">uniqueManufacturerIdentifier</div><div class="field-desc">ID unico del fabricante</div></td><td><span class="source-badge src-erp">Registro oficial</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Verificar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="erp"><td><div class="field-name">uniqueFacilityIdentifier</div><div class="field-desc">ID unico de la planta</div></td><td><span class="source-badge src-erp">Registro oficial</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Verificar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="erp"><td><div class="field-name">economicOperator</div><div class="field-desc">Datos del operador economico responsable</div></td><td><span class="source-badge src-erp">Registro mercantil</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Verificar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">productPassportIdentifier</div><div class="field-desc">Identificador &uacute;nico del pasaporte digital (URN)</div></td><td><span class="source-badge src-erp">ERP/Admin</span></td><td><span class="prov-badge prov-trackline">Trackline</span></td><td><div class="tl-workflow"><span class="tl-step">Generar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Asignar URN</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Registrar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">batteryIdentifier</div><div class="field-desc">Identificador &uacute;nico de la bater&iacute;a</div><div class="field-num">#6 Mandatory</div></td><td><span class="source-badge src-erp">ERP/Admin</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Recibir</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Validar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">batteryModelIdentifier</div><div class="field-desc">Identificador del modelo de bater&iacute;a</div><div class="field-num">#7 Mandatory</div></td><td><span class="source-badge src-erp">ERP/Admin</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Recibir</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Validar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">batterySerialNumber</div><div class="field-desc">N&uacute;mero de serie individual de la bater&iacute;a</div><div class="field-num">#8 Mandatory</div></td><td><span class="source-badge src-erp">ERP/Admin</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Recibir</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Validar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">manufacturerIdentification</div><div class="field-desc">Nombre, direcci&oacute;n y pa&iacute;s del fabricante</div></td><td><span class="source-badge src-erp">ERP/Admin</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Verificar registro</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">manufacturingPlace</div><div class="field-desc">Planta de fabricaci&oacute;n (pa&iacute;s, ciudad, regi&oacute;n)</div></td><td><span class="source-badge src-erp">ERP/Admin</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Recibir</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Validar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">manufacturingDate</div><div class="field-desc">Fecha de fabricaci&oacute;n (a&ntilde;o/mes)</div></td><td><span class="source-badge src-erp">ERP/Admin</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer ERP</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Validar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">dateOfPuttingIntoService</div><div class="field-desc">Fecha de puesta en servicio</div></td><td><span class="source-badge src-erp">ERP/Admin</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Recibir</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">batteryCategory</div><div class="field-desc">Categor&iacute;a: LMT, EV, industrial, SLI, portable</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Clasificar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">batteryStatus</div><div class="field-desc">Estado: Original, Repurposed, Reused, Remanufactured, Waste</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Validar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">batteryMass</div><div class="field-desc">Masa total de la bater&iacute;a (kg)</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Validar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">warrantyPeriod</div><div class="field-desc">Per&iacute;odo de garant&iacute;a (meses)</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">uniqueEconomicOperatorIdentifier</div><div class="field-desc">Identificador &uacute;nico del operador econ&oacute;mico (CIF/VAT)</div><div class="field-num">#9 ESPR</div></td><td><span class="source-badge src-erp">ERP/Admin</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer ERP</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Validar VIES</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">uniqueManufacturerIdentifier</div><div class="field-desc">Identificador &uacute;nico del fabricante seg&uacute;n registro EU</div><div class="field-num">#10 Mandatory</div></td><td><span class="source-badge src-erp">ERP/Admin</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Verificar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">uniqueFacilityIdentifier</div><div class="field-desc">Identificador &uacute;nico de la planta de fabricaci&oacute;n</div><div class="field-num">#11 ESPR</div></td><td><span class="source-badge src-erp">ERP/Admin</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Registrar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">economicOperator</div><div class="field-desc">Operador econ&oacute;mico responsable de la comercializaci&oacute;n</div><div class="field-num">#12</div></td><td><span class="source-badge src-erp">ERP/Admin</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer ERP</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- ==================== SECTION 2: Material ==================== -->
+<!-- =============== SECTION 2: Materiales =============== -->
 <div class="section">
-  <div class="section-header collapsed" onclick="toggleSection(this)">
-    <div class="section-icon" style="background:var(--purple)">&#x2697;</div>
-    <div class="section-info">
-      <h2>Composicion de materiales</h2>
-      <p>Quimica de la celda, materias primas criticas, sustancias peligrosas</p>
-    </div>
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#e9d5ff;color:#5b21b6">&#x2697;&#xFE0F;</div>
+    <h2>Composici&oacute;n de materiales</h2>
     <span class="section-count">5 campos</span>
-    <span class="section-chevron">&#x25BE;</span>
+    <span class="section-chevron">&#x25BC;</span>
   </div>
-  <div class="section-body hidden">
+  <p class="section-subtitle">Qu&iacute;mica de la bater&iacute;a, materias primas cr&iacute;ticas, sustancias peligrosas y composici&oacute;n</p>
+  <div class="section-body">
     <table class="map-table">
-      <thead><tr><th>Campo DPP</th><th>Documento fuente</th><th>Proveedor</th><th>Flujo Trackline</th></tr></thead>
+      <thead><tr><th>Campo DPP</th><th>Fuente</th><th>Proveedor</th><th>Flujo Trackline</th></tr></thead>
       <tbody>
-        <tr data-source="datasheet"><td><div class="field-name">productChemistry</div><div class="field-desc">Quimica del catodo, anodo, electrolito</div></td><td><span class="source-badge src-datasheet">Datasheet celda</span></td><td><span class="prov-badge prov-supplier">Proveedor celdas</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar a proveedor</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Validar</span></div></td></tr>
-        <tr data-source="supplier"><td><div class="field-name">criticalRawMaterials</div><div class="field-desc">Litio, cobalto, grafito, niquel, manganeso...</div></td><td><span class="source-badge src-supplier">Declaracion proveedor</span></td><td><span class="prov-badge prov-supplier">Proveedor celdas</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar a proveedor</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer %</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Validar</span></div></td></tr>
-        <tr data-source="supplier"><td><div class="field-name">batteryMaterials</div><div class="field-desc">Composicion completa por componente y peso</div></td><td><span class="source-badge src-supplier">Declaracion proveedor</span><span class="source-badge src-datasheet">Datasheet</span></td><td><span class="prov-badge prov-supplier">Proveedor</span><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Consolidar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="supplier"><td><div class="field-name">hazardousSubstances</div><div class="field-desc">Sustancias REACH/SVHC presentes</div></td><td><span class="source-badge src-supplier">Declaracion REACH</span><span class="source-badge src-compliance">SCIP DB</span></td><td><span class="prov-badge prov-supplier">Proveedor</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar declaracion</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Cruzar SVHC</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="supplier"><td><div class="field-name">impactOfSubstances</div><div class="field-desc">Impacto de sustancias en salud y medio ambiente</div></td><td><span class="source-badge src-supplier">Ficha seguridad (SDS)</span></td><td><span class="prov-badge prov-supplier">Proveedor</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar SDS</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">productChemistry</div><div class="field-desc">Qu&iacute;mica de la bater&iacute;a (LFP, NMC, LCO, etc.)</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Clasificar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="supplier"><td><div class="field-name">criticalRawMaterials</div><div class="field-desc">Materias primas cr&iacute;ticas (Li, Co, Ni, Mn, grafito natural)</div></td><td><span class="source-badge src-supplier">Proveedor</span></td><td><span class="prov-badge prov-supplier">Proveedor MP</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Recibir</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Verificar lista CRM</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="supplier"><td><div class="field-name">batteryMaterials</div><div class="field-desc">Composici&oacute;n detallada por componente (c&aacute;todo, &aacute;nodo, electrolito, separador, carcasa)</div></td><td><span class="source-badge src-supplier">Proveedor</span></td><td><span class="prov-badge prov-supplier">Proveedor MP</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar BOM</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Normalizar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">impactOfSubstances</div><div class="field-desc">Impacto de sustancias en medio ambiente, salud humana y seguridad</div><div class="field-num">#43 Mandatory</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar SDS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="supplier"><td><div class="field-name">hazardousSubstances</div><div class="field-desc">Sustancias peligrosas presentes (SVHC, CLP, electrolito)</div></td><td><span class="source-badge src-supplier">Proveedor</span></td><td><span class="prov-badge prov-supplier">Proveedor MP</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar MSDS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Cruzar ECHA</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- ==================== SECTION 3: Performance ==================== -->
+<!-- =============== SECTION 3: Rendimiento (44 campos) =============== -->
 <div class="section">
-  <div class="section-header collapsed" onclick="toggleSection(this)">
-    <div class="section-icon" style="background:var(--amber)">&#x26A1;</div>
-    <div class="section-info">
-      <h2>Rendimiento y durabilidad</h2>
-      <p>Especificaciones tecnicas, eficiencia, resistencia interna, vida util, datos BMS dinamicos</p>
-    </div>
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#fef3c7;color:#92400e">&#x26A1;</div>
+    <h2>Rendimiento y durabilidad</h2>
     <span class="section-count">44 campos</span>
-    <span class="section-chevron">&#x25BE;</span>
+    <span class="section-chevron">&#x25BC;</span>
   </div>
-  <div class="section-body hidden">
+  <p class="section-subtitle">Especificaciones t&eacute;cnicas, capacidad, potencia, resistencia interna, vida &uacute;til, temperatura y eventos negativos &mdash; 22 campos din&aacute;micos BMS</p>
+  <div class="section-body">
     <table class="map-table">
-      <thead><tr><th>Campo DPP</th><th>Documento fuente</th><th>Proveedor</th><th>Flujo Trackline</th></tr></thead>
+      <thead><tr><th>Campo DPP</th><th>Fuente</th><th>Proveedor</th><th>Flujo Trackline</th></tr></thead>
       <tbody>
-        <tr data-source="datasheet"><td><div class="field-name">technicalSpecification: batteryChemistry</div><div class="field-desc">Quimica de la bateria (LFP, NMC, etc.)</div></td><td><span class="source-badge src-datasheet">Datasheet</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="datasheet"><td><div class="field-name">technicalSpecification: ratedCapacity</div><div class="field-desc">Capacidad nominal (Ah)</div></td><td><span class="source-badge src-datasheet">Datasheet</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Validar</span></div></td></tr>
-        <tr data-source="datasheet"><td><div class="field-name">technicalSpecification: nominalVoltage, minVoltage, maxVoltage</div><div class="field-desc">Voltajes nominal, minimo y maximo</div></td><td><span class="source-badge src-datasheet">Datasheet</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Validar</span></div></td></tr>
-        <tr data-source="test"><td><div class="field-name">technicalSpecification: certifiedUsableBatteryEnergy</div><div class="field-desc">Energia util certificada (kWh)</div></td><td><span class="source-badge src-test">Informe ensayo</span></td><td><span class="prov-badge prov-lab">Laboratorio</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar a lab</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Validar</span></div></td></tr>
-        <tr data-source="bms"><td><div class="field-name">technicalSpecification: remainingCapacity, capacityFade, SoC, SoE</div><div class="field-desc">Datos dinamicos en tiempo real (4 campos)</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS</span></td><td><div class="tl-workflow"><span class="tl-step">Conectar BMS</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Lectura periodica</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Actualizar</span></div></td></tr>
-        <tr data-source="test"><td><div class="field-name">roundtripEfficiency: initial, at50%</div><div class="field-desc">Eficiencia energetica ida-vuelta inicial y al 50% ciclos</div></td><td><span class="source-badge src-test">Informe ensayo</span></td><td><span class="prov-badge prov-lab">Laboratorio</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar a lab</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer %</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Validar</span></div></td></tr>
-        <tr data-source="bms"><td><div class="field-name">roundtripEfficiency: remaining, fade, selfDischarge</div><div class="field-desc">Eficiencia actual, degradacion, autodescarga (4 campos dinamicos)</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS</span></td><td><div class="tl-workflow"><span class="tl-step">Conectar BMS</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Calcular</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Actualizar</span></div></td></tr>
-        <tr data-source="test"><td><div class="field-name">roundtripEfficiency: initialSelfDischargingRate</div><div class="field-desc">Tasa de autodescarga inicial</div></td><td><span class="source-badge src-test">Informe ensayo</span></td><td><span class="prov-badge prov-lab">Laboratorio</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar a lab</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="datasheet"><td><div class="field-name">powerCapability: original, maxPermitted, ratio</div><div class="field-desc">Potencia original, maxima permitida, ratio (3 campos)</div></td><td><span class="source-badge src-datasheet">Datasheet</span><span class="source-badge src-test">Ensayo</span></td><td><span class="prov-badge prov-fab">Fabricante</span><span class="prov-badge prov-lab">Lab</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Validar</span></div></td></tr>
-        <tr data-source="bms"><td><div class="field-name">powerCapability: remaining, fade</div><div class="field-desc">Potencia restante y degradacion (2 campos dinamicos)</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS</span></td><td><div class="tl-workflow"><span class="tl-step">Conectar BMS</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Calcular</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Actualizar</span></div></td></tr>
-        <tr data-source="test"><td><div class="field-name">internalResistance: initialPack</div><div class="field-desc">Resistencia interna inicial del pack</div></td><td><span class="source-badge src-test">Informe ensayo</span></td><td><span class="prov-badge prov-lab">Laboratorio</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar a lab</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="bms"><td><div class="field-name">internalResistance: currentPack</div><div class="field-desc">Resistencia interna actual (dinamico)</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS</span></td><td><div class="tl-workflow"><span class="tl-step">Conectar BMS</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Leer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Actualizar</span></div></td></tr>
-        <tr data-source="datasheet"><td><div class="field-name">batteryLifetime: expectedYears, expectedCycles, warranty, thresholds</div><div class="field-desc">Vida util esperada, ciclos, garantia, umbrales (6 campos)</div></td><td><span class="source-badge src-datasheet">Datasheet</span><span class="source-badge src-test">Ensayo ciclos</span></td><td><span class="prov-badge prov-fab">Fabricante</span><span class="prov-badge prov-lab">Lab</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Validar</span></div></td></tr>
-        <tr data-source="bms"><td><div class="field-name">batteryLifetime: fullCycles, capacityThroughput, energyThroughput, putIntoService</div><div class="field-desc">Ciclos completados, energia acumulada, fecha servicio (4 campos dinamicos)</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS</span></td><td><div class="tl-workflow"><span class="tl-step">Conectar BMS</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Lectura periodica</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Actualizar</span></div></td></tr>
-        <tr data-source="datasheet"><td><div class="field-name">temperatureConditions: info, rangeIdleState</div><div class="field-desc">Rango de temperatura operativo (2 campos)</div></td><td><span class="source-badge src-datasheet">Datasheet</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="bms"><td><div class="field-name">temperatureConditions: timeExtremeHigh/Low, charging extremes</div><div class="field-desc">Tiempo en temperaturas extremas (4 campos dinamicos)</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS</span></td><td><div class="tl-workflow"><span class="tl-step">Conectar BMS</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Acumular</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Actualizar</span></div></td></tr>
-        <tr data-source="bms"><td><div class="field-name">negativeEvents: deepDischarge, overcharge</div><div class="field-desc">Eventos negativos: descargas profundas, sobrecargas (2 campos dinamicos)</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS</span></td><td><div class="tl-workflow"><span class="tl-step">Conectar BMS</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Registrar eventos</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Actualizar</span></div></td></tr>
-        <tr data-source="erp"><td><div class="field-name">negativeEvents: informationOnAccidents</div><div class="field-desc">Informacion sobre accidentes</div></td><td><span class="source-badge src-manual">Informe incidentes</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Registrar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <!-- Especificaciones tecnicas -->
+        <tr data-source="ficha"><td><div class="field-name">technicalSpecification &rsaquo; batteryChemistry</div><div class="field-desc">Qu&iacute;mica (LFP, NMC, NCA...)</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">technicalSpecification &rsaquo; ratedCapacity</div><div class="field-desc">Capacidad nominal (kWh)</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Validar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">technicalSpecification &rsaquo; nominalVoltage</div><div class="field-desc">Tensi&oacute;n nominal (V)</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">technicalSpecification &rsaquo; minimumVoltage</div><div class="field-desc">Tensi&oacute;n m&iacute;nima de corte (V)</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">technicalSpecification &rsaquo; maximumVoltage</div><div class="field-desc">Tensi&oacute;n m&aacute;xima de carga (V)</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="lab"><td><div class="field-name">technicalSpecification &rsaquo; certifiedUsableBatteryEnergy</div><div class="field-desc">Energ&iacute;a usable certificada (kWh)</div></td><td><span class="source-badge src-lab">Laboratorio</span></td><td><span class="prov-badge prov-lab">Lab/ON</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar informe</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">technicalSpecification &rsaquo; remainingCapacity</div><div class="field-desc">Capacidad restante (Ah)</div><div class="field-num">#60 Mandatory &middot; BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Leer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">technicalSpecification &rsaquo; capacityFade</div><div class="field-desc">Disminuci&oacute;n de capacidad (%)</div><div class="field-num">#61 Mandatory &middot; BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Calcular</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">technicalSpecification &rsaquo; remainingUsableBatteryEnergy</div><div class="field-desc">Energ&iacute;a usable restante (kWh)</div><div class="field-num">#63 &middot; BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Leer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">technicalSpecification &rsaquo; stateOfCharge</div><div class="field-desc">Estado de carga SoC (%)</div><div class="field-num">BMS tiempo real</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Leer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">technicalSpecification &rsaquo; stateOfCertifiedEnergy</div><div class="field-desc">Estado de energ&iacute;a certificada (%)</div><div class="field-num">BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Calcular</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <!-- Eficiencia round-trip -->
+        <tr data-source="lab"><td><div class="field-name">roundtripEfficiency &rsaquo; initialRoundTripEnergyEfficiency</div><div class="field-desc">Eficiencia energ&eacute;tica round-trip inicial (%)</div></td><td><span class="source-badge src-lab">Laboratorio</span></td><td><span class="prov-badge prov-lab">Lab/ON</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar informe</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="lab"><td><div class="field-name">roundtripEfficiency &rsaquo; roundTripEfficiencyAt50PercentCycleLife</div><div class="field-desc">Eficiencia al 50% del ciclo de vida (%)</div></td><td><span class="source-badge src-lab">Laboratorio</span></td><td><span class="prov-badge prov-lab">Lab/ON</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">roundtripEfficiency &rsaquo; remainingRoundTripEnergyEfficiency</div><div class="field-desc">Eficiencia round-trip restante (%)</div><div class="field-num">BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Calcular</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">roundtripEfficiency &rsaquo; energyRoundTripEfficiencyFade</div><div class="field-desc">Disminuci&oacute;n de eficiencia round-trip (%)</div><div class="field-num">#77 Mandatory &middot; BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Calcular</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">roundtripEfficiency &rsaquo; initialSelfDischargingRate</div><div class="field-desc">Tasa de autodescarga inicial (%/mes)</div><div class="field-num">#78 Voluntary</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">roundtripEfficiency &rsaquo; currentSelfDischargingRate</div><div class="field-desc">Tasa de autodescarga actual (%/mes)</div><div class="field-num">#79 Voluntary &middot; BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Leer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">roundtripEfficiency &rsaquo; evolutionOfSelfDischargeRates</div><div class="field-desc">Evoluci&oacute;n hist&oacute;rica de autodescarga</div><div class="field-num">#80 Mandatory &middot; BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Hist&oacute;rico</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <!-- Potencia -->
+        <tr data-source="ficha"><td><div class="field-name">powerCapability &rsaquo; originalPowerCapability</div><div class="field-desc">Capacidad de potencia original (W) a distintos SoC</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">powerCapability &rsaquo; remainingPowerCapability</div><div class="field-desc">Potencia restante (W)</div><div class="field-num">#70 Mandatory &middot; BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Leer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">powerCapability &rsaquo; powerFade</div><div class="field-desc">Disminuci&oacute;n de potencia (%)</div><div class="field-num">#71 Mandatory &middot; BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Calcular</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">powerCapability &rsaquo; maximumPermittedBatteryPower</div><div class="field-desc">Potencia m&aacute;xima permitida (kW)</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">powerCapability &rsaquo; powerCapabilityRatio</div><div class="field-desc">Ratio potencia/energ&iacute;a (C-rate)</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Calcular</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <!-- Resistencia interna -->
+        <tr data-source="lab"><td><div class="field-name">internalResistance &rsaquo; initialInternalResistancePack</div><div class="field-desc">Resistencia interna inicial del pack (m&Omega;)</div></td><td><span class="source-badge src-lab">Laboratorio</span></td><td><span class="prov-badge prov-lab">Lab/ON</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">internalResistance &rsaquo; currentInternalResistancePack</div><div class="field-desc">Resistencia interna actual del pack (m&Omega;)</div><div class="field-num">BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Leer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <!-- Vida util -->
+        <tr data-source="ficha"><td><div class="field-name">batteryLifetime &rsaquo; expectedLifetimeYears</div><div class="field-desc">Vida &uacute;til esperada (a&ntilde;os)</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="lab"><td><div class="field-name">batteryLifetime &rsaquo; expectedNumberOfCycles</div><div class="field-desc">Ciclos esperados hasta 80% SoH</div></td><td><span class="source-badge src-lab">Laboratorio</span></td><td><span class="prov-badge prov-lab">Lab/ON</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar test</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">batteryLifetime &rsaquo; warrantyPeriod</div><div class="field-desc">Garant&iacute;a (meses)</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">batteryLifetime &rsaquo; capacityThresholdExhaustion</div><div class="field-desc">Umbral de agotamiento de capacidad (%)</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="lab"><td><div class="field-name">batteryLifetime &rsaquo; cycleLifeReferenceTest</div><div class="field-desc">Norma de referencia para test de ciclos (IEC 62660-1)</div><div class="field-num">#86 Mandatory</div></td><td><span class="source-badge src-lab">Laboratorio</span></td><td><span class="prov-badge prov-lab">Lab/ON</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Verificar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="lab"><td><div class="field-name">batteryLifetime &rsaquo; cRateOfRelevantCycleLifeTest</div><div class="field-desc">C-rate usado en el test de ciclo de vida</div><div class="field-num">#87 Mandatory</div></td><td><span class="source-badge src-lab">Laboratorio</span></td><td><span class="prov-badge prov-lab">Lab/ON</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">batteryLifetime &rsaquo; numberOfFullCycles</div><div class="field-desc">N&uacute;mero de ciclos completos realizados</div><div class="field-num">#85 Mandatory &middot; BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Leer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">batteryLifetime &rsaquo; capacityThroughput</div><div class="field-desc">Rendimiento acumulado de capacidad (Ah totales)</div><div class="field-num">#89 Mandatory &middot; BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Leer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">batteryLifetime &rsaquo; energyThroughput</div><div class="field-desc">Energ&iacute;a total procesada (kWh acumulados)</div><div class="field-num">BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Leer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">batteryLifetime &rsaquo; putIntoService</div><div class="field-desc">Fecha real de puesta en servicio (BMS)</div><div class="field-num">BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Leer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <!-- Temperatura -->
+        <tr data-source="ficha"><td><div class="field-name">temperatureConditions &rsaquo; temperatureInformation</div><div class="field-desc">Condiciones de temperatura operativas</div><div class="field-num">#91 Mandatory</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">temperatureConditions &rsaquo; temperatureRangeIdleState</div><div class="field-desc">Rango de temperatura en reposo (&deg;C)</div><div class="field-num">#92-93 Mandatory</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">temperatureConditions &rsaquo; timeExtremeHighTemp</div><div class="field-desc">Tiempo acumulado a temperatura extrema alta (h)</div><div class="field-num">#94 Mandatory &middot; BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Leer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">temperatureConditions &rsaquo; timeExtremeLowTemp</div><div class="field-desc">Tiempo acumulado a temperatura extrema baja (h)</div><div class="field-num">#95 Mandatory &middot; BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Leer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">temperatureConditions &rsaquo; timeChargingExtremeHighTemp</div><div class="field-desc">Tiempo cargando a temperatura extrema alta (h)</div><div class="field-num">#96 Mandatory &middot; BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Leer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">temperatureConditions &rsaquo; timeChargingExtremeLowTemp</div><div class="field-desc">Tiempo cargando a temperatura extrema baja (h)</div><div class="field-num">#97 Mandatory &middot; BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Leer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <!-- Eventos negativos -->
+        <tr data-source="bms"><td><div class="field-name">negativeEvents &rsaquo; numberOfDeepDischargeEvents</div><div class="field-desc">N&uacute;mero de descargas profundas</div><div class="field-num">BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Leer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="bms"><td><div class="field-name">negativeEvents &rsaquo; numberOfOverchargeEvents</div><div class="field-desc">N&uacute;mero de sobrecargas</div><div class="field-num">BMS</div></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="prov-badge prov-bms">BMS integrado</span></td><td><div class="tl-workflow"><span class="tl-step">API BMS</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Leer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="manual"><td><div class="field-name">negativeEvents &rsaquo; informationOnAccidents</div><div class="field-desc">Informaci&oacute;n sobre accidentes registrados</div></td><td><span class="source-badge src-manual">Manual</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Reportar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Documentar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- ==================== SECTION 4: Carbon ==================== -->
+<!-- =============== SECTION 4: Huella de carbono =============== -->
 <div class="section">
-  <div class="section-header collapsed" onclick="toggleSection(this)">
-    <div class="section-icon" style="background:var(--green)">&#x1F30D;</div>
-    <div class="section-info">
-      <h2>Huella de carbono</h2>
-      <p>CO2 por kWh, clase de rendimiento, estudio LCA, desglose por etapa</p>
-    </div>
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#d1fae5;color:#065f46">&#x1F30D;</div>
+    <h2>Huella de carbono</h2>
     <span class="section-count">5 campos</span>
-    <span class="section-chevron">&#x25BE;</span>
+    <span class="section-chevron">&#x25BC;</span>
   </div>
-  <div class="section-body hidden">
+  <p class="section-subtitle">Huella de carbono total, por fase de ciclo de vida, clase de rendimiento y estudio ACV</p>
+  <div class="section-body">
     <table class="map-table">
-      <thead><tr><th>Campo DPP</th><th>Documento fuente</th><th>Proveedor</th><th>Flujo Trackline</th></tr></thead>
+      <thead><tr><th>Campo DPP</th><th>Fuente</th><th>Proveedor</th><th>Flujo Trackline</th></tr></thead>
       <tbody>
-        <tr data-source="lca"><td><div class="field-name">batteryCarbonFootprint</div><div class="field-desc">Huella de carbono total (kg CO2eq/kWh)</div></td><td><span class="source-badge src-lca">Estudio LCA (PEF)</span></td><td><span class="prov-badge prov-lca">Consultor LCA</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar a consultor</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer valor</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Validar</span></div></td></tr>
-        <tr data-source="lca"><td><div class="field-name">carbonFootprintPerformanceClass</div><div class="field-desc">Clase de rendimiento CO2 (A-E)</div></td><td><span class="source-badge src-lca">Estudio LCA</span><span class="source-badge src-compliance">Acto delegado</span></td><td><span class="prov-badge prov-lca">Consultor LCA</span></td><td><div class="tl-workflow"><span class="tl-step">Calcular clase</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Asignar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="lca"><td><div class="field-name">carbonFootprintStudy</div><div class="field-desc">Enlace/referencia al estudio LCA completo</div></td><td><span class="source-badge src-lca">Informe LCA</span></td><td><span class="prov-badge prov-lca">Consultor LCA</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar informe</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Cargar PDF</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Enlazar</span></div></td></tr>
-        <tr data-source="lca"><td><div class="field-name">absoluteBatteryCarbonFootprint</div><div class="field-desc">Huella absoluta total (kg CO2eq)</div></td><td><span class="source-badge src-lca">Estudio LCA</span></td><td><span class="prov-badge prov-lca">Consultor LCA</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Validar</span></div></td></tr>
-        <tr data-source="lca"><td><div class="field-name">carbonFootprintPerLifecycleStage</div><div class="field-desc">Desglose por etapa: materias primas, fabricacion, distribucion, fin de vida</div></td><td><span class="source-badge src-lca">Estudio LCA (PEF)</span></td><td><span class="prov-badge prov-lca">Consultor LCA</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar desglose</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer por etapa</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="acv"><td><div class="field-name">batteryCarbonFootprint</div><div class="field-desc">Huella de carbono total (kg CO&#x2082;e / kWh)</div></td><td><span class="source-badge src-acv">ACV/LCA</span></td><td><span class="prov-badge prov-lca">Consultor ACV</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar estudio</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Verificar CFR</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="acv"><td><div class="field-name">carbonFootprintPerformanceClass</div><div class="field-desc">Clase de rendimiento de huella de carbono (A-E)</div></td><td><span class="source-badge src-acv">ACV/LCA</span></td><td><span class="prov-badge prov-lca">Consultor ACV</span></td><td><div class="tl-workflow"><span class="tl-step">Calcular</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Clasificar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="acv"><td><div class="field-name">carbonFootprintStudy</div><div class="field-desc">Enlace al estudio de huella de carbono publicado</div></td><td><span class="source-badge src-acv">ACV/LCA</span></td><td><span class="prov-badge prov-lca">Consultor ACV</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar URL</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Verificar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="acv"><td><div class="field-name">absoluteBatteryCarbonFootprint</div><div class="field-desc">Huella de carbono absoluta total (kg CO&#x2082;e)</div><div class="field-num">#35 Voluntary</div></td><td><span class="source-badge src-acv">ACV/LCA</span></td><td><span class="prov-badge prov-lca">Consultor ACV</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="acv"><td><div class="field-name">carbonFootprintPerLifecycleStage</div><div class="field-desc">Huella por fase: extracci&oacute;n, fabricaci&oacute;n, transporte, uso, fin de vida</div></td><td><span class="source-badge src-acv">ACV/LCA</span></td><td><span class="prov-badge prov-lca">Consultor ACV</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar desglose</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- ==================== SECTION 5: Circularity ==================== -->
+<!-- =============== SECTION 5: Circularidad =============== -->
 <div class="section">
-  <div class="section-header collapsed" onclick="toggleSection(this)">
-    <div class="section-icon" style="background:#059669">&#x267B;</div>
-    <div class="section-info">
-      <h2>Circularidad</h2>
-      <p>Contenido reciclado, seguridad, desmontaje, segunda vida, recambios</p>
-    </div>
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#ccfbf1;color:#065f46">&#x267B;&#xFE0F;</div>
+    <h2>Circularidad y fin de vida</h2>
     <span class="section-count">6 campos</span>
-    <span class="section-chevron">&#x25BE;</span>
+    <span class="section-chevron">&#x25BC;</span>
   </div>
-  <div class="section-body hidden">
+  <p class="section-subtitle">Contenido reciclado, desmontaje, segunda vida, recogida separada y gesti&oacute;n de residuos</p>
+  <div class="section-body">
     <table class="map-table">
-      <thead><tr><th>Campo DPP</th><th>Documento fuente</th><th>Proveedor</th><th>Flujo Trackline</th></tr></thead>
+      <thead><tr><th>Campo DPP</th><th>Fuente</th><th>Proveedor</th><th>Flujo Trackline</th></tr></thead>
       <tbody>
-        <tr data-source="supplier"><td><div class="field-name">recycledContent</div><div class="field-desc">% reciclado pre/post consumidor por material (Co, Li, Ni, Pb)</div></td><td><span class="source-badge src-supplier">Declaracion proveedor</span><span class="source-badge src-compliance">Certificado reciclaje</span></td><td><span class="prov-badge prov-supplier">Proveedor</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar certificado</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer %</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Validar</span></div></td></tr>
-        <tr data-source="supplier"><td><div class="field-name">renewableContent</div><div class="field-desc">Proporcion de materia renovable</div></td><td><span class="source-badge src-supplier">Declaracion proveedor</span></td><td><span class="prov-badge prov-supplier">Proveedor</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="datasheet"><td><div class="field-name">safetyRequirements</div><div class="field-desc">Requisitos de seguridad, agentes extintores</div></td><td><span class="source-badge src-datasheet">Ficha seguridad</span><span class="source-badge src-test">Ensayo seguridad</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar ficha</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="manual"><td><div class="field-name">dismantlingAndRemovalInformation</div><div class="field-desc">Manual de desmontaje, instrucciones de extraccion</div></td><td><span class="source-badge src-manual">Manual tecnico</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar manual</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Cargar PDF</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Enlazar</span></div></td></tr>
-        <tr data-source="erp"><td><div class="field-name">sourceForSpareParts</div><div class="field-desc">Fuente de piezas de recambio</div></td><td><span class="source-badge src-erp">Catalogo / web</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Registrar URL</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="erp"><td><div class="field-name">endOfLifeInformation</div><div class="field-desc">Info de recogida, reciclaje, segunda vida</div></td><td><span class="source-badge src-erp">Plan gestion residuos</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar plan</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="supplier"><td><div class="field-name">recycledContent</div><div class="field-desc">Contenido reciclado por material (Co, Li, Ni, Pb)</div></td><td><span class="source-badge src-supplier">Proveedor</span></td><td><span class="prov-badge prov-supplier">Proveedor MP</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar certificado</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Verificar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="acv"><td><div class="field-name">renewableContent</div><div class="field-desc">Contenido de energ&iacute;a renovable en fabricaci&oacute;n (%)</div></td><td><span class="source-badge src-acv">ACV/LCA</span></td><td><span class="prov-badge prov-lca">Consultor ACV</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">safetyRequirements</div><div class="field-desc">Instrucciones de seguridad y agente extintor</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">dismantlingAndRemovalInformation</div><div class="field-desc">Instrucciones de desmontaje, reparaci&oacute;n y segunda vida</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar manual</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">sourceForSpareParts</div><div class="field-desc">Fuente de repuestos (contacto y plazo)</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="manual"><td><div class="field-name">endOfLifeInformation</div><div class="field-desc">Recogida separada, prevenci&oacute;n de residuos, reciclabilidad</div></td><td><span class="source-badge src-manual">Manual</span></td><td><span class="prov-badge prov-gestor">Gestor residuos</span></td><td><div class="tl-workflow"><span class="tl-step">Documentar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Verificar gestor</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- ==================== SECTION 6: Labels ==================== -->
+<!-- =============== SECTION 6: Etiquetas =============== -->
 <div class="section">
-  <div class="section-header collapsed" onclick="toggleSection(this)">
-    <div class="section-icon" style="background:var(--red)">&#x2705;</div>
-    <div class="section-info">
-      <h2>Conformidad y etiquetado</h2>
-      <p>Declaracion UE, informes de ensayo, simbolos, etiquetas</p>
-    </div>
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#d1fae5;color:#065f46">&#x2705;</div>
+    <h2>Etiquetas y conformidad</h2>
     <span class="section-count">7 campos</span>
-    <span class="section-chevron">&#x25BE;</span>
+    <span class="section-chevron">&#x25BC;</span>
   </div>
-  <div class="section-body hidden">
+  <p class="section-subtitle">Declaraci&oacute;n de conformidad, informes de ensayo, s&iacute;mbolos, etiqueta de carbono</p>
+  <div class="section-body">
     <table class="map-table">
-      <thead><tr><th>Campo DPP</th><th>Documento fuente</th><th>Proveedor</th><th>Flujo Trackline</th></tr></thead>
+      <thead><tr><th>Campo DPP</th><th>Fuente</th><th>Proveedor</th><th>Flujo Trackline</th></tr></thead>
       <tbody>
-        <tr data-source="compliance"><td><div class="field-name">euDeclarationOfConformityId</div><div class="field-desc">ID de la declaracion de conformidad UE</div></td><td><span class="source-badge src-compliance">Declaracion conformidad</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar DoC</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer ID</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="compliance"><td><div class="field-name">declarationOfConformity</div><div class="field-desc">Enlace al documento completo de conformidad</div></td><td><span class="source-badge src-compliance">Declaracion conformidad</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar PDF</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Cargar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Enlazar</span></div></td></tr>
-        <tr data-source="test"><td><div class="field-name">resultOfTestReport</div><div class="field-desc">Resultado de informes de ensayo</div></td><td><span class="source-badge src-test">Informe ensayo</span></td><td><span class="prov-badge prov-lab">Laboratorio</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar a lab</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Extraer resultado</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="compliance"><td><div class="field-name">separateCollection</div><div class="field-desc">Simbolo de recogida selectiva</div></td><td><span class="source-badge src-compliance">Normativa etiquetado</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Verificar simbolo</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Asignar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="compliance"><td><div class="field-name">materialSymbols</div><div class="field-desc">Simbolos de materiales (Cd, Pb, otros)</div></td><td><span class="source-badge src-compliance">Normativa etiquetado</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Verificar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Asignar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="lca"><td><div class="field-name">carbonFootprintLabel</div><div class="field-desc">Etiqueta de huella de carbono</div></td><td><span class="source-badge src-lca">Estudio LCA</span></td><td><span class="prov-badge prov-lca">Consultor LCA</span></td><td><div class="tl-workflow"><span class="tl-step">Generar etiqueta</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
-        <tr data-source="compliance"><td><div class="field-name">meaningOfLabelsAndSymbols</div><div class="field-desc">Explicacion del significado de etiquetas</div></td><td><span class="source-badge src-manual">Documentacion producto</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Redactar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="lab"><td><div class="field-name">euDeclarationOfConformityId</div><div class="field-desc">N&uacute;mero de la Declaraci&oacute;n de Conformidad EU</div></td><td><span class="source-badge src-lab">Laboratorio/ON</span></td><td><span class="prov-badge prov-lab">Lab/ON</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Verificar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="lab"><td><div class="field-name">declarationOfConformity</div><div class="field-desc">URL del documento de conformidad publicado</div></td><td><span class="source-badge src-lab">Laboratorio/ON</span></td><td><span class="prov-badge prov-lab">Lab/ON</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar URL</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Verificar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="lab"><td><div class="field-name">resultOfTestReport</div><div class="field-desc">Informes de ensayo y resultados (UN 38.3, IEC 62619, etc.)</div></td><td><span class="source-badge src-lab">Laboratorio/ON</span></td><td><span class="prov-badge prov-lab">Lab/ON</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar informes</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">separateCollection</div><div class="field-desc">S&iacute;mbolo de recogida separada (WEEE / cubo tachado)</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="ficha"><td><div class="field-name">materialSymbols</div><div class="field-desc">S&iacute;mbolos de materiales (Cd, Pb, Hg)</div></td><td><span class="source-badge src-ficha">Ficha T&eacute;cnica</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="acv"><td><div class="field-name">carbonFootprintLabel</div><div class="field-desc">Etiqueta de huella de carbono visible en el producto</div><div class="field-num">#23 Mandatory</div></td><td><span class="source-badge src-acv">ACV/LCA</span></td><td><span class="prov-badge prov-lca">Consultor ACV</span></td><td><div class="tl-workflow"><span class="tl-step">Generar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Verificar clase</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="manual"><td><div class="field-name">meaningOfLabelsAndSymbols</div><div class="field-desc">Gu&iacute;a explicativa de todas las etiquetas</div><div class="field-num">#25 Mandatory</div></td><td><span class="source-badge src-manual">Manual</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Redactar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Publicar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar URL</span></div></td></tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- ==================== SECTION 7: Supply Chain ==================== -->
+<!-- =============== SECTION 7: Due Diligence =============== -->
 <div class="section">
-  <div class="section-header collapsed" onclick="toggleSection(this)">
-    <div class="section-icon" style="background:#7c3aed">&#x1F517;</div>
-    <div class="section-info">
-      <h2>Cadena de suministro (Due Diligence)</h2>
-      <p>Informe de diligencia debida, verificacion de terceros</p>
-    </div>
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#fef3c7;color:#92400e">&#x1F517;</div>
+    <h2>Cadena de suministro y due diligence</h2>
     <span class="section-count">3 campos</span>
-    <span class="section-chevron">&#x25BE;</span>
+    <span class="section-chevron">&#x25BC;</span>
   </div>
-  <div class="section-body hidden">
+  <p class="section-subtitle">Debida diligencia, garant&iacute;as de terceros e &iacute;ndices de conflicto &mdash; Arts. 48-52 Battery Reg.</p>
+  <div class="section-body">
     <table class="map-table">
-      <thead><tr><th>Campo DPP</th><th>Documento fuente</th><th>Proveedor</th><th>Flujo Trackline</th></tr></thead>
+      <thead><tr><th>Campo DPP</th><th>Fuente</th><th>Proveedor</th><th>Flujo Trackline</th></tr></thead>
       <tbody>
-        <tr data-source="supplier"><td><div class="field-name">dueDiligenceReport</div><div class="field-desc">Informe de diligencia debida de la cadena de suministro</div></td><td><span class="source-badge src-supplier">Informe due diligence</span></td><td><span class="prov-badge prov-fab">Fabricante</span><span class="prov-badge prov-supplier">Proveedores</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar a proveedores</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Consolidar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Generar informe</span></div></td></tr>
-        <tr data-source="supplier"><td><div class="field-name">thirdPartyAssurances</div><div class="field-desc">Certificaciones de terceros (RMI/RMAP)</div></td><td><span class="source-badge src-supplier">Certificado RMI/RMAP</span></td><td><span class="prov-badge prov-supplier">Organismo certificador</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar certificado</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Verificar</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Enlazar</span></div></td></tr>
-        <tr data-source="supplier"><td><div class="field-name">supplyChainIndices</div><div class="field-desc">Indices y metricas de la cadena de suministro</div></td><td><span class="source-badge src-supplier">Datos cadena suministro</span></td><td><span class="prov-badge prov-supplier">Proveedores</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar datos</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Calcular indices</span><span class="tl-arrow">&#x25B6;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="supplier"><td><div class="field-name">dueDiligenceReport</div><div class="field-desc">Informe de debida diligencia de la cadena de suministro</div></td><td><span class="source-badge src-supplier">Proveedor</span></td><td><span class="prov-badge prov-supplier">Proveedor MP</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Verificar OECD</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="supplier"><td><div class="field-name">thirdPartyAssurances</div><div class="field-desc">Garant&iacute;as de terceros (RMAP, RMI, IRMA)</div></td><td><span class="source-badge src-supplier">Proveedor</span></td><td><span class="prov-badge prov-supplier">Proveedor MP</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar certificados</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Verificar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="supplier"><td><div class="field-name">supplyChainIndices</div><div class="field-desc">&Iacute;ndices de minerales de conflicto (DRC, 3TG)</div></td><td><span class="source-badge src-supplier">Proveedor</span></td><td><span class="prov-badge prov-supplier">Proveedor MP</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar CMRT</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Analizar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- =============== SECTION 8: Trazabilidad =============== -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:var(--teal-light);color:var(--teal)">&#x1F50D;</div>
+    <h2>Trazabilidad y data carrier</h2>
+    <span class="section-count">9 campos</span>
+    <span class="section-chevron">&#x25BC;</span>
+  </div>
+  <p class="section-subtitle">Hash Trackline, sello de tiempo, QR, GS1 Digital Link, formato de datos y hosting</p>
+  <div class="section-body">
+    <table class="map-table">
+      <thead><tr><th>Campo DPP</th><th>Fuente</th><th>Proveedor</th><th>Flujo Trackline</th></tr></thead>
+      <tbody>
+        <tr data-source="erp"><td><div class="field-name">trackline_hash</div><div class="field-desc">Hash criptogr&aacute;fico generado por Trackline</div></td><td><span class="source-badge src-erp">Trackline</span></td><td><span class="prov-badge prov-trackline">Trackline</span></td><td><div class="tl-workflow"><span class="tl-step">Generar hash</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Sellar blockchain</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">timestamp_iso8601</div><div class="field-desc">Marca de tiempo ISO 8601 del sellado</div></td><td><span class="source-badge src-erp">Trackline</span></td><td><span class="prov-badge prov-trackline">Trackline</span></td><td><div class="tl-workflow"><span class="tl-step">Generar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">eidas_tsa_token</div><div class="field-desc">Token de sello de tiempo cualificado eIDAS (TSA)</div></td><td><span class="source-badge src-erp">Trackline</span></td><td><span class="prov-badge prov-trackline">Trackline</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar TSA</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Obtener token</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">qr_payload_url</div><div class="field-desc">URL codificada en el QR del producto</div></td><td><span class="source-badge src-erp">Trackline</span></td><td><span class="prov-badge prov-trackline">Trackline</span></td><td><div class="tl-workflow"><span class="tl-step">Generar URI</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Codificar QR</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="manual"><td><div class="field-name">data_carrier</div><div class="field-desc">Tipo de portador de datos (QR Code)</div><div class="field-num">Art. 9 ESPR</div></td><td><span class="source-badge src-manual">Manual</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Definir</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="manual"><td><div class="field-name">data_carrier_location</div><div class="field-desc">Ubicaci&oacute;n f&iacute;sica del data carrier en la bater&iacute;a</div></td><td><span class="source-badge src-manual">Manual</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Definir</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="registro"><td><div class="field-name">gs1_digital_link</div><div class="field-desc">GS1 Digital Link (URI resoluble con GTIN + serial)</div></td><td><span class="source-badge src-registro">Registro GS1</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Registrar GTIN</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Generar URI</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="manual"><td><div class="field-name">data_hosting</div><div class="field-desc">Modelo de alojamiento de datos (self-hosted / delegado)</div></td><td><span class="source-badge src-manual">Manual</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Definir</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="manual"><td><div class="field-name">data_format</div><div class="field-desc">Formato de datos (JSON-LD)</div><div class="field-num">ESPR Art. 10</div></td><td><span class="source-badge src-manual">Manual</span></td><td><span class="prov-badge prov-trackline">Trackline</span></td><td><div class="tl-workflow"><span class="tl-step">Definir</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- =============== SECTION 9: Actores =============== -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#e9d5ff;color:#5b21b6">&#x1F465;</div>
+    <h2>Actores y operadores econ&oacute;micos</h2>
+    <span class="section-count">8 campos</span>
+    <span class="section-chevron">&#x25BC;</span>
+  </div>
+  <p class="section-subtitle">Operador responsable, fabricante, distribuidor, usuario final, reciclador, autoridad de vigilancia</p>
+  <div class="section-body">
+    <table class="map-table">
+      <thead><tr><th>Campo DPP</th><th>Fuente</th><th>Proveedor</th><th>Flujo Trackline</th></tr></thead>
+      <tbody>
+        <tr data-source="erp"><td><div class="field-name">operator_responsible</div><div class="field-desc">Operador econ&oacute;mico responsable (fabricante o importador)</div></td><td><span class="source-badge src-erp">ERP/Admin</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer ERP</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Verificar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">manufacturer</div><div class="field-desc">Fabricante del producto</div></td><td><span class="source-badge src-erp">ERP/Admin</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Extraer ERP</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">authorized_representative_eu</div><div class="field-desc">Representante autorizado en la UE</div></td><td><span class="source-badge src-erp">ERP/Admin</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="manual"><td><div class="field-name">distributor</div><div class="field-desc">Distribuidor del producto en el mercado</div></td><td><span class="source-badge src-manual">Manual</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Solicitar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="manual"><td><div class="field-name">end_user</div><div class="field-desc">Usuario final / operador de flota LMT</div></td><td><span class="source-badge src-manual">Manual</span></td><td><span class="prov-badge prov-fab">Usuario</span></td><td><div class="tl-workflow"><span class="tl-step">Registrar venta</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="manual"><td><div class="field-name">recycler</div><div class="field-desc">Gestor autorizado de residuos / reciclador</div></td><td><span class="source-badge src-manual">Manual</span></td><td><span class="prov-badge prov-gestor">Gestor residuos</span></td><td><div class="tl-workflow"><span class="tl-step">Registrar fin de vida</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar DPP</span></div></td></tr>
+        <tr data-source="registro"><td><div class="field-name">market_surveillance_authority</div><div class="field-desc">Autoridad de vigilancia del mercado</div></td><td><span class="source-badge src-registro">Registro EU</span></td><td><span class="prov-badge prov-fab">Fabricante</span></td><td><div class="tl-workflow"><span class="tl-step">Identificar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="erp"><td><div class="field-name">dpp_service_provider</div><div class="field-desc">Proveedor de infraestructura DPP y trazabilidad</div></td><td><span class="source-badge src-erp">Trackline</span></td><td><span class="prov-badge prov-trackline">Trackline</span></td><td><div class="tl-workflow"><span class="tl-step">Auto-registrar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- =============== SECTION 10: Registro =============== -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#f1f5f9;color:#64748b">&#x1F3DB;&#xFE0F;</div>
+    <h2>Registro central EU</h2>
+    <span class="section-count">4 campos</span>
+    <span class="section-chevron">&#x25BC;</span>
+  </div>
+  <p class="section-subtitle">Estado del registro europeo DPP, campos precargados, plazos &mdash; Art. 13 ESPR</p>
+  <div class="section-body">
+    <table class="map-table">
+      <thead><tr><th>Campo DPP</th><th>Fuente</th><th>Proveedor</th><th>Flujo Trackline</th></tr></thead>
+      <tbody>
+        <tr data-source="registro"><td><div class="field-name">registry_status</div><div class="field-desc">Estado del registro (PENDING, REGISTERED, etc.)</div></td><td><span class="source-badge src-registro">Registro EU</span></td><td><span class="prov-badge prov-trackline">Trackline</span></td><td><div class="tl-workflow"><span class="tl-step">Consultar API</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar estado</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
+        <tr data-source="registro"><td><div class="field-name">registry_fields_preloaded</div><div class="field-desc">Campos precargados como punteros al DPP completo</div></td><td><span class="source-badge src-registro">Registro EU</span></td><td><span class="prov-badge prov-trackline">Trackline</span></td><td><div class="tl-workflow"><span class="tl-step">Seleccionar campos</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Exportar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Subir al registro</span></div></td></tr>
+        <tr data-source="registro"><td><div class="field-name">registry_deadline</div><div class="field-desc">Fecha de apertura del registro central EU (19 julio 2026)</div></td><td><span class="source-badge src-registro">Registro EU</span></td><td><span class="prov-badge prov-trackline">Trackline</span></td><td><div class="tl-workflow"><span class="tl-step">Monitorizar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Notificar</span></div></td></tr>
+        <tr data-source="registro"><td><div class="field-name">battery_passport_deadline</div><div class="field-desc">Fecha l&iacute;mite DPP obligatorio bater&iacute;as (18 feb 2027)</div></td><td><span class="source-badge src-registro">Registro EU</span></td><td><span class="prov-badge prov-trackline">Trackline</span></td><td><div class="tl-workflow"><span class="tl-step">Monitorizar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Notificar</span></div></td></tr>
       </tbody>
     </table>
   </div>
@@ -441,47 +529,48 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 
 <div class="footer">
   <strong>Basado en:</strong>
-  <a href="https://github.com/batterypass/BatteryPassDataModel" target="_blank">BatteryPassDataModel v1.3 (GitHub)</a> &middot;
-  <a href="https://thebatterypass.eu/resources/" target="_blank">DIN DKE SPEC 99100</a> &middot;
-  <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" target="_blank">EU Reg. 2023/1542</a><br>
-  <a href="https://trackline.codecontract.com" target="_blank">Trackline</a> by <a href="https://codecontract.com" target="_blank">Code Contract S.L.</a> &middot; v0.1 &middot; 20 abril 2026<br>
-  <em style="color:#b0b0b0">Documento de referencia tecnica. Los campos exactos dependen de la categoria de bateria y la version del modelo de datos.</em>
+  <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj" target="_blank">Battery Reg. (EU) 2023/1542</a> &middot;
+  <a href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj" target="_blank">ESPR (EU) 2024/1781</a> &middot;
+  <a href="https://github.com/batterypass/BatteryPassDataModel" target="_blank">BatteryPass Data Model v1.3</a> &middot;
+  <a href="https://www.gs1.org/standards/gs1-digital-link" target="_blank">GS1 Digital Link</a>
+  <br>
+  <a href="https://trackline.codecontract.com" target="_blank">Trackline</a> by <a href="https://codecontract.com" target="_blank">Code Contract S.L.</a> &middot; v1.0 &middot; 22 abril 2026
+  <br>
+  <a href="index.html">&larr; Visor DPP Bater&iacute;as</a> &middot;
+  <a href="https://codecontract-dpp.github.io/dpp-construccion-demos/mapping-trackline-dpp.html">Mapping DPP Construcci&oacute;n</a>
+  <br>
+  <em style="color:#b0b0b0">Documento de referencia t&eacute;cnica. Los campos exactos depender&aacute;n de los actos delegados espec&iacute;ficos para cada categor&iacute;a de bater&iacute;a.</em>
 </div>
 
 <script>
 function toggleSection(header) {
   header.classList.toggle('collapsed');
-  header.nextElementSibling.classList.toggle('hidden');
+  var body = header.nextElementSibling;
+  while (body && !body.classList.contains('section-body')) body = body.nextElementSibling;
+  if (body) body.classList.toggle('hidden');
 }
-
 function filterBy(source) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
   event.target.classList.add('active');
-  document.querySelectorAll('.map-table tr[data-source]').forEach(row => {
-    if (source === 'all' || row.dataset.source === source) {
-      row.dataset.hidden = 'false';
-      row.style.display = '';
-    } else {
-      row.dataset.hidden = 'true';
-      row.style.display = 'none';
+  document.querySelectorAll('tr[data-source]').forEach(function(row) {
+    if (source === 'all') { row.setAttribute('data-hidden','false'); row.style.display = ''; }
+    else {
+      var match = row.getAttribute('data-source') === source;
+      row.setAttribute('data-hidden', match ? 'false' : 'true');
+      row.style.display = match ? '' : 'none';
     }
   });
 }
-
 function searchFields(query) {
-  const q = query.toLowerCase();
-  document.querySelectorAll('.map-table tr[data-source]').forEach(row => {
-    const text = row.textContent.toLowerCase();
-    if (!q || text.includes(q)) {
-      row.style.display = '';
-    } else {
-      row.style.display = 'none';
-    }
+  var q = query.toLowerCase();
+  document.querySelectorAll('tr[data-source]').forEach(function(row) {
+    if (!q) { row.setAttribute('data-hidden','false'); row.style.display = ''; return; }
+    var text = row.textContent.toLowerCase();
+    var match = text.indexOf(q) >= 0;
+    row.setAttribute('data-hidden', match ? 'false' : 'true');
+    row.style.display = match ? '' : 'none';
   });
-  // Reset filter buttons
-  if (q) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  }
+  if (q) document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
 }
 </script>
 </body>

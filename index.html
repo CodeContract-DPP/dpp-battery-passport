@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Battery Passport — Alterity LMT/LFP</title>
+<title>Battery Passport — DPP Baterias</title>
 <style>
 :root{--bg:#f5f7fa;--card:#fff;--border:#e2e8f0;--text:#1a202c;--muted:#718096;--accent:#1a5276;--green:#38a169;--amber:#d69e2e;--red:#e53e3e;--gray:#a0aec0;--purple:#6b46c1;--blue:#2b6cb0;--teal:#319795}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -150,8 +150,9 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 </head>
 <body>
 <header class="app-header">
-<h1>🔋 Battery Passport — Alterity LMT/LFP</h1>
-<p>Pasaporte Digital de Producto conforme al Reglamento de Baterías (UE) 2023/1542 y ESPR 2024/1781</p>
+<h1>Battery Passport</h1>
+<p>Ejemplo de DPP conforme al Reglamento de Baterias (UE) 2023/1542 y alineado con el marco europeo del ESPR</p>
+<p style="opacity:.7; font-size:.85rem; margin-top:.35rem;">Con evidencia trazable, validacion estructurada y exportacion JSON-LD con Trackline</p>
 <div class="header-badges">
 <span class="badge-reg">EU Battery Reg. 2023/1542</span>
 <span class="badge-reg">ESPR 2024/1781</span>
@@ -162,12 +163,20 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 </header>
 <nav class="nav-bar">
 <div class="nav-links">
-<a href="index.html" class="active">Visor Batería</a>
+<a href="index.html" class="active">Visor</a>
+<a href="https://codecontract-dpp.github.io/dpp-validator/" target="_blank">Validador</a>
+<a href="ruta-dpp-baterias.html">Guia DPP</a>
+<a href="mapping-trackline-dpp.html">Mapping Trackline</a>
 </div>
 <div class="json-selector">
-<label for="jsonFile">Archivo:</label>
-<select id="jsonFile" onchange="loadSelected()">
-<option value="data/dpp-battery-alterity.json" selected>Alterity LMT/LFP (Piloto)</option>
+<label for="productSelect">Producto:</label>
+<select id="productSelect">
+<option value="dpp-battery-lmt-lfp" selected>Bateria LMT/LFP</option>
+</select>
+<label for="versionSelect">Version:</label>
+<select id="versionSelect">
+<option value="filled">Con datos (ejemplo)</option>
+<option value="empty">Plantilla vacia</option>
 </select>
 </div>
 </nav>
@@ -190,27 +199,18 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <div id="dpp-root"></div>
 </main>
 <footer class="app-footer">
-Battery Passport v1.0 — Motor genérico DPP por <a href="https://codecontract.com" target="_blank">Code Contract S.L.</a>
-· Evidencia: <a href="https://trackline.codecontract.com" target="_blank">Trackline</a>
-· Modelo: <a href="https://github.com/batterypass/BatteryPassDataModel" target="_blank">BatteryPassDataModel v1.3</a>
-· Reg. Baterías (UE) 2023/1542 · ESPR (UE) 2024/1781
+Battery Passport &middot; Demo v1.0<br>
+Evidencia trazable con <a href="https://trackline.codecontract.com" target="_blank">Trackline</a> by <a href="https://codecontract.com" target="_blank">Code Contract</a><br>
+Marco regulatorio: Reg. Baterias (UE) 2023/1542 &middot; ESPR (UE) 2024/1781 &middot; <a href="https://github.com/batterypass/BatteryPassDataModel" target="_blank">BatteryPassDataModel v1.3</a>
 </footer>
 <script src="js/app.js"></script>
 <script>
-function loadSelected(){
-  var s=document.getElementById('jsonFile');
-  DPP.init(s.value,'dpp-root');
+function getJsonPath() {
+  var product = document.getElementById('productSelect').value;
+  var version = document.getElementById('versionSelect').value;
+  var suffix = version === 'empty' ? '-empty' : '';
+  return 'data/' + product + suffix + '.json';
 }
-(function(){
-  var params = new URLSearchParams(window.location.search);
-  var id = params.get('id');
-  var sel = document.getElementById('jsonFile');
-  if (id) {
-    // Support future additional battery JSONs via ?id= parameter
-    sel.value = 'data/' + id + '.json';
-  }
-  DPP.init(sel.value, 'dpp-root');
-})();
-</script>
-</body>
-</html>
+
+function loadDPP() {
+  DPP.init(getJsonPath(), 

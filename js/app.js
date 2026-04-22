@@ -1,8 +1,9 @@
 /**
- * app-battery.js — Motor genérico DPP adaptado para Battery Passport
- * Basado en el motor de mueble (codecontract-dpp/dpp-furniture-passport)
- * Añade: estados confirmed/dynamic, renderizado _isTable, plazos 2027/2028
- * v1.0 — 2026-04-17
+ * app-battery.js - Motor generico DPP adaptado para Battery Passport
+ * Basado en el motor de construccion (codecontract-dpp/dpp-construccion-demos)
+ * Anade: estados confirmed/dynamic, renderizado _isTable, plazos 2027/2028
+ * Soporta: JSON-LD @context, traceability, actors, registry, block_status
+ * v2.0 - 2026-04-21
  */
 const DPP = (() => {
   const STATUS_MAP = {
@@ -10,8 +11,8 @@ const DPP = (() => {
     confirmed: { label: 'Confirmado',      cls: 'st-confirmed', icon: '\u2705' },
     partial:   { label: 'Parcial',         cls: 'st-partial',   icon: '\u26A0\uFE0F' },
     pending:   { label: 'Pendiente',       cls: 'st-pending',   icon: '\u274C' },
-    assumed:   { label: 'Pendiente',       cls: 'st-pending',   icon: '\u274C' },  // legacy alias
-    dynamic:   { label: 'Dinámico (BMS)',  cls: 'st-dynamic',   icon: '\uD83D\uDCE1' }
+    assumed:   { label: 'Pendiente',       cls: 'st-pending',   icon: '\u274C' },
+    dynamic:   { label: 'Din\u00e1mico (BMS)',  cls: 'st-dynamic',   icon: '\uD83D\uDCE1' }
   };
   const LEGAL_CLS = { 'LEY': 'legal-ley', 'PROYECCION': 'legal-proyeccion', 'PENDIENTE AD': 'legal-pendiente' };
 
@@ -25,16 +26,15 @@ const DPP = (() => {
     return '<span class="status-badge ' + m.cls + '">' + m.icon + ' ' + m.label + '</span>';
   }
   function humanKey(key) {
-    // Convert camelCase and __ separators to readable text
     return key
-      .replace(/__/g, ' › ')
+      .replace(/__/g, ' \u203A ')
       .replace(/([A-Z])/g, ' $1')
       .replace(/^./, function(c){ return c.toUpperCase(); })
       .replace(/_/g, ' ');
   }
 
   function renderTable(tableObj) {
-    if (!tableObj || !tableObj._columns || !tableObj._rows) return '<span class="no-data">— tabla vacía —</span>';
+    if (!tableObj || !tableObj._columns || !tableObj._rows) return '<span class="no-data">\u2014 tabla vac\u00eda \u2014</span>';
     var html = '<table class="data-table"><thead><tr>';
     tableObj._columns.forEach(function(col) {
       html += '<th>' + humanKey(col) + '</th>';
@@ -44,7 +44,7 @@ const DPP = (() => {
       html += '<tr>';
       tableObj._columns.forEach(function(col) {
         var val = row[col];
-        html += '<td>' + (val !== null && val !== undefined ? String(val) : '—') + '</td>';
+        html += '<td>' + (val !== null && val !== undefined ? String(val) : '\u2014') + '</td>';
       });
       html += '</tr>';
     });
@@ -54,11 +54,9 @@ const DPP = (() => {
 
   function formatValue(val) {
     if (val === null || val === undefined) return '<span class="no-data">\u2014 sin datos \u2014</span>';
-    // _isTable objects → render as HTML table
     if (typeof val === 'object' && !Array.isArray(val) && val._isTable) {
       return renderTable(val);
     }
-    // Plain objects → render as key-value list
     if (typeof val === 'object' && !Array.isArray(val)) {
       var parts = [];
       Object.keys(val).forEach(function(k) {
@@ -66,10 +64,10 @@ const DPP = (() => {
           parts.push('<span class="field-name">' + humanKey(k) + ':</span> ' + formatValue(val[k]));
         }
       });
-      return parts.length ? parts.join('<br>') : '<span class="no-data">\u2014 vacío \u2014</span>';
+      return parts.length ? parts.join('<br>') : '<span class="no-data">\u2014 vac\u00edo \u2014</span>';
     }
-    if (Array.isArray(val)) return val.length ? val.join(', ') : '<span class="no-data">\u2014 vacío \u2014</span>';
-    if (typeof val === 'boolean') return val ? 'Sí' : 'No';
+    if (Array.isArray(val)) return val.length ? val.join(', ') : '<span class="no-data">\u2014 vac\u00edo \u2014</span>';
+    if (typeof val === 'boolean') return val ? 'S\u00ed' : 'No';
     return String(val);
   }
 
@@ -77,7 +75,6 @@ const DPP = (() => {
     if (key.startsWith('_')) return '';
     var metaKeys = ['_status','_legalBasis','_sourceDocument','_evidence','_note','_isTable','_columns','_rows'];
     var dataFields = '';
-    // If attribute itself is a table (_isTable at attribute level), render as HTML table
     if (attr._isTable && attr._columns && attr._rows) {
       dataFields = renderTable(attr);
     } else {
@@ -133,12 +130,10 @@ const DPP = (() => {
       if (k.startsWith('_')) return;
       attrsHTML += renderAttribute(k, section[k]);
       var st = section[k]._status || 'pending';
-      if (st === 'assumed') st = 'pending';  // legacy alias
+      if (st === 'assumed') st = 'pending';
       counts[st] = (counts[st]||0) + 1;
     });
     var cls = extraCls ? ' ' + extraCls : '';
-
-    // Build count badges — green (verified+confirmed), amber (partial), red (pending), blue (dynamic)
     var cntGreen = counts.verified + counts.confirmed;
     var cntAmber = counts.partial;
     var cntRed = counts.pending;
@@ -152,7 +147,7 @@ const DPP = (() => {
       (cntGreen ? '<span class="cnt cnt-v" title="Verificado / Confirmado">' + cntGreen + '</span>' : '') +
       (cntAmber ? '<span class="cnt cnt-pa" title="Parcial">' + cntAmber + '</span>' : '') +
       (cntRed ? '<span class="cnt cnt-pe" title="Pendiente">' + cntRed + '</span>' : '') +
-      (cntBlue ? '<span class="cnt cnt-dy" title="Dinámico (BMS)">' + cntBlue + '</span>' : '') +
+      (cntBlue ? '<span class="cnt cnt-dy" title="Din\u00e1mico (BMS)">' + cntBlue + '</span>' : '') +
       '</div>' +
       '<span class="chevron" id="chev-' + sectionKey + '">\u25BC</span>' +
       '</div>' +
@@ -160,16 +155,24 @@ const DPP = (() => {
       '</section>';
   }
 
-  function renderMeta(meta) {
+  var SKIP_KEYS = ['@context','dpp_uid','dpp_version','created','last_updated','regulation_framework','_meta','block_status'];
+
+  function renderMeta(data) {
+    var meta = data._meta || {};
     var productName = '';
     if (meta.notes) productName = '<div class="meta-row"><strong>\uD83D\uDCCB</strong> ' + meta.notes + '</div>';
+    var infraHTML = '';
+    if (data.dpp_uid) infraHTML += '<div class="meta-row"><strong>DPP UID:</strong> <code>' + data.dpp_uid + '</code></div>';
+    if (data['@context']) infraHTML += '<div class="meta-row"><strong>JSON-LD @context:</strong> ' + data['@context'] + '</div>';
+    if (data.regulation_framework) infraHTML += '<div class="meta-row"><strong>Marco regulatorio:</strong> ' + data.regulation_framework.join(' \u00b7 ') + '</div>';
     return '<div class="dpp-meta">' +
       productName +
-      '<div class="meta-row"><strong>Esquema:</strong> ' + meta.schema + '</div>' +
-      '<div class="meta-row"><strong>Regulación:</strong> ' + meta.regulation + '</div>' +
-      '<div class="meta-row"><strong>Versión:</strong> ' + meta.version + ' \u2014 ' + meta.generatedDate + '</div>' +
+      '<div class="meta-row"><strong>Esquema:</strong> ' + (meta.schema||'--') + '</div>' +
+      '<div class="meta-row"><strong>Regulaci\u00f3n:</strong> ' + (meta.regulation||'--') + '</div>' +
+      '<div class="meta-row"><strong>Versi\u00f3n:</strong> ' + (meta.version||'--') + ' \u2014 ' + (meta.generatedDate||'--') + '</div>' +
       ((meta.dppStatus&&meta.dppStatus.value)||(meta.dppGranularity&&meta.dppGranularity.value) ? '<div class="meta-row"><strong>Estado DPP:</strong> ' + (meta.dppStatus&&meta.dppStatus.value||'--') + ' \u00b7 Granularidad: ' + (meta.dppGranularity&&meta.dppGranularity.value||'--') + '</div>' : '') +
-      '<div class="meta-row"><strong>Evidencia:</strong> ' + meta.evidenceProvider + '</div>' +
+      '<div class="meta-row"><strong>Evidencia:</strong> ' + (meta.evidenceProvider||'--') + '</div>' +
+      infraHTML +
       '</div>';
   }
 
@@ -178,7 +181,8 @@ const DPP = (() => {
     var urgentItems = [];
     var tracklineCount = 0;
     Object.keys(data).forEach(function(sk) {
-      if (sk === '_meta') return;
+      if (SKIP_KEYS.indexOf(sk) >= 0) return;
+      if (typeof data[sk] !== 'object' || data[sk] === null || Array.isArray(data[sk])) return;
       Object.keys(data[sk]).forEach(function(ak) {
         if (ak.startsWith('_')) return;
         total++;
@@ -187,12 +191,10 @@ const DPP = (() => {
         if (st === 'verified') verified++;
         else if (st === 'confirmed') confirmed++;
         else if (st === 'partial') partial++;
-        else if (st === 'assumed') pending++;  // legacy: count as pending
+        else if (st === 'assumed') pending++;
         else if (st === 'dynamic') dynamic++;
         else pending++;
-        // Count trackline evidence
         if (attr._evidence && attr._evidence.blockchainTxHash) tracklineCount++;
-        // Find urgent items (deadline 2026, 2027 or 2028)
         if (attr._sourceDocument && attr._sourceDocument.deadline) {
           var dl = attr._sourceDocument.deadline;
           if ((dl.indexOf('2026') >= 0 || dl.indexOf('2027') >= 0 || dl.indexOf('2028') >= 0) && st !== 'verified' && st !== 'confirmed') {
@@ -207,19 +209,18 @@ const DPP = (() => {
     var dashLen = Math.PI * 100;
     var dashOff = dashLen * (1 - pct/100);
 
-    // Executive dashboard
     var urgentHTML = '';
     if (urgentItems.length > 0) {
       urgentHTML = '<div class="dashboard-urgent"><strong>\u26A0\uFE0F Plazos regulatorios:</strong><ul>';
       urgentItems.slice(0, 8).forEach(function(item) {
         urgentHTML += '<li><strong>' + item.name + '</strong> \u2014 ' + item.deadline + ' <span class="urgent-section">(' + item.section + ')</span></li>';
       });
-      if (urgentItems.length > 8) urgentHTML += '<li>... y ' + (urgentItems.length - 8) + ' más</li>';
+      if (urgentItems.length > 8) urgentHTML += '<li>... y ' + (urgentItems.length - 8) + ' m\u00e1s</li>';
       urgentHTML += '</ul></div>';
     }
 
     return '<div class="dpp-dashboard">' +
-      '<div class="dashboard-header"><h2>\uD83D\uDCCA Panel ejecutivo — Battery Passport</h2></div>' +
+      '<div class="dashboard-header"><h2>\uD83D\uDCCA Panel ejecutivo \u2014 Battery Passport</h2></div>' +
       '<div class="dashboard-grid">' +
       '<div class="dashboard-ring">' +
       '<svg viewBox="0 0 120 120">' +
@@ -232,9 +233,9 @@ const DPP = (() => {
       '<div class="stat"><span class="dot dot-v"></span> Confirmados: <strong>' + confirmed + '</strong></div>' +
       '<div class="stat"><span class="dot dot-ve"></span> Verificados: <strong>' + verified + '</strong></div>' +
       '<div class="stat"><span class="dot dot-pa"></span> Parciales: <strong>' + partial + '</strong></div>' +
-      '<div class="stat"><span class="dot dot-dy"></span> Dinámicos (BMS): <strong>' + dynamic + '</strong></div>' +
+      '<div class="stat"><span class="dot dot-dy"></span> Din\u00e1micos (BMS): <strong>' + dynamic + '</strong></div>' +
       '<div class="stat"><span class="dot dot-pe"></span> Pendientes: <strong>' + pending + '</strong></div>' +
-      '<div class="stat-total">Total: ' + total + ' atributos · Completados: ' + completados + ' (' + pct + '%) · Cobertura: ' + pctPartial + '%</div>' +
+      '<div class="stat-total">Total: ' + total + ' atributos \u00b7 Completados: ' + completados + ' (' + pct + '%) \u00b7 Cobertura: ' + pctPartial + '%</div>' +
       '</div>' +
       '<div class="dashboard-kpis">' +
       '<div class="kpi"><span class="kpi-number">' + tracklineCount + '</span><span class="kpi-label">\u26D3\uFE0F Trackline</span></div>' +
@@ -259,11 +260,10 @@ const DPP = (() => {
       if (!res.ok) throw new Error('No se pudo descargar ' + jsonPath + ' (HTTP ' + res.status + ')');
       var data = await res.json();
       window._dppData = data;
-      var html = renderMeta(data._meta) + renderSummary(data);
+      var html = renderMeta(data) + renderSummary(data);
 
-      // Registry section first (highlighted)
-      if (data._registry) {
-        html += renderSection('_registry', data._registry, 'registry-highlight');
+      if (data.registry) {
+        html += renderSection('registry', data.registry, 'registry-highlight');
       }
 
       html += '<div class="filter-bar">' +
@@ -271,12 +271,13 @@ const DPP = (() => {
         '<button class="filter-btn" data-filter="confirmed">\u2705 Confirmados</button>' +
         '<button class="filter-btn" data-filter="verified">\u2705 Verificados</button>' +
         '<button class="filter-btn" data-filter="partial">\u26A0\uFE0F Parciales</button>' +
-        '<button class="filter-btn" data-filter="dynamic">\uD83D\uDCE1 Dinámicos</button>' +
+        '<button class="filter-btn" data-filter="dynamic">\uD83D\uDCE1 Din\u00e1micos</button>' +
         '<button class="filter-btn" data-filter="pending">\u274C Pendientes</button>' +
         '</div>';
 
       Object.keys(data).forEach(function(k) {
-        if (k === '_meta' || k === '_registry') return;
+        if (SKIP_KEYS.indexOf(k) >= 0 || k === 'registry') return;
+        if (typeof data[k] !== 'object' || data[k] === null || Array.isArray(data[k])) return;
         html += renderSection(k, data[k], '');
       });
       container.innerHTML = html;
@@ -287,7 +288,7 @@ const DPP = (() => {
         '<strong>\u26A0\uFE0F Error cargando el Battery Passport</strong><br>' +
         '<span style="font-size:.9rem">' + err.message + '</span><br>' +
         '<span style="font-size:.8rem;color:#718096;display:block;margin-top:.5rem">' +
-        'Revisa la consola del navegador (F12) para más detalles, o prueba a recargar con Ctrl+F5.' +
+        'Revisa la consola del navegador (F12) para m\u00e1s detalles, o prueba a recargar con Ctrl+F5.' +
         '</span></div>';
     }
   }
@@ -297,7 +298,7 @@ const DPP = (() => {
     if (!container) return;
     if (container.children.length > 0) return;
     var sel = document.getElementById('jsonFile');
-    var jsonPath = sel ? sel.value : 'data/dpp-battery-alterity.json';
+    var jsonPath = sel ? sel.value : 'data/dpp-battery-lmt-lfp.json';
     init(jsonPath, 'dpp-root');
   }
   if (document.readyState === 'loading') {

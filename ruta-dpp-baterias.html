@@ -340,7 +340,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 </div>
 
 <div class="deadline-banner">
-  <span>&#x23F0;</span> Deadline obligatorio: 18 febrero 2027 &mdash; Todas las baterias EV, LMT e industriales (&gt;2 kWh) deben tener Battery Passport y estar cargadas en el registro ESPR
+  <span>&#x23F0;</span> Deadline obligatorio: 18 febrero 2027 &mdash; Todas las baterias EV, LMT e industriales recargables (&gt;2 kWh) deben tener Battery Passport y estar cargadas en el registro ESPR. <span style="opacity:.75">No aplica a baterias portatiles ni de arranque (SLI).</span>
 </div>
 
 <!-- HIERARCHY: LEY > GUIA > SOLUCION -->
@@ -408,6 +408,26 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
           <td><span class="tl-status-badge tl-upcoming">Proximo</span></td>
         </tr>
         <tr>
+          <td class="tl-date-cell" style="color:#2563eb">Q2 2026</td>
+          <td>
+            <div class="tl-milestone">Finalizacion normas armonizadas JTC 24 (FprEN 18216-18246)</div>
+            <div class="tl-publisher">Mandatos M/579 + M/604 CEN-CENELEC</div>
+          </td>
+          <td class="tl-publisher">CEN-CENELEC JTC 24 (6 normas DPP: data model, exchange, carrier, processing, taxonomy, authentication)</td>
+          <td><span class="tl-status-badge tl-upcoming">Proximo</span>
+            <div class="tl-da-note">Deslizado desde dic 2025</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#2563eb">Jul 2026</td>
+          <td>
+            <div class="tl-milestone">Registro central DPP de la Comision operativo</div>
+            <div class="tl-publisher">Art. 12 ESPR 2024/1781</div>
+          </td>
+          <td class="tl-publisher">Comision Europea (infraestructura del registro central para todos los DPP sectoriales)</td>
+          <td><span class="tl-status-badge tl-upcoming">Proximo</span></td>
+        </tr>
+        <tr>
           <td class="tl-date-cell" style="color:#d97706">Ago 2026</td>
           <td>
             <div class="tl-milestone">Declaracion CO&#x2082; obligatoria (industrial recargable &gt;2 kWh) + Clases de rendimiento CO&#x2082;</div>
@@ -434,21 +454,57 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
           <td class="tl-date-cell" style="color:#7c3aed">Ago 2027</td>
           <td>
             <div class="tl-milestone">Due diligence cadena de suministro obligatoria</div>
-            <div class="tl-publisher">Arts. 48-52 Reg. 2023/1542</div>
+            <div class="tl-publisher">Arts. 48-52 Reg. 2023/1542 · <em style="color:var(--amber)">Pospuesto desde ago 2025 por Reg. (UE) 2025/1561</em></div>
           </td>
           <td class="tl-publisher">Fabricante (informe due diligence) + Organismos notificados (verificacion terceros)</td>
           <td><span class="tl-status-badge tl-future">Futuro</span></td>
         </tr>
         <tr>
+          <td class="tl-date-cell" style="color:#7c3aed">Dic 2027</td>
+          <td>
+            <div class="tl-milestone">Plena aplicacion Cyber Resilience Act (CRA)</div>
+            <div class="tl-publisher">Reg. (UE) 2024/2847 &mdash; afecta a plataformas DPP y BMS como productos con elementos digitales</div>
+          </td>
+          <td class="tl-publisher">Fabricantes de BMS y operadores de plataformas DPP (DPPSP)</td>
+          <td><span class="tl-status-badge tl-future">Futuro</span></td>
+        </tr>
+        <tr>
           <td class="tl-date-cell" style="color:#7c3aed">Feb 2028</td>
           <td>
-            <div class="tl-milestone">Contenido minimo reciclado obligatorio (cobalto, plomo, litio, niquel)</div>
-            <div class="tl-publisher">Art. 8 Reg. 2023/1542</div>
+            <div class="tl-milestone">Huella de carbono LMT; umbrales maximos huella EV; declaracion contenido reciclado</div>
+            <div class="tl-publisher">Arts. 7 y 8 Reg. 2023/1542</div>
           </td>
-          <td class="tl-publisher">Comision Europea (acto delegado con porcentajes minimos) + Fabricante (declaracion y evidencia)</td>
+          <td class="tl-publisher">Comision Europea (actos delegados) + Fabricante (declaracion y evidencia)</td>
           <td><span class="tl-status-badge tl-future">Futuro</span>
-            <div class="tl-da-note">Pendiente: delegated act porcentajes</div>
+            <div class="tl-da-note">Pendiente: delegated acts</div>
           </td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#7c3aed">Ago 2030</td>
+          <td>
+            <div class="tl-milestone">Huella de carbono industriales con almacenamiento externo</div>
+            <div class="tl-publisher">Art. 7.1(d) Reg. 2023/1542</div>
+          </td>
+          <td class="tl-publisher">Comision Europea (acto delegado) + Fabricante</td>
+          <td><span class="tl-status-badge tl-future">Futuro</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#7c3aed">Ago 2031</td>
+          <td>
+            <div class="tl-milestone">Primer umbral de contenido reciclado obligatorio</div>
+            <div class="tl-publisher">Art. 8.2 Reg. 2023/1542 &mdash; Co 16%, Pb 85%, Li 6%, Ni 6%</div>
+          </td>
+          <td class="tl-publisher">Fabricante (evidencia documental de contenido reciclado verificado)</td>
+          <td><span class="tl-status-badge tl-future">Futuro</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#7c3aed">Ago 2036</td>
+          <td>
+            <div class="tl-milestone">Segundo umbral de contenido reciclado (mas exigente)</div>
+            <div class="tl-publisher">Art. 8.3 Reg. 2023/1542 &mdash; Co 26%, Pb 85%, Li 12%, Ni 15%</div>
+          </td>
+          <td class="tl-publisher">Fabricante (evidencia documental de contenido reciclado verificado)</td>
+          <td><span class="tl-status-badge tl-future">Futuro</span></td>
         </tr>
       </tbody>
     </table>
@@ -487,13 +543,43 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="step-icon">&#x1F4DC;</div>
       <div class="step-content">
         <h3>Leer el Reglamento EU 2023/1542</h3>
-        <p>El texto legal completo. Articulos clave: Art. 77 (Battery Passport), Art. 7 (huella de carbono), Art. 8 (contenido reciclado), Arts. 48-52 (due diligence cadena de suministro), Art. 11 (removibilidad y sustituibilidad). Aplica a EV, LMT e industriales &gt;2 kWh.</p>
+        <p>El texto legal completo. Articulos clave: Art. 77 (Battery Passport), Art. 7 (huella de carbono), Art. 8 (contenido reciclado), Arts. 48-52 (due diligence cadena de suministro), Art. 11 (removibilidad y sustituibilidad). Aplica a baterias EV, LMT e industriales recargables &gt;2 kWh. <strong>No aplica</strong> a baterias portatiles ni de arranque/iluminacion/encendido (SLI).</p>
+        <p style="font-size:13px;color:var(--amber);margin-top:6px"><strong>Importante:</strong> el texto original ha sido objeto de <strong>cinco corrigenda</strong> (el ultimo: OJ L 2024/90243 de 17 de abril de 2024) y modificado por el <a href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj" target="_blank" style="color:var(--blue)">ESPR 2024/1781</a> y el <a href="https://eur-lex.europa.eu/eli/reg/2025/1561" target="_blank" style="color:var(--blue)">Reg. 2025/1561</a>. Usar siempre la <strong>version consolidada</strong> de EUR-Lex.</p>
+        <p style="font-size:13px;color:var(--gray);margin-top:4px"><strong>Relacion ESPR &harr; Baterias:</strong> el Reg. 2023/1542 funciona como <em>lex specialis</em> &mdash; mantiene su propio regimen de pasaporte digital. El ESPR 2024/1781 actua como marco horizontal que lo complementa para garantizar interoperabilidad con otros sectores, pero <strong>no lo sustituye ni lo absorbe</strong>.</p>
         <div class="doc-group">
           <div class="doc-group-label dg-ley">LEY:</div>
           <div class="doc-group-links">
-            <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; Reglamento EU 2023/1542 (EUR-Lex)</a>
+            <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02023R1542-20250818" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2023/1542 — texto consolidado (EUR-Lex)</a>
+            <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2023/1542 — texto original (EUR-Lex)</a>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x23F3;</div>
+      <div class="step-content">
+        <h3>Actos delegados y de ejecucion &mdash; estado a abril 2026</h3>
+        <p>El Reglamento 2023/1542 habilita varios actos delegados y de ejecucion que aun no se han adoptado. Esto condiciona la aplicacion practica de varias obligaciones:</p>
+        <table style="width:100%;border-collapse:collapse;font-size:13px;margin:10px 0">
+          <thead>
+            <tr style="background:#f7fafc">
+              <th style="border:1px solid #e5e7eb;padding:6px 8px;text-align:left;font-size:12px;color:var(--blue)">Instrumento</th>
+              <th style="border:1px solid #e5e7eb;padding:6px 8px;text-align:left;font-size:12px;color:var(--blue)">Base legal</th>
+              <th style="border:1px solid #e5e7eb;padding:6px 8px;text-align:left;font-size:12px;color:var(--blue)">Estado abr 2026</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px">Metodologia huella de carbono EV</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Art. 7.1(a)</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--amber)">Borrador &mdash; no adoptado</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px">Huella de carbono industriales &gt;2 kWh</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Art. 7.1(b)</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--amber)">Pendiente</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px">Formato del pasaporte digital</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Arts. 77.12, 79</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--amber)">Pendiente &mdash; depende de JTC 24</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px">Clases de rendimiento de huella</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Art. 7.2</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--amber)">Pendiente</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px">Umbrales maximos de huella</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Art. 7.3</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--amber)">Pendiente</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px">Niveles minimos contenido reciclado</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Art. 8.2</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--amber)">Pendiente &mdash; arranca reloj 24 meses</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px">Lista ZSG terceros paises (due diligence)</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Art. 52</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--amber)">Pendiente &mdash; plazo pospuesto a 2027</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px">Normas armonizadas JTC 24</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Mandatos M/579 + M/604</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--blue)">prEN en CEN Enquiry &mdash; FprEN mayo 2026</span></td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px;color:var(--gray)">Las fechas del Reglamento se mantienen vigentes, pero la ausencia de actos delegados de metodologia (especialmente huella de carbono) genera un cuello de botella practico. El sector opera con el GBA GHG Rulebook v1.5 como referencia de facto.</p>
       </div>
     </div>
     <div class="step">
@@ -516,7 +602,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="step-content">
         <h3>Entender la arquitectura tecnica del DPP</h3>
         <p>Como funciona el sistema: data carrier (QR, Data Matrix, NFC) &rarr; identificador unico &rarr; acceso al passport &rarr; registro central EU. Las referencias tecnicas habituales se dividen en tres categorias:</p>
-        <p style="margin-top:6px"><strong>Normas e identificadores:</strong> ISO/IEC 15459 (identificadores unicos de producto). <strong>Marcos y modelos de datos:</strong> AAS (Asset Administration Shell), ECLASS (clasificacion de productos). <strong>Ecosistemas e iniciativas de referencia:</strong> Catena-X (ecosistema de intercambio de datos industrial).</p>
+        <p style="margin-top:6px"><strong>Normas e identificadores:</strong> ISO/IEC 15459 (identificadores unicos de producto), GS1 Digital Link (data carrier URL). <strong>Marcos y modelos de datos:</strong> AAS (Asset Administration Shell), ECLASS (clasificacion de productos). <strong>Ecosistemas e iniciativas de referencia:</strong> Catena-X / Tractus-X (ecosistema de intercambio de datos industrial).</p>
+        <p style="margin-top:8px;padding:8px 12px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;font-size:13px"><strong>Normalizacion en curso &mdash; JTC 24:</strong> CEN-CENELEC ha recibido los mandatos <strong>M/579</strong> (baterias) y <strong>M/604 + AMD 1</strong> (DPP horizontal) para desarrollar normas armonizadas. Las 6 normas en elaboracion son: <strong>prEN 18216</strong> (data model), <strong>prEN 18219</strong> (data exchange), <strong>prEN 18220</strong> (data carrier), <strong>prEN 18221</strong> (data processing), <strong>prEN 18222</strong> (taxonomy) y <strong>prEN 18246</strong> (data authentication, reliability, integrity). Estado: CEN Enquiry completado; finalizacion FprEN prevista para <strong>Q2 2026</strong> (deslizado desde dic 2025).</p>
         <div class="doc-group">
           <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
           <div class="doc-group-links">
@@ -535,15 +622,42 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       </div>
     </div>
     <div class="step">
+      <div class="step-icon">&#x1F512;</div>
+      <div class="step-content">
+        <h3>Capa de confianza digital: del dato a la prueba</h3>
+        <p>Un DPP accesible via QR cubre la obligacion de transparencia, pero <strong>no aporta valor probatorio</strong> frente a autoridades, aseguradoras o litigios. Para que el dato del pasaporte tenga validez legal se necesita una capa de confianza digital basada en tres pilares:</p>
+        <p style="margin-top:8px;padding:10px 12px;background:#f5f3ff;border:1px solid #e9d8fd;border-radius:8px;font-size:13px">
+          <strong>1. eIDAS 2.0</strong> &mdash; <a href="https://eur-lex.europa.eu/eli/reg/2024/1183" target="_blank" style="color:var(--purple)">Reg. (UE) 2024/1183</a>: introduce los <em>Qualified Electronic Attestations of Attributes</em> (QEAA), que permiten emitir datos DPP con firma cualificada y sello de tiempo cualificado &mdash; medio de prueba admisible conforme al art. 35 eIDAS. La European Digital Identity Wallet (EUDI Wallet) estara disponible en cada Estado miembro antes de <strong>finales de 2026</strong>.<br><br>
+          <strong>2. Cyber Resilience Act</strong> &mdash; <a href="https://eur-lex.europa.eu/eli/reg/2024/2847" target="_blank" style="color:var(--purple)">Reg. (UE) 2024/2847</a>: en vigor desde dic 2024, plena aplicacion <strong>11 dic 2027</strong>. Afecta a plataformas DPP y al <strong>Battery Management System (BMS)</strong> como productos con elementos digitales. Reporting obligatorio de vulnerabilidades desde <strong>11 sep 2026</strong>.<br><br>
+          <strong>3. Firma cualificada y sello de tiempo</strong> &mdash; convierten el dato en medio de prueba con presuncion de autenticidad, integridad y fecha cierta. Sin ellos, un dato del DPP es informacion; con ellos, es <strong>evidencia</strong>.
+        </p>
+        <p style="font-size:12px;color:var(--gray);margin-top:6px">Esta capa es la que permite que servicios como Trackline aporten trazabilidad con valor legal al Battery Passport &mdash; no solo accesibilidad del dato.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY:</div>
+          <div class="doc-group-links">
+            <a href="https://eur-lex.europa.eu/eli/reg/2024/1183" class="doc-link doc-normativa" target="_blank">&#x1F517; eIDAS 2.0 &mdash; Reg. 2024/1183 (EUR-Lex)</a>
+            <a href="https://eur-lex.europa.eu/eli/reg/2024/2847" class="doc-link doc-normativa" target="_blank">&#x1F517; Cyber Resilience Act &mdash; Reg. 2024/2847 (EUR-Lex)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
       <div class="step-icon">&#x1F4A1;</div>
       <div class="step-content">
         <h3>Entender el valor de negocio</h3>
         <p>No solo es cumplimiento: el Battery Passport aporta ventaja competitiva, transparencia en la cadena de suministro y acceso al mercado EU.</p>
+        <p style="margin-top:8px;padding:10px 12px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;font-size:13px"><strong>Puente hacia construccion:</strong> el DPP de baterias es el <strong>laboratorio juridico-tecnico</strong> que la Comision esta usando para calibrar el DPP de otros sectores. El <a href="https://eur-lex.europa.eu/eli/reg/2024/3110" target="_blank" style="color:var(--blue)">Reg. (UE) 2024/3110</a> (nuevo CPR, en vigor desde enero 2025) crea el <em>Construction Digital Product Passport</em> con despliegue progresivo por familias de producto a partir de <strong>2028-2030</strong>. Arquitectura (DPPSPs, registro central, niveles de acceso), identificadores (ISO/IEC 15459 + GS1), credenciales verificables y ciberseguridad son comunes a ambos sectores. Dominar el DPP de baterias es prepararse para construccion.</p>
         <div class="doc-group">
           <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
           <div class="doc-group-links">
             <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Value Assessment (Battery Pass)</a>
             <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Value Assessment &mdash; LMT Spotlight</a>
+          </div>
+        </div>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY:</div>
+          <div class="doc-group-links">
+            <a href="https://eur-lex.europa.eu/eli/reg/2024/3110" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2024/3110 — nuevo CPR (EUR-Lex)</a>
           </div>
         </div>
       </div>
@@ -588,7 +702,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <div class="doc-group">
           <div class="doc-group-label dg-solucion">SOLUCION PROPIA:</div>
           <div class="doc-group-links">
-            <span class="doc-link doc-local">&#x1F4CA; Ejemplo: Mapping campos Alterity (doc. interno)</span>
+            <span class="doc-link doc-local">&#x1F4CA; Ejemplo: Mapping campos LMT/LFP (doc. interno)</span>
           </div>
         </div>
       </div>
@@ -692,11 +806,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="step-icon">&#x1F517;</div>
       <div class="step-content">
         <h3>Due diligence en la cadena de suministro</h3>
-        <p>Informe de diligencia debida, verificacion de terceros (RMI/RMAP), declaracion de minerales de conflicto. Obligatorio desde agosto 2027 (Arts. 48-52 del Reglamento).</p>
+        <p>Informe de diligencia debida, verificacion de terceros (RMI/RMAP), declaracion de minerales de conflicto. Obligatorio desde <strong>agosto 2027</strong> (Arts. 48-52 del Reglamento). <em>Nota: el plazo original era agosto 2025, pero fue pospuesto por el <a href="https://eur-lex.europa.eu/eli/reg/2025/1561" target="_blank" style="color:var(--amber)">Reglamento (UE) 2025/1561</a>.</em></p>
         <div class="doc-group">
           <div class="doc-group-label dg-ley">LEY:</div>
           <div class="doc-group-links">
             <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2023/1542 Arts. 48-52 (EUR-Lex)</a>
+            <a href="https://eur-lex.europa.eu/eli/reg/2025/1561" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2025/1561 — aplazamiento due diligence (EUR-Lex)</a>
           </div>
         </div>
       </div>
@@ -746,7 +861,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <div class="doc-group">
           <div class="doc-group-label dg-solucion">SOLUCION PROPIA:</div>
           <div class="doc-group-links">
-            <span class="doc-link doc-local">&#x1F4CA; Ejemplo: dpp.json Alterity (doc. interno)</span>
+            <span class="doc-link doc-local">&#x1F4CA; Ejemplo: dpp.json LMT/LFP (doc. interno)</span>
           </div>
         </div>
       </div>
@@ -904,7 +1019,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="cta-links">
       <a href="https://trackline.codecontract.com" class="cta-link cta-link-primary" target="_blank">&#x1F517; Acceder a Trackline</a>
       <a href="https://codecontract.com" class="cta-link cta-link-secondary" target="_blank">&#x1F517; Code Contract S.L.</a>
-      <a href="https://codecontract-dpp.github.io/dpp-battery-passport/" class="cta-link cta-link-secondary" target="_blank">&#x1F517; Ver ejemplo: DPP Alterity LMT</a>
+      <a href="https://codecontract-dpp.github.io/dpp-battery-passport/" class="cta-link cta-link-secondary" target="_blank">&#x1F517; Ver ejemplo: Battery Passport LMT/LFP</a>
+      <a href="mapping-trackline-dpp.html" class="cta-link cta-link-secondary" target="_blank">&#x1F4CA; Mapping Trackline &#x2194; DPP</a>
+      <a href="https://codecontract-dpp.github.io/dpp-validator/" class="cta-link cta-link-secondary" target="_blank">&#x2705; Validador DPP (estructura CIRPASS)</a>
+      <a href="https://www.linkedin.com/pulse/dpp-1-por-qu%C3%A9-el-pasaporte-digital-de-producto-eduardo-rico-stief/" class="cta-link cta-link-secondary" target="_blank">&#x1F4DD; &iquest;Por qu&eacute; el DPP? &mdash; Art&iacute;culo LinkedIn</a>
     </div>
   </div>
 </div>
@@ -915,7 +1033,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <a href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj" target="_blank">ESPR 2024/1781</a> &middot;
   <a href="https://thebatterypass.eu" target="_blank">Battery Pass Consortium</a> &middot;
   <a href="https://github.com/batterypass/BatteryPassDataModel" target="_blank">BatteryPassDataModel (GitHub)</a><br>
-  Elaborado por Code Contract S.L. &middot; v0.3 &middot; 17 abril 2026<br>
+  Elaborado por Code Contract S.L. &middot; v0.5 &middot; 22 abril 2026<br>
   <em style="color:#b0b0b0">Nota: este documento no constituye asesoramiento juridico. Consultar siempre el texto oficial del reglamento y los actos delegados vigentes.</em>
 </div>
 
@@ -926,4 +1044,4 @@ function toggle(header) {
 }
 </script>
 </body>
-</html>
+</

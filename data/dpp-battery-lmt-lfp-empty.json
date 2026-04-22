@@ -1,0 +1,1372 @@
+{
+  "@context": "https://www.w3.org/ns/dpp/v1",
+  "dpp_uid": "urn:dpp:codecontract:battery:lmt-lfp-plantilla-001",
+  "dpp_version": "2.0",
+  "created": "2026-04-21T10:00:00Z",
+  "last_updated": "2026-04-21T10:00:00Z",
+  "regulation_framework": [
+    "EU Battery Regulation (EU) 2023/1542",
+    "ESPR (EU) 2024/1781",
+    "Delegated Acts Art. 7 (Carbon Footprint)",
+    "Delegated Acts Art. 8 (Recycled Content)",
+    "Delegated Acts Arts. 48-52 (Due Diligence)",
+    "CEN/CENELEC JTC 24 prEN 18239 (Access Rights)",
+    "BatteryPass Data Model v1.3 (BMWK)"
+  ],
+  "_meta": {
+    "schema": "BatteryPassDataModel v1.3 + ESPR DPP Infrastructure (Code Contract)",
+    "basedOn": [
+      "https://github.com/batterypass/BatteryPassDataModel",
+      "https://codecontract-dpp.github.io/dpp-construccion-demos/"
+    ],
+    "regulation": "EU Battery Regulation 2023/1542 + ESPR 2024/1781",
+    "generatedDate": "2026-04-21",
+    "version": "2.0",
+    "dppStatus": {
+      "value": "draft",
+      "_status": "assumed",
+      "_note": "#2 ESPR. Estado del pasaporte: draft | active | inactive | expired."
+    },
+    "dppGranularity": {
+      "value": "batch",
+      "_status": "assumed",
+      "_note": "#3 ESPR. Granularidad del DPP: model | batch | item."
+    },
+    "notes": "Plantilla vacia para Battery Passport LMT/LFP. Todos los campos en estado pendiente.",
+    "evidenceProvider": "Trackline by Code Contract S.L. (https://trackline.codecontract.com)"
+  },
+  "generalProductInformation": {
+    "_icon": "🔋",
+    "_title": "Identificación y datos generales",
+    "productPassportIdentifier": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "batteryIdentifier": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "batteryModelIdentifier": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "batterySerialNumber": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "manufacturerIdentification": {
+      "value": "",
+      "address_streetAddress": "",
+      "address_postalCode": "",
+      "address_addressCountry": "",
+      "address_city": "",
+      "contact_email": "",
+      "contact_phone": "",
+      "contact_web": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "ESPR 2024/1781 Art. 2(32) · LEY",
+      "_sourceDocument": {
+        "name": "Fuente pública",
+        "type": "URL",
+        "generatedBy": "https://alterity.energy/en/contact/",
+        "deadline": null
+      },
+      "_evidence": null
+    },
+    "manufacturingPlace": {
+      "addressCountry": "",
+      "city": "",
+      "region": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "ESPR 2024/1781 Art. 2(33) · LEY",
+      "_sourceDocument": {
+        "name": "Fuente pública",
+        "type": "URL",
+        "generatedBy": "https://alterity.energy/en/contact/",
+        "deadline": null
+      },
+      "_evidence": null
+    },
+    "manufacturingDate": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "dateOfPuttingIntoService": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "batteryCategory": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "batteryStatus": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "batteryMass": {
+      "value": null,
+      "unit": "kg",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex XIII · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "warrantyPeriod": {
+      "value": null,
+      "unit": "months",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "uniqueEconomicOperatorIdentifier": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "ESPR 2024/1781 Art. 9 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "uniqueManufacturerIdentifier": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "uniqueFacilityIdentifier": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "ESPR 2024/1781 Art. 2(33) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "economicOperator": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": null,
+      "_evidence": null
+    }
+  },
+  "materialComposition": {
+    "_icon": "⚗️",
+    "_title": "Composición de materiales",
+    "productChemistry": {
+      "shortName": "",
+      "clearName": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": {
+        "name": "Fuente pública",
+        "type": "URL",
+        "generatedBy": "https://alterity.energy/en/mobility-sector/",
+        "deadline": null
+      },
+      "_evidence": null
+    },
+    "criticalRawMaterials": {
+      "_isTable": true,
+      "_columns": [
+        "name",
+        "casNumber"
+      ],
+      "_rows": [
+        {
+          "name": "Lithium",
+          "casNumber": "7439-93-2"
+        },
+        {
+          "name": "Natural Graphite",
+          "casNumber": null
+        }
+      ],
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex XIII(17) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "batteryMaterials": {
+      "_isTable": true,
+      "_columns": [
+        "materialName",
+        "materialIdentifier",
+        "location",
+        "batteryMaterialWeight"
+      ],
+      "_rows": [
+        {
+          "materialName": "Lithium Iron Phosphate (LiFePO4)",
+          "materialIdentifier": "15365-14-7",
+          "location": "Cathode",
+          "batteryMaterialWeight": 9.8
+        },
+        {
+          "materialName": "Graphite (synthetic)",
+          "materialIdentifier": "7782-42-5",
+          "location": "Anode",
+          "batteryMaterialWeight": 2.8
+        },
+        {
+          "materialName": "Lithium hexafluorophosphate (LiPF6)",
+          "materialIdentifier": "21324-40-3",
+          "location": "Electrolyte",
+          "batteryMaterialWeight": 0.9
+        },
+        {
+          "materialName": "Aluminium",
+          "materialIdentifier": "7429-90-5",
+          "location": "Current collector (cathode)",
+          "batteryMaterialWeight": 1.4
+        },
+        {
+          "materialName": "Copper",
+          "materialIdentifier": "7440-50-8",
+          "location": "Current collector (anode)",
+          "batteryMaterialWeight": 1.2
+        }
+      ],
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex XIII(17a-c) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "impactOfSubstances": {
+      "value": "",
+      "environmentalImpact": "",
+      "humanHealthImpact": "",
+      "safetyImpact": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex XIII(20) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "hazardousSubstances": {
+      "_isTable": true,
+      "_columns": [
+        "hazardousSubstanceName",
+        "hazardousSubstanceIdentifier",
+        "hazardousSubstanceClass",
+        "hazardousSubstanceConcentration",
+        "hazardousSubstanceLocation",
+        "hazardousSubstanceImpact"
+      ],
+      "_rows": [
+        {
+          "hazardousSubstanceName": "Lithium hexafluorophosphate",
+          "hazardousSubstanceIdentifier": "21324-40-3",
+          "hazardousSubstanceClass": "AcuteToxicity",
+          "hazardousSubstanceConcentration": null,
+          "hazardousSubstanceLocation": {
+            "componentName": "Electrolyte",
+            "componentId": null
+          },
+          "hazardousSubstanceImpact": [
+            "Harmful if swallowed",
+            "Causes skin irritation"
+          ]
+        }
+      ],
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex XIII(19-23) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    }
+  },
+  "performanceAndDurability": {
+    "_icon": "⚡",
+    "_title": "Rendimiento y durabilidad",
+    "technicalSpecification__batteryChemistry": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "technicalSpecification__ratedCapacity": {
+      "value": null,
+      "unit": "kWh",
+      "range": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
+      "_sourceDocument": {
+        "name": "Fuente pública",
+        "type": "URL",
+        "generatedBy": "https://alterity.energy/en/mobility-sector/",
+        "deadline": null
+      },
+      "_evidence": null
+    },
+    "technicalSpecification__nominalVoltage": {
+      "value": null,
+      "unit": "V",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "technicalSpecification__minimumVoltage": {
+      "value": null,
+      "unit": "V",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "technicalSpecification__maximumVoltage": {
+      "value": null,
+      "unit": "V",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
+      "_sourceDocument": {
+        "name": "Fuente pública",
+        "type": "URL",
+        "generatedBy": "https://alterity.energy/en/mobility-sector/",
+        "deadline": null
+      },
+      "_evidence": null
+    },
+    "technicalSpecification__certifiedUsableBatteryEnergy": {
+      "value": null,
+      "unit": "kWh",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "technicalSpecification__remainingCapacity": {
+      "value": "",
+      "unit": "Ah",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "technicalSpecification__capacityFade": {
+      "value": "",
+      "unit": "%",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "technicalSpecification__remainingUsableBatteryEnergy": {
+      "value": "",
+      "unit": "kWh",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "technicalSpecification__stateOfCharge": {
+      "value": "",
+      "unit": "%",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "technicalSpecification__stateOfCertifiedEnergy": {
+      "value": "",
+      "unit": "%",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "roundtripEfficiency__initialRoundTripEnergyEfficiency": {
+      "value": null,
+      "unit": "%",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": {
+        "name": "Fuente pública",
+        "type": "URL",
+        "generatedBy": "https://alterity.energy/en/mobility-sector/",
+        "deadline": null
+      },
+      "_evidence": null
+    },
+    "roundtripEfficiency__roundTripEfficiencyAt50PercentCycleLife": {
+      "value": null,
+      "unit": "%",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "roundtripEfficiency__remainingRoundTripEnergyEfficiency": {
+      "value": "",
+      "unit": "%",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "roundtripEfficiency__energyRoundTripEfficiencyFade": {
+      "value": "",
+      "unit": "%",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "roundtripEfficiency__initialSelfDischargingRate": {
+      "value": null,
+      "unit": "% / month",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "roundtripEfficiency__currentSelfDischargingRate": {
+      "value": "",
+      "unit": "% / month",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "roundtripEfficiency__evolutionOfSelfDischargeRates": {
+      "value": "",
+      "unit": "% / month",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "powerCapability__originalPowerCapability": {
+      "value": [],
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "powerCapability__remainingPowerCapability": {
+      "value": "",
+      "unit": "W",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "powerCapability__powerFade": {
+      "value": "",
+      "unit": "%",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "powerCapability__maximumPermittedBatteryPower": {
+      "value": null,
+      "unit": "kW",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "powerCapability__powerCapabilityRatio": {
+      "value": null,
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "internalResistance__initialInternalResistancePack": {
+      "value": null,
+      "unit": "mΩ",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "internalResistance__currentInternalResistancePack": {
+      "value": "",
+      "unit": "mΩ",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "batteryLifetime__expectedLifetimeYears": {
+      "value": null,
+      "unit": "years",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "batteryLifetime__expectedNumberOfCycles": {
+      "value": null,
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "batteryLifetime__warrantyPeriod": {
+      "value": null,
+      "unit": "months",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "batteryLifetime__capacityThresholdExhaustion": {
+      "value": null,
+      "unit": "%",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "batteryLifetime__cycleLifeReferenceTest": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "batteryLifetime__cRateOfRelevantCycleLifeTest": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "batteryLifetime__numberOfFullCycles": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "batteryLifetime__capacityThroughput": {
+      "value": "",
+      "unit": "Ah",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "batteryLifetime__energyThroughput": {
+      "value": "",
+      "unit": "kWh",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "batteryLifetime__putIntoService": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "temperatureConditions__temperatureInformation": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "temperatureConditions__temperatureRangeIdleState": {
+      "lowerBoundary": null,
+      "upperBoundary": null,
+      "unit": "°C",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "temperatureConditions__timeExtremeHighTemp": {
+      "value": "",
+      "unit": "hours",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "temperatureConditions__timeExtremeLowTemp": {
+      "value": "",
+      "unit": "hours",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "temperatureConditions__timeChargingExtremeHighTemp": {
+      "value": "",
+      "unit": "hours",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "temperatureConditions__timeChargingExtremeLowTemp": {
+      "value": "",
+      "unit": "hours",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "negativeEvents__numberOfDeepDischargeEvents": {
+      "value": null,
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex XIII · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "negativeEvents__numberOfOverchargeEvents": {
+      "value": null,
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex XIII · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "negativeEvents__informationOnAccidents": {
+      "value": [],
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex XIII · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    }
+  },
+  "carbonFootprint": {
+    "_icon": "🌍",
+    "_title": "Huella de carbono",
+    "batteryCarbonFootprint": {
+      "value": null,
+      "unit": "kg CO2e",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 7 · LEY",
+      "_sourceDocument": {
+        "name": "Declaración CO₂",
+        "deadline": "Feb 2025 (EV) / Ago 2026 (industrial)",
+        "type": "Delegated Act",
+        "generatedBy": "Fabricante + LCA externo"
+      },
+      "_evidence": null
+    },
+    "carbonFootprintPerformanceClass": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 7(2) · PENDIENTE AD",
+      "_sourceDocument": {
+        "name": "Declaración CO₂",
+        "deadline": "Feb 2025 (EV) / Ago 2026 (industrial)",
+        "type": "Delegated Act",
+        "generatedBy": "Fabricante + LCA externo"
+      },
+      "_evidence": null
+    },
+    "carbonFootprintStudy": {
+      "url": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 7(1)(d) · LEY",
+      "_sourceDocument": {
+        "name": "Declaración CO₂",
+        "deadline": "Feb 2025 (EV) / Ago 2026 (industrial)",
+        "type": "Delegated Act",
+        "generatedBy": "Fabricante + LCA externo"
+      },
+      "_evidence": null
+    },
+    "absoluteBatteryCarbonFootprint": {
+      "value": null,
+      "unit": "kg CO2e",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 7 · LEY",
+      "_sourceDocument": {
+        "name": "Declaración CO₂",
+        "deadline": "Feb 2025 (EV) / Ago 2026 (industrial)",
+        "type": "Delegated Act",
+        "generatedBy": "Fabricante + LCA externo"
+      },
+      "_evidence": null
+    },
+    "carbonFootprintPerLifecycleStage": {
+      "_isTable": true,
+      "_columns": [
+        "lifecycleStage",
+        "carbonFootprint",
+        "unit"
+      ],
+      "_rows": [
+        {
+          "lifecycleStage": "RawMaterialExtraction",
+          "carbonFootprint": 35,
+          "unit": "gCO2eq/kWh"
+        },
+        {
+          "lifecycleStage": "MainProduction",
+          "carbonFootprint": 18,
+          "unit": "gCO2eq/kWh"
+        },
+        {
+          "lifecycleStage": "Distribution",
+          "carbonFootprint": 5,
+          "unit": "gCO2eq/kWh"
+        },
+        {
+          "lifecycleStage": "EndOfLifeAndRecycling",
+          "carbonFootprint": 3,
+          "unit": "gCO2eq/kWh"
+        }
+      ],
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 7(1)(c) · LEY",
+      "_sourceDocument": {
+        "name": "Declaración CO₂",
+        "deadline": "Feb 2025 (EV) / Ago 2026 (industrial)",
+        "type": "Delegated Act",
+        "generatedBy": "Fabricante + LCA externo"
+      },
+      "_evidence": null
+    }
+  },
+  "circularity": {
+    "_icon": "♻️",
+    "_title": "Circularidad y fin de vida",
+    "recycledContent": {
+      "_isTable": true,
+      "_columns": [
+        "recycledMaterial",
+        "preConsumerShare",
+        "postConsumerShare"
+      ],
+      "_rows": [
+        {
+          "recycledMaterial": "Lithium",
+          "preConsumerShare": 8,
+          "postConsumerShare": 5
+        },
+        {
+          "recycledMaterial": "Cobalt",
+          "preConsumerShare": null,
+          "postConsumerShare": null
+        },
+        {
+          "recycledMaterial": "Nickel",
+          "preConsumerShare": null,
+          "postConsumerShare": null
+        },
+        {
+          "recycledMaterial": "Lead",
+          "preConsumerShare": null,
+          "postConsumerShare": null
+        }
+      ],
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 8 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "renewableContent": {
+      "value": null,
+      "unit": "%",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "safetyRequirements": {
+      "safetyInstructions": "",
+      "extinguishingAgent": [],
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Annex XIII(1a) · LEY",
+      "_sourceDocument": {
+        "name": "Fuente pública",
+        "type": "URL",
+        "generatedBy": "https://alterity.energy/en/mobility-sector/",
+        "deadline": null
+      },
+      "_evidence": null
+    },
+    "dismantlingAndRemovalInformation": {
+      "_isTable": true,
+      "_columns": [
+        "documentType",
+        "documentURL",
+        "mimeType"
+      ],
+      "_rows": [
+        {
+          "documentType": "DismantlingManual",
+          "documentURL": "https://alterity.energy/manuals/lmt-lfp-dismantling",
+          "mimeType": "application/pdf"
+        }
+      ],
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 11 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "sourceForSpareParts": {
+      "_isTable": true,
+      "_columns": [
+        "nameOfSupplier",
+        "supplierWebAddress",
+        "emailAddressOfSupplier",
+        "addressOfSupplier",
+        "components"
+      ],
+      "_rows": [
+        {
+          "nameOfSupplier": "Alterity Energy",
+          "supplierWebAddress": "https://alterity.energy",
+          "emailAddressOfSupplier": "info@alterity.energy",
+          "addressOfSupplier": {
+            "streetAddress": "Polígono Torrelarragoiti P5-D",
+            "postalCode": "48170",
+            "addressCountry": "Spain",
+            "city": "Zamudio"
+          },
+          "components": [
+            {
+              "partName": "Cell module LFP",
+              "partNumber": "ALT-LMT-MODULE-27"
+            },
+            {
+              "partName": "BMS (Battery Management System)",
+              "partNumber": "ALT-LMT-BMS-V2"
+            }
+          ]
+        }
+      ],
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "endOfLifeInformation": {
+      "separateCollection": "",
+      "wastePrevention": "",
+      "informationOnCollection": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 60(1) · LEY",
+      "_sourceDocument": {
+        "name": "Fuente pública",
+        "type": "URL",
+        "generatedBy": "https://alterity.energy/en/services/",
+        "deadline": null
+      },
+      "_evidence": null
+    }
+  },
+  "labels": {
+    "_icon": "✅",
+    "_title": "Etiquetas y conformidad",
+    "euDeclarationOfConformityId": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 18 · LEY",
+      "_sourceDocument": {
+        "name": "Declaración de conformidad",
+        "deadline": "Antes de comercialización",
+        "type": "Certificación",
+        "generatedBy": "Fabricante"
+      },
+      "_evidence": null
+    },
+    "declarationOfConformity": {
+      "url": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 18 · LEY",
+      "_sourceDocument": {
+        "name": "Declaración de conformidad",
+        "deadline": "Antes de comercialización",
+        "type": "Certificación",
+        "generatedBy": "Fabricante"
+      },
+      "_evidence": null
+    },
+    "resultOfTestReport": {
+      "url": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 7-10 · LEY",
+      "_sourceDocument": {
+        "name": "Declaración de conformidad",
+        "deadline": "Antes de comercialización",
+        "type": "Certificación",
+        "generatedBy": "Fabricante"
+      },
+      "_evidence": null
+    },
+    "separateCollection": {
+      "symbol": "",
+      "description_es": "",
+      "description_en": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 13(3) · LEY",
+      "_sourceDocument": {
+        "name": "Declaración de conformidad",
+        "deadline": "Antes de comercialización",
+        "type": "Certificación",
+        "generatedBy": "Fabricante"
+      },
+      "_evidence": null
+    },
+    "materialSymbols": {
+      "value": [],
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "carbonFootprintLabel": {
+      "value": "",
+      "url": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 13(5) · LEY",
+      "_sourceDocument": {
+        "name": "Declaración de conformidad",
+        "deadline": "Antes de comercialización",
+        "type": "Certificación",
+        "generatedBy": "Fabricante"
+      },
+      "_evidence": null
+    },
+    "meaningOfLabelsAndSymbols": {
+      "value": "",
+      "url": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": {
+        "name": "Declaración de conformidad",
+        "deadline": "Antes de comercialización",
+        "type": "Certificación",
+        "generatedBy": "Fabricante"
+      },
+      "_evidence": null
+    }
+  },
+  "supplyChainDueDiligence": {
+    "_icon": "🔗",
+    "_title": "Cadena de suministro y due diligence",
+    "dueDiligenceReport": {
+      "url": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Arts. 48-52 · LEY",
+      "_sourceDocument": {
+        "name": "Due Diligence Report",
+        "deadline": "Ago 2027",
+        "type": "Informe verificado",
+        "generatedBy": "Fabricante + auditor terceros"
+      },
+      "_evidence": null
+    },
+    "thirdPartyAssurances": {
+      "value": [],
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 48(d) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "supplyChainIndices": {
+      "value": [],
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": null,
+      "_evidence": null
+    }
+  },
+  "traceability": {
+    "_icon": "🔍",
+    "_title": "Trazabilidad y data carrier",
+    "trackline_hash": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "ESPR 2024/1781 Art. 10 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "timestamp_iso8601": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "eidas_tsa_token": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "ESPR 2024/1781 Art. 10 · PROYECCION",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "qr_payload_url": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "ESPR 2024/1781 Art. 9(6) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "data_carrier": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "ESPR 2024/1781 Art. 9(6) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "data_carrier_location": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "ESPR 2024/1781 Art. 9(6) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "gs1_digital_link": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "ESPR 2024/1781 Art. 9 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "data_hosting": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "ESPR 2024/1781 Art. 10 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "data_format": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "ESPR 2024/1781 Art. 10 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    }
+  },
+  "actors": {
+    "_icon": "👥",
+    "_title": "Actores y operadores economicos",
+    "operator_responsible": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "ESPR 2024/1781 Art. 2(32) · LEY",
+      "_sourceDocument": {
+        "name": "Fuente publica",
+        "type": "URL",
+        "generatedBy": "https://alterity.energy/en/contact/",
+        "deadline": null
+      },
+      "_evidence": null
+    },
+    "manufacturer": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "authorized_representative_eu": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "ESPR 2024/1781 Art. 19 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "distributor": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "end_user": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "recycler": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 60 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "market_surveillance_authority": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 69 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "dpp_service_provider": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": null,
+      "_sourceDocument": null,
+      "_evidence": null
+    }
+  },
+  "registry": {
+    "_icon": "🏛",
+    "_title": "Registro central EU",
+    "registry_status": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "ESPR 2024/1781 Art. 12 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "registry_fields_preloaded": {
+      "value": [],
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "ESPR 2024/1781 Art. 12 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "registry_deadline": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "ESPR 2024/1781 Art. 12 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    },
+    "battery_passport_deadline": {
+      "value": "",
+      "_status": "pending",
+      "_note": "Pendiente de completar por el fabricante.",
+      "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null
+    }
+  },
+  "block_status": {
+    "A_identification": {
+      "status": "pending",
+      "counts": {
+        "confirmed": 0,
+        "partial": 0,
+        "assumed": 0,
+        "dynamic": 0,
+        "pending": 16
+      }
+    },
+    "B_materials": {
+      "status": "pending",
+      "counts": {
+        "confirmed": 0,
+        "partial": 0,
+        "assumed": 0,
+        "dynamic": 0,
+        "pending": 5
+      }
+    },
+    "C_performance": {
+      "status": "pending",
+      "counts": {
+        "confirmed": 0,
+        "partial": 0,
+        "assumed": 0,
+        "dynamic": 0,
+        "pending": 44
+      }
+    },
+    "D_carbon_footprint": {
+      "status": "pending",
+      "counts": {
+        "confirmed": 0,
+        "partial": 0,
+        "assumed": 0,
+        "dynamic": 0,
+        "pending": 5
+      }
+    },
+    "E_circularity": {
+      "status": "pending",
+      "counts": {
+        "confirmed": 0,
+        "partial": 0,
+        "assumed": 0,
+        "dynamic": 0,
+        "pending": 6
+      }
+    },
+    "F_labels": {
+      "status": "pending",
+      "counts": {
+        "confirmed": 0,
+        "partial": 0,
+        "assumed": 0,
+        "dynamic": 0,
+        "pending": 7
+      }
+    },
+    "G_supply_chain": {
+      "status": "pending",
+      "counts": {
+        "confirmed": 0,
+        "partial": 0,
+        "assumed": 0,
+        "dynamic": 0,
+        "pending": 3
+      }
+    },
+    "H_traceability": {
+      "status": "pending",
+      "counts": {
+        "confirmed": 0,
+        "partial": 0,
+        "assumed": 0,
+        "dynamic": 0,
+        "pending": 9
+      }
+    },
+    "I_actors": {
+      "status": "pending",
+      "counts": {
+        "confirmed": 0,
+        "partial": 0,
+        "assumed": 0,
+        "dynamic": 0,
+        "pending": 8
+      }
+    },
+    "J_registry": {
+      "status": "pending",
+      "counts": {
+        "confirmed": 0,
+        "partial": 0,
+        "assumed": 0,
+        "dynamic": 0,
+        "pending": 4
+      }
+    }
+  }
+}
