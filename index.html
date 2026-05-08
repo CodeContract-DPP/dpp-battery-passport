@@ -156,7 +156,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <div class="header-badges">
 <span class="badge-reg">EU Battery Reg. 2023/1542</span>
 <span class="badge-reg">ESPR 2024/1781</span>
-<span>BatteryPassDataModel v1.3</span>
+<span>BatteryPassDataModel v1.2.0</span>
 <span class="badge-bms">Trackline Evidence</span>
 <span>Art. 13 Registry-Ready</span>
 </div>
@@ -201,7 +201,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <footer class="app-footer">
 Battery Passport &middot; Demo v1.0<br>
 Evidencia trazable con <a href="https://trackline.codecontract.com" target="_blank">Trackline</a> by <a href="https://codecontract.com" target="_blank">Code Contract</a><br>
-Marco regulatorio: Reg. Baterias (UE) 2023/1542 &middot; ESPR (UE) 2024/1781 &middot; <a href="https://github.com/batterypass/BatteryPassDataModel" target="_blank">BatteryPassDataModel v1.3</a>
+Marco regulatorio: Reg. Baterias (UE) 2023/1542 &middot; ESPR (UE) 2024/1781 &middot; <a href="https://github.com/batterypass/BatteryPassDataModel" target="_blank">BatteryPassDataModel v1.2.0</a> + DataAttributeLongList v1.3
 </footer>
 <script src="js/app.js"></script>
 <script>
@@ -213,4 +213,29 @@ function getJsonPath() {
 }
 
 function loadDPP() {
-  DPP.init(getJsonPath(), 
+  DPP.init(getJsonPath(), 'dpp-root');
+}
+
+document.getElementById('productSelect').addEventListener('change', loadDPP);
+document.getElementById('versionSelect').addEventListener('change', loadDPP);
+
+// URL parameters: ?product=dpp-battery-lmt-lfp&version=empty
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var product = params.get('product');
+  var version = params.get('version');
+  var sel = document.getElementById('productSelect');
+  var ver = document.getElementById('versionSelect');
+  if (product) {
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === product) { sel.value = product; break; }
+    }
+  }
+  if (version === 'empty' || version === 'plantilla') {
+    ver.value = 'empty';
+  }
+  loadDPP();
+})();
+</script>
+</body>
+</html>
