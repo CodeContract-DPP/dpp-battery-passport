@@ -237,7 +237,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <label for="versionSelect">Version:</label>
 <select id="versionSelect">
 <option value="filled">Con datos (ejemplo)</option>
-<option value="empty">Plantilla vacia</option>
+<option value="empty" selected>Plantilla vacia</option>
 </select>
 </div>
 </nav>
@@ -281,6 +281,8 @@ document.getElementById('productSelect').addEventListener('change', loadDPP);
 document.getElementById('versionSelect').addEventListener('change', loadDPP);
 
 // URL parameters: ?product=dpp-battery-lmt-lfp&version=empty
+// Comportamiento por defecto: sin params → plantilla vacía (educativo).
+// Con ?product=X (link compartido) → asume que quieren ver el DPP completo, no la plantilla.
 (function(){
   var params = new URLSearchParams(window.location.search);
   var product = params.get('product');
@@ -291,10 +293,11 @@ document.getElementById('versionSelect').addEventListener('change', loadDPP);
     for (var i = 0; i < sel.options.length; i++) {
       if (sel.options[i].value === product) { sel.value = product; break; }
     }
+    // Si llegan con ?product=... pero NO especifican versión, mostrar el DPP con datos
+    if (!version) { ver.value = 'filled'; }
   }
-  if (version === 'empty' || version === 'plantilla') {
-    ver.value = 'empty';
-  }
+  if (version === 'filled') { ver.value = 'filled'; }
+  if (version === 'empty' || version === 'plantilla') { ver.value = 'empty'; }
   loadDPP();
 })();
 </script>
