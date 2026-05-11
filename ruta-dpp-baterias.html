@@ -654,15 +654,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="step">
       <div class="step-icon">&#x1F512;</div>
       <div class="step-content">
-        <h3>Capa de confianza: lo que exige la ley, y lo que aporta Trackline</h3>
-        <p>El Reglamento 2023/1542 (Art. 77.4 y Anexo XIII) y el ESPR 2024/1781 exigen que la informacion del DPP sea <strong>exacta, completa, actualizada, interoperable, fiable, integra, segura, autenticada y accesible segun permisos</strong>. <em>No exigen una tecnologia concreta</em> (no &laquo;blockchain&raquo;, ni &laquo;firma cualificada obligatoria&raquo;). Pero alguien tiene que demostrarlo ante una inspeccion, una reclamacion de garantia o un litigio. Ahi es donde una capa de confianza marca la diferencia entre dato y prueba.</p>
+        <h3>Capa de confianza: marco regulatorio y posicion de Trackline</h3>
+        <p>El Reglamento 2023/1542 (Art. 77.4 y Anexo XIII) y el ESPR 2024/1781 exigen que la informacion del DPP sea <strong>exacta, completa, actualizada, interoperable, fiable, integra, segura, autenticada y accesible segun permisos</strong>. <em>No exigen una tecnologia concreta</em> (no &laquo;blockchain&raquo;, ni &laquo;firma cualificada obligatoria&raquo;). Existe un marco europeo de confianza digital al que un DPP puede acogerse para reforzar el valor probatorio del dato.</p>
         <p style="margin-top:8px;padding:10px 12px;background:#f5f3ff;border:1px solid #e9d8fd;border-radius:8px;font-size:13px">
-          <strong>Marco regulatorio complementario (no especifico del DPP de baterias, pero aplicable):</strong><br><br>
+          <strong>Marco regulatorio complementario que existe (no especifico del DPP de baterias):</strong><br><br>
           <strong>eIDAS 2.0</strong> &mdash; <a href="https://eur-lex.europa.eu/eli/reg/2024/1183" target="_blank" style="color:var(--purple)">Reg. (UE) 2024/1183</a>: define las figuras tecnicas de confianza (<strong>firma electronica cualificada, Art. 25</strong>; <strong>sello electronico cualificado, Art. 35</strong>; <strong>sello de tiempo cualificado, Art. 41</strong>) y las <em>Qualified Electronic Attestations of Attributes (QEAA)</em>. Son <strong>herramientas voluntarias</strong> que aportan presuncion legal de integridad, origen y fecha cierta. La EUDI Wallet estara disponible en cada Estado miembro antes de finales de 2026.<br><br>
           <strong>Cyber Resilience Act</strong> &mdash; <a href="https://eur-lex.europa.eu/eli/reg/2024/2847" target="_blank" style="color:var(--purple)">Reg. (UE) 2024/2847</a>: plena aplicacion <strong>11 dic 2027</strong>. Aplicable cuando la plataforma DPP, el software asociado o el <strong>BMS</strong> entran en el ambito de &laquo;producto con elementos digitales&raquo;. Reporting obligatorio de vulnerabilidades desde <strong>11 sep 2026</strong>.
         </p>
         <p style="margin-top:8px;padding:10px 12px;background:#ecfdf5;border:1px solid #6ee7b7;border-radius:8px;font-size:13px">
-          <strong>Aporte de Trackline / Code Contract:</strong> capa probatoria y de gobernanza voluntaria que materializa las exigencias del Art. 77.4 de forma robusta. No sustituye al pasaporte; lo complementa. Operativamente cubre: registro de evidencias firmadas, sellado temporal, control de accesos por rol, historial inmutable de actualizaciones, conexion BMS &harr; pasaporte, y auditoria documental. Util para que el operador economico pueda demostrar, ante una inspeccion o reclamacion, que la informacion era exacta, completa, actualizada e integra en una fecha cierta.
+          <strong>Posicion de Trackline / Code Contract a 11 may 2026:</strong><br>
+          &#x2713; <strong>Operativo hoy:</strong> estructurado del dataset segun Anexo XIII, validacion interna pre-publicacion, trazabilidad de eventos (quien envia, quien recibe, quien valida, hora, dia, archivo) y <strong>hash interno del dataset</strong> como prueba de integridad propia generada desde la plataforma.<br><br>
+          &#x1F52E; <strong>Roadmap:</strong> Trackline aspira a integrarse con la capa eIDAS cualificada (firma Art. 25 + sello Art. 35 + timestamp Art. 41 + QEAA via EUDI Wallet) y con el registro central DPP cuando este operativo. Hoy <em>no aporta</em> sello de tiempo cualificado ni firma cualificada eIDAS &mdash; aporta hash propio, que es prueba de integridad valida para gobernanza interna pero no equivale legalmente a sello cualificado.
         </p>
         <div class="doc-group">
           <div class="doc-group-label dg-ley">LEY:</div>
@@ -1024,45 +1026,60 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 <!-- OBLIGACION LEGAL VS APORTE TRACKLINE -->
 <!-- ============================================================ -->
 <div style="max-width:1100px;margin:30px auto;padding:0 20px;">
-  <h2 style="font-size:22px;color:var(--dark);margin-bottom:6px;">&iquest;Que exige la ley y que aporta Trackline?</h2>
-  <p style="font-size:14px;color:var(--gray);margin-bottom:14px;">El Reglamento define el <em>que</em> (obligaciones funcionales). Trackline aporta el <em>como</em> operativo y probatorio. Ningun elemento de la columna derecha sustituye la obligacion legal; la materializa con evidencias.</p>
+  <h2 style="font-size:22px;color:var(--dark);margin-bottom:6px;">&iquest;Que exige la ley y que aporta Trackline hoy?</h2>
+  <p style="font-size:14px;color:var(--gray);margin-bottom:14px;">El Reglamento define el <em>que</em> (obligaciones funcionales). Trackline aporta el <em>como</em> operativo durante la fase de preparacion del DPP. La columna derecha distingue lo que esta operativo hoy (<strong style="color:var(--green);">&#x2713;</strong>), lo que esta en construccion (<strong style="color:#d97706;">&#x2699;</strong>) y lo que esta en roadmap pendiente del ecosistema (<strong style="color:#6b21a8;">&#x1F52E;</strong>). Trackline <strong>no emite hoy el DPP final publicable</strong>: gobierna la preparacion documental hasta que el ecosistema (registro central, FprEN, actos delegados) este operativo.</p>
   <table style="width:100%;border-collapse:collapse;font-size:13px;background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;">
     <thead>
       <tr style="background:#f8fafc;">
-        <th style="border:1px solid var(--border);padding:10px 12px;text-align:left;color:var(--blue);width:18%;">Elemento</th>
-        <th style="border:1px solid var(--border);padding:10px 12px;text-align:left;color:var(--blue);width:41%;">Exigencia legal (Reg. 2023/1542 + ESPR)</th>
-        <th style="border:1px solid var(--border);padding:10px 12px;text-align:left;color:var(--green);width:41%;">Aporte Trackline</th>
+        <th style="border:1px solid var(--border);padding:10px 12px;text-align:left;color:var(--blue);width:16%;">Elemento</th>
+        <th style="border:1px solid var(--border);padding:10px 12px;text-align:left;color:var(--blue);width:42%;">Exigencia legal (Reg. 2023/1542 + ESPR)</th>
+        <th style="border:1px solid var(--border);padding:10px 12px;text-align:left;color:var(--green);width:42%;">Aporte Trackline a 11 may 2026</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">Datos del pasaporte</td>
         <td style="border:1px solid var(--border);padding:10px 12px;">Informacion exacta, completa, actualizada e interoperable (Art. 77.4)</td>
-        <td style="border:1px solid var(--border);padding:10px 12px;background:#f7fdf9;">Modelo de datos, responsables por campo, flujos de recopilacion y control documental</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;background:#f7fdf9;"><strong style="color:var(--green);">&#x2713;</strong> Estructurado del dataset segun Anexo XIII + DIN DKE SPEC 99100. Responsables por campo, fuente, evidencia y estado (confirmado/parcial/asumido/pendiente/dinamico).</td>
       </tr>
       <tr>
-        <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">Accesos</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">Validacion</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;">Datos exactos y completos antes de poner en mercado</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;background:#f7fdf9;"><strong style="color:var(--green);">&#x2713;</strong> Validacion interna pre-publicacion: deteccion de campos faltantes, inconsistencias y contradicciones por persona autorizada.</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">Trazabilidad</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;">Autenticacion, fiabilidad e integridad del dato (Art. 77.4)</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;background:#f7fdf9;"><strong style="color:var(--green);">&#x2713;</strong> Cadena de eventos verificable: quien envia, quien recibe, quien valida, hora, dia, archivo. <strong>Hash interno del dataset</strong> generado desde Trackline como prueba de integridad propia (no es sello cualificado eIDAS).</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">Vista previa</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;">El operador economico debe poder revisar la informacion antes de su puesta a disposicion</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;background:#fff8eb;"><strong style="color:var(--green);">&#x2713;</strong> Vista previa parcial del DPP antes de publicacion. <strong style="color:#d97706;">&#x2699;</strong> Vista previa completa con segmentacion por audiencia (publico / autoridades / interes legitimo) en construccion.</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">Accesos por rol</td>
         <td style="border:1px solid var(--border);padding:10px 12px;">Acceso publico / autoridades + organismos notificados / interes legitimo segun permisos (Art. 78 + Anexo XIII)</td>
-        <td style="border:1px solid var(--border);padding:10px 12px;background:#f7fdf9;">Roles, permisos, vistas diferenciadas y trazabilidad de accesos</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;background:#fff8eb;"><strong style="color:#d97706;">&#x2699;</strong> Diseno visual de roles listo (Administrador / Calidad / Produccion / Sostenibilidad / Organismo Notificado). Permisos granulares backend en desarrollo.</td>
       </tr>
       <tr>
-        <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">Integridad</td>
-        <td style="border:1px solid var(--border);padding:10px 12px;">Autenticacion, fiabilidad, integridad y seguridad del dato (Art. 77.4 + prEN 18246)</td>
-        <td style="border:1px solid var(--border);padding:10px 12px;background:#f7fdf9;">Evidencias, aprobaciones documentadas, sellado temporal, historial inmutable y auditoria</td>
-      </tr>
-      <tr>
-        <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">QR / identificador</td>
-        <td style="border:1px solid var(--border);padding:10px 12px;">QR (data carrier) e identificador unico persistente conforme a ISO/IEC 15459 (Arts. 13.6 + 77.3 + 79)</td>
-        <td style="border:1px solid var(--border);padding:10px 12px;background:#f7fdf9;">Conexion entre activo fisico, registro central de identificadores y dataset del operador economico</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">QR / publicacion</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;">QR (data carrier) e identificador unico persistente conforme a ISO/IEC 15459 (Arts. 13.6 + 77.3 + 79); registro de identificador en el registro DPP</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;background:#f5f3ff;"><strong style="color:#6b21a8;">&#x1F52E;</strong> Roadmap: emision del DPP final + QR fisico + conexion al registro central de la Comision cuando este operativo (jul 2026). Trackline esta siendo preparado para esa integracion.</td>
       </tr>
       <tr>
         <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">Actualizacion</td>
         <td style="border:1px solid var(--border);padding:10px 12px;">Datos actualizados durante el ciclo de vida; informacion derivada del uso (Art. 14 + Anexo XIII parte III)</td>
-        <td style="border:1px solid var(--border);padding:10px 12px;background:#f7fdf9;">Flujos de actualizacion desde BMS, mantenimiento o revisiones periodicas, con historial fechado</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;background:#f5f3ff;"><strong style="color:var(--green);">&#x2713;</strong> Actualizacion documental manual con historial fechado y trazado. <strong style="color:#6b21a8;">&#x1F52E;</strong> Integracion BMS en tiempo real en roadmap.</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">Capa eIDAS cualificada</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;">El Reglamento <em>no exige</em> firma/sello cualificado eIDAS, pero aporta valor probatorio reforzado para inspecciones, garantias y litigios</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;background:#f5f3ff;"><strong style="color:#6b21a8;">&#x1F52E;</strong> Roadmap: firma electronica cualificada (Art. 25), sello electronico cualificado (Art. 35), sello de tiempo cualificado (Art. 41), QEAA via EUDI Wallet.</td>
       </tr>
     </tbody>
   </table>
-  <p style="font-size:11px;color:var(--gray);margin-top:8px;font-style:italic;">El Reglamento no exige una tecnologia concreta (blockchain, firma cualificada, etc.); exige resultados funcionales. Trackline es una capa probatoria voluntaria que cubre esos resultados de forma defendible ante una inspeccion o reclamacion.</p>
+  <p style="font-size:11px;color:var(--gray);margin-top:8px;font-style:italic;">El Reglamento no exige una tecnologia concreta (blockchain, firma cualificada, etc.); exige resultados funcionales. Trackline gobierna la preparacion documental del DPP &mdash; estructurado, validado, trazable y con hash propio &mdash; hasta que el ecosistema permita la publicacion final. Las capacidades marcadas con <strong style="color:#d97706;">&#x2699;</strong> y <strong style="color:#6b21a8;">&#x1F52E;</strong> no estan operativas hoy.</p>
 </div>
 
 <!-- ============================================================ -->
@@ -1070,28 +1087,28 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 <!-- ============================================================ -->
 <div class="cta-section">
   <div class="cta-box">
-    <h2>&#x1F6E0;&#xFE0F; Proximos pasos: implementacion con Trackline</h2>
-    <p>Trackline es la plataforma de Code Contract que permite operativizar todo el recorrido descrito en esta guia. Asi se traduce cada fase en acciones concretas:</p>
+    <h2>&#x1F6E0;&#xFE0F; Proximos pasos: preparacion hoy &rarr; publicacion cuando el ecosistema lo permita</h2>
+    <p>Trackline es la plataforma de Code Contract para la <strong>fase de preparacion del DPP</strong>. Hoy gobierna estructurado, validacion, trazabilidad y previsualizacion interna. La publicacion final (QR fisico + registro central + sellado cualificado) depende de actos delegados y del ecosistema europeo, y se incorporara cuando este operativo.</p>
     <div class="cta-steps">
       <div class="cta-step">
-        <div class="cta-step-num">Paso 1</div>
-        <h4>Mapeo de campos</h4>
-        <p>Cargar los 80-90 atributos del DPP en Trackline, asignar responsables y conectar con las fuentes de datos internas (ERP, BMS, laboratorio).</p>
+        <div class="cta-step-num" style="background:var(--green);color:#fff;">Hoy &#x2713;</div>
+        <h4>Mapeo y estructurado del dataset</h4>
+        <p>Cargar los 80-90 atributos del DPP en Trackline segun Anexo XIII + DIN DKE SPEC 99100, asignar responsables internos y registrar la fuente de cada dato con su evidencia documental.</p>
       </div>
       <div class="cta-step">
-        <div class="cta-step-num">Paso 2</div>
-        <h4>Recopilacion y evidencia</h4>
-        <p>Cada dato queda registrado con su evidencia en blockchain: quien lo aporto, cuando, y con que documento soporte. Trazabilidad inmutable.</p>
+        <div class="cta-step-num" style="background:var(--green);color:#fff;">Hoy &#x2713;</div>
+        <h4>Trazabilidad y hash propio</h4>
+        <p>Cada dato se registra con su cadena de eventos: quien lo aporto, quien lo recibio, quien lo valido, dia y hora, archivo. Trackline genera un <strong>hash interno del dataset</strong> como prueba de integridad propia (no equivale a sello cualificado eIDAS).</p>
       </div>
       <div class="cta-step">
-        <div class="cta-step-num">Paso 3</div>
-        <h4>Generacion del DPP</h4>
-        <p>Trackline genera el JSON del pasaporte en formato BatteryPassDataModel, con metadatos de estado (_confirmed, _partial, _assumed) y enlace a evidencias.</p>
+        <div class="cta-step-num" style="background:#d97706;color:#fff;">En curso &#x2699;</div>
+        <h4>Vista previa y gobernanza por rol</h4>
+        <p>Vista previa del DPP por audiencia (publico / autoridades / interes legitimo) y permisos granulares por rol (Administrador, Calidad, Produccion, Sostenibilidad, Organismo Notificado). En construccion para llegar listo al deadline.</p>
       </div>
       <div class="cta-step">
-        <div class="cta-step-num">Paso 4</div>
-        <h4>Publicacion y registro</h4>
-        <p>Generar el data carrier (QR/NFC), publicar el visor web del DPP y preparar la carga de identificadores en el registro ESPR cuando este operativo.</p>
+        <div class="cta-step-num" style="background:#6b21a8;color:#fff;">Roadmap &#x1F52E;</div>
+        <h4>Publicacion final cuando el ecosistema este listo</h4>
+        <p>Emision del JSON DPP definitivo, generacion del data carrier QR fisico, conexion al registro central DPP (operativo desde jul 2026), e integracion con la capa eIDAS cualificada. Trackline esta siendo preparado para activar esta fase cuando los actos delegados y normas armonizadas esten en vigor.</p>
       </div>
     </div>
     <div class="cta-links">
