@@ -166,9 +166,9 @@ const DPP = (() => {
       (cntRed ? '<span class="cnt cnt-pe" title="Pendiente">' + cntRed + '</span>' : '') +
       (cntBlue ? '<span class="cnt cnt-dy" title="Din\u00e1mico (BMS)">' + cntBlue + '</span>' : '') +
       '</div>' +
-      '<span class="chevron" id="chev-' + sectionKey + '">\u25BC</span>' +
+      '<span class="chevron" id="chev-' + sectionKey + '">\u25B6</span>' +
       '</div>' +
-      '<div class="section-body" id="body-' + sectionKey + '">' + attrsHTML + '</div>' +
+      '<div class="section-body collapsed" id="body-' + sectionKey + '">' + attrsHTML + '</div>' +
       '</section>';
   }
 
