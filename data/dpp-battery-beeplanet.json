@@ -57,6 +57,139 @@
     ],
     "trackline_aporta": "Lo que el Excel del DAL v1.3 no cubre: reconstrucción del DPP padre cuando el OEM no entrega, gestión documental con hash y firma, sellado de tiempo cualificado, carga al registro ESPR y trazabilidad módulo a módulo. Las 7 extensiones propietarias están marcadas con ⚙️ al final del DPP."
   },
+  "documentRequirements": {
+    "title": "Documentos necesarios — checklist regulatorio",
+    "subtitle": "Lo que el Reg. (UE) 2023/1542 exige tener para el DPP de baterías. Lo que tenéis vs lo que falta.",
+    "counts": {
+      "total": 10,
+      "confirmed": 2,
+      "partial": 5,
+      "pending": 3
+    },
+    "documents": [
+      {
+        "cat": "Cat#16",
+        "name": "Declaration of Conformity (DoC) Beeplanet",
+        "icon": "📋",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Art. 30",
+        "obligation": "obligatory",
+        "applicableTo": "Todas las baterías",
+        "deadline": "En vigor desde 18/02/2024",
+        "status": "partial",
+        "providedBy": "Beeplanet emite propia · Art. 47 nuevo economic operator",
+        "note": "Beeplanet como refurbisher emite DoC propia (Art. 47 Reg. 1542). NO se hereda del OEM original."
+      },
+      {
+        "cat": "Cat#6",
+        "name": "Ficha técnica del módulo 2nd life",
+        "icon": "📄",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Art. 13",
+        "obligation": "obligatory",
+        "applicableTo": "Todas las baterías",
+        "deadline": "18/02/2027 (con DPP)",
+        "status": "partial",
+        "providedBy": "Beeplanet + datasheet OEM público (Mercedes EQS)",
+        "note": "Ficha técnica combinada: datos heredados del OEM (capacidad, química) + datos recalculados Beeplanet (SoH, vida útil 2nd life)."
+      },
+      {
+        "cat": "Cat#11",
+        "name": "Estudio ACV / Carbon Footprint",
+        "icon": "🌍",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Art. 7",
+        "obligation": "obligatory",
+        "applicableTo": "Industrial >2 kWh · LMT · EV",
+        "deadline": "Metodología pendiente acto delegado UE",
+        "status": "partial",
+        "providedBy": "Cálculo Beeplanet · GBA GHG Rulebook v1.5",
+        "note": "GWP recalculado (-61% vs 1ª vida) con metodología de facto GBA GHG. Pendiente del acto delegado oficial UE."
+      },
+      {
+        "cat": "Cat#12",
+        "name": "Certificado contenido reciclado (ISO 14021)",
+        "icon": "♻️",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Art. 8",
+        "obligation": "obligatory",
+        "applicableTo": "Baterías con Co/Li/Ni/Pb",
+        "deadline": "18/08/2031 (niveles mínimos)",
+        "status": "pending",
+        "providedBy": "Verificador independiente ISO 14021",
+        "note": "Por definición 2nd life = 100% post-consumer en materiales activos. Pero falta certificado ISO 14021 emitido por verificador acreditado."
+      },
+      {
+        "cat": "Cat#9",
+        "name": "Test Reports (capacidad/ciclos/seguridad)",
+        "icon": "🔬",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Art. 14 + Anexo IV",
+        "obligation": "obligatory",
+        "applicableTo": "Industrial · LMT · EV",
+        "deadline": "18/02/2027",
+        "status": "partial",
+        "providedBy": "Beeplanet (diagnóstico interno) + lab acreditado ISO/IEC 17025 (pendiente)",
+        "note": "Diagnóstico inicial Beeplanet por BHive. Falta ensayo de un lab acreditado externo para test reports oficiales."
+      },
+      {
+        "cat": "Cat#21",
+        "name": "Informe OECD Due Diligence",
+        "icon": "⚖️",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Arts. 49-52",
+        "obligation": "obligatory",
+        "applicableTo": "Todas las baterías",
+        "deadline": "POSPUESTO a 18/08/2027 (Reg. 2025/1561)",
+        "status": "pending",
+        "providedBy": "Auditor externo acreditado",
+        "note": "Due diligence original es responsabilidad del OEM EV (Mercedes). Beeplanet hereda parcialmente pero necesita su propio informe para el módulo 2nd life cuando se aplique en 2027."
+      },
+      {
+        "cat": "Cat#15",
+        "name": "Manual desmontaje y EoL",
+        "icon": "🔧",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Art. 73",
+        "obligation": "obligatory",
+        "applicableTo": "Todas",
+        "deadline": "18/02/2027 (con DPP)",
+        "status": "confirmed",
+        "providedBy": "Beeplanet ingeniería",
+        "note": "Beeplanet tiene su manual propio para desmontaje del módulo 2nd life. Reciclaje vía JV SungEel HiTech (planta Caparroso)."
+      },
+      {
+        "cat": "Cat#17",
+        "name": "Etiqueta CFP (Carbon Footprint Label)",
+        "icon": "🏷️",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Art. 7.2 + 7.3",
+        "obligation": "obligatory",
+        "applicableTo": "EV · industrial · LMT",
+        "deadline": "Pendiente acto delegado UE · clases A-G",
+        "status": "pending",
+        "providedBy": "Fabricante · sobre datos del CFP Study",
+        "note": "Pendiente del acto delegado UE que defina cómo se calculan las clases A-G. Cuando salga, Beeplanet calcula su clase con el GWP de 2nd life."
+      },
+      {
+        "cat": "Cat#8",
+        "name": "MSDS / SDS sustancias (REACH)",
+        "icon": "⚠️",
+        "regulatoryBasis": "Reg. REACH (CE) 1907/2006 Art. 31",
+        "obligation": "obligatory",
+        "applicableTo": "Baterías con sustancias peligrosas",
+        "deadline": "En vigor",
+        "status": "partial",
+        "providedBy": "Hereda del OEM + complementa con datasheet Mercedes",
+        "note": "Las SDS originales son del fabricante de celdas que abastecía a Mercedes. Beeplanet hereda."
+      },
+      {
+        "cat": "Cat#1",
+        "name": "Alta GS1 GLN planta + DUNS fabricante",
+        "icon": "🏭",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Anexo XIII + GS1",
+        "obligation": "obligatory",
+        "applicableTo": "Todas",
+        "deadline": "Antes de poner en mercado",
+        "status": "confirmed",
+        "providedBy": "AECOC (GS1 España) + D&B Dun & Bradstreet",
+        "note": "Beeplanet Factory tiene GLN propio para planta Noáin + DUNS empresa."
+      }
+    ],
+    "footer_message": "Trackline gestiona los 10 documentos: vincula cada documento al campo del DPP que respalda, calcula el hash de integridad, lo sella con timestamp cualificado eIDAS y deja todo auditable. Lo que el Excel del DAL v1.3 no cubre."
+  },
   "dppMetadata": {
     "_icon": "🗂️",
     "_title": "Metadatos del DPP — versión, estado y granularidad",

@@ -175,7 +175,79 @@ const DPP = (() => {
       '</section>';
   }
 
-  var SKIP_KEYS = ['@context','dpp_uid','dpp_version','created','last_updated','regulation_framework','_meta','block_status','_executiveSummary'];
+  var SKIP_KEYS = ['@context','dpp_uid','dpp_version','created','last_updated','regulation_framework','_meta','block_status','_executiveSummary','documentRequirements'];
+
+  function renderDocumentRequirements(data) {
+    var dr = data.documentRequirements;
+    if (!dr) return '';
+    var c = dr.counts || {total: 0, confirmed: 0, partial: 0, pending: 0};
+    var pctConfirmed = c.total ? Math.round(100 * c.confirmed / c.total) : 0;
+    var pctPartial = c.total ? Math.round(100 * c.partial / c.total) : 0;
+
+    var statusLabel = {
+      'confirmed': {emoji: '✅', label: 'Tenemos', cls: 'doc-ok'},
+      'partial':   {emoji: '⚠️', label: 'Parcial',  cls: 'doc-partial'},
+      'pending':   {emoji: '❌', label: 'Falta',    cls: 'doc-missing'}
+    };
+
+    var html = '<section class="doc-req-block">' +
+      '<div class="doc-req-header">' +
+        '<h2>📑 ' + (dr.title || 'Documentos necesarios') + '</h2>' +
+        (dr.subtitle ? '<p class="doc-req-sub">' + dr.subtitle + '</p>' : '') +
+      '</div>' +
+
+      '<div class="doc-req-summary">' +
+        '<div class="doc-req-counter"><span class="dr-num dr-num-ok">' + c.confirmed + '</span><span class="dr-lbl">Tenemos</span></div>' +
+        '<div class="doc-req-counter"><span class="dr-num dr-num-partial">' + c.partial + '</span><span class="dr-lbl">Parcial</span></div>' +
+        '<div class="doc-req-counter"><span class="dr-num dr-num-missing">' + c.pending + '</span><span class="dr-lbl">Faltan</span></div>' +
+        '<div class="doc-req-counter doc-req-counter-total"><span class="dr-num">' + c.total + '</span><span class="dr-lbl">Total exigibles</span></div>' +
+      '</div>' +
+
+      '<div class="doc-req-progress">' +
+        '<div class="doc-req-progress-bar">' +
+          '<div class="doc-req-progress-fill doc-req-progress-confirmed" style="width:' + pctConfirmed + '%"></div>' +
+          '<div class="doc-req-progress-fill doc-req-progress-partial" style="width:' + pctPartial + '%"></div>' +
+        '</div>' +
+        '<span class="doc-req-progress-label">' + pctConfirmed + '% confirmados · ' + pctPartial + '% parciales · ' + (100-pctConfirmed-pctPartial) + '% pendientes</span>' +
+      '</div>';
+
+    if (Array.isArray(dr.documents)) {
+      html += '<div class="doc-req-grid">';
+      dr.documents.forEach(function(doc) {
+        var st = statusLabel[doc.status] || {emoji: '•', label: doc.status, cls: ''};
+        var oblBadge = doc.obligation === 'obligatory'
+          ? '<span class="doc-oblig doc-oblig-required">🔴 OBLIGATORIO</span>'
+          : '<span class="doc-oblig doc-oblig-recom">⚙️ Recomendado</span>';
+        html += '<div class="doc-card ' + st.cls + '" data-doc-status="' + doc.status + '">' +
+          '<div class="doc-card-header">' +
+            '<span class="doc-card-icon">' + (doc.icon || '📄') + '</span>' +
+            '<div class="doc-card-title">' +
+              '<strong>' + doc.name + '</strong>' +
+              (doc.cat ? '<span class="doc-card-cat">' + doc.cat + '</span>' : '') +
+            '</div>' +
+            '<span class="doc-card-status">' + st.emoji + ' ' + st.label + '</span>' +
+          '</div>' +
+          '<div class="doc-card-body">' +
+            (doc.regulatoryBasis ? '<div class="doc-card-row"><strong>Base legal:</strong> ' + doc.regulatoryBasis + ' ' + oblBadge + '</div>' : '') +
+            (doc.deadline ? '<div class="doc-card-row"><strong>Plazo:</strong> ' + doc.deadline + '</div>' : '') +
+            (doc.providedBy ? '<div class="doc-card-row"><strong>Lo aporta:</strong> ' + doc.providedBy + '</div>' : '') +
+            (doc.note ? '<div class="doc-card-note">' + doc.note + '</div>' : '') +
+          '</div>' +
+        '</div>';
+      });
+      html += '</div>';
+    }
+
+    if (dr.footer_message) {
+      html += '<div class="doc-req-cta">' +
+        '<span class="exec-cta-icon">⚙️</span>' +
+        '<div><strong>Trackline:</strong> ' + dr.footer_message + '</div>' +
+      '</div>';
+    }
+
+    html += '</section>';
+    return html;
+  }
 
   function renderExecutiveSummary(data) {
     var es = data._executiveSummary;
@@ -312,7 +384,7 @@ const DPP = (() => {
       if (!res.ok) throw new Error('No se pudo descargar ' + jsonPath + ' (HTTP ' + res.status + ')');
       var data = await res.json();
       window._dppData = data;
-      var html = renderMeta(data) + renderSummary(data) + renderExecutiveSummary(data);
+      var html = renderMeta(data) + renderSummary(data) + renderExecutiveSummary(data) + renderDocumentRequirements(data);
 
       if (data.registry) {
         html += renderSection('registry', data.registry, 'registry-highlight');
