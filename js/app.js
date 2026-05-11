@@ -52,6 +52,23 @@ const DPP = (() => {
     return html;
   }
 
+  function linkify(s) {
+    if (typeof s !== 'string') return s;
+    var trimmed = s.trim();
+    // URL completa al inicio (http/https)
+    if (/^https?:\/\/[^\s<>"']+$/i.test(trimmed)) {
+      return '<a href="' + trimmed + '" target="_blank" rel="noopener" class="src-link">' + trimmed + '</a>';
+    }
+    // Mailto
+    if (/^mailto:/i.test(trimmed)) {
+      return '<a href="' + trimmed + '" class="src-link">' + trimmed.replace(/^mailto:/i,'') + '</a>';
+    }
+    // URL embebida dentro de texto: hacer la URL clicable conservando el resto
+    return s.replace(/(https?:\/\/[^\s<>"']+)/gi, function(m){
+      return '<a href="' + m + '" target="_blank" rel="noopener" class="src-link">' + m + '</a>';
+    });
+  }
+
   function formatValue(val) {
     if (val === null || val === undefined) return '<span class="no-data">\u2014 sin datos \u2014</span>';
     if (typeof val === 'object' && !Array.isArray(val) && val._isTable) {
@@ -68,7 +85,7 @@ const DPP = (() => {
     }
     if (Array.isArray(val)) return val.length ? val.join(', ') : '<span class="no-data">\u2014 vac\u00edo \u2014</span>';
     if (typeof val === 'boolean') return val ? 'S\u00ed' : 'No';
-    return String(val);
+    return linkify(String(val));
   }
 
   function renderAttribute(key, attr) {
@@ -89,10 +106,10 @@ const DPP = (() => {
     if (attr._sourceDocument) {
       var d = attr._sourceDocument;
       docHTML = '<div class="source-doc"><span class="doc-icon">\uD83D\uDCC4</span><div class="doc-info">' +
-        '<strong>' + (d.name||'--') + '</strong>' +
+        '<strong>' + linkify(d.name||'--') + '</strong>' +
         '<span class="doc-type">' + (d.type||'') + '</span>' +
-        '<span class="doc-gen">Genera: ' + (d.generatedBy||'--') + '</span>' +
-        '<span class="doc-deadline">Plazo: ' + (d.deadline||'--') + '</span>' +
+        '<span class="doc-gen">Genera: ' + linkify(d.generatedBy||'--') + '</span>' +
+        '<span class="doc-deadline">Plazo: ' + linkify(d.deadline||'--') + '</span>' +
         '</div></div>';
     }
     var evidenceHTML = '';
