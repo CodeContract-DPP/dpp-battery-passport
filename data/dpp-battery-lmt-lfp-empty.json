@@ -14,7 +14,7 @@
     "BatteryPass Data Model v1.3 (BMWK)"
   ],
   "_meta": {
-    "schema": "BatteryPassDataModel v1.3 + ESPR DPP Infrastructure (Code Contract)",
+    "schema": "DataAttributeLongList v1.3 + BatteryPassDataModel v1.2.0 + extensiones Code Contract",
     "basedOn": [
       "https://github.com/batterypass/BatteryPassDataModel",
       "https://codecontract-dpp.github.io/dpp-construccion-demos/"
@@ -85,7 +85,7 @@
       "_sourceDocument": {
         "name": "Fuente pública",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/contact/",
+        "generatedBy": "https://example.com/contact",
         "deadline": null
       },
       "_evidence": null
@@ -100,7 +100,7 @@
       "_sourceDocument": {
         "name": "Fuente pública",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/contact/",
+        "generatedBy": "https://example.com/contact",
         "deadline": null
       },
       "_evidence": null
@@ -200,7 +200,7 @@
       "_sourceDocument": {
         "name": "Fuente pública",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/mobility-sector/",
+        "generatedBy": "https://example.com/products",
         "deadline": null
       },
       "_evidence": null
@@ -338,7 +338,7 @@
       "_sourceDocument": {
         "name": "Fuente pública",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/mobility-sector/",
+        "generatedBy": "https://example.com/products",
         "deadline": null
       },
       "_evidence": null
@@ -370,7 +370,7 @@
       "_sourceDocument": {
         "name": "Fuente pública",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/mobility-sector/",
+        "generatedBy": "https://example.com/products",
         "deadline": null
       },
       "_evidence": null
@@ -438,7 +438,7 @@
       "_sourceDocument": {
         "name": "Fuente pública",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/mobility-sector/",
+        "generatedBy": "https://example.com/products",
         "deadline": null
       },
       "_evidence": null
@@ -876,7 +876,7 @@
       "_sourceDocument": {
         "name": "Fuente pública",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/mobility-sector/",
+        "generatedBy": "https://example.com/products",
         "deadline": null
       },
       "_evidence": null
@@ -891,7 +891,7 @@
       "_rows": [
         {
           "documentType": "DismantlingManual",
-          "documentURL": "https://alterity.energy/manuals/lmt-lfp-dismantling",
+          "documentURL": "https://example.com/manuals/lmt-lfp-dismantling",
           "mimeType": "application/pdf"
         }
       ],
@@ -912,23 +912,23 @@
       ],
       "_rows": [
         {
-          "nameOfSupplier": "Alterity Energy",
-          "supplierWebAddress": "https://alterity.energy",
-          "emailAddressOfSupplier": "info@alterity.energy",
+          "nameOfSupplier": "Demo Manufacturer",
+          "supplierWebAddress": "https://example.com",
+          "emailAddressOfSupplier": "info@example.com",
           "addressOfSupplier": {
-            "streetAddress": "Polígono Torrelarragoiti P5-D",
-            "postalCode": "48170",
+            "streetAddress": "Calle Demo 1",
+            "postalCode": "28001",
             "addressCountry": "Spain",
-            "city": "Zamudio"
+            "city": "Madrid"
           },
           "components": [
             {
               "partName": "Cell module LFP",
-              "partNumber": "ALT-LMT-MODULE-27"
+              "partNumber": "DEMO-LMT-MODULE-27"
             },
             {
               "partName": "BMS (Battery Management System)",
-              "partNumber": "ALT-LMT-BMS-V2"
+              "partNumber": "DEMO-LMT-BMS-V1"
             }
           ]
         }
@@ -949,7 +949,7 @@
       "_sourceDocument": {
         "name": "Fuente pública",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/services/",
+        "generatedBy": "https://example.com/services",
         "deadline": null
       },
       "_evidence": null
@@ -1169,7 +1169,7 @@
       "_sourceDocument": {
         "name": "Fuente publica",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/contact/",
+        "generatedBy": "https://example.com/contact",
         "deadline": null
       },
       "_evidence": null

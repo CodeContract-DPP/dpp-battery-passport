@@ -1,6 +1,6 @@
 {
   "@context": "https://www.w3.org/ns/dpp/v1",
-  "dpp_uid": "urn:dpp:codecontract:battery:alterity-lmt-lfp-piloto-001",
+  "dpp_uid": "urn:dpp:codecontract:battery:demo-manufacturer-lmt-lfp-piloto-001",
   "dpp_version": "2.0",
   "created": "2026-04-21T10:00:00Z",
   "last_updated": "2026-04-21T10:00:00Z",
@@ -14,7 +14,7 @@
     "BatteryPass Data Model v1.3 (BMWK)"
   ],
   "_meta": {
-    "schema": "BatteryPassDataModel v1.3 + ESPR DPP Infrastructure (Code Contract)",
+    "schema": "DataAttributeLongList v1.3 + BatteryPassDataModel v1.2.0 + extensiones Code Contract",
     "basedOn": [
       "https://github.com/batterypass/BatteryPassDataModel",
       "https://codecontract-dpp.github.io/dpp-construccion-demos/"
@@ -32,14 +32,14 @@
       "_status": "assumed",
       "_note": "#3 ESPR. Granularidad del DPP: model | batch | item."
     },
-    "notes": "Datos de piloto para Alterity LMT/LFP. Campos marcados con '_status': confirmed = verificado en fuente pública; partial = rango o dato genérico; assumed = coherente con la tecnología LFP, pendiente de confirmar; dynamic = requiere BMS en tiempo real.",
+    "notes": "Datos demo genérica LMT/LFP (sin marca de cliente). Campos marcados con '_status': confirmed = verificado en fuente pública; partial = rango o dato genérico; assumed = coherente con la tecnología LFP, pendiente de confirmar; dynamic = requiere BMS en tiempo real.",
     "evidenceProvider": "Trackline by Code Contract S.L. (https://trackline.codecontract.com)"
   },
   "generalProductInformation": {
     "_icon": "🔋",
     "_title": "Identificación y datos generales",
     "productPassportIdentifier": {
-      "value": "urn:alterity:dpp:lmt-lfp-piloto-001",
+      "value": "urn:demo:dpp:lmt-lfp-001",
       "_status": "assumed",
       "_note": "Identificador provisional para el piloto. Pendiente de sistema definitivo.",
       "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
@@ -47,7 +47,7 @@
       "_evidence": null
     },
     "batteryIdentifier": {
-      "value": "ALT-LMT-LFP-2025-001-SN-0001",
+      "value": "DEMO-LMT-LFP-2026-001-SN-0001",
       "_status": "assumed",
       "_note": "#6. Número de serie provisional para el piloto.",
       "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
@@ -55,9 +55,9 @@
       "_evidence": null
     },
     "batteryModelIdentifier": {
-      "value": "ALT-LMT-LFP-27kWh",
+      "value": "DEMO-LMT-LFP-27kWh",
       "_status": "assumed",
-      "_note": "#7 Mandatory. Identificador del modelo de batería. Pendiente de confirmar con Alterity.",
+      "_note": "#7 Mandatory. Identificador del modelo de batería. Pendiente de confirmar con fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
       "_evidence": null
@@ -71,36 +71,36 @@
       "_evidence": null
     },
     "manufacturerIdentification": {
-      "value": "SIX TO GO SOLUTIONS S.L. (marca comercial: Alterity Energy)",
-      "address_streetAddress": "Polígono Torrelarragoiti P5-D",
-      "address_postalCode": "48170",
+      "value": "Demo Manufacturer S.L.",
+      "address_streetAddress": "Calle Demo 1",
+      "address_postalCode": "28001",
       "address_addressCountry": "Spain",
-      "address_city": "Zamudio, Bizkaia (Basque Country)",
-      "contact_email": "info@alterity.energy",
-      "contact_phone": "+34 944 374 922",
-      "contact_web": "https://alterity.energy",
+      "address_city": "Madrid",
+      "contact_email": "info@example.com",
+      "contact_phone": "+34 900 000 000",
+      "contact_web": "https://example.com",
       "_status": "confirmed",
       "_note": null,
       "_legalBasis": "ESPR 2024/1781 Art. 2(32) · LEY",
       "_sourceDocument": {
         "name": "Fuente pública",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/contact/",
+        "generatedBy": "https://example.com/contact",
         "deadline": null
       },
       "_evidence": null
     },
     "manufacturingPlace": {
       "addressCountry": "Spain",
-      "city": "Zamudio",
-      "region": "Bizkaia, Basque Country",
+      "city": "Madrid",
+      "region": "Madrid, Spain",
       "_status": "confirmed",
       "_note": null,
       "_legalBasis": "ESPR 2024/1781 Art. 2(33) · LEY",
       "_sourceDocument": {
         "name": "Fuente pública",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/contact/",
+        "generatedBy": "https://example.com/contact",
         "deadline": null
       },
       "_evidence": null
@@ -108,7 +108,7 @@
     "manufacturingDate": {
       "value": "2025-01-15",
       "_status": "assumed",
-      "_note": "Fecha estimada para el piloto. Pendiente de confirmar con Alterity.",
+      "_note": "Fecha estimada para el piloto. Pendiente de confirmar con fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
       "_evidence": null
@@ -150,7 +150,7 @@
       "value": 60,
       "unit": "months",
       "_status": "assumed",
-      "_note": "5 años o 100.000 km, lo que ocurra antes. Pendiente de confirmar con Alterity.",
+      "_note": "5 años o 100.000 km, lo que ocurra antes. Pendiente de confirmar con fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
       "_evidence": null
@@ -180,7 +180,7 @@
       "_evidence": null
     },
     "economicOperator": {
-      "value": "SIX TO GO SOLUTIONS S.L. (Alterity Energy)",
+      "value": "Demo Manufacturer S.L. (Demo Manufacturer)",
       "_status": "assumed",
       "_note": "#12. Operador económico responsable de la comercialización.",
       "_legalBasis": null,
@@ -200,7 +200,7 @@
       "_sourceDocument": {
         "name": "Fuente pública",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/mobility-sector/",
+        "generatedBy": "https://example.com/products",
         "deadline": null
       },
       "_evidence": null
@@ -338,7 +338,7 @@
       "_sourceDocument": {
         "name": "Fuente pública",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/mobility-sector/",
+        "generatedBy": "https://example.com/products",
         "deadline": null
       },
       "_evidence": null
@@ -370,7 +370,7 @@
       "_sourceDocument": {
         "name": "Fuente pública",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/mobility-sector/",
+        "generatedBy": "https://example.com/products",
         "deadline": null
       },
       "_evidence": null
@@ -433,12 +433,12 @@
       "value": 96,
       "unit": "%",
       "_status": "confirmed",
-      "_note": "Alterity publica 'High energy efficiency up to 96%'.",
+      "_note": "Datasheet declara 'High energy efficiency up to 96%' (ejemplo demo).",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": {
         "name": "Fuente pública",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/mobility-sector/",
+        "generatedBy": "https://example.com/products",
         "deadline": null
       },
       "_evidence": null
@@ -588,7 +588,7 @@
       "value": 80,
       "unit": "%",
       "_status": "assumed",
-      "_note": "Umbral estándar del sector (80% SoH). Pendiente de confirmación por Alterity.",
+      "_note": "Umbral estándar del sector (80% SoH). Pendiente de confirmación por fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -596,7 +596,7 @@
     "batteryLifetime__cycleLifeReferenceTest": {
       "value": "IEC 62660-1:2018",
       "_status": "assumed",
-      "_note": "#86 Mandatory. Norma de referencia usada para el test de ciclos de vida. Pendiente de confirmar con Alterity.",
+      "_note": "#86 Mandatory. Norma de referencia usada para el test de ciclos de vida. Pendiente de confirmar con fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -753,7 +753,7 @@
       "_evidence": null
     },
     "carbonFootprintStudy": {
-      "url": "https://alterity.energy/carbon-footprint-lmt",
+      "url": "https://example.com/carbon-footprint-study/lmt-lfp",
       "_status": "assumed",
       "_note": "URL provisional. Pendiente de publicación del estudio oficial.",
       "_legalBasis": "Reg. 2023/1542 Art. 7(1)(d) · LEY",
@@ -868,7 +868,7 @@
       "_evidence": null
     },
     "safetyRequirements": {
-      "safetyInstructions": "Manual de seguridad disponible en https://alterity.energy/safety/lmt-lfp",
+      "safetyInstructions": "Manual de seguridad disponible en https://example.com/safety/lmt-lfp",
       "extinguishingAgent": [
         "Water mist",
         "Dry powder (ABC)"
@@ -879,7 +879,7 @@
       "_sourceDocument": {
         "name": "Fuente pública",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/mobility-sector/",
+        "generatedBy": "https://example.com/products",
         "deadline": null
       },
       "_evidence": null
@@ -894,12 +894,12 @@
       "_rows": [
         {
           "documentType": "DismantlingManual",
-          "documentURL": "https://alterity.energy/manuals/lmt-lfp-dismantling",
+          "documentURL": "https://example.com/manuals/lmt-lfp-dismantling",
           "mimeType": "application/pdf"
         }
       ],
       "_status": "assumed",
-      "_note": "Alterity comunica capacidad de mantenimiento y segunda vida. URL provisional.",
+      "_note": "Fabricante comunica capacidad de mantenimiento y segunda vida. URL provisional.",
       "_legalBasis": "Reg. 2023/1542 Art. 11 · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -915,23 +915,23 @@
       ],
       "_rows": [
         {
-          "nameOfSupplier": "Alterity Energy",
-          "supplierWebAddress": "https://alterity.energy",
-          "emailAddressOfSupplier": "info@alterity.energy",
+          "nameOfSupplier": "Demo Manufacturer",
+          "supplierWebAddress": "https://example.com",
+          "emailAddressOfSupplier": "info@example.com",
           "addressOfSupplier": {
-            "streetAddress": "Polígono Torrelarragoiti P5-D",
-            "postalCode": "48170",
+            "streetAddress": "Calle Demo 1",
+            "postalCode": "28001",
             "addressCountry": "Spain",
-            "city": "Zamudio"
+            "city": "Madrid"
           },
           "components": [
             {
               "partName": "Cell module LFP",
-              "partNumber": "ALT-LMT-MODULE-27"
+              "partNumber": "DEMO-LMT-MODULE-27"
             },
             {
               "partName": "BMS (Battery Management System)",
-              "partNumber": "ALT-LMT-BMS-V2"
+              "partNumber": "DEMO-LMT-BMS-V1"
             }
           ]
         }
@@ -947,12 +947,12 @@
       "wastePrevention": "Mantenimiento correcto para prolongar vida útil. Evitar descarga profunda y sobrecarga.",
       "informationOnCollection": "Contenido 95% reciclable. LFP apta para segunda vida en aplicaciones estacionarias.",
       "_status": "assumed",
-      "_note": "Alterity comunica remanufactura y segunda vida.",
+      "_note": "Fabricante comunica remanufactura y segunda vida.",
       "_legalBasis": "Reg. 2023/1542 Art. 60(1) · LEY",
       "_sourceDocument": {
         "name": "Fuente pública",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/services/",
+        "generatedBy": "https://example.com/services",
         "deadline": null
       },
       "_evidence": null
@@ -962,7 +962,7 @@
     "_icon": "✅",
     "_title": "Etiquetas y conformidad",
     "euDeclarationOfConformityId": {
-      "value": "DoC-ALT-LMT-LFP-2025-001",
+      "value": "DoC-DEMO-LMT-LFP-2026-001",
       "_status": "assumed",
       "_note": "Número provisional. Pendiente de proceso de certificación formal.",
       "_legalBasis": "Reg. 2023/1542 Art. 18 · LEY",
@@ -975,7 +975,7 @@
       "_evidence": null
     },
     "declarationOfConformity": {
-      "url": "https://alterity.energy/conformity/lmt-lfp-2025",
+      "url": "https://example.com/conformity/lmt-lfp-2026",
       "_status": "assumed",
       "_note": null,
       "_legalBasis": "Reg. 2023/1542 Art. 18 · LEY",
@@ -988,9 +988,9 @@
       "_evidence": null
     },
     "resultOfTestReport": {
-      "url": "https://alterity.energy/test-reports/lmt-lfp-2025",
+      "url": "https://example.com/test-reports/lmt-lfp-2026",
       "_status": "partial",
-      "_note": "Alterity indica validación y tests funcionales, pero no publica informes concretos en web.",
+      "_note": "Fabricante indica validación y tests, pero no publica informes concretos en web (ejemplo demo).",
       "_legalBasis": "Reg. 2023/1542 Art. 7-10 · LEY",
       "_sourceDocument": {
         "name": "Declaración de conformidad",
@@ -1025,7 +1025,7 @@
     },
     "carbonFootprintLabel": {
       "value": "Class A",
-      "url": "https://alterity.energy/carbon-footprint-label/lmt-lfp",
+      "url": "https://example.com/carbon-footprint-label/lmt-lfp",
       "_status": "assumed",
       "_note": "#23 Mandatory. Etiqueta de huella de carbono visible en el producto. Formato y diseño según Delegated Act.",
       "_legalBasis": "Reg. 2023/1542 Art. 13(5) · LEY",
@@ -1039,7 +1039,7 @@
     },
     "meaningOfLabelsAndSymbols": {
       "value": "Explicación de todos los símbolos, etiquetas y marcas presentes en la batería y su embalaje.",
-      "url": "https://alterity.energy/labels-guide/lmt-lfp",
+      "url": "https://example.com/labels-guide/lmt-lfp",
       "_status": "assumed",
       "_note": "#25 Mandatory. Guía explicativa de todas las etiquetas del producto. URL provisional.",
       "_legalBasis": null,
@@ -1056,7 +1056,7 @@
     "_icon": "🔗",
     "_title": "Cadena de suministro y due diligence",
     "dueDiligenceReport": {
-      "url": "https://alterity.energy/due-diligence-2025",
+      "url": "https://example.com/due-diligence-2026",
       "_status": "assumed",
       "_note": "URL provisional. Cadena de suministro con proveedores europeos certificados CCCA/RMI.",
       "_legalBasis": "Reg. 2023/1542 Arts. 48-52 · LEY",
@@ -1117,7 +1117,7 @@
       "_evidence": null
     },
     "qr_payload_url": {
-      "value": "https://dpp.alterity.energy/battery/ALT-LMT-LFP-2025-001-SN-0001",
+      "value": "https://dpp.example.com/battery/DEMO-LMT-LFP-2026-001-SN-0001",
       "_status": "assumed",
       "_note": "URL que codificara el QR code fisico. Provisional hasta despliegue.",
       "_legalBasis": "ESPR 2024/1781 Art. 9(6) · LEY",
@@ -1141,7 +1141,7 @@
       "_evidence": null
     },
     "gs1_digital_link": {
-      "value": "https://id.gs1.org/01/PENDING/21/ALT-LMT-LFP-2025-001-SN-0001",
+      "value": "https://id.gs1.org/01/PENDING/21/DEMO-LMT-LFP-2026-001-SN-0001",
       "_status": "assumed",
       "_note": "GS1 Digital Link. GTIN pendiente de asignacion por GS1 Spain.",
       "_legalBasis": "ESPR 2024/1781 Art. 9 · LEY",
@@ -1149,7 +1149,7 @@
       "_evidence": null
     },
     "data_hosting": {
-      "value": "Self-hosted by manufacturer (Alterity Energy) or delegated to Code Contract S.L.",
+      "value": "Self-hosted by manufacturer (Demo) or delegated to Code Contract S.L.",
       "_status": "assumed",
       "_note": "El fabricante aloja sus propios datos DPP. Alternativa: delegacion a proveedor autorizado.",
       "_legalBasis": "ESPR 2024/1781 Art. 10 · LEY",
@@ -1169,20 +1169,20 @@
     "_icon": "👥",
     "_title": "Actores y operadores economicos",
     "operator_responsible": {
-      "value": "SIX TO GO SOLUTIONS S.L. (Alterity Energy)",
+      "value": "Demo Manufacturer S.L. (Demo Manufacturer)",
       "_status": "confirmed",
       "_note": "Operador economico responsable de la comercializacion en la UE.",
       "_legalBasis": "ESPR 2024/1781 Art. 2(32) · LEY",
       "_sourceDocument": {
         "name": "Fuente publica",
         "type": "URL",
-        "generatedBy": "https://alterity.energy/en/contact/",
+        "generatedBy": "https://example.com/contact",
         "deadline": null
       },
       "_evidence": null
     },
     "manufacturer": {
-      "value": "SIX TO GO SOLUTIONS S.L. (Alterity Energy)",
+      "value": "Demo Manufacturer S.L. (Demo Manufacturer)",
       "_status": "confirmed",
       "_note": "Fabricante del producto.",
       "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
