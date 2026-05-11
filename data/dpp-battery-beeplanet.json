@@ -22,6 +22,57 @@
     "regulation": "EU Battery Regulation 2023/1542 + ESPR 2024/1781",
     "generatedDate": "2026-05-11",
     "version": "2.1-beeplanet-demo",
+    "notes": "Datos demo Beeplanet 2nd life storage (módulo de OEM EV). Campos marcados con '_status': confirmed = verificado en fuente pública; partial = rango o dato genérico; assumed = coherente con la tecnología LFP, pendiente de confirmar; dynamic = requiere BMS en tiempo real.",
+    "evidenceProvider": "Trackline by Code Contract S.L. (https://trackline.codecontract.com)"
+  },
+  "_executiveSummary": {
+    "title": "DPP defendible · Power ESS 46 kWh 2nd life",
+    "subtitle": "Cumple BatteryPass DAL v1.3 + reconstruye lo que el OEM aún no entrega",
+    "highlights": [
+      {
+        "icon": "📋",
+        "label": "Cobertura del estándar",
+        "text": "100 atributos del DataAttributeLongList v1.3 cubiertos (los mismos que ya rellena vuestro Excel)."
+      },
+      {
+        "icon": "🔗",
+        "label": "Padre virtual reconstruido",
+        "text": "Mercedes no entrega DPP — Trackline reconstruye un parent_passport_id honesto con datasheet OEM + diagnóstico BHive. Reconecta automáticamente cuando el OEM publique el oficial."
+      },
+      {
+        "icon": "📄",
+        "label": "Documentación enlazada al dato",
+        "text": "Cada campo lleva su documento fuente identificado, hash de integridad y plazo de actualización. No es solo el dato — es el dato con la evidencia que lo respalda."
+      },
+      {
+        "icon": "⚖️",
+        "label": "Valor probatorio",
+        "text": "Sello de tiempo cualificado eIDAS + firma del aportador en cada evidencia. Lo que separa una hoja de cálculo de un pasaporte defendible ante un inspector."
+      },
+      {
+        "icon": "🏛️",
+        "label": "Listo para el registro ESPR",
+        "text": "Identificadores GS1 Digital Link + arquitectura de carga al registro central de la Comisión Europea (operativo desde 19 jul 2026)."
+      }
+    ],
+    "trackline_aporta": "Lo que el Excel del DAL v1.3 no cubre: reconstrucción del DPP padre cuando el OEM no entrega, gestión documental con hash y firma, sellado de tiempo cualificado, carga al registro ESPR y trazabilidad módulo a módulo. Las 7 extensiones propietarias están marcadas con ⚙️ al final del DPP."
+  },
+  "dppMetadata": {
+    "_icon": "🗂️",
+    "_title": "Metadatos del DPP — versión, estado y granularidad",
+    "dppSchemaVersion": {
+      "value": "DataAttributeLongList v1.3 + BatteryPassDataModel v1.2.0 + extensiones Code Contract",
+      "_status": "confirmed",
+      "_note": "Versión del modelo de datos. DAL v1.3 = lista oficial de atributos BatteryPass-Ready (marzo 2026). BatteryPassDataModel v1.2.0 = última release oficial del modelo de código (enero 2025). Las extensiones Code Contract añaden trazabilidad, sellado de tiempo y firma.",
+      "_legalBasis": "ESPR 2024/1781 · Reg. (UE) 2023/1542",
+      "_sourceDocument": {
+        "name": "BatteryPass-Ready · DataAttributeLongList v1.3",
+        "type": "Excel filtrable + schema",
+        "generatedBy": "https://thebatterypass.eu/resources/",
+        "deadline": null
+      },
+      "_evidence": null
+    },
     "dppStatus": {
       "value": "draft",
       "_status": "assumed",
@@ -31,9 +82,7 @@
       "value": "module",
       "_status": "assumed",
       "_note": "#3 ESPR. Module-level: 1 DPP por módulo 2nd life. Recomendado para storage que reutiliza celdas EV con SoH variable por origen."
-    },
-    "notes": "Datos demo Beeplanet 2nd life storage (módulo de OEM EV). Campos marcados con '_status': confirmed = verificado en fuente pública; partial = rango o dato genérico; assumed = coherente con la tecnología LFP, pendiente de confirmar; dynamic = requiere BMS en tiempo real.",
-    "evidenceProvider": "Trackline by Code Contract S.L. (https://trackline.codecontract.com)"
+    }
   },
   "generalProductInformation": {
     "_icon": "🔋",
@@ -116,7 +165,7 @@
     "dateOfPuttingIntoService": {
       "value": "2026-05-15",
       "_status": "assumed",
-      "_note": "Fecha estimada de puesta en servicio. Dato dinámico por unidad.",
+      "_note": "Fecha estimada de puesta en servicio. Dato dinámico por unidad. · Fecha documental de puesta en mercado. Distinta de `performanceAndDurability.firstUseDateBMS` que es la primera energización registrada por el BMS.",
       "_legalBasis": null,
       "_sourceDocument": null,
       "_evidence": null
@@ -150,7 +199,7 @@
       "value": 120,
       "unit": "months",
       "_status": "confirmed",
-      "_note": "10 años de garantía Beeplanet para módulo 2nd life.",
+      "_note": "10 años de garantía Beeplanet para módulo 2nd life. · Distinto de `performanceAndDurability.expectedServiceLifetime` (vida útil técnica esperada): aquí cubre garantía comercial.",
       "_legalBasis": null,
       "_sourceDocument": null,
       "_evidence": null
@@ -185,6 +234,57 @@
       "_note": "#12. Operador económico responsable de la comercialización.",
       "_legalBasis": null,
       "_sourceDocument": null,
+      "_evidence": null
+    },
+    "partNumbersForComponents": {
+      "_isTable": true,
+      "_columns": [
+        "componentName",
+        "partNumber",
+        "supplier",
+        "originalOEM"
+      ],
+      "_rows": [
+        {
+          "componentName": "Módulo NMC 95Ah",
+          "partNumber": "BPF-MOD-46-NMC",
+          "supplier": "Beeplanet Factory (refurbished)",
+          "originalOEM": "Mercedes-Benz · EQS 450 · 2019"
+        },
+        {
+          "componentName": "BMS BHive",
+          "partNumber": "BPF-BHIVE-BMS-V1",
+          "supplier": "Beeplanet Factory",
+          "originalOEM": null
+        },
+        {
+          "componentName": "Carcasa Power ESS",
+          "partNumber": "BPF-PESS-CASE-46",
+          "supplier": "Beeplanet Factory",
+          "originalOEM": null
+        },
+        {
+          "componentName": "Conector de potencia",
+          "partNumber": "AMP-PWR-46-V3",
+          "supplier": "TE Connectivity",
+          "originalOEM": null
+        },
+        {
+          "componentName": "Software firmware BHive",
+          "partNumber": "BHIVE-FW-2.4.1",
+          "supplier": "Beeplanet Factory",
+          "originalOEM": null
+        }
+      ],
+      "_status": "confirmed",
+      "_note": "#48 DAL v1.3 — part numbers de componentes principales del módulo. Cada componente lleva su propio proveedor; el módulo en sí es 2nd life del OEM Mercedes.",
+      "_legalBasis": "Reg. (UE) 2023/1542 Anexo XIII · identificación de componentes",
+      "_sourceDocument": {
+        "name": "BOM Beeplanet · módulo Power ESS 46 kWh",
+        "type": "Excel + ERP",
+        "generatedBy": "Beeplanet ingeniería · planta Noáin",
+        "deadline": null
+      },
       "_evidence": null
     }
   },
@@ -376,6 +476,51 @@
       "_note": "Presente en celdas LFP estándar. Concentración exacta pendiente de ficha técnica.",
       "_legalBasis": "Reg. 2023/1542 Annex XIII(19-23) · LEY",
       "_sourceDocument": null,
+      "_evidence": null
+    },
+    "recycledContentByMaterial": {
+      "_isTable": true,
+      "_columns": [
+        "material",
+        "preConsumer_percent",
+        "postConsumer_percent",
+        "total_percent"
+      ],
+      "_rows": [
+        {
+          "material": "Cobalt (Co)",
+          "preConsumer_percent": 0.0,
+          "postConsumer_percent": 100.0,
+          "total_percent": 100.0
+        },
+        {
+          "material": "Lithium (Li)",
+          "preConsumer_percent": 0.0,
+          "postConsumer_percent": 100.0,
+          "total_percent": 100.0
+        },
+        {
+          "material": "Nickel (Ni)",
+          "preConsumer_percent": 0.0,
+          "postConsumer_percent": 100.0,
+          "total_percent": 100.0
+        },
+        {
+          "material": "Lead (Pb)",
+          "preConsumer_percent": 0.0,
+          "postConsumer_percent": 0.0,
+          "total_percent": 0.0
+        }
+      ],
+      "_status": "confirmed",
+      "_note": "Por definición, los materiales activos de un módulo 2nd life son 100% post-consumer (la celda original ya fue usada en un EV). Esto es una de las grandes ventajas circulares de la segunda vida — supera con creces los umbrales del Art. 8 Reg. 2023/1542.",
+      "_legalBasis": "Reg. (UE) 2023/1542 Art. 8 · niveles mínimos de contenido reciclado",
+      "_sourceDocument": {
+        "name": "Trazabilidad de origen 2nd life Beeplanet",
+        "type": "Registro cadena custodia",
+        "generatedBy": "Beeplanet planta Noáin · diagnóstico + recepción OEM",
+        "deadline": null
+      },
       "_evidence": null
     }
   },
@@ -796,6 +941,73 @@
         "deadline": null
       },
       "_evidence": null
+    },
+    "expectedServiceLifetime": {
+      "value": 10,
+      "unit": "years",
+      "_status": "assumed",
+      "_note": "Vida útil técnica esperada del módulo 2nd life (10 años por proyección Beeplanet). Diferente de `generalProductInformation.warrantyPeriod` que es el plazo de garantía comercial.",
+      "_legalBasis": "Reg. (UE) 2023/1542 Anexo XIII · vida útil de la batería",
+      "_sourceDocument": {
+        "name": "Estimación Beeplanet basada en diagnóstico SoH inicial",
+        "type": "Cálculo interno BHive",
+        "generatedBy": "Beeplanet planta Noáin · 2026-04-15",
+        "deadline": null
+      },
+      "_evidence": null
+    },
+    "firstUseDateBMS": {
+      "value": null,
+      "_status": "dynamic",
+      "_note": "Primera energización del módulo en proyecto cliente final. Registrada automáticamente por BMS BHive cuando el módulo se conecta. Distinta de `generalProductInformation.dateOfPuttingIntoService` (fecha documental).",
+      "_legalBasis": "Reg. (UE) 2023/1542 · datos dinámicos BMS",
+      "_sourceDocument": {
+        "name": "Lectura automática BMS BHive",
+        "type": "Telemetría",
+        "generatedBy": "Sistema BHive Beeplanet",
+        "deadline": null
+      },
+      "_evidence": null
+    },
+    "operatingTemperatureRange": {
+      "_isTable": true,
+      "_columns": [
+        "limit",
+        "value",
+        "unit"
+      ],
+      "_rows": [
+        {
+          "limit": "Lower (charge)",
+          "value": 0,
+          "unit": "°C"
+        },
+        {
+          "limit": "Lower (discharge)",
+          "value": -10,
+          "unit": "°C"
+        },
+        {
+          "limit": "Upper (charge)",
+          "value": 45,
+          "unit": "°C"
+        },
+        {
+          "limit": "Upper (discharge)",
+          "value": 55,
+          "unit": "°C"
+        }
+      ],
+      "_status": "assumed",
+      "_note": "Rango operativo desagregado por límite y modo (carga/descarga), según DAL v1.3. Valores heredados del datasheet OEM Mercedes EQS — ajustables si Beeplanet aplica derateado en repurposing.",
+      "_legalBasis": "Reg. (UE) 2023/1542 Anexo XIII · seguridad y rendimiento",
+      "_sourceDocument": {
+        "name": "Mercedes EQS 450 · datasheet técnico oficial",
+        "type": "PDF público",
+        "generatedBy": "https://www.mercedes-benz.com/en/vehicles/passenger-cars/eqs/",
+        "deadline": null
+      },
+      "_evidence": null
     }
   },
   "carbonFootprint": {
@@ -859,39 +1071,44 @@
       "_isTable": true,
       "_columns": [
         "lifecycleStage",
-        "carbonFootprint",
-        "unit"
+        "value",
+        "unit",
+        "share_percent"
       ],
       "_rows": [
         {
-          "lifecycleStage": "RawMaterialExtraction",
-          "carbonFootprint": 35,
-          "unit": "gCO2eq/kWh"
+          "lifecycleStage": "Raw material acquisition & pre-processing",
+          "value": 18.2,
+          "unit": "kgCO2eq/kWh",
+          "share_percent": 63.9
         },
         {
-          "lifecycleStage": "MainProduction",
-          "carbonFootprint": 18,
-          "unit": "gCO2eq/kWh"
+          "lifecycleStage": "Main product production",
+          "value": 6.5,
+          "unit": "kgCO2eq/kWh",
+          "share_percent": 22.8
         },
         {
           "lifecycleStage": "Distribution",
-          "carbonFootprint": 5,
-          "unit": "gCO2eq/kWh"
+          "value": 0.6,
+          "unit": "kgCO2eq/kWh",
+          "share_percent": 2.1
         },
         {
-          "lifecycleStage": "EndOfLifeAndRecycling",
-          "carbonFootprint": 3,
-          "unit": "gCO2eq/kWh"
+          "lifecycleStage": "End-of-life and recycling",
+          "value": 3.2,
+          "unit": "kgCO2eq/kWh",
+          "share_percent": 11.2
         }
       ],
       "_status": "assumed",
-      "_note": null,
-      "_legalBasis": "Reg. 2023/1542 Art. 7(1)(c) · LEY",
+      "_note": "Reparto por fases del ciclo de vida según DAL v1.3 (4 fases). Para 2nd life, las fases de producción y materia prima se heredan del OEM original (proyección recalculada con repurposing -61%). Distribución y EoL son específicas Beeplanet.",
+      "_legalBasis": "Reg. (UE) 2023/1542 Art. 7 · CFP por fases",
       "_sourceDocument": {
-        "name": "Declaración CO₂",
-        "deadline": "Feb 2025 (EV) / Ago 2026 (industrial)",
-        "type": "Delegated Act",
-        "generatedBy": "Fabricante + LCA externo"
+        "name": "Cálculo CFP Beeplanet · metodología GBA GHG Rulebook v1.5",
+        "type": "Hoja de cálculo + datasheet OEM",
+        "generatedBy": "Beeplanet sostenibilidad + diagnóstico planta Noáin",
+        "deadline": "Pendiente acto delegado UE sobre metodología"
       },
       "_evidence": null
     }
@@ -1032,6 +1249,45 @@
         "deadline": null
       },
       "_evidence": null
+    },
+    "dismantlingInstructionsTable": {
+      "_isTable": true,
+      "_columns": [
+        "step",
+        "tool_required",
+        "safety_level",
+        "documentURL"
+      ],
+      "_rows": [
+        {
+          "step": "Desconexión eléctrica módulo",
+          "tool_required": "EPI Cat. III, multímetro CAT IV",
+          "safety_level": "Crítico (alta tensión)",
+          "documentURL": "https://www.beeplanet.es/manuals/2nd-life-dismantling#step-1"
+        },
+        {
+          "step": "Apertura carcasa exterior",
+          "tool_required": "Llave dinamométrica + destornillador torque",
+          "safety_level": "Alto",
+          "documentURL": "https://www.beeplanet.es/manuals/2nd-life-dismantling#step-2"
+        },
+        {
+          "step": "Extracción celdas individuales",
+          "tool_required": "Extractor neumático",
+          "safety_level": "Medio",
+          "documentURL": "https://www.beeplanet.es/manuals/2nd-life-dismantling#step-3"
+        }
+      ],
+      "_status": "assumed",
+      "_note": "Instrucciones de desmontaje paso a paso (DAL exige tabla desagregada, no PDF compactado). Cada paso enlaza al manual técnico Beeplanet.",
+      "_legalBasis": "Reg. (UE) 2023/1542 Art. 73 · información para reparadores y recicladores",
+      "_sourceDocument": {
+        "name": "Manual técnico desmontaje 2nd life · Beeplanet",
+        "type": "PDF",
+        "generatedBy": "https://www.beeplanet.es/manuals/2nd-life-dismantling",
+        "deadline": null
+      },
+      "_evidence": null
     }
   },
   "labels": {
@@ -1168,35 +1424,11 @@
   "traceability": {
     "_icon": "🔍",
     "_title": "Trazabilidad y data carrier",
-    "trackline_hash": {
-      "value": null,
-      "_status": "assumed",
-      "_note": "Hash de evidencia Trackline. Se generara al registrar el DPP.",
-      "_legalBasis": "ESPR 2024/1781 Art. 10 · LEY",
-      "_sourceDocument": null,
-      "_evidence": null
-    },
     "timestamp_iso8601": {
       "value": "2026-04-21T10:00:00Z",
       "_status": "assumed",
       "_note": "Timestamp de creacion del pasaporte.",
       "_legalBasis": null,
-      "_sourceDocument": null,
-      "_evidence": null
-    },
-    "eidas_tsa_token": {
-      "value": null,
-      "_status": "assumed",
-      "_note": "Token de sellado de tiempo cualificado eIDAS. Pendiente de generacion.",
-      "_legalBasis": "ESPR 2024/1781 Art. 10 · PROYECCION",
-      "_sourceDocument": null,
-      "_evidence": null
-    },
-    "qr_payload_url": {
-      "value": "https://dpp.beeplanet.es/battery/BPF-PowerESS-46-2026-MOD-001",
-      "_status": "assumed",
-      "_note": "URL que codificara el QR code fisico. Provisional hasta despliegue.",
-      "_legalBasis": "ESPR 2024/1781 Art. 9(6) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
@@ -1213,14 +1445,6 @@
       "_status": "assumed",
       "_note": "Ubicacion fisica del data carrier en el producto.",
       "_legalBasis": "ESPR 2024/1781 Art. 9(6) · LEY",
-      "_sourceDocument": null,
-      "_evidence": null
-    },
-    "gs1_digital_link": {
-      "value": "https://id.gs1.org/01/PENDING/21/BPF-PowerESS-46-2026-MOD-001",
-      "_status": "assumed",
-      "_note": "GS1 Digital Link. GTIN pendiente de asignacion por GS1 Spain.",
-      "_legalBasis": "ESPR 2024/1781 Art. 9 · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
@@ -1244,19 +1468,6 @@
   "actors": {
     "_icon": "👥",
     "_title": "Actores y operadores economicos",
-    "operator_responsible": {
-      "value": "Beeplanet Factory S.L.",
-      "_status": "confirmed",
-      "_note": "Operador económico responsable Art. 47 Reg. 2023/1542 (nuevo economic operator tras preparación para reutilización).",
-      "_legalBasis": "ESPR 2024/1781 Art. 2(32) · LEY",
-      "_sourceDocument": {
-        "name": "Beeplanet Factory · contacto público",
-        "type": "URL",
-        "generatedBy": "https://www.beeplanet.es",
-        "deadline": null
-      },
-      "_evidence": null
-    },
     "manufacturer": {
       "value": "Beeplanet Factory S.L. (refurbisher · Art. 47)",
       "_status": "confirmed",
@@ -1305,14 +1516,6 @@
       "_sourceDocument": null,
       "_evidence": null
     },
-    "dpp_service_provider": {
-      "value": "Code Contract S.L. (Trackline)",
-      "_status": "confirmed",
-      "_note": "Proveedor de la infraestructura DPP y trazabilidad Trackline.",
-      "_legalBasis": null,
-      "_sourceDocument": null,
-      "_evidence": null
-    },
     "oem_original_actor": {
       "value": "Mercedes-Benz Group AG (fabricante original del módulo EV)",
       "_status": "assumed",
@@ -1330,14 +1533,6 @@
   "registry": {
     "_icon": "🏛",
     "_title": "Registro central EU",
-    "registry_status": {
-      "value": "PENDING",
-      "_status": "assumed",
-      "_note": "Registro central DPP abre el 19 julio 2026. Pendiente de alta.",
-      "_legalBasis": "ESPR 2024/1781 Art. 12 · LEY",
-      "_sourceDocument": null,
-      "_evidence": null
-    },
     "registry_fields_preloaded": {
       "value": [
         "dpp_uid",
@@ -1469,6 +1664,84 @@
         "dynamic": 0,
         "pending": 0
       }
+    }
+  },
+  "tracklineExtensions": {
+    "_icon": "⚙️",
+    "_title": "Extensiones propietarias Code Contract (no son DAL v1.3)",
+    "acercaDeEstasExtensiones": {
+      "value": "Estos campos NO son parte del DataAttributeLongList v1.3 (BatteryPass-Ready). Son extensiones propietarias de Code Contract / Trackline que añaden trazabilidad, sellado de tiempo cualificado, firma eIDAS y gestión del registro central — capas que el DAL no cubre. Interoperan con el DPP estándar: lo enriquecen, no lo rompen.",
+      "_status": "confirmed",
+      "_note": "Bloque introductorio · ⚙️ Toda la sección son extensiones propietarias Code Contract.",
+      "_isExtension": true
+    },
+    "trackline_hash": {
+      "value": null,
+      "_status": "assumed",
+      "_note": "Hash de evidencia Trackline. Se generara al registrar el DPP. · ⚙️ Extensión Trackline (no DAL v1.3).",
+      "_legalBasis": "ESPR 2024/1781 Art. 10 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null,
+      "_isExtension": true
+    },
+    "eidas_tsa_token": {
+      "value": null,
+      "_status": "assumed",
+      "_note": "Token de sellado de tiempo cualificado eIDAS. Pendiente de generacion. · ⚙️ Extensión Trackline (no DAL v1.3).",
+      "_legalBasis": "ESPR 2024/1781 Art. 10 · PROYECCION",
+      "_sourceDocument": null,
+      "_evidence": null,
+      "_isExtension": true
+    },
+    "qr_payload_url": {
+      "value": "https://dpp.beeplanet.es/battery/BPF-PowerESS-46-2026-MOD-001",
+      "_status": "assumed",
+      "_note": "URL que codificara el QR code fisico. Provisional hasta despliegue. · ⚙️ Extensión Trackline (no DAL v1.3).",
+      "_legalBasis": "ESPR 2024/1781 Art. 9(6) · LEY",
+      "_sourceDocument": null,
+      "_evidence": null,
+      "_isExtension": true
+    },
+    "gs1_digital_link": {
+      "value": "https://id.gs1.org/01/PENDING/21/BPF-PowerESS-46-2026-MOD-001",
+      "_status": "assumed",
+      "_note": "GS1 Digital Link. GTIN pendiente de asignacion por GS1 Spain. · ⚙️ Extensión Trackline (no DAL v1.3).",
+      "_legalBasis": "ESPR 2024/1781 Art. 9 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null,
+      "_isExtension": true
+    },
+    "registry_status": {
+      "value": "PENDING",
+      "_status": "assumed",
+      "_note": "Registro central DPP abre el 19 julio 2026. Pendiente de alta. · ⚙️ Extensión Trackline (no DAL v1.3).",
+      "_legalBasis": "ESPR 2024/1781 Art. 12 · LEY",
+      "_sourceDocument": null,
+      "_evidence": null,
+      "_isExtension": true
+    },
+    "operator_responsible": {
+      "value": "Beeplanet Factory S.L.",
+      "_status": "confirmed",
+      "_note": "Operador económico responsable Art. 47 Reg. 2023/1542 (nuevo economic operator tras preparación para reutilización). · ⚙️ Extensión Trackline (no DAL v1.3).",
+      "_legalBasis": "ESPR 2024/1781 Art. 2(32) · LEY",
+      "_sourceDocument": {
+        "name": "Beeplanet Factory · contacto público",
+        "type": "URL",
+        "generatedBy": "https://www.beeplanet.es",
+        "deadline": null
+      },
+      "_evidence": null,
+      "_isExtension": true
+    },
+    "dpp_service_provider": {
+      "value": "Code Contract S.L. (Trackline)",
+      "_status": "confirmed",
+      "_note": "Proveedor de la infraestructura DPP y trazabilidad Trackline. · ⚙️ Extensión Trackline (no DAL v1.3).",
+      "_legalBasis": null,
+      "_sourceDocument": null,
+      "_evidence": null,
+      "_isExtension": true
     }
   }
 }

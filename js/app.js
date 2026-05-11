@@ -90,7 +90,7 @@ const DPP = (() => {
 
   function renderAttribute(key, attr) {
     if (key.startsWith('_')) return '';
-    var metaKeys = ['_status','_legalBasis','_sourceDocument','_evidence','_note','_isTable','_columns','_rows'];
+    var metaKeys = ['_status','_legalBasis','_sourceDocument','_evidence','_note','_isTable','_columns','_rows','_isExtension'];
     var dataFields = '';
     if (attr._isTable && attr._columns && attr._rows) {
       dataFields = renderTable(attr);
@@ -130,8 +130,10 @@ const DPP = (() => {
     }
     var legalPill = attr._legalBasis ? '<span class="legal-pill ' + lCls + '" title="' + attr._legalBasis + '">' + attr._legalBasis + '</span>' : '';
     var noteHTML = attr._note ? '<div class="attr-note">' + attr._note + '</div>' : '';
-    return '<div class="attribute" data-status="' + (attr._status||'pending') + '">' +
-      '<div class="attr-header"><h3>' + humanKey(key) + '</h3>' + status + '</div>' +
+    var extBadge = attr._isExtension ? '<span class="ext-badge" title="Extensión propietaria Code Contract — no DAL v1.3">⚙️ Trackline ext.</span>' : '';
+    var extAttr = attr._isExtension ? ' data-extension="true"' : '';
+    return '<div class="attribute" data-status="' + (attr._status||'pending') + '"' + extAttr + '>' +
+      '<div class="attr-header"><h3>' + humanKey(key) + '</h3>' + status + extBadge + '</div>' +
       '<div class="attr-body">' +
       '<div class="attr-data">' + dataFields + '</div>' +
       legalPill + noteHTML + docHTML + evidenceHTML +
@@ -156,7 +158,8 @@ const DPP = (() => {
     var cntRed = counts.pending;
     var cntBlue = counts.dynamic;
 
-    return '<section class="dpp-section' + cls + '" id="sec-' + sectionKey + '">' +
+    var isExtSection = (sectionKey === 'tracklineExtensions') ? ' section-extension' : '';
+    return '<section class="dpp-section' + cls + isExtSection + '" id="sec-' + sectionKey + '">' +
       '<div class="section-header" onclick="DPP.toggleSection(\'' + sectionKey + '\')">' +
       '<span class="section-icon">' + icon + '</span>' +
       '<h2>' + title + '</h2>' +
@@ -172,7 +175,39 @@ const DPP = (() => {
       '</section>';
   }
 
-  var SKIP_KEYS = ['@context','dpp_uid','dpp_version','created','last_updated','regulation_framework','_meta','block_status'];
+  var SKIP_KEYS = ['@context','dpp_uid','dpp_version','created','last_updated','regulation_framework','_meta','block_status','_executiveSummary'];
+
+  function renderExecutiveSummary(data) {
+    var es = data._executiveSummary;
+    if (!es) return '';
+    var html = '<section class="exec-summary">' +
+      '<div class="exec-summary-header">' +
+        '<h2>' + (es.title || '') + '</h2>' +
+        (es.subtitle ? '<p class="exec-summary-sub">' + es.subtitle + '</p>' : '') +
+      '</div>';
+    if (Array.isArray(es.highlights) && es.highlights.length) {
+      html += '<div class="exec-summary-grid">';
+      es.highlights.forEach(function(h){
+        html += '<div class="exec-highlight">' +
+          '<span class="exec-highlight-icon">' + (h.icon || '•') + '</span>' +
+          '<div class="exec-highlight-body">' +
+            '<strong>' + (h.label || '') + '</strong>' +
+            '<p>' + (h.text || '') + '</p>' +
+          '</div>' +
+        '</div>';
+      });
+      html += '</div>';
+    }
+    if (es.trackline_aporta) {
+      html += '<div class="exec-summary-cta">' +
+        '<span class="exec-cta-icon">⚙️</span>' +
+        '<div><strong>Lo que aporta Trackline (sobre el Excel del DAL v1.3):</strong> ' +
+        es.trackline_aporta + '</div>' +
+      '</div>';
+    }
+    html += '</section>';
+    return html;
+  }
 
   function renderMeta(data) {
     var meta = data._meta || {};
@@ -277,7 +312,7 @@ const DPP = (() => {
       if (!res.ok) throw new Error('No se pudo descargar ' + jsonPath + ' (HTTP ' + res.status + ')');
       var data = await res.json();
       window._dppData = data;
-      var html = renderMeta(data) + renderSummary(data);
+      var html = renderMeta(data) + renderSummary(data) + renderExecutiveSummary(data);
 
       if (data.registry) {
         html += renderSection('registry', data.registry, 'registry-highlight');

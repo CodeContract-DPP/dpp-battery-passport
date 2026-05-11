@@ -86,6 +86,24 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .section-body{padding:.5rem 1.25rem 1rem}
 .section-body.collapsed{display:none}
 
+/* Executive summary (banner para CEO) */
+.exec-summary{background:linear-gradient(135deg,#0d3b2e,#1a5276);color:#fff;border-radius:14px;padding:1.5rem;margin:1rem 0;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.exec-summary-header h2{font-size:1.35rem;margin:0;color:#fff}
+.exec-summary-sub{margin:.5rem 0 1.25rem;font-size:.95rem;opacity:.85}
+.exec-summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.85rem;margin-bottom:1.25rem}
+.exec-highlight{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:.85rem;display:flex;gap:.65rem;align-items:flex-start}
+.exec-highlight-icon{font-size:1.3rem;flex-shrink:0}
+.exec-highlight-body strong{display:block;font-size:.9rem;margin-bottom:.25rem;color:#ffd86b}
+.exec-highlight-body p{font-size:.82rem;margin:0;opacity:.9;line-height:1.4}
+.exec-summary-cta{background:rgba(255,216,107,.15);border-left:4px solid #ffd86b;border-radius:8px;padding:.85rem 1rem;display:flex;gap:.65rem;align-items:flex-start;font-size:.85rem}
+.exec-cta-icon{font-size:1.2rem;flex-shrink:0}
+
+/* Badge para extensiones Trackline */
+.attribute[data-extension="true"]{border-left:3px solid #d69e2e;padding-left:.85rem;background:#fffbf0}
+.ext-badge{display:inline-block;font-size:.7rem;padding:.15rem .55rem;border-radius:10px;background:#d69e2e;color:#fff;font-weight:600;margin-left:.4rem;vertical-align:middle}
+.section-extension .section-header{background:linear-gradient(135deg,#fffbf0,#fef3c7);border-bottom-color:#fbbf24}
+.section-extension .section-header h2:after{content:" ⚙️ Extensiones Code Contract";color:#92400e;font-size:.85rem;font-weight:500;margin-left:.5rem}
+
 /* Attributes */
 .attribute{padding:1rem 0;border-bottom:1px solid #f0f0f0}
 .attribute:last-child{border-bottom:none}
