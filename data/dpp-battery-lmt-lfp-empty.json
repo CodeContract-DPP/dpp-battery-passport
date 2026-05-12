@@ -44,7 +44,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "batteryIdentifier": {
       "value": "",
@@ -52,7 +53,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "batteryModelIdentifier": {
       "value": "",
@@ -60,7 +62,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "batterySerialNumber": {
       "value": "",
@@ -68,7 +71,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#3"
     },
     "manufacturerIdentification": {
       "value": "",
@@ -88,7 +92,8 @@
         "generatedBy": "https://example.com/contact",
         "deadline": null
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "manufacturingPlace": {
       "addressCountry": "",
@@ -111,7 +116,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "dateOfPuttingIntoService": {
       "value": "",
@@ -119,7 +125,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#5"
     },
     "batteryCategory": {
       "value": "",
@@ -127,7 +134,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "batteryStatus": {
       "value": "",
@@ -135,7 +143,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "batteryMass": {
       "value": null,
@@ -144,7 +153,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex XIII · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "warrantyPeriod": {
       "value": null,
@@ -153,7 +163,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "uniqueEconomicOperatorIdentifier": {
       "value": "",
@@ -161,7 +172,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "ESPR 2024/1781 Art. 9 · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#4"
     },
     "uniqueManufacturerIdentifier": {
       "value": "",
@@ -169,7 +181,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#2"
     },
     "uniqueFacilityIdentifier": {
       "value": "",
@@ -177,7 +190,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "ESPR 2024/1781 Art. 2(33) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#1"
     },
     "economicOperator": {
       "value": "",
@@ -185,7 +199,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     }
   },
   "materialComposition": {
@@ -282,7 +297,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex XIII(20) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#8"
     },
     "hazardousSubstances": {
       "_isTable": true,
@@ -326,7 +342,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "technicalSpecification__ratedCapacity": {
       "value": null,
@@ -341,7 +358,8 @@
         "generatedBy": "https://example.com/products",
         "deadline": null
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "technicalSpecification__nominalVoltage": {
       "value": null,
@@ -350,7 +368,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "technicalSpecification__minimumVoltage": {
       "value": null,
@@ -359,7 +378,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "technicalSpecification__maximumVoltage": {
       "value": null,
@@ -373,7 +393,8 @@
         "generatedBy": "https://example.com/products",
         "deadline": null
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "technicalSpecification__certifiedUsableBatteryEnergy": {
       "value": null,
@@ -382,7 +403,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "technicalSpecification__remainingCapacity": {
       "value": null,
@@ -441,7 +463,8 @@
         "generatedBy": "https://example.com/products",
         "deadline": null
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#9"
     },
     "roundtripEfficiency__roundTripEfficiencyAt50PercentCycleLife": {
       "value": null,
@@ -450,7 +473,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#9"
     },
     "roundtripEfficiency__remainingRoundTripEnergyEfficiency": {
       "value": null,
@@ -477,7 +501,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "roundtripEfficiency__currentSelfDischargingRate": {
       "value": null,
@@ -503,7 +528,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "powerCapability__remainingPowerCapability": {
       "value": null,
@@ -530,7 +556,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "powerCapability__powerCapabilityRatio": {
       "value": null,
@@ -538,7 +565,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "internalResistance__initialInternalResistancePack": {
       "value": null,
@@ -547,7 +575,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#9"
     },
     "internalResistance__currentInternalResistancePack": {
       "value": null,
@@ -565,7 +594,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "batteryLifetime__expectedNumberOfCycles": {
       "value": null,
@@ -573,7 +603,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#9"
     },
     "batteryLifetime__warrantyPeriod": {
       "value": null,
@@ -582,7 +613,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "batteryLifetime__capacityThresholdExhaustion": {
       "value": null,
@@ -591,7 +623,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "batteryLifetime__cycleLifeReferenceTest": {
       "value": "",
@@ -599,7 +632,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#9"
     },
     "batteryLifetime__cRateOfRelevantCycleLifeTest": {
       "value": "",
@@ -607,7 +641,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#9"
     },
     "batteryLifetime__numberOfFullCycles": {
       "value": null,
@@ -649,7 +684,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "temperatureConditions__temperatureRangeIdleState": {
       "lowerBoundary": null,
@@ -719,7 +755,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Annex XIII · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#10"
     }
   },
   "carbonFootprint": {
@@ -737,7 +774,8 @@
         "type": "Delegated Act",
         "generatedBy": "Fabricante + LCA externo"
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#11"
     },
     "carbonFootprintPerformanceClass": {
       "value": "",
@@ -750,7 +788,8 @@
         "type": "Delegated Act",
         "generatedBy": "Fabricante + LCA externo"
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#11"
     },
     "carbonFootprintStudy": {
       "url": "",
@@ -777,7 +816,8 @@
         "type": "Delegated Act",
         "generatedBy": "Fabricante + LCA externo"
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#11"
     },
     "carbonFootprintPerLifecycleStage": {
       "_isTable": true,
@@ -865,7 +905,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#11"
     },
     "safetyRequirements": {
       "safetyInstructions": "",
@@ -969,7 +1010,8 @@
         "type": "Certificación",
         "generatedBy": "Fabricante"
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#16"
     },
     "declarationOfConformity": {
       "url": "",
@@ -1018,7 +1060,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#3"
     },
     "carbonFootprintLabel": {
       "value": "",
@@ -1032,7 +1075,8 @@
         "type": "Certificación",
         "generatedBy": "Fabricante"
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#17"
     },
     "meaningOfLabelsAndSymbols": {
       "value": "",
@@ -1046,7 +1090,8 @@
         "type": "Certificación",
         "generatedBy": "Fabricante"
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#18"
     }
   },
   "supplyChainDueDiligence": {
@@ -1071,7 +1116,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Art. 48(d) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#20"
     },
     "supplyChainIndices": {
       "value": [],
@@ -1079,7 +1125,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#19"
     }
   },
   "traceability": {
@@ -1140,7 +1187,8 @@
         "generatedBy": "https://example.com/contact",
         "deadline": null
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#22"
     },
     "manufacturer": {
       "value": "",
@@ -1148,7 +1196,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#22"
     },
     "authorized_representative_eu": {
       "value": "",
@@ -1156,7 +1205,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "ESPR 2024/1781 Art. 19 · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#22"
     },
     "distributor": {
       "value": "",
@@ -1164,7 +1214,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#22"
     },
     "end_user": {
       "value": "",
@@ -1172,7 +1223,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#22"
     },
     "recycler": {
       "value": "",
@@ -1180,7 +1232,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Art. 60 · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#22"
     },
     "market_surveillance_authority": {
       "value": "",
@@ -1188,7 +1241,8 @@
       "_note": "Pendiente de completar por el fabricante.",
       "_legalBasis": "Reg. 2023/1542 Art. 69 · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#22"
     }
   },
   "registry": {

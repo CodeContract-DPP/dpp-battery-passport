@@ -201,6 +201,17 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .legal-proyeccion{background:#fefcbf;color:#744210}
 .legal-pendiente{background:#e9d8fd;color:#44337a}
 
+/* M4: Documento exigido (Cat#) — línea informativa por dato */
+.doc-required-pill{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;padding:.25rem .6rem;margin:.35rem 0;background:#f0f4f8;border:1px solid #cbd5e0;border-left:3px solid #1B3D6E;border-radius:6px;color:#2d3748;flex-wrap:wrap;width:fit-content;max-width:100%}
+.doc-required-icon{font-size:.85rem;flex-shrink:0}
+.doc-required-label{color:var(--muted);font-weight:500}
+.doc-required-cat{color:#1B3D6E;text-decoration:none;font-weight:600}
+.doc-required-cat:hover{text-decoration:underline}
+.doc-required-cat strong{font-family:monospace;background:#dbeafe;color:#1e40af;padding:.05rem .35rem;border-radius:3px;margin-right:.15rem}
+/* Highlight visual cuando el ancla apunta al doc-card */
+.doc-card:target{animation:flashDocCard 1.6s ease;box-shadow:0 0 0 3px #fbbf24}
+@keyframes flashDocCard{0%{box-shadow:0 0 0 0 rgba(251,191,36,.6)}50%{box-shadow:0 0 0 8px rgba(251,191,36,.3)}100%{box-shadow:0 0 0 3px #fbbf24}}
+
 /* Source documents */
 .source-doc{display:flex;align-items:flex-start;gap:.5rem;background:#f7fafc;border:1px solid var(--border);border-radius:8px;padding:.6rem .8rem;margin-bottom:.5rem}
 .doc-icon{font-size:1rem}
@@ -277,15 +288,14 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <div class="legend">
 <h3>Leyenda</h3>
 <div class="legend-grid">
-<div class="legend-item"><span class="legend-swatch" style="background:#38a169"></span> Confirmado — dato verificado en fuente pública</div>
-<div class="legend-item"><span class="legend-swatch" style="background:#276749"></span> Verificado — dato validado con evidencia blockchain</div>
+<div class="legend-item"><span class="legend-swatch" style="background:#38a169"></span> Aportado — dato recibido y procesado</div>
 <div class="legend-item"><span class="legend-swatch" style="background:#d69e2e"></span> Parcial — dato disponible, requiere revisión</div>
-<div class="legend-item"><span class="legend-swatch" style="background:#b2f5ea;border:1px dashed #319795"></span> Dinámico (BMS) — dato en tiempo real del sistema de gestión</div>
-<div class="legend-item"><span class="legend-swatch" style="background:#e53e3e"></span> Pendiente — sin dato, requiere acción del fabricante</div>
+<div class="legend-item"><span class="legend-swatch" style="background:#b2f5ea;border:1px dashed #319795"></span> Tiempo real (BMS) — dato del sistema de gestión</div>
+<div class="legend-item"><span class="legend-swatch" style="background:#e53e3e"></span> Por aportar — documento o dato aún sin recibir</div>
+<div class="legend-item"><span class="legend-swatch" style="background:#dbeafe;border:1px solid #1e40af"></span> Por validar — dato pre-cargado pendiente de confirmación</div>
 <div class="legend-item"><span class="legend-swatch" style="background:#c6f6d5;border:1px solid #38a169"></span> LEY — legislación en vigor</div>
 <div class="legend-item"><span class="legend-swatch" style="background:#fefcbf;border:1px solid #d69e2e"></span> PROYECCIÓN — regulación proyectada</div>
 <div class="legend-item"><span class="legend-swatch" style="background:#e9d8fd;border:1px solid #d6bcfa"></span> PENDIENTE AD — pendiente de acto delegado</div>
-<div class="legend-item"><span class="legend-swatch" style="background:#6b46c1"></span> Trackline — evidencia blockchain registrada</div>
 <div class="legend-item"><span class="legend-swatch" style="background:#faf5ff;border:2px solid #6b46c1"></span> Registro Central Art. 13 — campos obligatorios</div>
 </div>
 </div>
@@ -314,20 +324,28 @@ document.getElementById('versionSelect').addEventListener('change', loadDPP);
 
 // URL parameters: ?product=dpp-battery-lmt-lfp&version=empty
 // Comportamiento por defecto: sin params → plantilla vacía (educativo).
-// Con ?product=X (link compartido) → asume que quieren ver el DPP completo, no la plantilla.
+// Con ?product=X (link compartido / cliente) → carga data/X.json DIRECTAMENTE,
+//   sin tocar los selectores visibles (que se quedan en su defecto: LMT/LFP + Plantilla vacía).
+// Esto permite acceso editorial directo a un caso (p.ej. Beeplanet) sin "delatar"
+// el cliente en los selectores del visor.
 (function(){
   var params = new URLSearchParams(window.location.search);
   var product = params.get('product');
   var version = params.get('version');
-  var sel = document.getElementById('productSelect');
   var ver = document.getElementById('versionSelect');
+
   if (product) {
-    for (var i = 0; i < sel.options.length; i++) {
-      if (sel.options[i].value === product) { sel.value = product; break; }
-    }
-    // Si llegan con ?product=... pero NO especifican versión, mostrar el DPP con datos
-    if (!version) { ver.value = 'filled'; }
+    // Modo "carga directa por URL": no tocamos los selectores, los selectores siguen
+    // mostrando los defaults para preservar la camuflaje. Cargamos el JSON exactamente
+    // como viene en la URL.
+    var suffix = '';
+    if (version === 'empty' || version === 'plantilla') { suffix = '-empty'; }
+    var directPath = 'data/' + product + suffix + '.json';
+    DPP.init(directPath, 'dpp-root');
+    return;
   }
+
+  // Sin ?product= → comportamiento normal: leer selectores y cargar
   if (version === 'filled') { ver.value = 'filled'; }
   if (version === 'empty' || version === 'plantilla') { ver.value = 'empty'; }
   loadDPP();

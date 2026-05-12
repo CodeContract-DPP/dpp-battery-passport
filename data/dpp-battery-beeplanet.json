@@ -274,7 +274,8 @@
       "_note": "#1 Mandatory. Identificador del DPP de este módulo 2nd life Beeplanet.",
       "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "batteryIdentifier": {
       "value": "BPF-PowerESS-46-2026-MOD-001",
@@ -282,7 +283,8 @@
       "_note": "#6. Número de serie provisional para el piloto.",
       "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "batteryModelIdentifier": {
       "value": "Power ESS 46 kWh · módulo 2nd life",
@@ -290,7 +292,8 @@
       "_note": "#7 Mandatory. Identificador del modelo de batería. Pendiente de confirmar con Beeplanet.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "batterySerialNumber": {
       "value": "BPF-2026-MOD-001",
@@ -298,7 +301,8 @@
       "_note": "#8 Mandatory. Número de serie individual de la batería.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#3"
     },
     "manufacturerIdentification": {
       "value": "Beeplanet Factory S.L.",
@@ -318,7 +322,8 @@
         "generatedBy": "https://www.beeplanet.es/en/contact",
         "deadline": null
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "manufacturingPlace": {
       "addressCountry": "Spain",
@@ -341,7 +346,8 @@
       "_note": "Fecha de remanufactura por Beeplanet (preparación para 2nd life). NO es la fecha de fabricación original del módulo OEM.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "dateOfPuttingIntoService": {
       "value": "2026-05-15",
@@ -349,7 +355,8 @@
       "_note": "Fecha estimada de puesta en servicio. Dato dinámico por unidad. · Fecha documental de puesta en mercado. Distinta de `performanceAndDurability.firstUseDateBMS` que es la primera energización registrada por el BMS.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#5"
     },
     "batteryCategory": {
       "value": "industrial",
@@ -357,7 +364,8 @@
       "_note": "Anexo XIII · Industrial estacionaria (>2 kWh). 46 kWh Power ESS para integración FV/eólica.",
       "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "batteryStatus": {
       "value": "Second-life",
@@ -365,7 +373,8 @@
       "_note": "#13 ESPR. Cambio de estado vía Art. 47 Reg. 2023/1542. Módulo procedente de OEM EV remanufacturado por Beeplanet.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "batteryMass": {
       "value": 280,
@@ -374,7 +383,8 @@
       "_note": "Masa del módulo 46 kWh tras reensamblaje Beeplanet.",
       "_legalBasis": "Reg. 2023/1542 Annex XIII · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "warrantyPeriod": {
       "value": 120,
@@ -383,7 +393,8 @@
       "_note": "10 años de garantía Beeplanet para módulo 2nd life. · Distinto de `performanceAndDurability.expectedServiceLifetime` (vida útil técnica esperada): aquí cubre garantía comercial.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "uniqueEconomicOperatorIdentifier": {
       "value": "ES-B71283456",
@@ -391,7 +402,8 @@
       "_note": "#9 ESPR. CIF de Beeplanet Factory S.L. (ejemplo).",
       "_legalBasis": "ESPR 2024/1781 Art. 9 · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#4"
     },
     "uniqueManufacturerIdentifier": {
       "value": "ES-B71283456-MFR",
@@ -399,7 +411,8 @@
       "_note": "#10 Mandatory. Identificador único del fabricante según registro EU. Pendiente de asignación.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#2"
     },
     "uniqueFacilityIdentifier": {
       "value": "ES-FAC-NOAIN-001",
@@ -407,7 +420,8 @@
       "_note": "#11 ESPR. Identificador único de la planta de fabricación. Pendiente de registro.",
       "_legalBasis": "ESPR 2024/1781 Art. 2(33) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#1"
     },
     "economicOperator": {
       "value": "Beeplanet Factory S.L.",
@@ -415,7 +429,8 @@
       "_note": "#12. Operador económico responsable de la comercialización.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "partNumbersForComponents": {
       "_isTable": true,
@@ -546,7 +561,8 @@
         "deadline": "Pendiente DPP oficial OEM"
       },
       "_evidence": null,
-      "value": "NMC (Lithium Nickel Manganese Cobalt Oxide) · heredado OEM Mercedes EQS"
+      "value": "NMC (Lithium Nickel Manganese Cobalt Oxide) · heredado OEM Mercedes EQS",
+      "_documentRequiredCat": "Cat#6"
     },
     "criticalRawMaterials": {
       "_isTable": true,
@@ -625,7 +641,8 @@
       "_note": "#43 Mandatory. Impacto de sustancias en medio ambiente, salud humana y seguridad. Pendiente de evaluación formal.",
       "_legalBasis": "Reg. 2023/1542 Annex XIII(20) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#8"
     },
     "hazardousSubstances": {
       "_isTable": true,
@@ -709,12 +726,13 @@
     "_icon": "⚡",
     "_title": "Rendimiento y durabilidad",
     "technicalSpecification__batteryChemistry": {
-      "value": "LFP",
+      "value": "NMC (Lithium Nickel Manganese Cobalt Oxide) · heredado OEM Mercedes EQS",
       "_status": "assumed",
-      "_note": null,
+      "_note": "Química de las celdas heredada del OEM Mercedes EQS 450 (datasheet público). NO verificada por ensayo destructivo Beeplanet. Distinto de `materialComposition.productChemistry`: aquí química específica de celda; allí composición global.",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "technicalSpecification__ratedCapacity": {
       "value": 27,
@@ -729,7 +747,8 @@
         "generatedBy": "https://www.beeplanet.es/en/products",
         "deadline": null
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "technicalSpecification__nominalVoltage": {
       "value": 281.6,
@@ -738,7 +757,8 @@
       "_note": "Calculado como 3.5 V × 80 celdas en serie (configuración típica LFP 280V).",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "technicalSpecification__minimumVoltage": {
       "value": 240,
@@ -747,7 +767,8 @@
       "_note": "Tensión mínima de corte: 3.0 V/celda × 80 celdas.",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "technicalSpecification__maximumVoltage": {
       "value": 292,
@@ -761,7 +782,8 @@
         "generatedBy": "https://www.beeplanet.es/en/products",
         "deadline": null
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "technicalSpecification__certifiedUsableBatteryEnergy": {
       "value": 25.5,
@@ -770,7 +792,8 @@
       "_note": "Energía usable certificada: ~94.4% de la capacidad nominal.",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "technicalSpecification__remainingCapacity": {
       "value": null,
@@ -829,7 +852,8 @@
         "generatedBy": "https://www.beeplanet.es/en/products",
         "deadline": null
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#9"
     },
     "roundtripEfficiency__roundTripEfficiencyAt50PercentCycleLife": {
       "value": 94.5,
@@ -838,7 +862,8 @@
       "_note": "Degradación típica de eficiencia LFP al 50% de vida útil: ~1.5 puntos porcentuales.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#9"
     },
     "roundtripEfficiency__remainingRoundTripEnergyEfficiency": {
       "value": null,
@@ -865,7 +890,8 @@
       "_note": "#78 Voluntary. Autodescarga típica de celdas LFP: 2–4% mensual.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "roundtripEfficiency__currentSelfDischargingRate": {
       "value": null,
@@ -891,7 +917,8 @@
       "_note": null,
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "powerCapability__remainingPowerCapability": {
       "value": null,
@@ -918,7 +945,8 @@
       "_note": "Potencia máxima estimada: 2C × 27 kWh = 54 kW.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "powerCapability__powerCapabilityRatio": {
       "value": 2.0,
@@ -926,7 +954,8 @@
       "_note": "Ratio potencia/energía: 2C (descarga nominal a 1C = 27 kW).",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "internalResistance__initialInternalResistancePack": {
       "value": 12.5,
@@ -935,7 +964,8 @@
       "_note": "Resistencia interna inicial estimada para pack LFP 280V/100Ah.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#9"
     },
     "internalResistance__currentInternalResistancePack": {
       "value": null,
@@ -953,7 +983,8 @@
       "_note": "Vida útil estimada para LFP en aplicación LMT. Típico 10–15 años.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "batteryLifetime__expectedNumberOfCycles": {
       "value": 4000,
@@ -961,7 +992,8 @@
       "_note": "Ciclos esperados hasta 80% SoH. LFP típicamente 3.000–6.000 ciclos.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#9"
     },
     "batteryLifetime__warrantyPeriod": {
       "value": 60,
@@ -970,7 +1002,8 @@
       "_note": "Garantía estimada: 5 años o 100.000 km. Pendiente de confirmar.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "batteryLifetime__capacityThresholdExhaustion": {
       "value": 80,
@@ -979,7 +1012,8 @@
       "_note": "Umbral estándar del sector (80% SoH). Pendiente de confirmación por Beeplanet.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "batteryLifetime__cycleLifeReferenceTest": {
       "value": "IEC 62660-1:2018",
@@ -987,7 +1021,8 @@
       "_note": "#86 Mandatory. Norma de referencia usada para el test de ciclos de vida. Pendiente de confirmar con Beeplanet.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#9"
     },
     "batteryLifetime__cRateOfRelevantCycleLifeTest": {
       "value": "1C charge / 1C discharge",
@@ -995,7 +1030,8 @@
       "_note": "#87 Mandatory. C-rate usado en el test de referencia de ciclo de vida. Típico 1C/1C para LFP.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#9"
     },
     "batteryLifetime__numberOfFullCycles": {
       "value": null,
@@ -1037,7 +1073,8 @@
       "_note": "#91 Mandatory. Información general de condiciones de temperatura.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#6"
     },
     "temperatureConditions__temperatureRangeIdleState": {
       "lowerBoundary": -20,
@@ -1107,7 +1144,8 @@
       "_note": null,
       "_legalBasis": "Reg. 2023/1542 Annex XIII · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#10"
     },
     "secondLifeInitialSoH": {
       "value": 87,
@@ -1206,7 +1244,8 @@
         "type": "Delegated Act",
         "generatedBy": "Fabricante + LCA externo"
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#11"
     },
     "carbonFootprintPerformanceClass": {
       "value": "A",
@@ -1219,7 +1258,8 @@
         "type": "Delegated Act",
         "generatedBy": "Fabricante + LCA externo"
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#11"
     },
     "carbonFootprintStudy": {
       "url": "https://www.beeplanet.es/sustainability/carbon-footprint-study",
@@ -1246,7 +1286,8 @@
         "type": "Delegated Act",
         "generatedBy": "Fabricante + LCA externo"
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#11"
     },
     "carbonFootprintPerLifecycleStage": {
       "_isTable": true,
@@ -1339,7 +1380,8 @@
       "_note": "Estimación de energía renovable usada en fabricación. Pendiente de dato real.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#11"
     },
     "safetyRequirements": {
       "safetyInstructions": "Manual de seguridad disponible en https://www.beeplanet.es/safety/2nd-life",
@@ -1485,7 +1527,8 @@
         "type": "Certificación",
         "generatedBy": "Fabricante"
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#16"
     },
     "declarationOfConformity": {
       "url": "https://www.beeplanet.es/conformity/2nd-life-2026",
@@ -1534,7 +1577,8 @@
       "_note": null,
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#3"
     },
     "carbonFootprintLabel": {
       "value": "Class A",
@@ -1548,7 +1592,8 @@
         "type": "Certificación",
         "generatedBy": "Fabricante"
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#17"
     },
     "meaningOfLabelsAndSymbols": {
       "value": "Explicación de todos los símbolos, etiquetas y marcas presentes en la batería y su embalaje.",
@@ -1562,7 +1607,8 @@
         "type": "Certificación",
         "generatedBy": "Fabricante"
       },
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#18"
     }
   },
   "supplyChainDueDiligence": {
@@ -1589,7 +1635,8 @@
       "_note": null,
       "_legalBasis": "Reg. 2023/1542 Art. 48(d) · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#20"
     },
     "supplyChainIndices": {
       "value": [
@@ -1599,7 +1646,8 @@
       "_note": null,
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#19"
     }
   },
   "traceability": {
@@ -1655,7 +1703,8 @@
       "_note": "Fabricante del producto.",
       "_legalBasis": "Reg. 2023/1542 Art. 77 · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#22"
     },
     "authorized_representative_eu": {
       "value": null,
@@ -1663,7 +1712,8 @@
       "_note": "Representante autorizado en la UE. No aplica si el fabricante es europeo.",
       "_legalBasis": "ESPR 2024/1781 Art. 19 · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#22"
     },
     "distributor": {
       "value": "A cumplimentar por el distribuidor",
@@ -1671,7 +1721,8 @@
       "_note": "Distribuidor del producto en el mercado.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#22"
     },
     "end_user": {
       "value": "A cumplimentar por el usuario final / operador de flota",
@@ -1679,7 +1730,8 @@
       "_note": "Usuario final o gestor de flota LMT.",
       "_legalBasis": null,
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#22"
     },
     "recycler": {
       "value": "A cumplimentar al final de vida",
@@ -1687,7 +1739,8 @@
       "_note": "Gestor autorizado de residuos / reciclador.",
       "_legalBasis": "Reg. 2023/1542 Art. 60 · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#22"
     },
     "market_surveillance_authority": {
       "value": "Ministerio de Industria y Turismo (Espana)",
@@ -1695,7 +1748,8 @@
       "_note": "Autoridad de vigilancia del mercado en Espana.",
       "_legalBasis": "Reg. 2023/1542 Art. 69 · LEY",
       "_sourceDocument": null,
-      "_evidence": null
+      "_evidence": null,
+      "_documentRequiredCat": "Cat#22"
     },
     "oem_original_actor": {
       "value": "Mercedes-Benz Group AG (fabricante original del módulo EV)",

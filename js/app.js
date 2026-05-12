@@ -16,6 +16,32 @@ const DPP = (() => {
   };
   const LEGAL_CLS = { 'LEY': 'legal-ley', 'PROYECCION': 'legal-proyeccion', 'PENDIENTE AD': 'legal-pendiente' };
 
+  // M4: catálogo Cat# → nombre de documento (espejo del Excel v2 "Documentos obligatorios por ley")
+  const CAT_CATALOG = {
+    'Cat#1':  'Alta GS1 GLN de la planta',
+    'Cat#2':  'Certificado DUNS / alta GS1 del fabricante',
+    'Cat#3':  'Etiqueta física del producto (foto)',
+    'Cat#4':  'Extracto registro mercantil + verificación VIES',
+    'Cat#5':  'Factura o registro de puesta en servicio',
+    'Cat#6':  'Ficha técnica del fabricante',
+    'Cat#7':  'BOM (Bill of Materials) del proveedor',
+    'Cat#8':  'MSDS / SDS de sustancias (REACH Art. 31)',
+    'Cat#9':  'Informe de laboratorio acreditado',
+    'Cat#10': 'Reporte de accidentes e incidentes',
+    'Cat#11': 'Estudio ACV (ISO 14067)',
+    'Cat#12': 'Certificado contenido reciclado (ISO 14021)',
+    'Cat#13': 'Contrato con gestor autorizado de residuos',
+    'Cat#14': 'Contrato o listado de repuestos',
+    'Cat#15': 'Manual técnico del fabricante',
+    'Cat#16': 'Declaración UE de Conformidad (DoC)',
+    'Cat#17': 'Etiqueta CFP (carbon footprint)',
+    'Cat#18': 'Manual de usuario',
+    'Cat#19': 'CMRT (Conflict Minerals Reporting Template)',
+    'Cat#20': 'Certificados RMAP / RMI / IRMA',
+    'Cat#21': 'Informe OECD Due Diligence',
+    'Cat#22': 'Contrato de distribución'
+  };
+
   function legalClass(basis) {
     if (!basis) return '';
     for (var k in LEGAL_CLS) { if (basis.indexOf(k) >= 0) return LEGAL_CLS[k]; }
@@ -90,7 +116,7 @@ const DPP = (() => {
 
   function renderAttribute(key, attr, sectionKey) {
     if (key.startsWith('_')) return '';
-    var metaKeys = ['_status','_legalBasis','_sourceDocument','_evidence','_note','_isTable','_columns','_rows','_isExtension'];
+    var metaKeys = ['_status','_legalBasis','_sourceDocument','_evidence','_note','_isTable','_columns','_rows','_isExtension','_documentRequiredCat'];
     var editing = isEditMode() && attr._status !== 'dynamic';
     var dataFields = '';
     if (attr._isTable && attr._columns && attr._rows) {
@@ -111,7 +137,8 @@ const DPP = (() => {
         dataFields += '<span class="field-name">' + humanKey(k) + ':</span> ' + valHTML + '<br>';
       });
     }
-    var status = statusBadge(attr._status);
+    // M3: badge solo visible en modo edición (excepto dynamic, que siempre se ve por ser BMS)
+    var status = (editing || attr._status === 'dynamic') ? statusBadge(attr._status) : '';
     var lCls = legalClass(attr._legalBasis);
     var docHTML = '';
     if (attr._sourceDocument) {
@@ -141,13 +168,24 @@ const DPP = (() => {
     }
     var legalPill = attr._legalBasis ? '<span class="legal-pill ' + lCls + '" title="' + attr._legalBasis + '">' + attr._legalBasis + '</span>' : '';
     var noteHTML = attr._note ? '<div class="attr-note">' + attr._note + '</div>' : '';
+    // M4: pill informativo "Documento exigido: Cat#X — Nombre" (link al bloque de docs)
+    var catPill = '';
+    if (attr._documentRequiredCat) {
+      var catId = attr._documentRequiredCat;
+      var catName = CAT_CATALOG[catId] || '';
+      catPill = '<div class="doc-required-pill" title="Este dato debe constar en el documento ' + catId + (catName ? ' (' + catName + ')' : '') + '">' +
+        '<span class="doc-required-icon">📑</span>' +
+        '<span class="doc-required-label">Documento exigido:</span> ' +
+        '<a href="#doc-' + catId.replace('#','') + '" class="doc-required-cat"><strong>' + catId + '</strong>' + (catName ? ' — ' + catName : '') + '</a>' +
+        '</div>';
+    }
     var extBadge = attr._isExtension ? '<span class="ext-badge" title="Extensión propietaria Code Contract — no DAL v1.3">⚙️ Trackline ext.</span>' : '';
     var extAttr = attr._isExtension ? ' data-extension="true"' : '';
     return '<div class="attribute" data-status="' + (attr._status||'pending') + '"' + extAttr + '>' +
       '<div class="attr-header"><h3>' + humanKey(key) + '</h3>' + status + extBadge + '</div>' +
       '<div class="attr-body">' +
       '<div class="attr-data">' + dataFields + '</div>' +
-      legalPill + noteHTML + docHTML + evidenceHTML +
+      legalPill + catPill + noteHTML + docHTML + evidenceHTML +
       '</div></div>';
   }
 
@@ -236,7 +274,8 @@ const DPP = (() => {
         } else {
           oblBadge = '<span class="doc-oblig doc-oblig-recom">📌 Recomendado</span>';
         }
-        html += '<div class="doc-card ' + st.cls + '" data-doc-status="' + doc.status + '">' +
+        var anchorId = doc.cat ? ' id="doc-' + doc.cat.replace('#','') + '"' : '';
+        html += '<div class="doc-card ' + st.cls + '"' + anchorId + ' data-doc-status="' + doc.status + '">' +
           '<div class="doc-card-header">' +
             '<span class="doc-card-icon">' + (doc.icon || '📄') + '</span>' +
             '<div class="doc-card-title">' +
@@ -345,7 +384,7 @@ const DPP = (() => {
         }
       });
     });
-    var completados = verified + confirmed;
+    var completados = confirmed;  // sin verified, está deprecado en wording nuevo
     var pct = total ? Math.round((completados/total)*100) : 0;
     var pctPartial = total ? Math.round(((completados+partial)/total)*100) : 0;
     var dashLen = Math.PI * 100;
@@ -372,15 +411,12 @@ const DPP = (() => {
       '<span class="ring-label">' + pct + '%</span>' +
       '</div>' +
       '<div class="dashboard-stats">' +
-      '<div class="stat"><span class="dot dot-v"></span> Confirmados: <strong>' + confirmed + '</strong></div>' +
-      '<div class="stat"><span class="dot dot-ve"></span> Verificados: <strong>' + verified + '</strong></div>' +
-      '<div class="stat"><span class="dot dot-pa"></span> Parciales: <strong>' + partial + '</strong></div>' +
-      '<div class="stat"><span class="dot dot-dy"></span> Din\u00e1micos (BMS): <strong>' + dynamic + '</strong></div>' +
-      '<div class="stat"><span class="dot dot-pe"></span> Pendientes: <strong>' + pending + '</strong></div>' +
+      '<div class="stat stat-clickable" data-filter-target="confirmed"><span class="dot dot-v"></span> Aportados: <strong>' + confirmed + '</strong></div>' +
+      '<div class="stat stat-clickable" data-filter-target="dynamic"><span class="dot dot-dy"></span> Tiempo real (BMS): <strong>' + dynamic + '</strong></div>' +
+      '<div class="stat stat-clickable" data-filter-target="pending"><span class="dot dot-pe"></span> Por aportar: <strong>' + pending + '</strong></div>' +
       '<div class="stat-total">Total: ' + total + ' atributos \u00b7 Completados: ' + completados + ' (' + pct + '%) \u00b7 Cobertura: ' + pctPartial + '%</div>' +
       '</div>' +
       '<div class="dashboard-kpis">' +
-      '<div class="kpi"><span class="kpi-number">' + tracklineCount + '</span><span class="kpi-label">\u26D3\uFE0F Trackline</span></div>' +
       '<div class="kpi"><span class="kpi-number">' + urgentItems.length + '</span><span class="kpi-label">\u26A0\uFE0F Plazos</span></div>' +
       '<div class="kpi"><span class="kpi-number">' + dynamic + '</span><span class="kpi-label">\uD83D\uDCE1 BMS</span></div>' +
       '<div class="kpi"><span class="kpi-number">' + pending + '</span><span class="kpi-label">\u274C Sin datos</span></div>' +
@@ -454,17 +490,36 @@ const DPP = (() => {
     setTimeout(autoInit, 0);
   }
 
+  function applyFilter(f) {
+    document.querySelectorAll('.filter-btn').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.filter === f);
+    });
+    document.querySelectorAll('.attribute').forEach(function(el) {
+      if (f === 'all') { el.style.display = ''; return; }
+      el.style.display = (el.dataset.status === f) ? '' : 'none';
+    });
+    // Abrir las secciones que tienen elementos visibles (que el filtro mostró)
+    if (f !== 'all') {
+      document.querySelectorAll('.dpp-section').forEach(function(sec) {
+        var hasVisible = Array.from(sec.querySelectorAll('.attribute')).some(function(a){
+          return a.style.display !== 'none';
+        });
+        if (hasVisible) {
+          var body = sec.querySelector('.section-body');
+          if (body) body.classList.remove('collapsed');
+          var chev = sec.querySelector('.chevron');
+          if (chev) chev.textContent = '\u25BC';
+        }
+      });
+    }
+  }
   function bindFilters() {
     document.querySelectorAll('.filter-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
-        btn.classList.add('active');
-        var f = btn.dataset.filter;
-        document.querySelectorAll('.attribute').forEach(function(el) {
-          if (f === 'all') { el.style.display = ''; return; }
-          el.style.display = (el.dataset.status === f) ? '' : 'none';
-        });
-      });
+      btn.addEventListener('click', function() { applyFilter(btn.dataset.filter); });
+    });
+    // M8: contadores del panel ejecutivo clicables → activan filtro
+    document.querySelectorAll('.stat-clickable').forEach(function(stat) {
+      stat.addEventListener('click', function() { applyFilter(stat.dataset.filterTarget); });
     });
   }
 
