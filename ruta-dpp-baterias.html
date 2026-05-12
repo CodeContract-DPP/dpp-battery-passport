@@ -158,6 +158,38 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   font-size: 11px; color: var(--gray); text-align: center; line-height: 1.5;
 }
 
+/* DOCUMENTOS OBLIGATORIOS — tabla intermedia entre Fase 1 y Fase 2 */
+.doc-table-block {
+  margin: 32px 0; padding: 28px; background: white; border-radius: 16px;
+  border: 2px solid #1B3D6E; box-shadow: 0 4px 12px rgba(27,61,110,.08);
+}
+.doc-table-header h2 { font-size: 22px; color: #1B3D6E; margin: 0 0 8px 0; }
+.doc-table-header p { font-size: 14px; color: #4b5563; line-height: 1.55; margin: 0 0 18px 0; }
+.doc-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.doc-table thead th {
+  background: #1B3D6E; color: white; padding: 10px 8px;
+  text-align: left; font-weight: 600; font-size: 11.5px; letter-spacing: .02em;
+  border-bottom: 2px solid #102347;
+}
+.doc-table tbody td { padding: 10px 8px; border-bottom: 1px solid #e5e7eb; vertical-align: top; line-height: 1.45; }
+.doc-table tbody tr:hover { background: #f9fafb; }
+.doc-table code { background: #edf2f7; color: #4a5568; padding: 1px 5px; border-radius: 3px; font-size: 11px; }
+.doc-row-required { background: #fef2f2; }
+.doc-row-sectoral { background: #fffaeb; }
+.doc-row-ext      { background: #faf5ff; }
+.doc-pill {
+  display: inline-block; padding: 3px 8px; border-radius: 12px;
+  font-size: 10.5px; font-weight: 700; white-space: nowrap;
+}
+.doc-pill-required { background: #fed7d7; color: #742a2a; }
+.doc-pill-sectoral { background: #fef3c7; color: #7c2d12; }
+.doc-pill-ext      { background: #e9d8fd; color: #553c9a; }
+.doc-table-legend { margin-top: 18px; padding: 14px 18px; background: #f9fafb; border-radius: 10px; }
+.doc-table-legend p { margin: 0 0 8px 0; font-size: 13px; color: #1f2937; }
+.doc-table-legend ul { margin: 8px 0; padding-left: 22px; }
+.doc-table-legend li { font-size: 12.5px; line-height: 1.55; color: #374151; margin-bottom: 5px; }
+.doc-table-cta { margin-top: 12px; padding: 10px 14px; background: linear-gradient(135deg, #fffbf0, #fef3c7); border-left: 4px solid #d69e2e; border-radius: 6px; color: #7c2d12; }
+
 /* PHASE */
 .phase {
   margin-bottom: 32px; background: white; border-radius: 16px;
@@ -696,6 +728,57 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- DOCUMENTOS OBLIGATORIOS POR LEY (bloque intermedio antes de Fase 2) -->
+<!-- ============================================================ -->
+<div class="doc-table-block">
+  <div class="doc-table-header">
+    <h2>&#x1F4D1; Documentos obligatorios por ley &mdash; checklist regulatorio</h2>
+    <p>Antes de empezar a rellenar el longlist DAL v1.3, conoce qu&eacute; documentos exige la ley. <strong>De estos 14 documentos, sin algunos no podr&aacute;s poner la bater&iacute;a en el mercado UE.</strong> Marco: Reg. (UE) 2023/1542 + ESPR 2024/1781 + REACH + Reg. 2025/1561 (pospone due diligence).</p>
+  </div>
+
+  <table class="doc-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Cat#</th>
+        <th>Documento</th>
+        <th>Art&iacute;culo regulatorio</th>
+        <th>Aplica a</th>
+        <th>Deadline / vigencia</th>
+        <th>Obligatoriedad</th>
+        <th>Origen (qui&eacute;n lo genera)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="doc-row-required"><td>1</td><td><code>Cat#16</code></td><td><strong>Declaration of Conformity (DoC)</strong></td><td>Reg. 1542 Art. 30</td><td>Todas las bater&iacute;as</td><td>En vigor desde 18/02/2024</td><td><span class="doc-pill doc-pill-required">&#x1F534; OBLIGATORIO</span></td><td>Fabricante o representante autorizado UE</td></tr>
+      <tr class="doc-row-required"><td>2</td><td><code>Cat#6</code></td><td><strong>Ficha t&eacute;cnica del fabricante</strong></td><td>Reg. 1542 Art. 13</td><td>Todas las bater&iacute;as</td><td>18/02/2027 (DPP) &mdash; ya exigida hoy para CE</td><td><span class="doc-pill doc-pill-required">&#x1F534; OBLIGATORIO</span></td><td>Ingenier&iacute;a del fabricante</td></tr>
+      <tr class="doc-row-required"><td>3</td><td><code>Cat#11</code></td><td><strong>Estudio ACV (Carbon Footprint Study)</strong></td><td>Reg. 1542 Art. 7</td><td>Industrial &gt;2 kWh &middot; LMT &middot; EV</td><td>18/02/2025 aplicable &middot; metodolog&iacute;a pendiente acto delegado UE</td><td><span class="doc-pill doc-pill-required">&#x1F534; OBLIGATORIO</span></td><td>Consultora ACV / Lab acreditado &middot; ISO 14067</td></tr>
+      <tr class="doc-row-required"><td>4</td><td><code>Cat#12</code></td><td><strong>Certificado contenido reciclado</strong></td><td>Reg. 1542 Art. 8</td><td>Bater&iacute;as con Co/Li/Ni/Pb</td><td>18/08/2031 (niveles m&iacute;nimos obligatorios)</td><td><span class="doc-pill doc-pill-required">&#x1F534; OBLIGATORIO</span></td><td>Lab acreditado &middot; ISO 14021</td></tr>
+      <tr class="doc-row-required"><td>5</td><td><code>Cat#9</code></td><td><strong>Test Reports (capacidad/ciclos/seguridad)</strong></td><td>Reg. 1542 Art. 14 + Anexo IV</td><td>Industrial &middot; LMT &middot; EV</td><td>18/02/2027</td><td><span class="doc-pill doc-pill-required">&#x1F534; OBLIGATORIO</span></td><td>Laboratorio acreditado ISO/IEC 17025</td></tr>
+      <tr class="doc-row-required"><td>6</td><td><code>Cat#21</code></td><td><strong>Informe OECD Due Diligence</strong></td><td>Reg. 1542 Arts. 49-52 + CSDDD</td><td>Todas las bater&iacute;as</td><td>POSPUESTO a 18/08/2027 (Reg. 2025/1561)</td><td><span class="doc-pill doc-pill-required">&#x1F534; OBLIGATORIO (futuro)</span></td><td>Auditor externo acreditado</td></tr>
+      <tr class="doc-row-required"><td>7</td><td><code>Cat#15</code></td><td><strong>Manual t&eacute;cnico de desmontaje y EoL</strong></td><td>Reg. 1542 Art. 73</td><td>Todas las bater&iacute;as</td><td>18/02/2027 (con DPP)</td><td><span class="doc-pill doc-pill-required">&#x1F534; OBLIGATORIO</span></td><td>Ingenier&iacute;a interna del fabricante</td></tr>
+      <tr class="doc-row-required"><td>8</td><td><code>Cat#17</code></td><td><strong>Etiqueta CFP (Carbon Footprint Label)</strong></td><td>Reg. 1542 Art. 7.2 + 7.3</td><td>EV &middot; industrial &middot; LMT</td><td>Pendiente acto delegado UE &middot; clases A-G</td><td><span class="doc-pill doc-pill-required">&#x1F534; OBLIGATORIO (futuro)</span></td><td>Fabricante &middot; sobre datos del CFP Study</td></tr>
+      <tr class="doc-row-sectoral"><td>9</td><td><code>Cat#8</code></td><td><strong>MSDS / SDS de sustancias</strong></td><td>Reg. REACH (CE) 1907/2006 Art. 31</td><td>Bater&iacute;as con sustancias peligrosas</td><td>En vigor (REACH transversal)</td><td><span class="doc-pill doc-pill-sectoral">&#x1F7E0; OBLIGATORIO (REACH)</span></td><td>Proveedor qu&iacute;mico / fabricante</td></tr>
+      <tr class="doc-row-required"><td>10</td><td><code>Cat#13</code></td><td><strong>Contrato con gestor de residuos</strong></td><td>Reg. 1542 Arts. 56-61</td><td>Todas (EPR &mdash; responsabilidad ampliada productor)</td><td>En vigor</td><td><span class="doc-pill doc-pill-required">&#x1F534; OBLIGATORIO</span></td><td>Contrato fabricante &harr; gestor autorizado</td></tr>
+      <tr class="doc-row-sectoral"><td>11</td><td><code>Cat#1</code></td><td><strong>Alta GS1 GLN de la planta</strong></td><td>Reg. 1542 Anexo XIII + est&aacute;ndar GS1</td><td>Todas (identificaci&oacute;n de planta)</td><td>Antes de poner en mercado</td><td><span class="doc-pill doc-pill-sectoral">&#x1F7E0; OBLIGATORIO (GS1)</span></td><td>AECOC (GS1 Espa&ntilde;a) / GS1 nacional</td></tr>
+      <tr class="doc-row-required"><td>12</td><td><code>Cat#2</code></td><td><strong>Certificado DUNS / GS1 del fabricante</strong></td><td>Reg. 1542 Art. 38</td><td>Todas (identificaci&oacute;n operador econ&oacute;mico)</td><td>Antes de poner en mercado</td><td><span class="doc-pill doc-pill-required">&#x1F534; OBLIGATORIO</span></td><td>D&amp;B Dun &amp; Bradstreet o GS1</td></tr>
+      <tr class="doc-row-ext"><td>13</td><td>&mdash;</td><td><strong>Sello de tiempo cualificado eIDAS 2.0</strong></td><td>Reg. (UE) 2024/1183 eIDAS 2.0</td><td>Mejora valor probatorio del DPP</td><td>EUDI Wallet operativa antes fin 2026</td><td><span class="doc-pill doc-pill-ext">&#x2699;&#xFE0F; EXT. TRACKLINE</span></td><td>Trust Service Provider &middot; TSA cualificado</td></tr>
+      <tr class="doc-row-ext"><td>14</td><td>&mdash;</td><td><strong>Hash de integridad (blockchain)</strong></td><td>Code Contract &middot; Trackline</td><td>Garant&iacute;a t&eacute;cnica de no modificaci&oacute;n</td><td>Operativo hoy</td><td><span class="doc-pill doc-pill-ext">&#x2699;&#xFE0F; EXT. TRACKLINE</span></td><td>Trackline &middot; sello cripto sobre dato + documento</td></tr>
+    </tbody>
+  </table>
+
+  <div class="doc-table-legend">
+    <p><strong>&#x1F4A1; C&oacute;mo leer esta tabla:</strong></p>
+    <ul>
+      <li><strong>&#x1F534; OBLIGATORIO</strong> = exigible por el Reg. (UE) 2023/1542 hoy o en deadline conocido. Sin este documento, el DPP no es defendible ante el inspector.</li>
+      <li><strong>&#x1F7E0; OBLIGATORIO sectorial</strong> = exigible por norma transversal (REACH, GS1) o complementaria a un campo del DPP.</li>
+      <li><strong>&#x2699;&#xFE0F; EXT. TRACKLINE</strong> = no obligatorio por ley pero refuerza el valor probatorio del DPP (firma cualificada, sello de tiempo, hash blockchain). Es el plus de Code Contract.</li>
+    </ul>
+    <p class="doc-table-cta">El cat&aacute;logo Trackline mapea CADA uno de los <strong>137 campos del DPP</strong> a uno de estos 14 documentos. <strong>Trackline gestiona la uni&oacute;n dato &harr; documento &harr; hash &harr; firma.</strong></p>
   </div>
 </div>
 

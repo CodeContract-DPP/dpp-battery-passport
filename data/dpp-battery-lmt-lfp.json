@@ -1381,5 +1381,186 @@
         "pending": 0
       }
     }
+  },
+  "documentRequirements": {
+    "title": "Documentos necesarios — checklist regulatorio",
+    "subtitle": "Esto es lo que el Reg. (UE) 2023/1542 exige tener para el DPP de cualquier batería LMT/LFP. Marcado todo como 'pendiente' por ser plantilla — cada cliente verifica su estado real.",
+    "counts": {
+      "total": 14,
+      "confirmed": 0,
+      "partial": 0,
+      "pending": 14
+    },
+    "documents": [
+      {
+        "cat": "Cat#16",
+        "name": "Declaration of Conformity (DoC)",
+        "icon": "📋",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Art. 30",
+        "obligation": "obligatory",
+        "applicableTo": "Todas las baterías",
+        "deadline": "En vigor desde 18/02/2024",
+        "providedBy": "Fabricante o representante autorizado UE",
+        "status": "pending",
+        "note": "Estado por defecto en plantilla genérica. Cada cliente debe verificar."
+      },
+      {
+        "cat": "Cat#6",
+        "name": "Ficha técnica del fabricante",
+        "icon": "📄",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Art. 13",
+        "obligation": "obligatory",
+        "applicableTo": "Todas las baterías",
+        "deadline": "18/02/2027 (con DPP) — exigida hoy para marcado CE",
+        "providedBy": "Ingeniería del fabricante",
+        "status": "pending",
+        "note": "Estado por defecto en plantilla genérica. Cada cliente debe verificar."
+      },
+      {
+        "cat": "Cat#11",
+        "name": "Estudio ACV (Carbon Footprint Study)",
+        "icon": "🌍",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Art. 7",
+        "obligation": "obligatory",
+        "applicableTo": "Industrial >2 kWh · LMT · EV",
+        "deadline": "18/02/2025 aplicable · metodología pendiente acto delegado UE",
+        "providedBy": "Consultora ACV / Lab acreditado · ISO 14067",
+        "status": "pending",
+        "note": "Estado por defecto en plantilla genérica. Cada cliente debe verificar."
+      },
+      {
+        "cat": "Cat#12",
+        "name": "Certificado contenido reciclado",
+        "icon": "♻️",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Art. 8",
+        "obligation": "obligatory",
+        "applicableTo": "Baterías con Co/Li/Ni/Pb",
+        "deadline": "18/08/2031 (niveles mínimos obligatorios)",
+        "providedBy": "Lab acreditado · ISO 14021",
+        "status": "pending",
+        "note": "Estado por defecto en plantilla genérica. Cada cliente debe verificar."
+      },
+      {
+        "cat": "Cat#9",
+        "name": "Test Reports (capacidad/ciclos/seguridad)",
+        "icon": "🔬",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Art. 14 + Anexo IV",
+        "obligation": "obligatory",
+        "applicableTo": "Industrial · LMT · EV",
+        "deadline": "18/02/2027",
+        "providedBy": "Laboratorio acreditado ISO/IEC 17025",
+        "status": "pending",
+        "note": "Estado por defecto en plantilla genérica. Cada cliente debe verificar."
+      },
+      {
+        "cat": "Cat#21",
+        "name": "Informe OECD Due Diligence",
+        "icon": "⚖️",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Arts. 49-52 + CSDDD",
+        "obligation": "obligatory",
+        "applicableTo": "Todas las baterías",
+        "deadline": "POSPUESTO a 18/08/2027 (Reg. 2025/1561)",
+        "providedBy": "Auditor externo acreditado",
+        "status": "pending",
+        "note": "Estado por defecto en plantilla genérica. Cada cliente debe verificar."
+      },
+      {
+        "cat": "Cat#15",
+        "name": "Manual técnico de desmontaje y EoL",
+        "icon": "🔧",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Art. 73",
+        "obligation": "obligatory",
+        "applicableTo": "Todas las baterías",
+        "deadline": "18/02/2027 (con DPP)",
+        "providedBy": "Ingeniería interna del fabricante",
+        "status": "pending",
+        "note": "Estado por defecto en plantilla genérica. Cada cliente debe verificar."
+      },
+      {
+        "cat": "Cat#17",
+        "name": "Etiqueta CFP (Carbon Footprint Label)",
+        "icon": "🏷️",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Art. 7.2 + 7.3",
+        "obligation": "obligatory",
+        "applicableTo": "EV · industrial · LMT",
+        "deadline": "Pendiente acto delegado UE · clases A-G",
+        "providedBy": "Fabricante · sobre datos del CFP Study",
+        "status": "pending",
+        "note": "Estado por defecto en plantilla genérica. Cada cliente debe verificar."
+      },
+      {
+        "cat": "Cat#8",
+        "name": "MSDS / SDS de sustancias",
+        "icon": "⚠️",
+        "regulatoryBasis": "Reg. REACH (CE) 1907/2006 Art. 31",
+        "obligation": "obligatory_reach",
+        "applicableTo": "Baterías con sustancias peligrosas",
+        "deadline": "En vigor (REACH transversal)",
+        "providedBy": "Proveedor químico / fabricante",
+        "status": "pending",
+        "note": "Estado por defecto en plantilla genérica. Cada cliente debe verificar."
+      },
+      {
+        "cat": "Cat#13",
+        "name": "Contrato con gestor de residuos",
+        "icon": "🗑️",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Arts. 56-61",
+        "obligation": "obligatory",
+        "applicableTo": "Todas (EPR)",
+        "deadline": "En vigor",
+        "providedBy": "Contrato fabricante ↔ gestor autorizado",
+        "status": "pending",
+        "note": "Estado por defecto en plantilla genérica. Cada cliente debe verificar."
+      },
+      {
+        "cat": "Cat#1",
+        "name": "Alta GS1 GLN de la planta",
+        "icon": "🏭",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Anexo XIII + estándar GS1",
+        "obligation": "obligatory_gs1",
+        "applicableTo": "Todas (identificación de planta)",
+        "deadline": "Antes de poner en mercado",
+        "providedBy": "AECOC (GS1 España) / GS1 nacional",
+        "status": "pending",
+        "note": "Estado por defecto en plantilla genérica. Cada cliente debe verificar."
+      },
+      {
+        "cat": "Cat#2",
+        "name": "Certificado DUNS / GS1 del fabricante",
+        "icon": "🆔",
+        "regulatoryBasis": "Reg. (UE) 2023/1542 Art. 38",
+        "obligation": "obligatory",
+        "applicableTo": "Todas (identificación operador económico)",
+        "deadline": "Antes de poner en mercado",
+        "providedBy": "D&B Dun & Bradstreet o GS1",
+        "status": "pending",
+        "note": "Estado por defecto en plantilla genérica. Cada cliente debe verificar."
+      },
+      {
+        "cat": null,
+        "name": "Sello de tiempo cualificado eIDAS 2.0",
+        "icon": "🕐",
+        "regulatoryBasis": "Reg. (UE) 2024/1183 eIDAS 2.0",
+        "obligation": "trackline_ext",
+        "applicableTo": "Mejora valor probatorio del DPP",
+        "deadline": "EUDI Wallet operativa antes fin 2026",
+        "providedBy": "Trust Service Provider cualificado",
+        "status": "pending",
+        "note": "Estado por defecto en plantilla genérica. Cada cliente debe verificar."
+      },
+      {
+        "cat": null,
+        "name": "Hash de integridad (blockchain)",
+        "icon": "🔗",
+        "regulatoryBasis": "Code Contract · Trackline",
+        "obligation": "trackline_ext",
+        "applicableTo": "Garantía técnica de no modificación",
+        "deadline": "Operativo hoy",
+        "providedBy": "Trackline · sello criptográfico sobre dato + documento",
+        "status": "pending",
+        "note": "Estado por defecto en plantilla genérica. Cada cliente debe verificar."
+      }
+    ],
+    "footer_message": "Trackline vincula cada documento al campo del DPP que respalda, calcula hash de integridad y lo sella con timestamp cualificado eIDAS. Es la capa que separa una hoja de cálculo de un pasaporte defendible ante el inspector."
   }
 }
