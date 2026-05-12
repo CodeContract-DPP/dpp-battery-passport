@@ -385,46 +385,46 @@
       "_evidence": null
     },
     "technicalSpecification__remainingCapacity": {
-      "value": "",
+      "value": null,
       "unit": "Ah",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "#60 Mandatory. Capacidad restante medida. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "technicalSpecification__capacityFade": {
-      "value": "",
+      "value": null,
       "unit": "%",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "#61 Mandatory. Disminución de capacidad respecto al valor inicial. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "technicalSpecification__remainingUsableBatteryEnergy": {
-      "value": "",
+      "value": null,
       "unit": "kWh",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "#63 N/A para LMT pero incluido por completitud. Energía usable restante. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "technicalSpecification__stateOfCharge": {
-      "value": "",
+      "value": null,
       "unit": "%",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "Dato en tiempo real. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "technicalSpecification__stateOfCertifiedEnergy": {
-      "value": "",
+      "value": null,
       "unit": "%",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "Dato dinámico. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -453,19 +453,19 @@
       "_evidence": null
     },
     "roundtripEfficiency__remainingRoundTripEnergyEfficiency": {
-      "value": "",
+      "value": null,
       "unit": "%",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "Dato dinámico. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "roundtripEfficiency__energyRoundTripEfficiencyFade": {
-      "value": "",
+      "value": null,
       "unit": "%",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "#77 Mandatory. Disminución de la eficiencia round-trip respecto al valor inicial. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -480,19 +480,19 @@
       "_evidence": null
     },
     "roundtripEfficiency__currentSelfDischargingRate": {
-      "value": "",
+      "value": null,
       "unit": "% / month",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "#79 Voluntary. Tasa de autodescarga actual. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "roundtripEfficiency__evolutionOfSelfDischargeRates": {
-      "value": "",
+      "value": null,
       "unit": "% / month",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "#80 Mandatory. Evolución histórica de las tasas de autodescarga. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -506,19 +506,19 @@
       "_evidence": null
     },
     "powerCapability__remainingPowerCapability": {
-      "value": "",
+      "value": null,
       "unit": "W",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "#70 Mandatory. Capacidad de potencia restante. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "powerCapability__powerFade": {
-      "value": "",
+      "value": null,
       "unit": "%",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "#71 Mandatory. Disminución de potencia respecto al valor original. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -550,10 +550,10 @@
       "_evidence": null
     },
     "internalResistance__currentInternalResistancePack": {
-      "value": "",
+      "value": null,
       "unit": "mΩ",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "Dato en tiempo real. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -610,35 +610,35 @@
       "_evidence": null
     },
     "batteryLifetime__numberOfFullCycles": {
-      "value": "",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "value": null,
+      "_status": "dynamic",
+      "_note": "#85 Mandatory. Dato dinámico. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "batteryLifetime__capacityThroughput": {
-      "value": "",
+      "value": null,
       "unit": "Ah",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "#89 Mandatory. Rendimiento acumulado de capacidad (Ah totales procesados). Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "batteryLifetime__energyThroughput": {
-      "value": "",
+      "value": null,
       "unit": "kWh",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "Dato dinámico. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "batteryLifetime__putIntoService": {
-      "value": "",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "value": null,
+      "_status": "dynamic",
+      "_note": null,
       "_legalBasis": "Reg. 2023/1542 Annex IV(A) · LEY",
       "_sourceDocument": null,
       "_evidence": null
@@ -662,53 +662,53 @@
       "_evidence": null
     },
     "temperatureConditions__timeExtremeHighTemp": {
-      "value": "",
+      "value": null,
       "unit": "hours",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "#94 Mandatory. Dato dinámico. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "temperatureConditions__timeExtremeLowTemp": {
-      "value": "",
+      "value": null,
       "unit": "hours",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "#95 Mandatory. Dato dinámico. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "temperatureConditions__timeChargingExtremeHighTemp": {
-      "value": "",
+      "value": null,
       "unit": "hours",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "#96 Mandatory. Tiempo acumulado cargando por encima del límite superior de temperatura. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "temperatureConditions__timeChargingExtremeLowTemp": {
-      "value": "",
+      "value": null,
       "unit": "hours",
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "#97 Mandatory. Tiempo acumulado cargando por debajo del límite inferior de temperatura. Requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex IV(B) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "negativeEvents__numberOfDeepDischargeEvents": {
       "value": null,
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "Batería nueva. Dato dinámico — requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex XIII · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
     "negativeEvents__numberOfOverchargeEvents": {
       "value": null,
-      "_status": "pending",
-      "_note": "Pendiente de completar por el fabricante.",
+      "_status": "dynamic",
+      "_note": "Batería nueva. Dato dinámico — requiere BMS.",
       "_legalBasis": "Reg. 2023/1542 Annex XIII · LEY",
       "_sourceDocument": null,
       "_evidence": null
