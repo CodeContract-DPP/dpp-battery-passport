@@ -215,9 +215,16 @@ const DPP = (() => {
       html += '<div class="doc-req-grid">';
       dr.documents.forEach(function(doc) {
         var st = statusLabel[doc.status] || {emoji: '•', label: doc.status, cls: ''};
-        var oblBadge = doc.obligation === 'obligatory'
-          ? '<span class="doc-oblig doc-oblig-required">🔴 OBLIGATORIO</span>'
-          : '<span class="doc-oblig doc-oblig-recom">⚙️ Recomendado</span>';
+        var oblBadge;
+        if (doc.obligation === 'obligatory') {
+          oblBadge = '<span class="doc-oblig doc-oblig-required">🔴 OBLIGATORIO</span>';
+        } else if (doc.obligation === 'obligatory_reach' || doc.obligation === 'obligatory_gs1') {
+          oblBadge = '<span class="doc-oblig doc-oblig-sectoral">🟠 OBLIGATORIO sectorial</span>';
+        } else if (doc.obligation === 'functional_requirement') {
+          oblBadge = '<span class="doc-oblig doc-oblig-functional">🔵 OBLIGACIÓN FUNCIONAL</span>';
+        } else {
+          oblBadge = '<span class="doc-oblig doc-oblig-recom">📌 Recomendado</span>';
+        }
         html += '<div class="doc-card ' + st.cls + '" data-doc-status="' + doc.status + '">' +
           '<div class="doc-card-header">' +
             '<span class="doc-card-icon">' + (doc.icon || '📄') + '</span>' +
@@ -240,8 +247,8 @@ const DPP = (() => {
 
     if (dr.footer_message) {
       html += '<div class="doc-req-cta">' +
-        '<span class="exec-cta-icon">⚙️</span>' +
-        '<div><strong>Trackline:</strong> ' + dr.footer_message + '</div>' +
+        '<span class="exec-cta-icon">💡</span>' +
+        '<div>' + dr.footer_message + '</div>' +
       '</div>';
     }
 
@@ -270,11 +277,11 @@ const DPP = (() => {
       });
       html += '</div>';
     }
-    if (es.trackline_aporta) {
+    var ctaText = es.mensaje_clave || es.trackline_aporta;
+    if (ctaText) {
       html += '<div class="exec-summary-cta">' +
-        '<span class="exec-cta-icon">⚙️</span>' +
-        '<div><strong>Lo que aporta Trackline (sobre el Excel del DAL v1.3):</strong> ' +
-        es.trackline_aporta + '</div>' +
+        '<span class="exec-cta-icon">💡</span>' +
+        '<div>' + ctaText + '</div>' +
       '</div>';
     }
     html += '</section>';

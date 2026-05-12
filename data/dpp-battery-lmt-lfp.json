@@ -33,7 +33,7 @@
       "_note": "#3 ESPR. Granularidad del DPP: model | batch | item."
     },
     "notes": "Datos demo genérica LMT/LFP (sin marca de cliente). Campos marcados con '_status': confirmed = verificado en fuente pública; partial = rango o dato genérico; assumed = coherente con la tecnología LFP, pendiente de confirmar; dynamic = requiere BMS en tiempo real.",
-    "evidenceProvider": "Trackline by Code Contract S.L. (https://trackline.codecontract.com)"
+    "evidenceProvider": "Code Contract S.L."
   },
   "generalProductInformation": {
     "_icon": "🔋",
@@ -1092,35 +1092,11 @@
   "traceability": {
     "_icon": "🔍",
     "_title": "Trazabilidad y data carrier",
-    "trackline_hash": {
-      "value": null,
-      "_status": "assumed",
-      "_note": "Hash de evidencia Trackline. Se generara al registrar el DPP.",
-      "_legalBasis": "ESPR 2024/1781 Art. 10 · LEY",
-      "_sourceDocument": null,
-      "_evidence": null
-    },
     "timestamp_iso8601": {
       "value": "2026-04-21T10:00:00Z",
       "_status": "assumed",
       "_note": "Timestamp de creacion del pasaporte.",
       "_legalBasis": null,
-      "_sourceDocument": null,
-      "_evidence": null
-    },
-    "eidas_tsa_token": {
-      "value": null,
-      "_status": "assumed",
-      "_note": "Token de sellado de tiempo cualificado eIDAS. Pendiente de generacion.",
-      "_legalBasis": "ESPR 2024/1781 Art. 10 · PROYECCION",
-      "_sourceDocument": null,
-      "_evidence": null
-    },
-    "qr_payload_url": {
-      "value": "https://dpp.example.com/battery/DEMO-LMT-LFP-2026-001-SN-0001",
-      "_status": "assumed",
-      "_note": "URL que codificara el QR code fisico. Provisional hasta despliegue.",
-      "_legalBasis": "ESPR 2024/1781 Art. 9(6) · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
@@ -1137,14 +1113,6 @@
       "_status": "assumed",
       "_note": "Ubicacion fisica del data carrier en el producto.",
       "_legalBasis": "ESPR 2024/1781 Art. 9(6) · LEY",
-      "_sourceDocument": null,
-      "_evidence": null
-    },
-    "gs1_digital_link": {
-      "value": "https://id.gs1.org/01/PENDING/21/DEMO-LMT-LFP-2026-001-SN-0001",
-      "_status": "assumed",
-      "_note": "GS1 Digital Link. GTIN pendiente de asignacion por GS1 Spain.",
-      "_legalBasis": "ESPR 2024/1781 Art. 9 · LEY",
       "_sourceDocument": null,
       "_evidence": null
     },
@@ -1228,27 +1196,11 @@
       "_legalBasis": "Reg. 2023/1542 Art. 69 · LEY",
       "_sourceDocument": null,
       "_evidence": null
-    },
-    "dpp_service_provider": {
-      "value": "Code Contract S.L. (Trackline)",
-      "_status": "confirmed",
-      "_note": "Proveedor de la infraestructura DPP y trazabilidad Trackline.",
-      "_legalBasis": null,
-      "_sourceDocument": null,
-      "_evidence": null
     }
   },
   "registry": {
     "_icon": "🏛",
     "_title": "Registro central EU",
-    "registry_status": {
-      "value": "PENDING",
-      "_status": "assumed",
-      "_note": "Registro central DPP abre el 19 julio 2026. Pendiente de alta.",
-      "_legalBasis": "ESPR 2024/1781 Art. 12 · LEY",
-      "_sourceDocument": null,
-      "_evidence": null
-    },
     "registry_fields_preloaded": {
       "value": [
         "dpp_uid",
@@ -1537,30 +1489,30 @@
         "note": "Estado por defecto en plantilla genérica. Cada cliente debe verificar."
       },
       {
-        "cat": null,
         "name": "Sello de tiempo cualificado eIDAS 2.0",
         "icon": "🕐",
-        "regulatoryBasis": "Reg. (UE) 2024/1183 eIDAS 2.0",
-        "obligation": "trackline_ext",
-        "applicableTo": "Mejora valor probatorio del DPP",
-        "deadline": "EUDI Wallet operativa antes fin 2026",
-        "providedBy": "Trust Service Provider cualificado",
+        "regulatoryBasis": "Reg. (UE) 2024/1183 eIDAS 2.0 · Art. 35-37",
+        "obligation": "functional_requirement",
+        "applicableTo": "Mejora el valor probatorio del DPP ante autoridades, aseguradoras y litigios",
+        "deadline": "EUDI Wallet operativa antes de fin de 2026",
+        "providedBy": "Trust Service Provider (TSP) cualificado · servicio TSA",
         "status": "pending",
+        "cat": null,
         "note": "Estado por defecto en plantilla genérica. Cada cliente debe verificar."
       },
       {
-        "cat": null,
-        "name": "Hash de integridad (blockchain)",
+        "name": "Hash de integridad criptográfica",
         "icon": "🔗",
-        "regulatoryBasis": "Code Contract · Trackline",
-        "obligation": "trackline_ext",
-        "applicableTo": "Garantía técnica de no modificación",
-        "deadline": "Operativo hoy",
-        "providedBy": "Trackline · sello criptográfico sobre dato + documento",
+        "regulatoryBasis": "ISO/IEC 27001 · buenas prácticas sobre integridad documental",
+        "obligation": "functional_requirement",
+        "applicableTo": "Garantía técnica de no-modificación del documento ni del dato vinculado",
+        "deadline": "Operativo hoy mediante distintas tecnologías (blockchain, Merkle trees, sello cripto)",
+        "providedBy": "Sistema de gestión documental con sellado criptográfico",
         "status": "pending",
+        "cat": null,
         "note": "Estado por defecto en plantilla genérica. Cada cliente debe verificar."
       }
     ],
-    "footer_message": "Trackline vincula cada documento al campo del DPP que respalda, calcula hash de integridad y lo sella con timestamp cualificado eIDAS. Es la capa que separa una hoja de cálculo de un pasaporte defendible ante el inspector."
+    "footer_message": "Los 12 primeros documentos vienen exigidos por la regulación europea (Reg. 1542, REACH, GS1). Los 2 últimos son **obligaciones funcionales**: sin estas piezas el DPP queda como un repositorio de datos, no como un documento defendible ante un inspector. La gestión organizada de las 14 piezas — quién las aporta, dónde se almacenan, cómo se vinculan al dato del DPP y cómo se firman — define la calidad del pasaporte."
   }
 }

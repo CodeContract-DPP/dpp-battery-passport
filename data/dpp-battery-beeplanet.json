@@ -23,7 +23,7 @@
     "generatedDate": "2026-05-11",
     "version": "2.1-beeplanet-demo",
     "notes": "Datos demo Beeplanet 2nd life storage (módulo de OEM EV). Campos marcados con '_status': confirmed = verificado en fuente pública; partial = rango o dato genérico; assumed = coherente con la tecnología LFP, pendiente de confirmar; dynamic = requiere BMS en tiempo real.",
-    "evidenceProvider": "Trackline by Code Contract S.L. (https://trackline.codecontract.com)"
+    "evidenceProvider": "Code Contract S.L."
   },
   "_executiveSummary": {
     "title": "DPP defendible · Power ESS 46 kWh 2nd life",
@@ -37,7 +37,7 @@
       {
         "icon": "🔗",
         "label": "Padre virtual reconstruido",
-        "text": "Mercedes no entrega DPP — Trackline reconstruye un parent_passport_id honesto con datasheet OEM + diagnóstico BHive. Reconecta automáticamente cuando el OEM publique el oficial."
+        "text": "Mercedes no entrega DPP — Se reconstruye un parent_passport_id honesto con datasheet OEM + diagnóstico BHive. Reconecta automáticamente cuando el OEM publique el oficial."
       },
       {
         "icon": "📄",
@@ -55,7 +55,7 @@
         "text": "Identificadores GS1 Digital Link + arquitectura de carga al registro central de la Comisión Europea (operativo desde 19 jul 2026)."
       }
     ],
-    "trackline_aporta": "Lo que el Excel del DAL v1.3 no cubre: reconstrucción del DPP padre cuando el OEM no entrega, gestión documental con hash y firma, sellado de tiempo cualificado, carga al registro ESPR y trazabilidad módulo a módulo. Las 7 extensiones propietarias están marcadas con ⚙️ al final del DPP."
+    "mensaje_clave": "El Excel del DAL v1.3 cubre los datos del DPP. Para que el DPP sea defendible ante un inspector, hace falta unir cada dato a su documento, garantizar su integridad y sellar el tiempo. Esa capa de confianza es la que distingue un repositorio de datos de un pasaporte con valor probatorio."
   },
   "documentRequirements": {
     "title": "Documentos necesarios — checklist regulatorio",
@@ -212,31 +212,31 @@
         "note": "DUNS de Beeplanet Factory S.L. dado de alta."
       },
       {
-        "cat": null,
         "name": "Sello de tiempo cualificado eIDAS 2.0",
         "icon": "🕐",
-        "regulatoryBasis": "Reg. (UE) 2024/1183 eIDAS 2.0",
-        "obligation": "trackline_ext",
-        "applicableTo": "Mejora valor probatorio del DPP",
-        "deadline": "EUDI Wallet operativa antes fin 2026",
-        "providedBy": "Trust Service Provider cualificado",
+        "regulatoryBasis": "Reg. (UE) 2024/1183 eIDAS 2.0 · Art. 35-37",
+        "obligation": "functional_requirement",
+        "applicableTo": "Mejora el valor probatorio del DPP ante autoridades, aseguradoras y litigios",
+        "deadline": "EUDI Wallet operativa antes de fin de 2026",
+        "providedBy": "Trust Service Provider (TSP) cualificado · servicio TSA",
         "status": "pending",
+        "cat": null,
         "note": "EUDI Wallet aún no operativa. Beeplanet aún no opera con TSA cualificado."
       },
       {
-        "cat": null,
-        "name": "Hash de integridad (blockchain)",
+        "name": "Hash de integridad criptográfica",
         "icon": "🔗",
-        "regulatoryBasis": "Code Contract · Trackline",
-        "obligation": "trackline_ext",
-        "applicableTo": "Garantía técnica de no modificación",
-        "deadline": "Operativo hoy",
-        "providedBy": "Trackline · sello criptográfico sobre dato + documento",
+        "regulatoryBasis": "ISO/IEC 27001 · buenas prácticas sobre integridad documental",
+        "obligation": "functional_requirement",
+        "applicableTo": "Garantía técnica de no-modificación del documento ni del dato vinculado",
+        "deadline": "Operativo hoy mediante distintas tecnologías (blockchain, Merkle trees, sello cripto)",
+        "providedBy": "Sistema de gestión documental con sellado criptográfico",
         "status": "pending",
-        "note": "Pendiente integración con Trackline para sellado cripto automático."
+        "cat": null,
+        "note": "Pendiente integración con servicio de sellado criptográfico cualificado."
       }
     ],
-    "footer_message": "Trackline gestiona los 14 documentos: vincula cada documento al campo del DPP que respalda, calcula el hash de integridad, lo sella con timestamp cualificado eIDAS y deja todo auditable. Lo que el Excel del DAL v1.3 no cubre."
+    "footer_message": "Los 12 primeros documentos vienen exigidos por la regulación europea (Reg. 1542, REACH, GS1). Los 2 últimos son **obligaciones funcionales**: sin estas piezas el DPP queda como un repositorio de datos, no como un documento defendible ante un inspector. La gestión organizada de las 14 piezas — quién las aporta, dónde se almacenan, cómo se vinculan al dato del DPP y cómo se firman — define la calidad del pasaporte."
   },
   "dppMetadata": {
     "_icon": "🗂️",
@@ -473,14 +473,14 @@
     "_icon": "🔗",
     "_title": "DPP padre — origen OEM EV (linking)",
     "acercaDeEstaSeccion": {
-      "value": "Reconstrucción del DPP padre cuando el OEM no lo emite — patrón Trackline para 2nd life.",
+      "value": "Reconstrucción del DPP padre cuando el OEM no lo emite — patrón de reconstrucción de DPP padre para 2nd life.",
       "_status": "confirmed",
-      "_note": "Explicación del bloque parentPassport. Trackline mantiene el linking al DPP padre del fabricante original EV. Cuando el OEM no emite DPP (módulos anteriores a feb 2027), Trackline construye un padre virtual con los datos públicos disponibles y lo declara honestamente como 'assumed'."
+      "_note": "Explicación del bloque parentPassport. El sistema mantiene el linking al DPP padre del fabricante original EV. Cuando el OEM no emite DPP (módulos anteriores a feb 2027), el sistema construye un padre virtual con los datos públicos disponibles y lo declara honestamente como 'assumed'."
     },
     "parent_passport_id": {
       "value": "RECONSTRUCTED:Mercedes-EQS-450-2019-NMC-95Ah-PACK-DE-12345",
       "_status": "assumed",
-      "_note": "Reconstrucción Trackline. OEM (Mercedes) no obligado a emitir DPP — módulo de 2019, anterior a la entrada en vigor del Reg. 2023/1542 (feb 2027). El identificador combina el modelo OEM declarado en etiqueta física + número de pack interno. Se enlazará al DPP real cuando Mercedes lo publique (voluntario antes de 2027, obligatorio después).",
+      "_note": "DPP padre reconstruido. OEM (Mercedes) no obligado a emitir DPP — módulo de 2019, anterior a la entrada en vigor del Reg. 2023/1542 (feb 2027). El identificador combina el modelo OEM declarado en etiqueta física + número de pack interno. Se enlazará al DPP real cuando Mercedes lo publique (voluntario antes de 2027, obligatorio después).",
       "_legalBasis": "Reg. (UE) 2023/1542 Art. 77 · ESPR 2024/1781 · linking padre-hijo Anexo XIII pt 4",
       "_sourceDocument": {
         "name": "Etiqueta física del módulo + datasheet público Mercedes EQS 450",
@@ -519,7 +519,7 @@
     "linking_status": {
       "value": "virtual_reconstructed",
       "_status": "confirmed",
-      "_note": "Estado del linking padre→hijo: 'virtual_reconstructed' indica que el padre se ha reconstruido por Trackline a falta de DPP oficial del OEM. Valores posibles: virtual_reconstructed | partial_oem_data | linked_to_official_dpp. Trackline migra automáticamente cuando el dato oficial llega.",
+      "_note": "Estado del linking padre→hijo: 'virtual_reconstructed' indica que el padre se ha reconstruido a falta de DPP oficial del OEM a falta de DPP oficial del OEM. Valores posibles: virtual_reconstructed | partial_oem_data | linked_to_official_dpp. el sistema migra automáticamente cuando el dato oficial llega.",
       "_legalBasis": "Code Contract · extensión arquitectura DPP",
       "_sourceDocument": null,
       "_evidence": null
@@ -527,7 +527,7 @@
     "linking_evolution_plan": {
       "value": "Reconectar a parent_passport_id real cuando Mercedes publique el DPP del modelo EQS 2019 (voluntario antes de feb 2027, obligatorio después si Mercedes mantiene el modelo en el mercado).",
       "_status": "confirmed",
-      "_note": "Plan operativo Trackline. El identificador 'RECONSTRUCTED:...' es estable y permite enlazar cuando aparezca el DPP oficial sin reescribir el resto del DPP Beeplanet."
+      "_note": "Plan operativo de linking. El identificador 'RECONSTRUCTED:...' es estable y permite enlazar cuando aparezca el DPP oficial sin reescribir el resto del DPP Beeplanet."
     }
   },
   "materialComposition": {
@@ -1700,7 +1700,7 @@
     "oem_original_actor": {
       "value": "Mercedes-Benz Group AG (fabricante original del módulo EV)",
       "_status": "assumed",
-      "_note": "Fabricante original del módulo (1ª vida en vehículo Mercedes EQS). Identificado por etiqueta física + datasheet público. NO ha emitido DPP — el módulo es anterior a la obligación regulatoria de feb 2027. Trackline reconecta automáticamente cuando el OEM publique DPP oficial.",
+      "_note": "Fabricante original del módulo (1ª vida en vehículo Mercedes EQS). Identificado por etiqueta física + datasheet público. NO ha emitido DPP — el módulo es anterior a la obligación regulatoria de feb 2027. el sistema reconecta automáticamente cuando el OEM publique DPP oficial.",
       "_legalBasis": "Reg. (UE) 2023/1542 Art. 8 + Art. 47",
       "_sourceDocument": {
         "name": "Etiqueta física del módulo + datasheet OEM",
