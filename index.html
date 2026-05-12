@@ -68,7 +68,13 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .registry-highlight .section-icon{color:var(--purple)}
 
 /* Filters */
-.filter-bar{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.filter-bar-wrapper{margin:.75rem 0 1.25rem 0;border:1px solid var(--border);border-radius:10px;background:var(--card);overflow:hidden}
+.filter-bar-summary{padding:.65rem 1rem;cursor:pointer;font-size:.88rem;color:var(--muted);user-select:none;list-style:none}
+.filter-bar-summary::-webkit-details-marker{display:none}
+.filter-bar-summary::before{content:'▶';display:inline-block;margin-right:.5rem;transition:transform .2s;font-size:.7rem;color:var(--gray)}
+.filter-bar-wrapper[open] .filter-bar-summary::before{transform:rotate(90deg)}
+.filter-bar-summary:hover{background:#f7fafc}
+.filter-bar{display:flex;gap:.5rem;padding:0 1rem 1rem 1rem;flex-wrap:wrap}
 .filter-btn{padding:.45rem 1rem;border:1px solid var(--border);border-radius:20px;background:var(--card);font-size:.85rem;cursor:pointer}
 .filter-btn:hover{border-color:var(--accent)}
 .filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
@@ -97,6 +103,30 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .exec-highlight-body p{font-size:.82rem;margin:0;opacity:.9;line-height:1.4}
 .exec-summary-cta{background:rgba(255,216,107,.15);border-left:4px solid #ffd86b;border-radius:8px;padding:.85rem 1rem;display:flex;gap:.65rem;align-items:flex-start;font-size:.85rem}
 .exec-cta-icon{font-size:1.2rem;flex-shrink:0}
+
+/* Edit banner — modo edición + indicador progreso */
+.edit-banner{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.85rem 1.1rem;margin:.75rem 0;border-radius:10px;background:#f7fafc;border:1px solid var(--border);flex-wrap:wrap}
+.edit-banner-on{background:linear-gradient(135deg,#fffbf0,#fef3c7);border-color:#fbbf24}
+.edit-banner-left{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;flex:1;min-width:280px}
+.edit-banner-right{display:flex;align-items:center;gap:.85rem;flex-wrap:wrap}
+.edit-toggle{display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;user-select:none}
+.edit-toggle input{position:absolute;opacity:0;pointer-events:none}
+.edit-toggle-slider{position:relative;display:inline-block;width:38px;height:20px;background:#cbd5e0;border-radius:10px;transition:background .2s;flex-shrink:0}
+.edit-toggle-slider::after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;background:white;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.edit-toggle input:checked + .edit-toggle-slider{background:#d69e2e}
+.edit-toggle input:checked + .edit-toggle-slider::after{transform:translateX(18px)}
+.edit-toggle-label{font-size:.92rem;font-weight:600;color:#1f2937}
+.edit-hint{font-size:.78rem;color:var(--muted);font-style:italic}
+.edit-progress{font-size:.82rem;color:#4a5568}
+.edit-progress strong{color:#1a202c;font-weight:700}
+.edit-reset-btn{padding:.4rem .8rem;border:1px solid #fcd34d;background:#fffbeb;color:#92400e;border-radius:6px;font-size:.78rem;cursor:pointer;font-weight:600}
+.edit-reset-btn:hover{background:#fef3c7}
+
+/* Editable inline values */
+.editable-value{display:inline-block;min-width:80px;padding:.15rem .45rem;border:1px dashed #cbd5e0;border-radius:5px;background:#fefefe;cursor:text;outline:none;transition:all .15s}
+.editable-value:hover{border-color:#fbbf24;background:#fffbeb}
+.editable-value:focus{border-color:#d69e2e;border-style:solid;background:#fff;box-shadow:0 0 0 3px rgba(214,158,46,.15)}
+.editable-value:empty:before{content:'(vacío — click para editar)';color:#a0aec0;font-style:italic;font-size:.85em}
 
 /* Documentos necesarios — bloque destacado pre-secciones */
 .doc-req-block{background:#fff;border:2px solid #1B3D6E;border-radius:14px;padding:1.5rem;margin:1rem 0;box-shadow:0 4px 12px rgba(27,61,110,.08)}
@@ -159,7 +189,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .st-confirmed{background:#b2f5ea;color:#234e52}
 .st-partial{background:#fefcbf;color:#744210}
 .st-pending{background:#fed7d7;color:#742a2a}
-.st-assumed{background:#e2e8f0;color:#4a5568}
+.st-assumed{background:#dbeafe;color:#1e40af}
 .st-dynamic{background:#b2f5ea;color:#234e52;border:1px dashed var(--teal)}
 .attr-body{padding-left:.5rem}
 .attr-data{font-size:.88rem;color:var(--text);margin-bottom:.5rem}

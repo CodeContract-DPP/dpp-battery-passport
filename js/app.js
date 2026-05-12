@@ -7,12 +7,12 @@
  */
 const DPP = (() => {
   const STATUS_MAP = {
-    verified:  { label: 'Verificado',      cls: 'st-verified',  icon: '\u2705' },
-    confirmed: { label: 'Confirmado',      cls: 'st-confirmed', icon: '\u2705' },
-    partial:   { label: 'Parcial',         cls: 'st-partial',   icon: '\u26A0\uFE0F' },
-    pending:   { label: 'Pendiente',       cls: 'st-pending',   icon: '\u274C' },
-    assumed:   { label: 'Pendiente',       cls: 'st-pending',   icon: '\u274C' },
-    dynamic:   { label: 'Din\u00e1mico (BMS)',  cls: 'st-dynamic',   icon: '\uD83D\uDCE1' }
+    verified:  { label: 'Aportado',           cls: 'st-confirmed', icon: '\u2705' },
+    confirmed: { label: 'Aportado',           cls: 'st-confirmed', icon: '\u2705' },
+    partial:   { label: 'Parcial',            cls: 'st-partial',   icon: '\u26A0\uFE0F' },
+    pending:   { label: 'Por aportar',        cls: 'st-pending',   icon: '\u274C' },
+    assumed:   { label: 'Por validar',        cls: 'st-assumed',   icon: '\uD83D\uDD35' },
+    dynamic:   { label: 'Tiempo real (BMS)',  cls: 'st-dynamic',   icon: '\uD83D\uDCE1' }
   };
   const LEGAL_CLS = { 'LEY': 'legal-ley', 'PROYECCION': 'legal-proyeccion', 'PENDIENTE AD': 'legal-pendiente' };
 
@@ -88,16 +88,27 @@ const DPP = (() => {
     return linkify(String(val));
   }
 
-  function renderAttribute(key, attr) {
+  function renderAttribute(key, attr, sectionKey) {
     if (key.startsWith('_')) return '';
     var metaKeys = ['_status','_legalBasis','_sourceDocument','_evidence','_note','_isTable','_columns','_rows','_isExtension'];
+    var editing = isEditMode() && attr._status !== 'dynamic';
     var dataFields = '';
     if (attr._isTable && attr._columns && attr._rows) {
       dataFields = renderTable(attr);
     } else {
       Object.keys(attr).forEach(function(k) {
         if (metaKeys.indexOf(k) >= 0) return;
-        dataFields += '<span class="field-name">' + humanKey(k) + ':</span> ' + formatValue(attr[k]) + '<br>';
+        var val = attr[k];
+        var path = (sectionKey || '?') + '.' + key + '.' + k;
+        var valHTML;
+        if (editing && (typeof val === 'string' || typeof val === 'number' || val === null) && (typeof val !== 'object' || val === null)) {
+          var displayVal = (val === null || val === undefined) ? '' : String(val);
+          var typeAttr = (typeof val === 'number') ? 'number' : 'string';
+          valHTML = '<span class="editable-value" contenteditable="true" data-edit-path="' + path + '" data-edit-type="' + typeAttr + '" spellcheck="false">' + displayVal + '</span>';
+        } else {
+          valHTML = formatValue(val);
+        }
+        dataFields += '<span class="field-name">' + humanKey(k) + ':</span> ' + valHTML + '<br>';
       });
     }
     var status = statusBadge(attr._status);
@@ -147,7 +158,7 @@ const DPP = (() => {
     var counts = { verified:0, confirmed:0, partial:0, pending:0, dynamic:0 };
     Object.keys(section).forEach(function(k) {
       if (k.startsWith('_')) return;
-      attrsHTML += renderAttribute(k, section[k]);
+      attrsHTML += renderAttribute(k, section[k], sectionKey);
       var st = section[k]._status || 'pending';
       if (st === 'assumed') st = 'pending';
       counts[st] = (counts[st]||0) + 1;
@@ -390,21 +401,24 @@ const DPP = (() => {
       var res = await fetch(jsonPath, { cache: 'no-cache' });
       if (!res.ok) throw new Error('No se pudo descargar ' + jsonPath + ' (HTTP ' + res.status + ')');
       var data = await res.json();
+      applyEditsToData(data);
       window._dppData = data;
-      var html = renderMeta(data) + renderSummary(data) + renderExecutiveSummary(data) + renderDocumentRequirements(data);
+      var html = renderEditBanner(data) + renderMeta(data) + renderSummary(data) + renderExecutiveSummary(data) + renderDocumentRequirements(data);
+
+      // Barra de filtros antes de las secciones, en <details> colapsable
+      html += '<details class="filter-bar-wrapper">' +
+        '<summary class="filter-bar-summary">\uD83D\uDD0D Filtrar campos</summary>' +
+        '<div class="filter-bar">' +
+          '<button class="filter-btn active" data-filter="all">Todos</button>' +
+          '<button class="filter-btn" data-filter="confirmed">\u2705 Aportado</button>' +
+          '<button class="filter-btn" data-filter="dynamic">\uD83D\uDCE1 Tiempo real (BMS)</button>' +
+          '<button class="filter-btn" data-filter="pending">\u274C Por aportar</button>' +
+        '</div>' +
+      '</details>';
 
       if (data.registry) {
         html += renderSection('registry', data.registry, 'registry-highlight');
       }
-
-      html += '<div class="filter-bar">' +
-        '<button class="filter-btn active" data-filter="all">Todos</button>' +
-        '<button class="filter-btn" data-filter="confirmed">\u2705 Confirmados</button>' +
-        '<button class="filter-btn" data-filter="verified">\u2705 Verificados</button>' +
-        '<button class="filter-btn" data-filter="partial">\u26A0\uFE0F Parciales</button>' +
-        '<button class="filter-btn" data-filter="dynamic">\uD83D\uDCE1 Din\u00e1micos</button>' +
-        '<button class="filter-btn" data-filter="pending">\u274C Pendientes</button>' +
-        '</div>';
 
       Object.keys(data).forEach(function(k) {
         if (SKIP_KEYS.indexOf(k) >= 0 || k === 'registry') return;
@@ -413,6 +427,8 @@ const DPP = (() => {
       });
       container.innerHTML = html;
       bindFilters();
+      bindEditMode();
+      bindEditableInputs();
     } catch(err) {
       console.error('[DPP] Error cargando datos:', err);
       container.innerHTML = '<div class="error">' +
@@ -464,5 +480,151 @@ const DPP = (() => {
     }
   }
 
-  return { init: init, toggleSection: toggleSection };
+
+  // ============================================================
+  // MÓDULO DE EDICIÓN (solo activo en ?product=dpp-battery-beeplanet)
+  // ============================================================
+  var EDITABLE_PRODUCTS = ['dpp-battery-beeplanet'];
+
+  function getProductId() {
+    return new URLSearchParams(window.location.search).get('product') || 'default';
+  }
+  function isEditableProduct() {
+    return EDITABLE_PRODUCTS.indexOf(getProductId()) >= 0;
+  }
+  function isEditMode() {
+    if (!isEditableProduct()) return false;
+    return localStorage.getItem('dpp-edit-mode-' + getProductId()) === 'on';
+  }
+  function setEditMode(on) {
+    localStorage.setItem('dpp-edit-mode-' + getProductId(), on ? 'on' : 'off');
+  }
+  function loadEdits() {
+    try { return JSON.parse(localStorage.getItem('dpp-edits-' + getProductId()) || '{}'); }
+    catch(e) { return {}; }
+  }
+  function saveEdit(path, value) {
+    var edits = loadEdits();
+    if (value === '' || value === null) { delete edits[path]; }
+    else { edits[path] = value; }
+    localStorage.setItem('dpp-edits-' + getProductId(), JSON.stringify(edits));
+  }
+  function clearEdits() {
+    localStorage.removeItem('dpp-edits-' + getProductId());
+  }
+
+  function applyEditsToData(data) {
+    if (!isEditableProduct()) return;
+    var edits = loadEdits();
+    Object.keys(edits).forEach(function(path) {
+      var parts = path.split('.');
+      var node = data;
+      for (var i = 0; i < parts.length - 1; i++) {
+        if (node && typeof node === 'object') { node = node[parts[i]]; }
+      }
+      if (node && typeof node === 'object' && parts[parts.length-1] in node) {
+        node[parts[parts.length-1]] = edits[path];
+      }
+    });
+    Object.keys(edits).forEach(function(path) {
+      var parts = path.split('.');
+      if (parts[parts.length-1] !== 'value') return;
+      var parentPath = parts.slice(0, -1);
+      var node = data;
+      for (var i = 0; i < parentPath.length; i++) { node = node[parentPath[i]]; }
+      if (node && typeof node === 'object' && node._status !== 'dynamic') {
+        var v = edits[path];
+        node._status = (v !== null && v !== '' && v !== undefined) ? 'confirmed' : 'pending';
+      }
+    });
+  }
+
+  function computeStats(data) {
+    var s = { confirmed: 0, pending: 0, dynamic: 0, partial: 0, assumed: 0, total: 0 };
+    function walk(node) {
+      if (Array.isArray(node)) { node.forEach(walk); return; }
+      if (typeof node !== 'object' || node === null) return;
+      if (typeof node._status === 'string') {
+        s.total++;
+        if (s[node._status] !== undefined) s[node._status]++;
+      }
+      Object.keys(node).forEach(function(k){ walk(node[k]); });
+    }
+    walk(data);
+    return s;
+  }
+
+  function renderEditBanner(data) {
+    if (!isEditableProduct()) return '';
+    var on = isEditMode();
+    var stats = computeStats(data);
+    return '<div class="edit-banner ' + (on ? 'edit-banner-on' : '') + '">' +
+      '<div class="edit-banner-left">' +
+        '<label class="edit-toggle">' +
+          '<input type="checkbox" id="edit-mode-toggle" ' + (on ? 'checked' : '') + '>' +
+          '<span class="edit-toggle-slider"></span>' +
+          '<span class="edit-toggle-label">\uD83D\uDCDD Modo edici\u00f3n</span>' +
+        '</label>' +
+        (on ? '<span class="edit-hint">Click sobre cualquier valor para editarlo. Se guarda solo en tu navegador.</span>' : '<span class="edit-hint">Activa el toggle para rellenar valores. Tu progreso se guarda en este navegador.</span>') +
+      '</div>' +
+      '<div class="edit-banner-right">' +
+        '<span class="edit-progress">\uD83D\uDCCA <strong>' + stats.confirmed + '</strong> aportados \u00b7 <strong>' + stats.pending + '</strong> por aportar \u00b7 <strong>' + stats.dynamic + '</strong> din\u00e1micos \u00b7 <strong>' + stats.total + '</strong> total</span>' +
+        (on ? '<button class="edit-reset-btn" onclick="DPP.resetEdits()" title="Borra todos los valores que hayas introducido">\uD83D\uDD04 Empezar de cero</button>' : '') +
+      '</div>' +
+    '</div>';
+  }
+
+  function bindEditMode() {
+    var toggle = document.getElementById('edit-mode-toggle');
+    if (toggle) {
+      toggle.addEventListener('change', function() {
+        setEditMode(toggle.checked);
+        location.reload();
+      });
+    }
+  }
+
+  function bindEditableInputs() {
+    document.querySelectorAll('.editable-value').forEach(function(el) {
+      el.addEventListener('blur', commitEdit);
+      el.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); el.blur(); }
+      });
+    });
+  }
+
+  function commitEdit(e) {
+    var el = e.target;
+    var path = el.getAttribute('data-edit-path');
+    var newValue = el.textContent.trim();
+    var type = el.getAttribute('data-edit-type') || 'string';
+    var typed = newValue;
+    if (type === 'number') {
+      typed = newValue === '' ? null : Number(newValue);
+      if (isNaN(typed)) typed = newValue;
+    }
+    saveEdit(path, typed);
+    setTimeout(function(){
+      var attr = el.closest('.attribute');
+      if (attr) {
+        var newStatus = (typed !== null && typed !== '') ? 'confirmed' : 'pending';
+        if (attr.getAttribute('data-status') !== 'dynamic') {
+          attr.setAttribute('data-status', newStatus);
+          var badge = attr.querySelector('.status-badge');
+          if (badge) {
+            badge.className = 'status-badge ' + STATUS_MAP[newStatus].cls;
+            badge.innerHTML = STATUS_MAP[newStatus].icon + ' ' + STATUS_MAP[newStatus].label;
+          }
+        }
+      }
+    }, 0);
+  }
+
+  function resetEdits() {
+    if (!confirm('\u00bfEst\u00e1s seguro de borrar todos los valores introducidos en este DPP? Esta acci\u00f3n no se puede deshacer.')) return;
+    clearEdits();
+    location.reload();
+  }
+
+  return { init: init, toggleSection: toggleSection, resetEdits: resetEdits };
 })();

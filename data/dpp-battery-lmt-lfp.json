@@ -1336,7 +1336,7 @@
   },
   "documentRequirements": {
     "title": "Documentos necesarios — checklist regulatorio",
-    "subtitle": "Esto es lo que el Reg. (UE) 2023/1542 exige tener para el DPP de cualquier batería LMT/LFP. Marcado todo como 'pendiente' por ser plantilla — cada cliente verifica su estado real.",
+    "subtitle": "Estado de los documentos requeridos por la regulación. 🟢 verde = recibido y procesado · 🔴 rojo = aún sin aportar. El Excel del DAL v1.3 es vuestra guía operativa para saber qué documentos recopilar — el visor muestra el resultado de procesarlos.",
     "counts": {
       "total": 14,
       "confirmed": 0,
