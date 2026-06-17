@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mapping Trackline &harr; DPP Bater&iacute;as</title>
+<link rel="canonical" href="https://codecontract-dpp.github.io/dpp-battery-passport/mapping-trackline-dpp.html">
+<meta name="description" content="Correspondencia campo a campo entre el Battery Passport (Reg. EU 2023/1542, BatteryPass DAL v1.3) y el flujo de trabajo Trackline. 107 atributos, 10 secciones.">
+<meta property="og:title" content="Mapping Trackline &harr; DPP Baterias">
+<meta property="og:description" content="Fuente, proveedor y flujo Trackline de cada campo del Pasaporte Digital de Baterias.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+
 <style>
 :root {
   --dark: #1a1a2e;
@@ -183,17 +190,43 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   .map-table th:nth-child(4), .map-table td:nth-child(4) { display: none; }
   .filter-search { width: 100%; margin-left: 0; }
 }
+
+/* === SPEC-PACK-DPP: nav del pack === */
+.pack-nav { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; align-items:center;
+  background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:10px 16px;
+  max-width:880px; margin:-14px auto 22px; box-shadow:0 2px 6px rgba(0,0,0,.07); position:relative; z-index:2; }
+.pack-nav .pn-label { font-size:11px; font-weight:700; color:#94a3b8; letter-spacing:.07em; text-transform:uppercase; margin-right:6px; }
+.pack-nav a { font-size:13px; font-weight:600; color:#475569; text-decoration:none; padding:6px 14px; border-radius:8px; }
+.pack-nav a:hover { background:#f1f5f9; }
+.pack-nav a.active { background:#1a1a2e; color:#fff; }
+/* === SPEC-PACK-DPP: como leer este mapping === */
+.howto-box { max-width:1180px; margin:0 auto 22px; padding:18px 24px; background:#fff;
+  border:1px solid #e5e7eb; border-left:4px solid #2563eb; border-radius:10px; font-size:13.5px; color:#374151; line-height:1.7; }
+.howto-box h3 { font-size:15px; margin-bottom:8px; color:#1f2937; }
+.howto-box ul { margin:8px 0 8px 18px; }
+.howto-box li { margin-bottom:5px; }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>&#x1F50B; Mapping Trackline &harr; DPP Bater&iacute;as <span style="display:inline-block;padding:2px 10px;margin-left:8px;font-size:12px;font-weight:600;background:#fef3c7;color:#92400e;border-radius:12px;vertical-align:middle;">v0.2 &middot; 10 jun 2026</span></h1>
+  <h1>&#x1F50B; Mapping Trackline &harr; DPP Bater&iacute;as</h1>
   <p>C&oacute;mo se mapea cada campo del Pasaporte Digital de Bater&iacute;as (EU Battery Reg. 2023/1542) con las fuentes de datos de Trackline y los proveedores de informaci&oacute;n del fabricante.</p>
   <div class="reg-badge">Trackline by Code Contract &middot; Battery Reg. 2023/1542 &middot; ESPR 2024/1781 &middot; BatteryPass DAL v1.3 + Model v1.2.0</div>
   <br>
   <a class="back-link" href="index.html">&larr; Volver al Visor DPP Bater&iacute;as</a>
+  <div style="margin-top:8px;font-size:12px;opacity:.85;">Version <strong>v0.3</strong> &middot; 10 junio 2026</div>
 </div>
+
+<!-- SPEC-PACK-DPP R1: nav del pack -->
+<div class="pack-nav">
+  <span class="pn-label">Pack DPP Baterias</span>
+  <a href="https://codecontract-dpp.github.io/dpp-battery-passport/ruta-dpp-baterias.html">&#x1F4D8; Guia</a>
+  <a href="https://codecontract-dpp.github.io/dpp-battery-passport/mapping-trackline-dpp.html" class="active">&#x1F5FA;&#xFE0F; Mapping</a>
+  <a href="https://codecontract-dpp.github.io/dpp-battery-passport/index.html">&#x1F441;&#xFE0F; Visor DPP</a>
+  <a href="https://codecontract-dpp.github.io/dpp-validator/">&#x2705; Validador</a>
+</div>
+
 
 <div class="intro-bar">
   <div class="intro-card">
@@ -228,6 +261,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <li><strong>Campos del registro central / interoperabilidad ESPR</strong> &mdash; identificadores y metadatos que se inscribiran en el registro DPP de la Comision (operativo desde jul 2026).</li>
   </ul>
   <strong>Niveles de acceso (Anexo XIII).</strong> El Reglamento distingue tres: <strong>publico</strong> (punto 1), <strong>autoridades + organismos notificados + Comision + vigilancia de mercado</strong> (puntos 2-3), e <strong>interes legitimo</strong> &mdash; recicladores, reparadores, profesionales independientes &mdash; (punto 4). La segmentacion granular por campo esta en construccion dentro de Trackline; en esta version del mapping no aparece columna explicita por nivel de acceso.
+  <br><br>&#x1F4D8; Para el contexto regulatorio completo y la ruta de implantacion, ver la <a href="https://codecontract-dpp.github.io/dpp-battery-passport/ruta-dpp-baterias.html" target="_blank"><strong>Guia DPP Baterias</strong></a>.
 </div>
 
 <div class="filters">
@@ -550,9 +584,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <a href="https://github.com/batterypass/BatteryPassDataModel" target="_blank">BatteryPass Data Model v1.2.0</a> &middot;
   <a href="https://www.gs1.org/standards/gs1-digital-link" target="_blank">GS1 Digital Link</a>
   <br>
-  <a href="https://trackline.codecontract.com" target="_blank">Trackline</a> by <a href="https://codecontract.com" target="_blank">Code Contract S.L.</a> &middot; v0.2 &middot; 10 junio 2026
+  <a href="https://web.codecontractplattform.com/" target="_blank">Trackline</a> by <a href="https://codecontract.io" target="_blank">Code Contract S.L.</a>
   <br>
-  <a href="index.html">&larr; Visor DPP Bater&iacute;as</a>
+  <a href="https://codecontract-dpp.github.io/dpp-battery-passport/ruta-dpp-baterias.html">Guia DPP Baterias</a> &middot; <a href="index.html">Visor DPP Bater&iacute;as</a> &middot; <a href="https://codecontract-dpp.github.io/dpp-validator/">Validador DPP</a>
   <br>
   <em style="color:#b0b0b0">Documento de referencia t&eacute;cnica. Los campos exactos depender&aacute;n de los actos delegados espec&iacute;ficos para cada categor&iacute;a de bater&iacute;a.</em>
 </div>
@@ -590,9 +624,8 @@ function searchFields(query) {
 </script>
 
 <div style="text-align:center;padding:18px 12px;margin-top:20px;background:#f1f5f9;border-top:1px solid #cbd5e1;font-size:11px;color:#64748b;">
-  Elaborado por Code Contract S.L. &middot; mapping-trackline-dpp &middot; <strong>v0.2</strong> &middot; 10 junio 2026<br>
+  <strong>Pack DPP Baterias</strong> &mdash; Guia v0.9.2 &middot; Mapping v0.3 &middot; act. 17 junio 2026 &middot; Elaborado por Code Contract S.L.<br>
   <em style="color:#94a3b8;">Nota: este documento no constituye asesoramiento juridico. Consultar siempre el texto oficial del Reglamento y los actos delegados vigentes.</em>
 </div>
 </body>
 </html>
-                                                                                                                                               

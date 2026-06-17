@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ruta DPP Baterias — Guia para fabricantes</title>
+<link rel="canonical" href="https://codecontract-dpp.github.io/dpp-battery-passport/ruta-dpp-baterias.html">
+<meta name="description" content="Guia paso a paso para implantar el Battery Passport (DPP) segun el Reglamento EU 2023/1542. Deadline 18 febrero 2027. Por Code Contract.">
+<meta property="og:title" content="Ruta DPP Baterias &mdash; Guia para fabricantes">
+<meta property="og:description" content="Guia practica para implantar el Pasaporte Digital de Baterias. Reg. 2023/1542, ESPR 2024/1781, checklist de documentos y calendario.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://codecontract-dpp.github.io/dpp-battery-passport/ruta-dpp-baterias.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Code Contract - DPP">
+<meta name="twitter:card" content="summary">
+
 <style>
 :root {
   --dark: #1a1a2e;
@@ -314,6 +324,35 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   .tl-table { font-size: 11px; }
   .cta-steps { grid-template-columns: 1fr; }
 }
+
+/* === SPEC-PACK-DPP: nav del pack === */
+.pack-nav { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; align-items:center;
+  background:#fff; border:1px solid var(--border); border-radius:12px; padding:10px 16px;
+  max-width:880px; margin:-16px auto 24px; box-shadow:0 2px 6px rgba(0,0,0,.07); position:relative; z-index:2; }
+.pack-nav .pn-label { font-size:11px; font-weight:700; color:#94a3b8; letter-spacing:.07em; text-transform:uppercase; margin-right:6px; }
+.pack-nav a { font-size:13px; font-weight:600; color:#475569; text-decoration:none; padding:6px 14px; border-radius:8px; }
+.pack-nav a:hover { background:#f1f5f9; }
+.pack-nav a.active { background:#1a1a2e; color:#fff; }
+/* === SPEC-PACK-DPP: tarjeta-puente al mapping === */
+.bridge-card { display:block; background:linear-gradient(135deg,#eff6ff,#f5f3ff); border:2px solid #2563eb;
+  border-radius:12px; padding:18px 24px; margin:22px auto; max-width:1060px; text-decoration:none; transition:box-shadow .15s; }
+.bridge-card:hover { box-shadow:0 6px 16px rgba(37,99,235,.18); }
+.bridge-card .bc-title { font-size:15px; font-weight:700; color:#1d4ed8; }
+.bridge-card .bc-sub { font-size:13px; color:#475569; margin-top:4px; }
+
+/* === SPEC-PACK-DPP: FAQ === */
+.faq-box { max-width:1100px; margin:24px auto; padding:0 24px; }
+.faq { background:#fff; border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+.faq-title { padding:18px 24px; font-size:16px; font-weight:800; border-bottom:1px solid var(--border); background:#fafbfc; }
+.faq-item { border-bottom:1px solid #f3f4f6; }
+.faq-item:last-child { border-bottom:none; }
+.faq-q { padding:16px 24px; display:flex; align-items:center; gap:12px; cursor:pointer; user-select:none; font-size:14px; font-weight:600; color:#1f2937; }
+.faq-q:hover { background:#fafbfc; }
+.faq-q .faq-icon { font-size:18px; flex-shrink:0; }
+.faq-q .faq-chevron { margin-left:auto; font-size:12px; color:var(--gray); transition:transform .2s; }
+.faq-q.collapsed .faq-chevron { transform:rotate(-90deg); }
+.faq-a { padding:0 24px 18px 54px; font-size:13.5px; color:#4b5563; line-height:1.7; }
+.faq-a.hidden { display:none; }
 </style>
 </head>
 <body>
@@ -324,6 +363,16 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="reg-badge">EU Battery Regulation 2023/1542 &middot; ESPR 2024/1781</div>
 </div>
 
+<!-- SPEC-PACK-DPP R1: nav del pack -->
+<div class="pack-nav">
+  <span class="pn-label">Pack DPP Baterias</span>
+  <a href="https://codecontract-dpp.github.io/dpp-battery-passport/ruta-dpp-baterias.html" class="active">&#x1F4D8; Guia</a>
+  <a href="https://codecontract-dpp.github.io/dpp-battery-passport/mapping-trackline-dpp.html">&#x1F5FA;&#xFE0F; Mapping</a>
+  <a href="https://codecontract-dpp.github.io/dpp-battery-passport/index.html">&#x1F441;&#xFE0F; Visor DPP</a>
+  <a href="https://codecontract-dpp.github.io/dpp-validator/">&#x2705; Validador</a>
+</div>
+
+
 <!-- DOCUMENT STATUS -->
 <div class="doc-status-bar">
   <div class="doc-status">
@@ -333,7 +382,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <p>Version de trabajo alineada con la normativa vigente y su desarrollo tecnico conocido a junio de 2026.</p>
     </div>
     <div class="doc-status-version">
-      <strong>v0.9.1</strong>
+      <strong>v0.9.2</strong>
       10 junio 2026
     </div>
   </div>
@@ -552,7 +601,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="phase-header collapsed" onclick="toggle(this)">
     <div class="phase-number">1</div>
     <div class="phase-info">
-      <h2>Entender el marco regulatorio <span class="phase-status ps-complete">&#x2705; Completa</span></h2>
+      <h2>Entender el marco regulatorio</h2>
       <p>Conocer que exige la ley, que baterias estan afectadas y cuales son los plazos</p>
     </div>
     <span class="phase-deadline">Conocimiento base</span>
@@ -706,7 +755,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="phase-header collapsed" onclick="toggle(this)">
     <div class="phase-number">2</div>
     <div class="phase-info">
-      <h2>Mapear tus datos actuales <span class="phase-status ps-complete">&#x2705; Completa</span></h2>
+      <h2>Mapear tus datos actuales</h2>
       <p>Identificar que datos ya tienes, cuales faltan, y quien los genera</p>
     </div>
     <span class="phase-deadline">Meses 1-2</span>
@@ -757,6 +806,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 </div>
 
+
+<!-- SPEC-PACK-DPP R3: tarjeta-puente al mapping -->
+<a class="bridge-card" href="https://codecontract-dpp.github.io/dpp-battery-passport/mapping-trackline-dpp.html" target="_blank">
+  <div class="bc-title">&#x1F4CA; Ver el mapping completo campo a campo &#x2192;</div>
+  <div class="bc-sub">100 + 7 atributos &middot; 10 secciones &middot; fuente, proveedor y flujo Trackline de cada campo del Battery Passport (DAL v1.3)</div>
+</a>
+
 <!-- ============================================================ -->
 <!-- FASE 3 -->
 <!-- ============================================================ -->
@@ -764,7 +820,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="phase-header collapsed" onclick="toggle(this)">
     <div class="phase-number">3</div>
     <div class="phase-info">
-      <h2>Completar los datos obligatorios <span class="phase-status ps-partial">&#x26A0;&#xFE0F; Parcial</span></h2>
+      <h2>Completar los datos obligatorios</h2>
       <p>Obtener certificaciones, ensayos, calculos LCA y datos de proveedores</p>
     </div>
     <span class="phase-deadline">Meses 3-8</span>
@@ -873,7 +929,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="phase-header collapsed" onclick="toggle(this)">
     <div class="phase-number">4</div>
     <div class="phase-info">
-      <h2>Digitalizar: construir el Battery Passport <span class="phase-status ps-partial">&#x26A0;&#xFE0F; Parcial</span></h2>
+      <h2>Digitalizar: construir el Battery Passport</h2>
       <p>Estructurar los datos en formato estandar, generar el data carrier y preparar el registro</p>
     </div>
     <span class="phase-deadline">Meses 6-10</span>
@@ -946,7 +1002,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <div class="doc-group">
           <div class="doc-group-label dg-solucion">SOLUCION PROPIA:</div>
           <div class="doc-group-links">
-            <a href="https://web.codecontractplattform.com/Login" class="doc-link doc-interno" target="_blank">&#x1F517; Trackline by Code Contract</a>
+            <a href="https://web.codecontractplattform.com/" class="doc-link doc-interno" target="_blank">&#x1F517; Trackline by Code Contract</a>
           </div>
         </div>
       </div>
@@ -961,7 +1017,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="phase-header collapsed" onclick="toggle(this)">
     <div class="phase-number">5</div>
     <div class="phase-info">
-      <h2>Validar, registrar y poner en produccion <span class="phase-status ps-pending">&#x1F534; Pendiente</span></h2>
+      <h2>Validar, registrar y poner en produccion</h2>
       <p>Verificar conformidad, cargar el DPP en el registro ESPR y activar el passport</p>
     </div>
     <span class="phase-deadline">Antes Feb 2027</span>
@@ -1085,6 +1141,47 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 <!-- ============================================================ -->
 <!-- PROXIMOS PASOS CON TRACKLINE -->
 <!-- ============================================================ -->
+
+<!-- ============================================================ -->
+<!-- SPEC-PACK-DPP G11: FAQ -->
+<!-- ============================================================ -->
+<div class="faq-box">
+  <div class="faq">
+    <div class="faq-title">&#x2753; Preguntas frecuentes sobre el Battery Passport</div>
+
+    <div class="faq-item">
+      <div class="faq-q collapsed" onclick="toggleFaq(this)"><span class="faq-icon">&#x1F4AC;</span> &iquest;El Battery Passport ya es obligatorio hoy? <span class="faq-chevron">&#x25BE;</span></div>
+      <div class="faq-a hidden">El marco juridico ya esta en vigor (Reg. 2023/1542), pero la obligacion del pasaporte digital con QR aplica desde el <strong>18 de febrero de 2027</strong> para baterias de vehiculos electricos, LMT e industriales con capacidad &gt;2 kWh, antes de su primera comercializacion. La recomendacion es prepararse ahora: la recogida de datos upstream (proveedores, ACV, ensayos) es el principal cuello de botella y consume meses.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q collapsed" onclick="toggleFaq(this)"><span class="faq-icon">&#x1F50B;</span> &iquest;A que baterias aplica y a cuales no? <span class="faq-chevron">&#x25BE;</span></div>
+      <div class="faq-a hidden">Aplica a baterias de vehiculos electricos (EV), baterias de medios de transporte ligeros (LMT) y baterias industriales con capacidad &gt;2 kWh. <strong>No aplica</strong> a baterias portatiles ni a baterias de arranque, iluminacion y encendido (SLI), aunque estas tienen otras obligaciones del Reglamento (etiquetado, contenido reciclado en SLI, recogida).</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q collapsed" onclick="toggleFaq(this)"><span class="faq-icon">&#x1F4C4;</span> &iquest;Puedo limitarme a subir PDFs como pasaporte? <span class="faq-chevron">&#x25BE;</span></div>
+      <div class="faq-a hidden">No. El Art. 77.4 y el Anexo XIII exigen que la informacion sea exacta, completa, actualizada, <strong>interoperable</strong> y accesible segun permisos; el ESPR anade legibilidad por maquina y transferencia por red abierta. Un PDF estatico no cumple esos resultados: el pasaporte requiere datos estructurados (el modelo de referencia de la industria es el BatteryPass Data Model en JSON).</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q collapsed" onclick="toggleFaq(this)"><span class="faq-icon">&#x23F3;</span> &iquest;Que hago si los actos delegados (p. ej. huella de carbono) siguen pendientes? <span class="faq-chevron">&#x25BE;</span></div>
+      <div class="faq-a hidden">Las fechas base del Reglamento estan condicionadas a la adopcion de los actos delegados de metodologia mas un plazo posterior (p. ej. +12 meses para EV). Mientras tanto, el sector opera con referencias de facto como el GBA GHG Rulebook para la huella de carbono. La estrategia correcta es estructurar ya el dataset y las evidencias para que, cuando el acto delegado se publique, solo haya que ajustar la metodologia, no empezar de cero.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q collapsed" onclick="toggleFaq(this)"><span class="faq-icon">&#x26D3;&#xFE0F;</span> &iquest;Es obligatorio usar blockchain o firma electronica cualificada? <span class="faq-chevron">&#x25BE;</span></div>
+      <div class="faq-a hidden">No. El Reglamento <strong>no exige una tecnologia concreta</strong>: exige resultados funcionales (autenticidad, fiabilidad, integridad, trazabilidad del dato). Blockchain, el sello cualificado eIDAS o el hash criptografico son medios voluntarios para reforzar el valor probatorio. Un hash interno del dataset es prueba de integridad para gobernanza interna, pero no equivale legalmente a un sello de tiempo cualificado eIDAS.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q collapsed" onclick="toggleFaq(this)"><span class="faq-icon">&#x1F3ED;</span> &iquest;Que gana una PYME si empieza ya? <span class="faq-chevron">&#x25BE;</span></div>
+      <div class="faq-a hidden">Tres cosas: (1) ordena documentacion que hoy ya necesita (DoC, ensayos, MSDS, REACH); (2) evita rehacer la recogida de datos cuando llegue el deadline de febrero de 2027, especialmente la de proveedores; y (3) compite mejor frente a OEMs y clientes que ya exigen trazabilidad de cadena de suministro y datos de huella. La PYME suele empezar con un modelo piloto y mas trabajo manual; la gran empresa, con integracion BMS/ERP.</div>
+    </div>
+
+  </div>
+</div>
+
 <div class="cta-section">
   <div class="cta-box">
     <h2>&#x1F6E0;&#xFE0F; Proximos pasos: preparacion hoy &rarr; publicacion cuando el ecosistema lo permita</h2>
@@ -1112,8 +1209,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       </div>
     </div>
     <div class="cta-links">
-      <a href="https://web.codecontractplattform.com/Login" class="cta-link cta-link-primary" target="_blank">&#x1F517; Acceder a Trackline</a>
-      <a href="https://codecontract.com" class="cta-link cta-link-secondary" target="_blank">&#x1F517; Code Contract S.L.</a>
+      <a href="https://web.codecontractplattform.com/" class="cta-link cta-link-primary" target="_blank">&#x1F517; Acceder a Trackline</a>
+      <a href="https://codecontract.io" class="cta-link cta-link-secondary" target="_blank">&#x1F517; Code Contract S.L.</a>
       <a href="https://codecontract-dpp.github.io/dpp-battery-passport/" class="cta-link cta-link-secondary" target="_blank">&#x1F517; Ver ejemplo: Battery Passport LMT/LFP</a>
       <a href="mapping-trackline-dpp.html" class="cta-link cta-link-secondary" target="_blank">&#x1F4CA; Mapping Trackline &#x2194; DPP</a>
       <a href="https://codecontract-dpp.github.io/dpp-validator/" class="cta-link cta-link-secondary" target="_blank">&#x2705; Validador DPP (estructura CIRPASS)</a>
@@ -1128,14 +1225,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <a href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj" target="_blank">ESPR 2024/1781</a> &middot;
   <a href="https://thebatterypass.eu" target="_blank">Battery Pass Consortium</a> &middot;
   <a href="https://github.com/batterypass/BatteryPassDataModel" target="_blank">BatteryPassDataModel (GitHub)</a><br>
-  Elaborado por Code Contract S.L. &middot; v0.9.1 &middot; 10 junio 2026<br>
+  <strong>Pack DPP Baterias</strong> &mdash; Guia v0.9.2 &middot; Mapping v0.3 &middot; act. 17 junio 2026 &middot; Elaborado por Code Contract S.L.<br>
   <em style="color:#b0b0b0">Nota: este documento no constituye asesoramiento juridico. Consultar siempre el texto oficial del reglamento y los actos delegados vigentes.</em>
 </div>
 
 <script>
+function toggleFaq(q){ q.classList.toggle("collapsed"); var a=q.nextElementSibling; if(a) a.classList.toggle("hidden"); }
 function toggle(header) {
   header.classList.toggle('collapsed');
-  header.nextElementSibling.classList.toggle('hidden');
+  var body = header.nextElementSibling;
+  while (body && !body.classList.contains('phase-body')) body = body.nextElementSibling;
+  if (body) body.classList.toggle('hidden');
 }
 </script>
 </body>
