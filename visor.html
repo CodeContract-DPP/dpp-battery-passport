@@ -217,7 +217,8 @@ function getJsonPath() {
   var product = document.getElementById('productSelect').value;
   var version = document.getElementById('versionSelect').value;
   var suffix = version === 'empty' ? '-empty' : '';
-  return '../01_data/' + product + suffix + '.json';
+  var base = location.protocol.indexOf('http') === 0 ? 'data/' : '../01_data/';
+  return base + product + suffix + '.json';
 }
 
 function loadDPP() {
