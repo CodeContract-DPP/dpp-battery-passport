@@ -215,15 +215,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="reg-badge">Trackline by Code Contract &middot; Battery Reg. 2023/1542 &middot; ESPR 2024/1781 &middot; BatteryPass DAL v1.3 + Model v1.2.0</div>
   <br>
   <a class="back-link" href="index.html">&larr; Volver al Visor DPP Bater&iacute;as</a>
-  <div style="margin-top:8px;font-size:12px;opacity:.85;">Version <strong>v0.3</strong> &middot; 10 junio 2026</div>
+  <div style="margin-top:8px;font-size:12px;opacity:.85;">Version <strong>v0.4</strong> &middot; 8 julio 2026</div>
 </div>
 
 <!-- SPEC-PACK-DPP R1: nav del pack -->
 <div class="pack-nav">
   <span class="pn-label">Pack DPP Baterias</span>
-  <a href="https://codecontract-dpp.github.io/dpp-battery-passport/ruta-dpp-baterias.html">&#x1F4D8; Guia</a>
-  <a href="https://codecontract-dpp.github.io/dpp-battery-passport/mapping-trackline-dpp.html" class="active">&#x1F5FA;&#xFE0F; Mapping</a>
-  <a href="https://codecontract-dpp.github.io/dpp-battery-passport/index.html">&#x1F441;&#xFE0F; Visor DPP</a>
+  <a href="ruta-dpp-baterias.html">&#x1F4D8; Guia</a>
+  <a href="mapping-trackline-dpp.html" class="active">&#x1F5FA;&#xFE0F; Mapping</a>
+  <a href="index.html">&#x1F441;&#xFE0F; Visor DPP</a>
   <a href="https://codecontract-dpp.github.io/dpp-validator/">&#x2705; Validador</a>
 </div>
 
@@ -253,15 +253,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 </div>
 
 <div style="margin:14px 0 18px 0;padding:12px 16px;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;font-size:13px;color:#334155;line-height:1.55;">
-  <strong>Como leer estos 107 atributos.</strong> El mapping incluye atributos basados en <strong>BatteryPass DataAttributeLongList v1.3 (marzo 2026)</strong>, <strong>BatteryPass Data Model v1.2.0 (enero 2025)</strong> y el <strong>Reglamento (UE) 2023/1542</strong>. Sujeto a evolucion por actos delegados, actos de ejecucion y estandares JTC 24. No todos los campos tienen la misma naturaleza juridica:
+  <strong>Como leer estos 107 atributos.</strong> El mapping incluye atributos basados en <strong>BatteryPass DataAttributeLongList v1.3 (marzo 2026)</strong>, <strong>BatteryPass Data Model v1.2.0 (enero 2025; actualizacion alineada a DAL v1.3 en desarrollo)</strong> y el <strong>Reglamento (UE) 2023/1542</strong>. Sujeto a evolucion por actos delegados, actos de ejecucion y estandares JTC 24. No todos los campos tienen la misma naturaleza juridica:
   <ul style="margin:8px 0 4px 18px;padding:0;">
     <li><strong>Campos legales del DPP</strong> &mdash; exigidos por el Reg. 1542 + Anexo XIII (identificacion, conformidad, etiquetado, huella, contenido reciclado, etc.).</li>
     <li><strong>Campos del modelo tecnico BatteryPass</strong> &mdash; codificados en DIN DKE SPEC 99100, referencia tecnica de facto, no derecho vinculante por si mismos.</li>
     <li><strong>Campos de infraestructura y gobernanza Trackline</strong> &mdash; hash interno, workflow, aprobador, evidencias documentales. <em>Anaden valor probatorio, pero no son exigencia literal del Reglamento.</em></li>
-    <li><strong>Campos del registro central / interoperabilidad ESPR</strong> &mdash; identificadores y metadatos que se inscribiran en el registro DPP de la Comision (operativo desde jul 2026).</li>
+    <li><strong>Campos del registro central / interoperabilidad ESPR</strong> &mdash; identificadores y metadatos que se inscribiran en el registro DPP de la Comision (fecha limite de establecimiento: 19 jul 2026, Art. 13 ESPR; pendiente de confirmacion de puesta en marcha operativa).</li>
   </ul>
   <strong>Niveles de acceso (Anexo XIII).</strong> El Reglamento distingue tres: <strong>publico</strong> (punto 1), <strong>autoridades + organismos notificados + Comision + vigilancia de mercado</strong> (puntos 2-3), e <strong>interes legitimo</strong> &mdash; recicladores, reparadores, profesionales independientes &mdash; (punto 4). La segmentacion granular por campo esta en construccion dentro de Trackline; en esta version del mapping no aparece columna explicita por nivel de acceso.
-  <br><br>&#x1F4D8; Para el contexto regulatorio completo y la ruta de implantacion, ver la <a href="https://codecontract-dpp.github.io/dpp-battery-passport/ruta-dpp-baterias.html" target="_blank"><strong>Guia DPP Baterias</strong></a>.
+  <br><br>&#x1F4D8; Para el contexto regulatorio completo y la ruta de implantacion, ver la <a href="ruta-dpp-baterias.html" target="_blank"><strong>Guia DPP Baterias</strong></a>.
 </div>
 
 <div class="filters">
@@ -409,6 +409,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="section-header" onclick="toggleSection(this)">
     <div class="section-icon" style="background:#d1fae5;color:#065f46">&#x1F30D;</div>
     <h2>Huella de carbono</h2>
+    <p style="font-size:13px;color:#475569;background:#fffbeb;border:1px solid #fde68a;padding:10px 14px;border-radius:6px;margin:8px 0;">
+      <strong>Estado regulatorio:</strong> el acto delegado con la metodologia de calculo de huella de carbono para baterias EV (Art. 7) sigue <strong>pendiente de publicacion en el OJ</strong> (borrador de abr 2024; ultima verificacion jul 2026). La declaracion acompana fisicamente a la bateria hasta el <strong>18/02/2027</strong>; desde esa fecha debe ser accesible via QR/DPP. Las clases de rendimiento y el etiquetado asociado dependen de actos aun no adoptados.
+    </p>
     <span class="section-count">5 campos</span>
     <span class="section-chevron">&#x25BC;</span>
   </div>
@@ -482,7 +485,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="section-icon" style="background:#fef3c7;color:#92400e">&#x1F517;</div>
     <h2>Cadena de suministro y due diligence</h2>
     <p style="font-size:13px;color:#475569;background:#fffbeb;border:1px solid #fde68a;padding:10px 14px;border-radius:6px;margin:8px 0;">
-      <strong>Aplicabilidad:</strong> el regimen de debida diligencia (Arts. 48-52 Reg. 2023/1542) <strong>excluye</strong> a operadores economicos con volumen de negocio neto inferior a <strong>40 millones EUR</strong> (Art. 48.1), salvo que formen parte de un grupo que supere ese umbral. Las materias primas concretas a las que aplica son <strong>cobalto, grafito natural, litio, niquel y compuestos quimicos basados en ellas</strong> usados como materiales activos (Anexo X). Aplicacion pospuesta a <strong>18/08/2027</strong> por Reg. (UE) 2025/1561.
+      <strong>Aplicabilidad:</strong> el regimen de debida diligencia (Arts. 48-52 Reg. 2023/1542) <strong>excluye</strong> a operadores economicos con volumen de negocio neto inferior a <strong>40 millones EUR</strong> (Art. 48.1), salvo que formen parte de un grupo que supere ese umbral. Las materias primas concretas a las que aplica son <strong>cobalto, grafito natural, litio, niquel y compuestos quimicos basados en ellas</strong> usados como materiales activos (Anexo X). Aplicacion pospuesta a <strong>18/08/2027</strong> por Reg. (UE) 2025/1561. <em>En tramitacion (Omnibus IV, propuesta may 2025, no adoptada):</em> exencion para empresas &laquo;small mid-cap&raquo; (&lt;150 M EUR), informes publicos trienales en vez de anuales e informacion de producto en formato digital via QR.
     </p>
     <span class="section-count">3 campos</span>
     <span class="section-chevron">&#x25BC;</span>
@@ -568,7 +571,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <tbody>
         <tr data-source="registro"><td><div class="field-name">registry_status</div><div class="field-desc">Estado del registro (PENDING, REGISTERED, etc.)</div></td><td><span class="source-badge src-registro">Registro EU</span></td><td><span class="prov-badge prov-trackline">Trackline</span></td><td><div class="tl-workflow"><span class="tl-step">Consultar API</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Actualizar estado</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Almacenar</span></div></td></tr>
         <tr data-source="registro"><td><div class="field-name">registry_fields_preloaded</div><div class="field-desc">Identificadores y metadatos exigibles por el registro DPP de la Comision. El contenido completo del DPP permanece en infraestructura del operador economico o de un operador autorizado; al registro central solo se inscriben identificadores y punteros (ESPR Art. 12).</div></td><td><span class="source-badge src-registro">Registro EU</span></td><td><span class="prov-badge prov-trackline">Op. econ. + Trackline</span></td><td><div class="tl-workflow"><span class="tl-step">Seleccionar identificadores</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Preparar exportacion</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Inscribir en registro EU</span></div></td></tr>
-        <tr data-source="registro"><td><div class="field-name">registry_deadline</div><div class="field-desc">Fecha de apertura del registro central EU (19 julio 2026)</div></td><td><span class="source-badge src-registro">Registro EU</span></td><td><span class="prov-badge prov-trackline">Trackline</span></td><td><div class="tl-workflow"><span class="tl-step">Monitorizar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Notificar</span></div></td></tr>
+        <tr data-source="registro"><td><div class="field-name">registry_deadline</div><div class="field-desc">Fecha limite para que la Comision establezca el registro central EU (19 julio 2026, Art. 13 ESPR); la obligacion de inscripcion para baterias llega con el DPP (18 feb 2027)</div></td><td><span class="source-badge src-registro">Registro EU</span></td><td><span class="prov-badge prov-trackline">Trackline</span></td><td><div class="tl-workflow"><span class="tl-step">Monitorizar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Notificar</span></div></td></tr>
         <tr data-source="registro"><td><div class="field-name">battery_passport_deadline</div><div class="field-desc">Fecha l&iacute;mite DPP obligatorio bater&iacute;as (18 feb 2027)</div></td><td><span class="source-badge src-registro">Registro EU</span></td><td><span class="prov-badge prov-trackline">Trackline</span></td><td><div class="tl-workflow"><span class="tl-step">Monitorizar</span><span class="tl-arrow">&rarr;</span><span class="tl-step">Notificar</span></div></td></tr>
       </tbody>
     </table>
@@ -586,7 +589,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <br>
   <a href="https://web.codecontractplattform.com/" target="_blank">Trackline</a> by <a href="https://codecontract.io" target="_blank">Code Contract S.L.</a>
   <br>
-  <a href="https://codecontract-dpp.github.io/dpp-battery-passport/ruta-dpp-baterias.html">Guia DPP Baterias</a> &middot; <a href="index.html">Visor DPP Bater&iacute;as</a> &middot; <a href="https://codecontract-dpp.github.io/dpp-validator/">Validador DPP</a>
+  <a href="ruta-dpp-baterias.html">Guia DPP Baterias</a> &middot; <a href="index.html">Visor DPP Bater&iacute;as</a> &middot; <a href="https://codecontract-dpp.github.io/dpp-validator/">Validador DPP</a>
   <br>
   <em style="color:#b0b0b0">Documento de referencia t&eacute;cnica. Los campos exactos depender&aacute;n de los actos delegados espec&iacute;ficos para cada categor&iacute;a de bater&iacute;a.</em>
 </div>
@@ -624,7 +627,7 @@ function searchFields(query) {
 </script>
 
 <div style="text-align:center;padding:18px 12px;margin-top:20px;background:#f1f5f9;border-top:1px solid #cbd5e1;font-size:11px;color:#64748b;">
-  <strong>Pack DPP Baterias</strong> &mdash; Guia v0.9.3 &middot; Mapping v0.3 &middot; act. 18 junio 2026 &middot; Elaborado por Code Contract S.L.<br>
+  <strong>Pack DPP Baterias</strong> &mdash; Guia v0.9.4 &middot; Mapping v0.4 &middot; Visor v1.1 &middot; act. 8 julio 2026 &middot; Elaborado por Code Contract S.L.<br>
   <em style="color:#94a3b8;">Nota: este documento no constituye asesoramiento juridico. Consultar siempre el texto oficial del Reglamento y los actos delegados vigentes.</em>
 </div>
 </body>

@@ -68,13 +68,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .registry-highlight .section-icon{color:var(--purple)}
 
 /* Filters */
-.filter-bar-wrapper{margin:.75rem 0 1.25rem 0;border:1px solid var(--border);border-radius:10px;background:var(--card);overflow:hidden}
-.filter-bar-summary{padding:.65rem 1rem;cursor:pointer;font-size:.88rem;color:var(--muted);user-select:none;list-style:none}
-.filter-bar-summary::-webkit-details-marker{display:none}
-.filter-bar-summary::before{content:'▶';display:inline-block;margin-right:.5rem;transition:transform .2s;font-size:.7rem;color:var(--gray)}
-.filter-bar-wrapper[open] .filter-bar-summary::before{transform:rotate(90deg)}
-.filter-bar-summary:hover{background:#f7fafc}
-.filter-bar{display:flex;gap:.5rem;padding:0 1rem 1rem 1rem;flex-wrap:wrap}
+.filter-bar{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
 .filter-btn{padding:.45rem 1rem;border:1px solid var(--border);border-radius:20px;background:var(--card);font-size:.85rem;cursor:pointer}
 .filter-btn:hover{border-color:var(--accent)}
 .filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
@@ -92,93 +86,6 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .section-body{padding:.5rem 1.25rem 1rem}
 .section-body.collapsed{display:none}
 
-/* Executive summary (banner para CEO) */
-.exec-summary{background:linear-gradient(135deg,#0d3b2e,#1a5276);color:#fff;border-radius:14px;padding:1.5rem;margin:1rem 0;box-shadow:0 4px 12px rgba(0,0,0,.1)}
-.exec-summary-header h2{font-size:1.35rem;margin:0;color:#fff}
-.exec-summary-sub{margin:.5rem 0 1.25rem;font-size:.95rem;opacity:.85}
-.exec-summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.85rem;margin-bottom:1.25rem}
-.exec-highlight{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:.85rem;display:flex;gap:.65rem;align-items:flex-start}
-.exec-highlight-icon{font-size:1.3rem;flex-shrink:0}
-.exec-highlight-body strong{display:block;font-size:.9rem;margin-bottom:.25rem;color:#ffd86b}
-.exec-highlight-body p{font-size:.82rem;margin:0;opacity:.9;line-height:1.4}
-.exec-summary-cta{background:rgba(255,216,107,.15);border-left:4px solid #ffd86b;border-radius:8px;padding:.85rem 1rem;display:flex;gap:.65rem;align-items:flex-start;font-size:.85rem}
-.exec-cta-icon{font-size:1.2rem;flex-shrink:0}
-
-/* Edit banner — modo edición + indicador progreso */
-.edit-banner{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.85rem 1.1rem;margin:.75rem 0;border-radius:10px;background:#f7fafc;border:1px solid var(--border);flex-wrap:wrap}
-.edit-banner-on{background:linear-gradient(135deg,#fffbf0,#fef3c7);border-color:#fbbf24}
-.edit-banner-left{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;flex:1;min-width:280px}
-.edit-banner-right{display:flex;align-items:center;gap:.85rem;flex-wrap:wrap}
-.edit-toggle{display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;user-select:none}
-.edit-toggle input{position:absolute;opacity:0;pointer-events:none}
-.edit-toggle-slider{position:relative;display:inline-block;width:38px;height:20px;background:#cbd5e0;border-radius:10px;transition:background .2s;flex-shrink:0}
-.edit-toggle-slider::after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;background:white;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
-.edit-toggle input:checked + .edit-toggle-slider{background:#d69e2e}
-.edit-toggle input:checked + .edit-toggle-slider::after{transform:translateX(18px)}
-.edit-toggle-label{font-size:.92rem;font-weight:600;color:#1f2937}
-.edit-hint{font-size:.78rem;color:var(--muted);font-style:italic}
-.edit-progress{font-size:.82rem;color:#4a5568}
-.edit-progress strong{color:#1a202c;font-weight:700}
-.edit-reset-btn{padding:.4rem .8rem;border:1px solid #fcd34d;background:#fffbeb;color:#92400e;border-radius:6px;font-size:.78rem;cursor:pointer;font-weight:600}
-.edit-reset-btn:hover{background:#fef3c7}
-
-/* Editable inline values */
-.editable-value{display:inline-block;min-width:80px;padding:.15rem .45rem;border:1px dashed #cbd5e0;border-radius:5px;background:#fefefe;cursor:text;outline:none;transition:all .15s}
-.editable-value:hover{border-color:#fbbf24;background:#fffbeb}
-.editable-value:focus{border-color:#d69e2e;border-style:solid;background:#fff;box-shadow:0 0 0 3px rgba(214,158,46,.15)}
-.editable-value:empty:before{content:'(vacío — click para editar)';color:#a0aec0;font-style:italic;font-size:.85em}
-
-/* Documentos necesarios — bloque destacado pre-secciones */
-.doc-req-block{background:#fff;border:2px solid #1B3D6E;border-radius:14px;padding:1.5rem;margin:1rem 0;box-shadow:0 4px 12px rgba(27,61,110,.08)}
-.doc-req-header h2{font-size:1.3rem;margin:0;color:#1B3D6E}
-.doc-req-sub{margin:.5rem 0 1.25rem;font-size:.92rem;color:var(--muted)}
-.doc-req-summary{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;padding:1rem;background:#f7fafc;border-radius:10px}
-.doc-req-counter{display:flex;flex-direction:column;align-items:center;min-width:90px;flex:1}
-.dr-num{font-size:1.9rem;font-weight:800;line-height:1}
-.dr-num-ok{color:#2D8659}
-.dr-num-partial{color:#D69E2E}
-.dr-num-missing{color:#E53E3E}
-.dr-lbl{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:.35rem;text-align:center}
-.doc-req-counter-total{border-left:2px solid #e2e8f0;padding-left:1rem}
-.doc-req-counter-total .dr-num{color:#1B3D6E}
-.doc-req-progress{margin-bottom:1.25rem}
-.doc-req-progress-bar{display:flex;height:14px;border-radius:7px;overflow:hidden;background:#fee2e2}
-.doc-req-progress-fill{height:100%;transition:width .8s ease}
-.doc-req-progress-confirmed{background:linear-gradient(90deg,#2D8659,#38a169)}
-.doc-req-progress-partial{background:linear-gradient(90deg,#D69E2E,#ECC94B)}
-.doc-req-progress-label{display:block;font-size:.75rem;color:var(--muted);margin-top:.4rem;text-align:center}
-.doc-req-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:.9rem;margin-bottom:1rem}
-.doc-card{border:1px solid #e2e8f0;border-radius:10px;padding:.9rem;background:#fff;transition:box-shadow .2s}
-.doc-card:hover{box-shadow:0 2px 6px rgba(0,0,0,.06)}
-.doc-card.doc-ok{border-left:5px solid #2D8659;background:linear-gradient(90deg,#f0fff4 0%,#fff 60%)}
-.doc-card.doc-partial{border-left:5px solid #D69E2E;background:linear-gradient(90deg,#fffaf0 0%,#fff 60%)}
-.doc-card.doc-missing{border-left:5px solid #E53E3E;background:linear-gradient(90deg,#fff5f5 0%,#fff 60%)}
-.doc-card-header{display:flex;gap:.6rem;align-items:flex-start;margin-bottom:.6rem;flex-wrap:wrap}
-.doc-card-icon{font-size:1.4rem;flex-shrink:0}
-.doc-card-title{flex:1;min-width:140px}
-.doc-card-title strong{display:block;font-size:.92rem;line-height:1.3}
-.doc-card-cat{display:inline-block;font-size:.7rem;background:#edf2f7;color:#4a5568;padding:.1rem .4rem;border-radius:4px;margin-top:.25rem;font-family:monospace}
-.doc-card-status{font-size:.78rem;font-weight:700;padding:.2rem .5rem;border-radius:6px;white-space:nowrap}
-.doc-card.doc-ok .doc-card-status{background:#c6f6d5;color:#22543d}
-.doc-card.doc-partial .doc-card-status{background:#fef3c7;color:#7c2d12}
-.doc-card.doc-missing .doc-card-status{background:#fed7d7;color:#742a2a}
-.doc-card-body{font-size:.8rem;line-height:1.5}
-.doc-card-row{padding:.2rem 0;color:#2d3748}
-.doc-card-row strong{color:#1a202c;display:inline-block;min-width:80px}
-.doc-card-note{margin-top:.5rem;padding:.5rem;background:#f7fafc;border-radius:6px;font-style:italic;color:#4a5568;font-size:.76rem;line-height:1.4}
-.doc-oblig{display:inline-block;font-size:.7rem;padding:.1rem .4rem;border-radius:4px;margin-left:.3rem;font-weight:600}
-.doc-oblig-required{background:#fed7d7;color:#742a2a}
-.doc-oblig-sectoral{background:#fef3c7;color:#7c2d12}
-.doc-oblig-functional{background:#dbeafe;color:#1e40af}
-.doc-oblig-recom{background:#e9d8fd;color:#553c9a}
-.doc-req-cta{background:linear-gradient(135deg,#fffbf0,#fef3c7);border-left:4px solid #d69e2e;border-radius:8px;padding:.85rem 1rem;display:flex;gap:.65rem;align-items:flex-start;font-size:.85rem;color:#7c2d12}
-
-/* Badge para extensiones Trackline */
-.attribute[data-extension="true"]{border-left:3px solid #d69e2e;padding-left:.85rem;background:#fffbf0}
-.ext-badge{display:inline-block;font-size:.7rem;padding:.15rem .55rem;border-radius:10px;background:#d69e2e;color:#fff;font-weight:600;margin-left:.4rem;vertical-align:middle}
-.section-extension .section-header{background:linear-gradient(135deg,#fffbf0,#fef3c7);border-bottom-color:#fbbf24}
-.section-extension .section-header h2:after{content:" ⚙️ Extensiones Code Contract";color:#92400e;font-size:.85rem;font-weight:500;margin-left:.5rem}
-
 /* Attributes */
 .attribute{padding:1rem 0;border-bottom:1px solid #f0f0f0}
 .attribute:last-child{border-bottom:none}
@@ -189,7 +96,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .st-confirmed{background:#b2f5ea;color:#234e52}
 .st-partial{background:#fefcbf;color:#744210}
 .st-pending{background:#fed7d7;color:#742a2a}
-.st-assumed{background:#dbeafe;color:#1e40af}
+.st-assumed{background:#e2e8f0;color:#4a5568}
 .st-dynamic{background:#b2f5ea;color:#234e52;border:1px dashed var(--teal)}
 .attr-body{padding-left:.5rem}
 .attr-data{font-size:.88rem;color:var(--text);margin-bottom:.5rem}
@@ -200,17 +107,6 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .legal-ley{background:#c6f6d5;color:#22543d}
 .legal-proyeccion{background:#fefcbf;color:#744210}
 .legal-pendiente{background:#e9d8fd;color:#44337a}
-
-/* M4: Documento exigido (Cat#) — línea informativa por dato */
-.doc-required-pill{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;padding:.25rem .6rem;margin:.35rem 0;background:#f0f4f8;border:1px solid #cbd5e0;border-left:3px solid #1B3D6E;border-radius:6px;color:#2d3748;flex-wrap:wrap;width:fit-content;max-width:100%}
-.doc-required-icon{font-size:.85rem;flex-shrink:0}
-.doc-required-label{color:var(--muted);font-weight:500}
-.doc-required-cat{color:#1B3D6E;text-decoration:none;font-weight:600}
-.doc-required-cat:hover{text-decoration:underline}
-.doc-required-cat strong{font-family:monospace;background:#dbeafe;color:#1e40af;padding:.05rem .35rem;border-radius:3px;margin-right:.15rem}
-/* Highlight visual cuando el ancla apunta al doc-card */
-.doc-card:target{animation:flashDocCard 1.6s ease;box-shadow:0 0 0 3px #fbbf24}
-@keyframes flashDocCard{0%{box-shadow:0 0 0 0 rgba(251,191,36,.6)}50%{box-shadow:0 0 0 8px rgba(251,191,36,.3)}100%{box-shadow:0 0 0 3px #fbbf24}}
 
 /* Source documents */
 .source-doc{display:flex;align-items:flex-start;gap:.5rem;background:#f7fafc;border:1px solid var(--border);border-radius:8px;padding:.6rem .8rem;margin-bottom:.5rem}
@@ -247,6 +143,11 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 /* Footer */
 .app-footer{text-align:center;padding:2rem;font-size:.8rem;color:var(--muted)}
 .app-footer a{color:var(--accent)}
+.pack-nav{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pack-nav .pn-label{font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:.07em;text-transform:uppercase;margin-right:6px}
+.pack-nav a{font-size:13px;font-weight:600;color:#475569;text-decoration:none;padding:6px 14px;border-radius:8px}
+.pack-nav a:hover{background:#f1f5f9}
+.pack-nav a.active{background:#1a1a2e;color:#fff}
 .loading{text-align:center;padding:3rem;color:var(--muted);font-size:1.1rem}
 .error{text-align:center;padding:3rem;color:var(--red)}
 @media(max-width:640px){.app-header h1{font-size:1.3rem}.container{padding:1rem}.dashboard-grid{flex-direction:column;align-items:flex-start}}
@@ -264,13 +165,15 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <span class="badge-bms">Trackline Evidence</span>
 <span>Art. 13 Registry-Ready</span>
 </div>
+<div style="margin-top:8px;font-size:12px;opacity:.85;">Version <strong>v1.1</strong> &middot; 8 julio 2026</div>
 </header>
 <nav class="nav-bar">
-<div class="nav-links">
-<a href="index.html" class="active">Visor</a>
-<a href="https://codecontract-dpp.github.io/dpp-validator/" target="_blank">Validador</a>
-<a href="ruta-dpp-baterias.html">Guia DPP</a>
-<a href="mapping-trackline-dpp.html">Mapping Trackline</a>
+<div class="pack-nav">
+<span class="pn-label">Pack DPP Baterias</span>
+<a href="ruta-dpp-baterias.html">&#x1F4D8; Guia</a>
+<a href="mapping-trackline-dpp.html">&#x1F5FA;&#xFE0F; Mapping</a>
+<a href="index.html" class="active">&#x1F441;&#xFE0F; Visor DPP</a>
+<a href="https://codecontract-dpp.github.io/dpp-validator/" target="_blank">&#x2705; Validador</a>
 </div>
 <div class="json-selector">
 <label for="productSelect">Producto:</label>
@@ -280,7 +183,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <label for="versionSelect">Version:</label>
 <select id="versionSelect">
 <option value="filled">Con datos (ejemplo)</option>
-<option value="empty" selected>Plantilla vacia</option>
+<option value="empty">Plantilla vacia</option>
 </select>
 </div>
 </nav>
@@ -288,31 +191,33 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <div class="legend">
 <h3>Leyenda</h3>
 <div class="legend-grid">
-<div class="legend-item"><span class="legend-swatch" style="background:#38a169"></span> Aportado — dato recibido y procesado</div>
+<div class="legend-item"><span class="legend-swatch" style="background:#38a169"></span> Confirmado — dato verificado en fuente pública</div>
+<div class="legend-item"><span class="legend-swatch" style="background:#276749"></span> Verificado — dato validado con evidencia blockchain</div>
 <div class="legend-item"><span class="legend-swatch" style="background:#d69e2e"></span> Parcial — dato disponible, requiere revisión</div>
-<div class="legend-item"><span class="legend-swatch" style="background:#b2f5ea;border:1px dashed #319795"></span> Tiempo real (BMS) — dato del sistema de gestión</div>
-<div class="legend-item"><span class="legend-swatch" style="background:#e53e3e"></span> Por aportar — documento o dato aún sin recibir</div>
-<div class="legend-item"><span class="legend-swatch" style="background:#dbeafe;border:1px solid #1e40af"></span> Por validar — dato pre-cargado pendiente de confirmación</div>
+<div class="legend-item"><span class="legend-swatch" style="background:#b2f5ea;border:1px dashed #319795"></span> Dinámico (BMS) — dato en tiempo real del sistema de gestión</div>
+<div class="legend-item"><span class="legend-swatch" style="background:#e53e3e"></span> Pendiente — sin dato, requiere acción del fabricante</div>
 <div class="legend-item"><span class="legend-swatch" style="background:#c6f6d5;border:1px solid #38a169"></span> LEY — legislación en vigor</div>
 <div class="legend-item"><span class="legend-swatch" style="background:#fefcbf;border:1px solid #d69e2e"></span> PROYECCIÓN — regulación proyectada</div>
 <div class="legend-item"><span class="legend-swatch" style="background:#e9d8fd;border:1px solid #d6bcfa"></span> PENDIENTE AD — pendiente de acto delegado</div>
+<div class="legend-item"><span class="legend-swatch" style="background:#6b46c1"></span> Trackline — evidencia blockchain registrada</div>
 <div class="legend-item"><span class="legend-swatch" style="background:#faf5ff;border:2px solid #6b46c1"></span> Registro Central Art. 13 — campos obligatorios</div>
 </div>
 </div>
 <div id="dpp-root"></div>
 </main>
 <footer class="app-footer">
-Battery Passport &middot; Demo v1.0<br>
+Battery Passport &middot; Visor v1.1 &middot; 8 julio 2026<br>
 Evidencia trazable con <a href="https://trackline.codecontract.com" target="_blank">Trackline</a> by <a href="https://codecontract.com" target="_blank">Code Contract</a><br>
-Marco regulatorio: Reg. Baterias (UE) 2023/1542 &middot; ESPR (UE) 2024/1781 &middot; <a href="https://github.com/batterypass/BatteryPassDataModel" target="_blank">BatteryPassDataModel v1.2.0</a> + DataAttributeLongList v1.3
+Marco regulatorio: Reg. Baterias (UE) 2023/1542 &middot; ESPR (UE) 2024/1781 &middot; <a href="https://github.com/batterypass/BatteryPassDataModel" target="_blank">BatteryPassDataModel v1.2.0</a> + DataAttributeLongList v1.3 <em>(actualizacion del Data Model alineada a DAL v1.3 en desarrollo)</em><br>
+<strong>Pack DPP Baterias</strong> &mdash; Guia v0.9.4 &middot; Mapping v0.4 &middot; Visor v1.1 &middot; act. 8 julio 2026
 </footer>
-<script src="js/app.js"></script>
+<script src="js/app-battery.js"></script>
 <script>
 function getJsonPath() {
   var product = document.getElementById('productSelect').value;
   var version = document.getElementById('versionSelect').value;
   var suffix = version === 'empty' ? '-empty' : '';
-  return 'data/' + product + suffix + '.json';
+  return '../01_data/' + product + suffix + '.json';
 }
 
 function loadDPP() {
@@ -323,31 +228,20 @@ document.getElementById('productSelect').addEventListener('change', loadDPP);
 document.getElementById('versionSelect').addEventListener('change', loadDPP);
 
 // URL parameters: ?product=dpp-battery-lmt-lfp&version=empty
-// Comportamiento por defecto: sin params → plantilla vacía (educativo).
-// Con ?product=X (link compartido / cliente) → carga data/X.json DIRECTAMENTE,
-//   sin tocar los selectores visibles (que se quedan en su defecto: LMT/LFP + Plantilla vacía).
-// Esto permite acceso editorial directo a un caso (p.ej. Beeplanet) sin "delatar"
-// el cliente en los selectores del visor.
 (function(){
   var params = new URLSearchParams(window.location.search);
   var product = params.get('product');
   var version = params.get('version');
+  var sel = document.getElementById('productSelect');
   var ver = document.getElementById('versionSelect');
-
   if (product) {
-    // Modo "carga directa por URL": no tocamos los selectores, los selectores siguen
-    // mostrando los defaults para preservar la camuflaje. Cargamos el JSON exactamente
-    // como viene en la URL.
-    var suffix = '';
-    if (version === 'empty' || version === 'plantilla') { suffix = '-empty'; }
-    var directPath = 'data/' + product + suffix + '.json';
-    DPP.init(directPath, 'dpp-root');
-    return;
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === product) { sel.value = product; break; }
+    }
   }
-
-  // Sin ?product= → comportamiento normal: leer selectores y cargar
-  if (version === 'filled') { ver.value = 'filled'; }
-  if (version === 'empty' || version === 'plantilla') { ver.value = 'empty'; }
+  if (version === 'empty' || version === 'plantilla') {
+    ver.value = 'empty';
+  }
   loadDPP();
 })();
 </script>
