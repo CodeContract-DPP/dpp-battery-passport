@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía DPP Baterías · Code Contract</title>
+<link rel="canonical" href="https://dppbatteries.com/">
+<meta name="description" content="Guia paso a paso para implantar el Battery Passport (DPP) segun el Reglamento EU 2023/1542. Deadline 18 febrero 2027. Por Code Contract.">
+<meta property="og:title" content="Ruta DPP Baterias &mdash; Guia para fabricantes">
+<meta property="og:description" content="Guia practica para implantar el Pasaporte Digital de Baterias. Reg. 2023/1542, ESPR 2024/1781, checklist de documentos y calendario.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dppbatteries.com/">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Code Contract - DPP">
+<meta name="twitter:card" content="summary">
+
+<style>
+:root {
+  --dark: #1a1a2e;
+  --green: #2e7d4f;
+  --green-light: #e8f5ee;
+  --blue: #2563eb;
+  --blue-light: #eff6ff;
+  --amber: #d97706;
+  --amber-light: #fffbeb;
+  --red: #dc2626;
+  --red-light: #fef2f2;
+  --purple: #7c3aed;
+  --purple-light: #f5f3ff;
+  --gray: #6b7280;
+  --border: #e5e7eb;
+  --bg: #f8fafc;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: #1f2937; line-height: 1.6; }
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #0d3b2e 0%, #1a5276 100%);
+  color: white; padding: 40px 20px 32px; text-align: center;
+}
+.header h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+.header p { font-size: 15px; opacity: 0.8; max-width: 700px; margin: 0 auto; }
+.header .reg-badge {
+  display: inline-block; margin-top: 16px;
+  background: rgba(255,255,255,0.15); padding: 6px 16px; border-radius: 20px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
+}
+
+/* DOCUMENT STATUS BADGE */
+.doc-status-bar {
+  max-width: 1100px; margin: -20px auto 0; padding: 0 20px; position: relative; z-index: 2;
+}
+.doc-status {
+  background: white; border: 2px solid var(--amber); border-radius: 12px;
+  padding: 16px 20px; display: flex; align-items: center; gap: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.doc-status-icon {
+  width: 44px; height: 44px; border-radius: 10px; background: var(--amber-light);
+  display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;
+}
+.doc-status-text { flex: 1; }
+.doc-status-text h3 { font-size: 14px; font-weight: 700; color: var(--amber); }
+.doc-status-text p { font-size: 12px; color: var(--gray); margin-top: 2px; }
+.doc-status-version {
+  font-size: 11px; color: var(--gray); text-align: right; white-space: nowrap;
+}
+.doc-status-version strong { color: #1f2937; display: block; font-size: 12px; }
+
+/* DEADLINE BANNER */
+.deadline-banner {
+  background: linear-gradient(90deg, #dc2626, #b91c1c);
+  color: white; text-align: center; padding: 14px 20px;
+  font-size: 15px; font-weight: 600; margin-top: 20px;
+}
+.deadline-banner span { font-size: 20px; margin-right: 8px; }
+
+/* HIERARCHY BOX */
+.hierarchy-box {
+  max-width: 1100px; margin: 24px auto 0; padding: 0 20px;
+}
+.hierarchy {
+  background: white; border-radius: 14px; border: 1px solid var(--border);
+  padding: 20px 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.hierarchy h3 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 14px; text-align: center; }
+.hierarchy-levels {
+  display: flex; gap: 0; align-items: stretch;
+}
+.h-level {
+  flex: 1; padding: 14px 16px; text-align: center; position: relative;
+}
+.h-level:not(:last-child)::after {
+  content: ''; position: absolute; right: 0; top: 20%; height: 60%;
+  width: 1px; background: var(--border);
+}
+.h-level-icon { font-size: 24px; margin-bottom: 6px; }
+.h-level-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.h-level-desc { font-size: 11px; color: var(--gray); line-height: 1.4; }
+.h-level-badge {
+  display: inline-block; margin-top: 8px; font-size: 10px; font-weight: 700;
+  padding: 3px 10px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.h-ley .h-level-title { color: #1d4ed8; }
+.h-ley .h-level-badge { background: #dbeafe; color: #1d4ed8; }
+.h-guia .h-level-title { color: #065f46; }
+.h-guia .h-level-badge { background: #d1fae5; color: #065f46; }
+.h-solucion .h-level-title { color: #92400e; }
+.h-solucion .h-level-badge { background: #fef3c7; color: #92400e; }
+.hierarchy-arrow {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 4px; font-size: 18px; color: var(--border);
+}
+
+.hstack { display:flex; flex-direction:column; gap:8px; }
+.hrow { display:flex; align-items:flex-start; gap:12px; padding:11px 14px; border:1px solid var(--border); border-radius:10px; background:#fff; }
+.hrow .hnum { flex:0 0 26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:12px; font-weight:800; color:#fff; background:#94a3b8; }
+.hrow .hbody { flex:1; min-width:0; }
+.hrow .htitle { font-size:13px; font-weight:700; color:#1f2937; }
+.hrow .hdesc { font-size:11.5px; color:var(--gray); line-height:1.45; margin-top:2px; }
+.hrow .hbadge { flex:0 0 auto; align-self:center; font-size:10.5px; font-weight:700; padding:4px 10px; border-radius:20px; white-space:nowrap; }
+.hrow.l-ley { border-left:4px solid #1d4ed8; } .hrow.l-ley .hnum { background:#1d4ed8; } .hrow.l-ley .hbadge { background:#dbeafe; color:#1d4ed8; }
+.hrow.l-norma { border-left:4px solid #047857; } .hrow.l-norma .hnum { background:#047857; } .hrow.l-norma .hbadge { background:#d1fae5; color:#065f46; }
+.hrow.l-guia { border-left:4px solid #b45309; } .hrow.l-guia .hnum { background:#b45309; } .hrow.l-guia .hbadge { background:#fef3c7; color:#92400e; }
+.hrow.l-sol { border-left:4px solid #6b21a8; } .hrow.l-sol .hnum { background:#6b21a8; } .hrow.l-sol .hbadge { background:#f3e8ff; color:#6b21a8; }
+@media(max-width:640px){ .hrow{flex-wrap:wrap} .hrow .hbadge{margin-left:38px} }
+.hierarchy-note {
+  margin-top: 12px; padding-top: 12px; border-top: 1px solid #f3f4f6;
+  font-size: 11px; color: var(--gray); text-align: center; line-height: 1.5;
+}
+
+/* LEGEND */
+.legend {
+  max-width: 1100px; margin: 20px auto 0; padding: 0 20px;
+  display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
+}
+.legend-item {
+  display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray);
+  background: white; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border);
+}
+.legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+/* CONTAINER */
+.container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+
+/* IMPLEMENTATION TIMELINE */
+.impl-timeline {
+  max-width: 1100px; margin: 24px auto 0; padding: 0 20px;
+}
+.impl-timeline-box {
+  background: white; border-radius: 14px; border: 1px solid var(--border);
+  padding: 20px 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.impl-timeline-box h3 {
+  font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 16px; text-align: center;
+}
+.tl-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.tl-table th {
+  text-align: left; padding: 8px 10px; font-weight: 700; color: var(--gray);
+  border-bottom: 2px solid var(--border); font-size: 10px; text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.tl-table td { padding: 10px; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
+.tl-table tr:last-child td { border-bottom: none; }
+.tl-date-cell { font-weight: 700; white-space: nowrap; }
+.tl-milestone { font-weight: 600; color: #1f2937; }
+.tl-publisher { color: var(--gray); font-size: 11px; }
+.tl-status-badge {
+  display: inline-block; font-size: 9px; font-weight: 700; padding: 2px 8px;
+  border-radius: 8px; text-transform: uppercase; letter-spacing: 0.3px; white-space: nowrap;
+}
+.tl-past { background: var(--green-light); color: var(--green); }
+.tl-upcoming { background: var(--amber-light); color: var(--amber); }
+.tl-future { background: var(--red-light); color: var(--red); }
+.tl-da-note {
+  font-size: 10px; color: var(--amber); font-style: italic; margin-top: 2px;
+}
+.impl-timeline-note {
+  margin-top: 12px; padding-top: 12px; border-top: 1px solid #f3f4f6;
+  font-size: 11px; color: var(--gray); text-align: center; line-height: 1.5;
+}
+
+/* PHASE */
+.phase {
+  margin-bottom: 32px; background: white; border-radius: 16px;
+  border: 1px solid var(--border); overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-header {
+  padding: 20px 24px; display: flex; align-items: center; gap: 16px;
+  cursor: pointer; user-select: none;
+}
+.phase-header:hover { background: #fafbfc; }
+.phase-number {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 800; color: white; flex-shrink: 0;
+}
+.phase-info { flex: 1; }
+.phase-info h2 { font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.phase-info p { font-size: 13px; color: var(--gray); margin-top: 2px; }
+.phase-deadline {
+  font-size: 12px; font-weight: 700; padding: 4px 12px;
+  border-radius: 20px; white-space: nowrap;
+}
+.phase-status {
+  font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 8px;
+  text-transform: uppercase; letter-spacing: 0.3px;
+}
+.ps-complete { background: var(--green-light); color: var(--green); }
+.ps-partial { background: var(--amber-light); color: var(--amber); }
+.ps-pending { background: var(--red-light); color: var(--red); }
+.phase-chevron { font-size: 14px; color: var(--gray); transition: transform 0.2s; }
+.phase-header.collapsed .phase-chevron { transform: rotate(-90deg); }
+.phase-body { border-top: 1px solid var(--border); }
+.phase-body.hidden { display: none; }
+
+/* Color themes per phase */
+.phase-green .phase-number { background: var(--green); }
+.phase-green .phase-deadline { background: var(--green-light); color: var(--green); }
+.phase-blue .phase-number { background: var(--blue); }
+.phase-blue .phase-deadline { background: var(--blue-light); color: var(--blue); }
+.phase-amber .phase-number { background: var(--amber); }
+.phase-amber .phase-deadline { background: var(--amber-light); color: var(--amber); }
+.phase-red .phase-number { background: var(--red); }
+.phase-red .phase-deadline { background: var(--red-light); color: var(--red); }
+.phase-purple .phase-number { background: var(--purple); }
+.phase-purple .phase-deadline { background: var(--purple-light); color: var(--purple); }
+
+/* STEP */
+.step {
+  padding: 16px 24px; border-bottom: 1px solid #f3f4f6;
+  display: flex; align-items: flex-start; gap: 16px;
+}
+.step:last-child { border-bottom: none; }
+.step-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0; background: #f9fafb; border: 1px solid var(--border);
+}
+.step-content { flex: 1; min-width: 0; }
+.step-content h3 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.step-content p { font-size: 13px; color: #4b5563; }
+
+/* DOC GROUPS inside steps */
+.doc-group { margin-top: 10px; }
+.doc-group-label {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 4px; padding-left: 2px;
+}
+.dg-ley { color: #1d4ed8; }
+.dg-guia { color: #065f46; }
+.dg-solucion { color: #92400e; }
+.doc-group-links { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.doc-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; font-weight: 600; padding: 4px 10px;
+  border-radius: 6px; text-decoration: none; transition: all 0.15s;
+}
+.doc-link:hover { filter: brightness(0.95); transform: translateY(-1px); }
+.doc-normativa { background: #dbeafe; color: #1d4ed8; }
+.doc-guia { background: #d1fae5; color: #065f46; }
+.doc-interno { background: #fef3c7; color: #92400e; }
+.doc-external { background: #e9d5ff; color: #6b21a8; }
+.doc-solucion { background: #fef3c7; color: #92400e; }
+.doc-local { background: #f3f4f6; color: #6b7280; cursor: default; }
+.doc-local:hover { filter: none; transform: none; }
+
+/* RESULTADO FINAL */
+.result-box {
+  background: linear-gradient(135deg, var(--green) 0%, #16423c 100%);
+  color: white; border-radius: 16px; padding: 32px;
+  text-align: center; margin-top: 8px;
+}
+.result-box h2 { font-size: 22px; margin-bottom: 8px; }
+.result-box p { font-size: 14px; opacity: 0.85; max-width: 600px; margin: 0 auto 20px; }
+.result-items {
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+}
+.result-item {
+  background: rgba(255,255,255,0.15); padding: 10px 18px;
+  border-radius: 10px; font-size: 13px; font-weight: 600;
+}
+
+/* CTA SECTION */
+.cta-section {
+  max-width: 1100px; margin: 0 auto; padding: 0 20px 32px;
+}
+.cta-box {
+  background: white; border-radius: 16px; border: 2px solid var(--green);
+  padding: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.cta-box h2 { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+.cta-box > p { font-size: 14px; color: #4b5563; margin-bottom: 20px; max-width: 700px; }
+.cta-steps {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px; margin-bottom: 20px;
+}
+.cta-step {
+  background: var(--bg); border-radius: 12px; padding: 16px;
+  border: 1px solid var(--border);
+}
+.cta-step-num {
+  font-size: 11px; font-weight: 700; color: var(--green);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
+}
+.cta-step h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.cta-step p { font-size: 12px; color: var(--gray); }
+.cta-links {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.cta-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600; padding: 8px 16px;
+  border-radius: 8px; text-decoration: none; transition: all 0.15s;
+}
+.cta-link:hover { filter: brightness(0.95); transform: translateY(-1px); }
+.cta-link-primary { background: var(--green); color: white; }
+.cta-link-secondary { background: var(--green-light); color: var(--green); }
+
+/* FOOTER */
+.footer {
+  text-align: center; padding: 24px 20px 40px; font-size: 12px; color: var(--gray);
+}
+.footer a { color: var(--blue); text-decoration: none; }
+
+@media (max-width: 640px) {
+  .header h1 { font-size: 22px; }
+  .phase-header { flex-wrap: wrap; }
+  .step { flex-direction: column; }
+  .hierarchy-levels { flex-direction: column; gap: 12px; }
+  .h-level:not(:last-child)::after { display: none; }
+  .hierarchy-arrow { transform: rotate(90deg); }
+  .doc-status { flex-wrap: wrap; }
+  .tl-table { font-size: 11px; }
+  table { display:block; max-width:100%; overflow-x:auto; }
+  .cta-steps { grid-template-columns: 1fr; }
+}
+
+/* === SPEC-PACK-DPP: nav del pack === */
+.pack-nav { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; align-items:center;
+  background:#fff; border:1px solid var(--border); border-radius:12px; padding:10px 16px;
+  max-width:880px; margin:-16px auto 24px; box-shadow:0 2px 6px rgba(0,0,0,.07); position:relative; z-index:2; }
+.pack-nav .pn-label { font-size:11px; font-weight:700; color:#94a3b8; letter-spacing:.07em; text-transform:uppercase; margin-right:6px; }
+.pack-nav a { font-size:13px; font-weight:600; color:#475569; text-decoration:none; padding:6px 14px; border-radius:8px; }
+.pack-nav a:hover { background:#f1f5f9; }
+.pack-nav a.active { background:#1a1a2e; color:#fff; }
+.soon { position:relative; cursor:default; }
+.soon .soon-bubble { display:none; position:absolute; left:50%; bottom:calc(100% + 10px); transform:translateX(-50%);
+  background:#1a1a2e; color:#fff; font-size:12px; font-weight:600; white-space:nowrap; padding:7px 12px;
+  border-radius:8px; box-shadow:0 6px 18px rgba(15,23,42,.22); z-index:60; letter-spacing:.01em; }
+.soon .soon-bubble::after { content:""; position:absolute; top:100%; left:50%; transform:translateX(-50%);
+  border:6px solid transparent; border-top-color:#1a1a2e; }
+.soon.open .soon-bubble { display:block; }
+.pn-soon { display:inline-block; font-size:13px; font-weight:600; color:#94a3b8; padding:6px 14px; border-radius:8px; }
+.pn-soon:hover { background:#f1f5f9; }
+
+/* === SPEC-PACK-DPP: tarjeta-puente al mapping === */
+.bridge-card { display:block; background:linear-gradient(135deg,#eff6ff,#f5f3ff); border:2px solid #2563eb;
+  border-radius:12px; padding:18px 24px; margin:22px auto; max-width:1060px; text-decoration:none; transition:box-shadow .15s; }
+.bridge-card:hover { box-shadow:0 6px 16px rgba(37,99,235,.18); }
+.bridge-card .bc-title { font-size:15px; font-weight:700; color:#1d4ed8; }
+.bridge-card .bc-sub { font-size:13px; color:#475569; margin-top:4px; }
+
+/* === SPEC-PACK-DPP: FAQ === */
+.faq-box { max-width:1100px; margin:24px auto; padding:0 24px; }
+.faq { background:#fff; border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+.faq-title { padding:18px 24px; font-size:16px; font-weight:800; border-bottom:1px solid var(--border); background:#fafbfc; }
+.faq-item { border-bottom:1px solid #f3f4f6; }
+.faq-item:last-child { border-bottom:none; }
+.faq-q { padding:16px 24px; display:flex; align-items:center; gap:12px; cursor:pointer; user-select:none; font-size:14px; font-weight:600; color:#1f2937; }
+.faq-q:hover { background:#fafbfc; }
+.faq-q .faq-icon { font-size:18px; flex-shrink:0; }
+.faq-q .faq-chevron { margin-left:auto; font-size:12px; color:var(--gray); transition:transform .2s; }
+.faq-q.collapsed .faq-chevron { transform:rotate(-90deg); }
+.faq-a { padding:0 24px 18px 54px; font-size:13.5px; color:#4b5563; line-height:1.7; }
+.faq-a.hidden { display:none; }
+
+/* === PACK DPP BATERIAS: cabecera, menu y pie comunes (v nov-2026) === */
+.pk-header{background:linear-gradient(135deg,#0d3b2e 0%,#1a5276 100%);color:#fff;padding:36px 20px 46px;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.pk-header h1{font-size:28px;font-weight:800;margin:0 0 8px;line-height:1.25;color:#fff}
+.pk-header p{font-size:15px;opacity:.88;max-width:780px;margin:0 auto;line-height:1.55;color:#fff}
+.pk-badges{margin-top:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.pk-badges span{background:rgba(255,255,255,.15);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;color:#fff}
+.pk-version{margin-top:10px;font-size:12px;opacity:.85;color:#fff}
+.pk-nav{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:8px 14px;max-width:720px;margin:-22px auto 22px;box-shadow:0 2px 6px rgba(0,0,0,.08);position:relative;z-index:3;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.pk-nav .pk-label{font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:.07em;text-transform:uppercase;margin-right:6px}
+.pk-nav a{font-size:13px;font-weight:600;color:#475569;text-decoration:none;padding:6px 14px;border-radius:8px;line-height:1.4}
+.pk-nav a:hover{background:#f1f5f9}
+.pk-nav a.active{background:#1a1a2e;color:#fff}
+.pk-nav + .doc-status-bar,.pk-nav + .intro-bar{margin-top:0}
+.pk-footer{max-width:1100px;margin:40px auto 0;padding:24px 20px;border-top:1px solid #e5e7eb;font-size:12px;color:#6b7280;text-align:center;line-height:1.8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.pk-footer a{color:#2563eb;text-decoration:none}
+.pk-footer a:hover{text-decoration:underline}
+.pk-strip{text-align:center;padding:18px 12px;margin-top:20px;background:#f1f5f9;border-top:1px solid #cbd5e1;font-size:11px;color:#64748b;line-height:1.7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.pk-strip a{color:#475569}
+.pk-strip em{color:#94a3b8}
+@media(max-width:640px){.pk-header{padding:28px 16px 40px}.pk-header h1{font-size:21px}.pk-header p{font-size:14px}.pk-nav{margin:-20px 10px 18px;padding:8px 4px;gap:2px}.pk-nav .pk-label{width:100%;text-align:center;margin:0 0 2px}.pk-nav a{padding:5px 7px;font-size:12px}}
+@media print{.pk-nav,.pk-strip{display:none!important}}
+</style>
+<script>if(location.search.indexOf("product=")>-1){location.replace("visor.html"+location.search);}</script>
+</head>
+<body>
+
+<header class="pk-header">
+  <h1>Guía DPP Baterías</h1>
+  <p>Ruta paso a paso para que un fabricante de baterías cumpla el Reglamento (UE) 2023/1542 y tenga su pasaporte digital operativo.</p>
+  <div class="pk-badges"><span>Reg. (UE) 2023/1542</span><span>ESPR (UE) 2024/1781</span><span>Registro DPP: Reg. de Ejecución (UE) 2026/1778</span></div>
+  <div class="pk-version">Versión <strong>v1.2</strong> &middot; 10 noviembre 2026</div>
+</header>
+<nav class="pk-nav" aria-label="Pack DPP Baterías">
+  <span class="pk-label">Pack DPP Baterías</span>
+  <a href="index.html" class="active" aria-current="page">&#x1F4D8; Guía</a>
+  <a href="mapping-trackline-dpp.html">&#x1F5FA;&#xFE0F; Mapping</a>
+  <a href="visor.html">&#x1F441;&#xFE0F; Visor</a>
+  <a href="validador/">&#x2705; Validador</a>
+</nav>
+
+<!-- DOCUMENT STATUS -->
+<div class="doc-status-bar">
+  <div class="doc-status">
+    <div class="doc-status-icon">&#x1F7E1;</div>
+    <div class="doc-status-text">
+      <h3>Estado del documento: EN REVISION</h3>
+      <p>Version de trabajo alineada con la normativa vigente y su desarrollo tecnico conocido a <strong>noviembre de 2026</strong>. Incorpora la publicacion de las normas armonizadas del pasaporte digital (Decision de Ejecucion (UE) 2026/1736), su ratificacion en Espana como normas UNE y la puesta en marcha del registro DPP de la Comision (Reg. de Ejecucion (UE) 2026/1778). <strong>Novedades de esta version:</strong> la documentacion tecnica del registro publicada por la Comision el 30 oct 2026 (guia semantica y esquema oficial de datos de baterias), la guia de data points v3.2 (19 oct 2026) y el borrador del acto de derechos de acceso del Art. 77.9 (19 oct 2026).</p>
+    </div>
+  </div>
+</div>
+
+<div class="deadline-banner">
+  <span>&#x23F0;</span> Deadline obligatorio: 18 febrero 2027 &mdash; Las baterias de vehiculos electricos, LMT e industriales con capacidad &gt;2 kWh deberan disponer de Battery Passport accesible via data carrier (QR) y tener su <strong>identificador unico</strong> registrado en el registro DPP de la Comision. El contenido completo del pasaporte se aloja en el sistema del operador economico responsable o de un operador autorizado. <span style="opacity:.75">Las baterias portatiles y de arranque (SLI) no llevan Battery Passport, pero <strong>si llevan codigo QR desde esa misma fecha</strong>: el Art. 13.6 lo exige a <em>todas</em> las pilas y baterias, y en su caso enlaza con el etiquetado, la declaracion de conformidad, el informe del Art. 52.3 y la informacion de gestion de residuos, no con un pasaporte.</span>
+</div>
+
+<!-- HIERARCHY: jerarquia documental DPP -->
+<div class="hierarchy-box">
+  <div class="hierarchy">
+    <h3>Jerarquia documental: en que orden leer, y que peso juridico tiene cada pieza</h3>
+    <div class="hstack">
+      <div class="hrow l-ley">
+        <div class="hnum">1</div>
+        <div class="hbody"><div class="htitle">Reglamento (UE) 2023/1542 + ESPR (UE) 2024/1781</div><div class="hdesc">La ley. Art. 77 (pasaporte), Art. 78 (diseno tecnico), Anexo XIII (contenido y niveles de acceso). Publicados en el Diario Oficial de la UE.</div></div>
+        <div class="hbadge">Obligatorio</div>
+      </div>
+      <div class="hrow l-ley">
+        <div class="hnum">2</div>
+        <div class="hbody"><div class="htitle">Actos delegados y de ejecucion</div><div class="hdesc">Desarrollan el Reglamento: huella de carbono, contenido reciclado, derechos de acceso (Art. 77.9), registro DPP (Reg. de Ejecucion (UE) 2026/1778). Los adoptados obligan; los pendientes no aplican hasta su adopcion mas el plazo posterior previsto.</div></div>
+        <div class="hbadge">Obligatorio al adoptarse</div>
+      </div>
+      <div class="hrow l-guia">
+        <div class="hnum">3</div>
+        <div class="hbody"><div class="htitle">Guia de la Comision, 21 de agosto de 2026 &mdash; 71 data points</div><div class="hdesc">Que datos hay que dar y cuales son obligatorios, opcionales, condicionales o no exigibles en febrero de 2027, por categoria (EV, LMT, industrial). Es el punto de partida practico, pero el propio documento avisa de que no crea obligaciones nuevas ni es interpretacion autorizada.</div></div>
+        <div class="hbadge">Orientativo</div>
+      </div>
+      <div class="hrow l-norma">
+        <div class="hnum">4</div>
+        <div class="hbody"><div class="htitle">Normas armonizadas EN 18216-18223 / UNE-EN 182xx:2026</div><div class="hdesc">Como se monta el sistema: identificadores, soportes de datos, intercambio, almacenamiento, API e interoperabilidad. Citadas en el DOUE (Decision de Ejecucion (UE) 2026/1736) y ratificadas por UNE. Aplicarlas es voluntario y da presuncion de conformidad con los arts. 10 y 11 del ESPR.</div></div>
+        <div class="hbadge">Voluntaria &middot; presuncion de conformidad</div>
+      </div>
+      <div class="hrow l-guia">
+        <div class="hnum">5</div>
+        <div class="hbody"><div class="htitle">DIN DKE SPEC 99100 y Battery Pass / BatteryPass-Ready</div><div class="hdesc">Como se codifica el dato: modelo de datos, DataAttributeLongList, guidance del consorcio. Referencia de facto de la industria, sin valor normativo.</div></div>
+        <div class="hbadge">Referencia de facto</div>
+      </div>
+      <div class="hrow l-sol">
+        <div class="hnum">6</div>
+        <div class="hbody"><div class="htitle">Implementacion Code Contract &mdash; Trackline</div><div class="hdesc">Como se recoge, se valida y se acredita: dpp.json, mappings, evidencia documental, control de acceso y trazabilidad. Operativiza los niveles anteriores, no los sustituye.</div></div>
+        <div class="hbadge">Implementacion</div>
+      </div>
+    </div>
+    <div class="hierarchy-note">
+      El nivel 1 es <strong>derecho vinculante</strong>. En el nivel 2, los actos <strong>ya adoptados</strong> son vinculantes; los <strong>pendientes no lo son</strong> hasta su adopcion y entrada en aplicacion. El 4 es voluntario pero con efecto juridico propio (presuncion de conformidad). Los niveles 3 y 5 <strong>no tienen efecto juridico</strong>: orientan. El orden de esta lista es el orden en que conviene leerlos para trabajar, no un orden de rango.<br>
+      Cada documento enlazado en esta guia esta marcado con su nivel: <span style="color:#1d4ed8;font-weight:700">LEY</span> (azul), <span style="color:#065f46;font-weight:700">GUIA</span> (verde), <span style="color:#92400e;font-weight:700">SOLUCION</span> (amarillo). Los enlaces morados son recursos externos de terceros.
+    </div>
+  </div>
+</div>
+
+<!-- IMPLEMENTATION TIMELINE -->
+<div class="impl-timeline">
+  <div class="impl-timeline-box">
+    <h3>Calendario de implementacion del Battery Passport</h3>
+    <table class="tl-table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Hito</th>
+          <th>Quien publica / actua</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tl-date-cell" style="color:#2e7d4f">Feb 2025</td>
+          <td>
+            <div class="tl-milestone">Declaracion de huella de carbono (EV) &mdash; fecha base</div>
+            <div class="tl-publisher">Art. 7.1(a) Reg. 2023/1542 &middot; <em style="color:var(--amber)">aplicacion condicionada al acto delegado + 12 meses</em></div>
+          </td>
+          <td class="tl-publisher">Comision Europea (acto delegado sobre metodologia PEF, en borrador) + Fabricante (declaracion)</td>
+          <td><span class="tl-status-badge tl-upcoming">Condicionada</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#059669">18 ago 2025</td>
+          <td>
+            <div class="tl-milestone">Simbolo de recogida separada obligatorio en todas las pilas y baterias</div>
+            <div class="tl-publisher">Art. 13.4 + Anexo VI, parte B, Reg. 2023/1542</div>
+          </td>
+          <td class="tl-publisher">Fabricante (marcado en producto). Es lo unico de etiquetado que entro en agosto de 2025: la etiqueta general y la de capacidad van por otra via (ver fila siguiente).</td>
+          <td><span class="tl-status-badge tl-past">Hecho</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#d97706">Feb 2026</td>
+          <td>
+            <div class="tl-milestone">Declaracion CO&#x2082; (baterias industriales con capacidad &gt;2 kWh, almacenamiento interno) &mdash; fecha base</div>
+            <div class="tl-publisher">Art. 7.1(b) Reg. 2023/1542 &middot; <em style="color:var(--amber)">«18/02/2026 o 18 meses tras adopcion del acto delegado, lo posterior»</em></div>
+          </td>
+          <td class="tl-publisher">Comision Europea (actos delegados de metodologia) + Fabricante</td>
+          <td><span class="tl-status-badge tl-upcoming">Condicionada</span>
+            <div class="tl-da-note">Fecha base superada (sep 2026); obligacion no activada por ausencia del acto delegado de metodologia, sin borrador y con adopcion prevista Q4 2026</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#059669">15 jul 2026</td>
+          <td>
+            <div class="tl-milestone">Normas armonizadas del DPP citadas en el DOUE (EN 18216, 18219, 18220, 18221, 18222 y 18223)</div>
+            <div class="tl-publisher">Decision de Ejecucion (UE) 2026/1736, de 14 jul 2026 &middot; mandato M/604 + Amd 1</div>
+          </td>
+          <td class="tl-publisher">CEN-CENELEC JTC 24 (elaboracion, publicadas el 27 may 2026) + Comision Europea (citacion en el DOUE). Su aplicacion da <strong>presuncion de conformidad</strong> con los arts. 10 y 11 del ESPR. <em>No definen el contenido sectorial de baterias (eso va via Art. 77 + Anexo XIII).</em></td>
+          <td><span class="tl-status-badge tl-past">Hecho</span>
+            <div class="tl-da-note">Faltan por citar EN 18239 (derechos de acceso y seguridad) y EN 18246 (autenticacion e integridad)</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#059669">20 jul 2026</td>
+          <td>
+            <div class="tl-milestone">Registro DPP de la Comision operativo</div>
+            <div class="tl-publisher">Reg. de Ejecucion (UE) 2026/1778, de 16 jul 2026 &middot; Arts. 12-13 ESPR 2024/1781 &middot; <em style="color:var(--gray)">almacena identificadores y metadatos, no el contenido completo del pasaporte</em></div>
+          </td>
+          <td class="tl-publisher">Comision Europea. Cubre expresamente &laquo;las pilas y baterias a las que se aplica el articulo 77 del Reglamento (UE) 2023/1542&raquo; (art. 1.1.b). Acceso por interfaz segura o API, con entorno de pruebas disponible.</td>
+          <td><span class="tl-status-badge tl-past">Hecho</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#059669">13 ago 2026</td>
+          <td>
+            <div class="tl-milestone">Espana ratifica las seis normas como UNE-EN 182xx:2026</div>
+            <div class="tl-publisher">Resolucion de 2 ago 2026 de la DG de Estrategia Industrial y de la PYME (BOE-A-2026-17708)</div>
+          </td>
+          <td class="tl-publisher">UNE &mdash; comite tecnico <strong>CTN 333 &laquo;Pasaporte digital de producto. Marco y sistema&raquo;</strong>, comite espejo de CEN/CLC/JTC 24.</td>
+          <td><span class="tl-status-badge tl-past">Hecho</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#d97706">18 ago 2026</td>
+          <td>
+            <div class="tl-milestone">Etiqueta general y etiqueta de capacidad &mdash; fecha base condicionada</div>
+            <div class="tl-publisher">Arts. 13.1, 13.2 y 13.3 + Anexo VI, parte A &middot; <em>&laquo;a partir del 18 de agosto de 2026 o 18 meses despues de la entrada en vigor del acto de ejecucion del apartado 10, si esta fecha es posterior&raquo;</em></div>
+          </td>
+          <td class="tl-publisher">Comision Europea (acto de ejecucion del Art. 13.10, plazo legal 18 ago 2025) + Fabricante. Fecha base ya superada; obligacion no activada por ausencia del acto de ejecucion.</td>
+          <td><span class="tl-status-badge tl-upcoming">Condicionada</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#dc2626">18 ago 2026</td>
+          <td>
+            <div class="tl-milestone">Acto de ejecucion sobre derechos de acceso al pasaporte de bateria &mdash; <strong>plazo legal incumplido</strong></div>
+            <div class="tl-publisher">Art. 77.9 Reg. 2023/1542 &middot; define quien es &laquo;persona con interes legitimo&raquo; y a que partes del pasaporte accede</div>
+          </td>
+          <td class="tl-publisher">Comision Europea. <strong>Borrador publicado el 19 oct 2026</strong> (Ares(2026)9814179, iniciativa 16473), con comentarios abiertos hasta el <strong>16 nov 2026</strong>; votacion prevista dic 2026 / ene 2027. Sin este acto no esta especificado quien accede a los datos del punto 4 del Anexo XIII.</td>
+          <td><span class="tl-status-badge tl-future">Incumplido</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#dc2626">Feb 2027</td>
+          <td>
+            <div class="tl-milestone">Battery Passport + QR obligatorios (baterias de vehiculos electricos, LMT y baterias industriales con capacidad &gt;2 kWh)</div>
+            <div class="tl-publisher">Art. 77 + Art. 13.6 Reg. 2023/1542 + Arts. 9-14 ESPR 2024/1781</div>
+            <div style="font-size:11px; color:#dc2626; font-weight:600; margin-top:4px;">&#x26A0; Antes de la primera comercializacion: data carrier (QR) en producto + identificador unico del pasaporte registrado en el registro DPP de la Comision. El contenido completo del DPP se aloja en el sistema del operador economico responsable o de un operador autorizado.</div>
+          </td>
+          <td class="tl-publisher">Comision Europea (registro DPP, operativo desde jul 2026) + CEN/CENELEC (normas del sistema, ya publicadas) + Fabricante (DPP completo + carga del identificador unico en el registro, Art. 77.10)</td>
+          <td><span class="tl-status-badge tl-future">Critico</span>
+            <div class="tl-da-note">Pendiente: delegated acts de contenido especifico</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#7c3aed">Ago 2027</td>
+          <td>
+            <div class="tl-milestone">Due diligence cadena de suministro obligatoria</div>
+            <div class="tl-publisher">Arts. 48-52 Reg. 2023/1542 · <em style="color:var(--amber)">Pospuesto desde ago 2025 por Reg. (UE) 2025/1561</em></div>
+          </td>
+          <td class="tl-publisher">Fabricante (politica e informe de diligencia debida) + <strong>organismo notificado</strong> (verificacion por terceros y auditorias periodicas, Art. 48.2). No aplica a operadores con volumen de negocios neto inferior a 40 M&euro;, salvo grupo que supere el umbral en base consolidada (Art. 47).</td>
+          <td><span class="tl-status-badge tl-future">Futuro</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#7c3aed">Dic 2027</td>
+          <td>
+            <div class="tl-milestone">Plena aplicacion Cyber Resilience Act (CRA)</div>
+            <div class="tl-publisher">Reg. (UE) 2024/2847 &mdash; aplicable cuando plataforma DPP, software asociado o BMS entran en &laquo;producto con elementos digitales&raquo;</div>
+          </td>
+          <td class="tl-publisher">Fabricantes de BMS y operadores de plataformas DPP (DPPSP)</td>
+          <td><span class="tl-status-badge tl-future">Futuro</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#7c3aed">Feb 2028</td>
+          <td>
+            <div class="tl-milestone">Umbrales maximos de huella de carbono (EV)</div>
+            <div class="tl-publisher">Art. 7.3 Reg. 2023/1542 &middot; <em style="color:var(--amber)">condicionada al acto delegado</em></div>
+          </td>
+          <td class="tl-publisher">Comision Europea (acto delegado) + Fabricante</td>
+          <td><span class="tl-status-badge tl-future">Futuro</span>
+            <div class="tl-da-note">Pendiente: delegated act umbrales</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#7c3aed">Ago 2028</td>
+          <td>
+            <div class="tl-milestone">Huella de carbono LMT (fecha base) + declaracion de contenido reciclado (EV, industrial &gt;2 kWh, SLI)</div>
+            <div class="tl-publisher">Art. 7.1(c) + Art. 8.1 Reg. 2023/1542</div>
+          </td>
+          <td class="tl-publisher">Comision Europea (actos delegados) + Fabricante (declaracion verificada)</td>
+          <td><span class="tl-status-badge tl-future">Futuro</span>
+            <div class="tl-da-note">Pendiente: delegated act metodologia contenido reciclado</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#7c3aed">Ago 2030</td>
+          <td>
+            <div class="tl-milestone">Huella de carbono industriales con almacenamiento externo</div>
+            <div class="tl-publisher">Art. 7.1(d) Reg. 2023/1542</div>
+          </td>
+          <td class="tl-publisher">Comision Europea (acto delegado) + Fabricante</td>
+          <td><span class="tl-status-badge tl-future">Futuro</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#7c3aed">Ago 2031</td>
+          <td>
+            <div class="tl-milestone">Primer umbral de contenido reciclado obligatorio (EV, industrial, SLI)</div>
+            <div class="tl-publisher">Art. 8.2 Reg. 2023/1542 &mdash; Co 16%, Pb 85%, Li 6%, Ni 6% &middot; <em style="color:var(--gray)">sin LMT: entran en el umbral de 2036</em></div>
+          </td>
+          <td class="tl-publisher">Fabricante (evidencia documental de contenido reciclado verificado)</td>
+          <td><span class="tl-status-badge tl-future">Futuro</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#7c3aed">Ago 2033</td>
+          <td>
+            <div class="tl-milestone">Declaracion de contenido reciclado para baterias LMT &mdash; fecha base</div>
+            <div class="tl-publisher">Art. 8.1, parrafo segundo, Reg. 2023/1542 &mdash; aplicable a baterias LMT que contengan cobalto, plomo, litio o niquel como materiales activos</div>
+          </td>
+          <td class="tl-publisher">Fabricante LMT (evidencia documental)</td>
+          <td><span class="tl-status-badge tl-future">Futuro</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#7c3aed">Ago 2036</td>
+          <td>
+            <div class="tl-milestone">Segundo umbral de contenido reciclado obligatorio (EV, industrial &gt;2 kWh, SLI y <strong>LMT</strong>)</div>
+            <div class="tl-publisher">Art. 8.3 Reg. 2023/1542 &mdash; Co 26%, Pb 85%, Li 12%, Ni 15%</div>
+          </td>
+          <td class="tl-publisher">Fabricante (evidencia documental de contenido reciclado verificado)</td>
+          <td><span class="tl-status-badge tl-future">Futuro</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="impl-timeline-note">
+      Las fechas marcadas como <em>pendiente delegated act</em> dependen de actos delegados que la Comision Europea aun no ha publicado en su version definitiva. Las fechas del reglamento se mantienen salvo modificacion oficial.
+    </div>
+  </div>
+</div>
+
+<!-- LEYENDA DOCUMENTOS -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#dbeafe"></div> LEY: Normativa oficial</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#d1fae5"></div> GUIA: Referencia tecnica (Battery Pass, DIN)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#fef3c7"></div> SOLUCION: Implementacion propia</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#e9d5ff"></div> Recurso externo (terceros)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#f3f4f6"></div> Doc. interno (sin enlace publico)</div>
+</div>
+
+<div class="container">
+
+<!-- ============================================================ -->
+<!-- FASE 1 -->
+<!-- ============================================================ -->
+<div class="phase phase-green">
+  <div class="phase-header collapsed" onclick="toggle(this)">
+    <div class="phase-number">1</div>
+    <div class="phase-info">
+      <h2>Entender el marco regulatorio</h2>
+      <p>Conocer que exige la ley, que baterias estan afectadas y cuales son los plazos</p>
+    </div>
+    <span class="phase-deadline">Conocimiento base</span>
+    <span class="phase-chevron">&#x25BE;</span>
+  </div>
+  <div class="phase-body hidden">
+    <div class="step">
+      <div class="step-icon">&#x1F4DC;</div>
+      <div class="step-content">
+        <h3>Leer el Reglamento EU 2023/1542</h3>
+        <p>El texto legal completo. Articulos clave: Art. 77 (Battery Passport), Art. 7 (huella de carbono), Art. 8 (contenido reciclado), Arts. 48-52 (due diligence cadena de suministro), Art. 11 (removibilidad y sustituibilidad). <strong>El Reglamento se aplica a todas las categorias de pilas y baterias</strong> (portatiles, de arranque/iluminacion/encendido (SLI), LMT, de vehiculos electricos e industriales), tal y como dice expresamente su Art. 1.3. Lo que <strong>no</strong> alcanza a portatiles ni a SLI es la obligacion de <strong>pasaporte para baterias</strong> del Art. 77.1, limitada a LMT, industriales con capacidad &gt;2 kWh y de vehiculos electricos.</p>
+        <p style="font-size:13px;color:var(--amber);margin-top:6px"><strong>Importante:</strong> el texto original ha sido objeto de <strong>varias correcciones de errores</strong> y modificado por el <a href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj" target="_blank" style="color:var(--blue)">ESPR 2024/1781</a> y el <a href="https://eur-lex.europa.eu/eli/reg/2025/1561" target="_blank" style="color:var(--blue)">Reg. 2025/1561</a>. Usar siempre la <strong>version consolidada</strong> de EUR-Lex.</p>
+        <p style="font-size:13px;color:var(--gray);margin-top:4px"><strong>Relacion ESPR &harr; Baterias:</strong> el Reg. 2023/1542 funciona como <em>lex specialis</em> &mdash; mantiene su propio regimen de pasaporte digital. El ESPR 2024/1781 actua como marco horizontal que lo complementa para garantizar interoperabilidad con otros sectores, pero <strong>no lo sustituye ni lo absorbe</strong>.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY:</div>
+          <div class="doc-group-links">
+            <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02023R1542-20250818" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2023/1542 — texto consolidado (EUR-Lex)</a>
+            <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2023/1542 — texto original (EUR-Lex)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x23F3;</div>
+      <div class="step-content">
+        <h3>Actos delegados y de ejecucion &mdash; estado a septiembre 2026</h3>
+        <p>El Reglamento 2023/1542 habilita varios actos delegados y de ejecucion. El <strong>nucleo de la infraestructura horizontal ya esta operativo</strong> (seis normas armonizadas citadas en el DOUE y registro DPP en marcha desde julio de 2026), pero quedan flecos: las dos normas restantes y el acto de derechos de acceso para baterias (borrador en consulta hasta el 16 nov 2026). Y <strong>siguen sin adoptarse los actos de contenido</strong>, varios de ellos con el plazo legal ya vencido. Esto condiciona la aplicacion practica de varias obligaciones:</p>
+        <div style="margin:10px 0;padding:10px 12px;background:#f8fafc;border:1px solid var(--border);border-radius:6px;font-size:12px;color:var(--gray);">
+          <strong>Como leer este documento &mdash; niveles de fuente:</strong><br>
+          &nbsp;&bull; <strong style="color:#dc2626;">Reglamento 2023/1542 + ESPR 2024/1781</strong> = <em>obligacion legal directa, vinculante</em>.<br>
+          &nbsp;&bull; <strong style="color:#d97706;">Actos delegados / de ejecucion pendientes</strong> = <em>no aplicables hasta su adopcion + el plazo posterior previsto</em>.<br>
+          &nbsp;&bull; <strong style="color:#2563eb;">DIN DKE SPEC 99100, Data Attribute Longlist v2.0 y Data Model v2.0 (BatteryPass-Ready, 27 ago 2026)</strong> = <em>referencia tecnica de facto del consorcio Battery Pass, no derecho vinculante</em>.<br>
+          &nbsp;&bull; <strong style="color:#2563eb;">Documentacion tecnica del registro DPP (Comision, 30 oct 2026)</strong> = <em>guia semantica y esquema oficial de datos de baterias (1.0.0). No es un acto juridico, pero es el formato que el registro lee y valida</em>.<br>
+          &nbsp;&bull; <strong style="color:#2563eb;">EN 18216, 18219, 18220, 18221, 18222 y 18223 (JTC 24)</strong> = <em>normas armonizadas publicadas y citadas en el DOUE</em>. Su aplicacion es voluntaria, pero da <strong>presuncion de conformidad</strong> con los arts. 10 y 11 del ESPR. <strong>EN 18239 y EN 18246 aun no estan citadas</strong>: aplicarlas no otorga hoy esa presuncion.<br>
+          &nbsp;&bull; <strong style="color:var(--green);">Trackline / Code Contract</strong> = <em>capa probatoria y de gobernanza voluntaria</em>, complementa la obligacion legal, no la sustituye.
+        </div>
+        <table style="width:100%;border-collapse:collapse;font-size:13px;margin:10px 0">
+          <thead>
+            <tr style="background:#f7fafc">
+              <th style="border:1px solid #e5e7eb;padding:6px 8px;text-align:left;font-size:12px;color:var(--blue)">Instrumento</th>
+              <th style="border:1px solid #e5e7eb;padding:6px 8px;text-align:left;font-size:12px;color:var(--blue)">Base legal</th>
+              <th style="border:1px solid #e5e7eb;padding:6px 8px;text-align:left;font-size:12px;color:var(--blue)">Estado sep 2026</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px"><strong>Normas armonizadas del DPP</strong> (identificadores, soportes de datos, intercambio, almacenamiento, APIs, interoperabilidad)</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Mandato M/604 + Amd 1 &middot; arts. 10-11 ESPR</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--green)"><strong>Hecho.</strong> Seis EN publicadas el 27 may 2026 y citadas en el DOUE por la <strong>Decision de Ejecucion (UE) 2026/1736</strong>, de 14 jul 2026. Faltan por citar EN 18239 y EN 18246</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px"><strong>Registro del pasaporte digital de producto</strong></td><td style="border:1px solid #e5e7eb;padding:5px 8px">Arts. 12-13 ESPR</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--green)"><strong>Hecho.</strong> <strong>Reg. de Ejecucion (UE) 2026/1778</strong>, de 16 jul 2026: publicado en el DOUE el 17 jul y en vigor el 6 ago 2026. El registro arranco antes, el <strong>20 jul 2026</strong>, con entorno de pruebas y API. Cubre expresamente las baterias del Art. 77</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px"><strong>Semantica y formato de datos del pasaporte</strong> (el JSON que lee el registro)</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Reg. de Ejecucion 2026/1778 &middot; documentacion tecnica</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--green)"><strong>Publicado el 30 oct 2026.</strong> Guia semantica v1.0, artefactos semanticos (nucleo 1.0.0 + baterias 1.0.0, con subgrupos EV, industrial y LMT), guia de integracion por API y especificacion OpenAPI. Es documentacion tecnica, no un acto juridico. El alta de baterias en el registro aun no esta abierta (guia de usuario v1.03)</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px"><strong>Derechos de acceso e interes legitimo</strong> (quien accede y a que partes del pasaporte)</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Art. 77.9</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:#dc2626"><strong>Plazo legal vencido el 18 ago 2026 sin adopcion.</strong> Borrador en consulta del 19 oct al 16 nov 2026 (Ares(2026)9814179); votacion prevista dic 2026 / ene 2027. Es el habilitante real: el Art. 78 no habilita ningun acto</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px">Especificaciones armonizadas de etiquetado (etiqueta general y de capacidad)</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Art. 13.10</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:#dc2626"><strong>Plazo legal vencido el 18 ago 2025 sin adopcion.</strong> Borrador en consulta publica del 15 dic 2025 al 26 ene 2026 (Ares(2024)8677914); sin publicacion en el DOUE. Bloquea la aplicacion de los Arts. 13.1 a 13.3</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px">Metodologia huella de carbono EV</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Art. 7.1(a)</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--amber)">Borrador desde el 30 abr 2024, sin adoptar (plazo legal 18 feb 2024). La obligacion se activa 12 meses despues de la entrada en vigor del acto delegado de metodologia <em>o</em> del acto de ejecucion sobre el formato de la declaracion, lo que sea posterior; ambos siguen en borrador</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px">Huella de carbono industriales &gt;2 kWh / LMT / alm. externo</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Art. 7.1(b)(c)(d)</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--amber)">Industriales: sin borrador, adopcion prevista Q4 2026 (plazo legal 18 feb 2025 vencido). LMT: solo trabajo tecnico del JRC. Alm. externo: no iniciado</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px">Metodologia de calculo y verificacion del contenido reciclado</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Art. 8.1</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--amber)"><strong>Plazo legal vencido el 18 ago 2026.</strong> Borrador de acto delegado publicado el 12 ago 2026, con consulta publica abierta hasta el 9 sep 2026 (iniciativa 14858, Ares(2025)7729439). Los % minimos (2031 y 2036) ya estan en el Reglamento; falta el metodo de calculo y verificacion</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px">Clases de rendimiento de huella</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Art. 7.2</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--amber)">Pendiente, sin borrador; adopcion prevista Q4 2026 (plazo legal EV 18 feb 2025 vencido)</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px">Umbrales maximos de huella</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Art. 7.3</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--amber)">Pendiente, sin iniciativa registrada (plazo legal EV 18 ago 2026 vencido)</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px">Reconocimiento de esquemas de diligencia debida</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Art. 53</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--amber)">Pendiente, sin borrador; adopcion prevista Q4 2026. La aplicacion de la diligencia debida se aplazo al 18 ago 2027 (Reg. (UE) 2025/1561)</span></td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px">Datos dinamicos del BMS (estado de salud y parametros de durabilidad)</td><td style="border:1px solid #e5e7eb;padding:5px 8px">Art. 14 + Anexo VII</td><td style="border:1px solid #e5e7eb;padding:5px 8px"><span style="color:var(--green)">No requiere acto derivado: el Art. 14 es aplicable desde el 18 ago 2024 y los parametros estan en el Anexo VII. Lo que sigue sin especificar es <em>quien accede</em> a los datos del punto 4 del Anexo XIII (depende del Art. 77.9)</span></td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px;color:var(--gray)">Las fechas del Reglamento se mantienen vigentes y <strong>el 18 de febrero de 2027 no ha sido aplazado</strong>. La ausencia de actos delegados de metodologia (especialmente huella de carbono) genera un cuello de botella practico: el sector opera con el GBA GHG Rulebook como referencia de facto. Sobre las <strong>zonas de conflicto y alto riesgo (CAHRA)</strong>: no existe acto delegado bajo el Reglamento de Baterias. La definicion remite al art. 2.f) del Reg. (UE) 2017/821 y la lista indicativa la mantiene la Comision en cahraslist.net.</p>
+        <p style="margin-top:8px;padding:10px 12px;background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;font-size:13px"><strong>&#x26A0;&#xFE0F; Propuesta abierta que afecta a LMT:</strong> el paquete de simplificacion ambiental (<strong>COM(2025) 981</strong>, procedimiento 2025/0397(COD)) propone simplificar los requisitos de <strong>extraibilidad y sustituibilidad de los packs de baterias LMT</strong> y modificar la definicion de &laquo;sustancia preocupante&raquo; a efectos de etiquetado. El <strong>aplazamiento de 18 meses</strong> de esos requisitos lo introdujo el <strong>Consejo</strong> en su mandato de negociacion de 24 jun 2026, no la propuesta original. Sigue en tramitacion en el Parlamento Europeo, sin acuerdo final. <strong>No afecta al pasaporte de bateria ni al Art. 77.</strong></p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x1F1EA;&#x1F1FA;</div>
+      <div class="step-content">
+        <h3>Partir de la guia de la Comision: los 71 data points del pasaporte</h3>
+        <p>Es el documento mas util publicado hasta la fecha para saber <strong>que hay que rellenar en febrero de 2027</strong>. La Comision Europea (DG GROW) publica el documento de orientacion <em>&laquo;Digital Batteries Passport &mdash; data points by category&raquo;</em>, con una matriz de <strong>71 data points</strong>. La version vigente es la <strong>3.2, de 19 de octubre de 2026</strong> (la 2.0 salio el 21 de agosto). Desde el 30 de octubre, esos datos tienen ademas su nombre tecnico y su formato en el esquema oficial de la Comision (ver Fase 3).</p>
+        <p style="margin-top:8px;padding:10px 12px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;font-size:13px">
+          Para cada dato indica su <strong>fuente legal en el Reglamento</strong> y su aplicabilidad por separado a <strong>baterias de vehiculos electricos, LMT e industriales &gt;2 kWh</strong>, con cuatro estados: <strong>obligatorio</strong>, <strong>opcional</strong>, <strong>aplicable solo en determinados casos</strong> o <strong>no debe cumplimentarse ni mostrarse a fecha de febrero de 2027</strong>.<br><br>
+          <strong>Ojo con su valor juridico:</strong> el propio documento avisa de que no debe considerarse representativo de la posicion oficial de la Comision, que <em>no amplia en modo alguno los derechos y obligaciones derivados de la legislacion aplicable ni introduce ningun requisito adicional</em>, y que las opiniones expresadas <em>no son autorizadas</em>. Es decir: orienta, no obliga. Aun asi, es lo mas cercano al regulador que existe hoy sobre el contenido del pasaporte, y la Comision anuncia futuras versiones con definiciones, unidades y formatos.
+        </p>
+        <p style="margin-top:8px;padding:10px 12px;background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;font-size:13px">
+          <strong>&#x1F522; Por que veras cuatro numeros distintos y no se contradicen:</strong><br>
+          &nbsp;&bull; <strong>71 data points</strong> &mdash; guia de la Comision (v3.2): los datos del Anexo XIII ordenados y clasificados por categoria.<br>
+          &nbsp;&bull; <strong>Esquema oficial de la Comision</strong> (baterias 1.0.0, 30 oct 2026): esos datos como campos JSON, con nombre tecnico, tipo y nivel de acceso (publico o restringido). Es lo que lee el registro.<br>
+          &nbsp;&bull; <strong>~80-90 atributos</strong> &mdash; DIN DKE SPEC 99100 / Battery Pass: referencia del consorcio, con atributos voluntarios que recomienda.<br>
+          &nbsp;&bull; <strong>166 datos</strong> &mdash; nuestro mapping Trackline v09: 97 con su campo en el esquema de la Comision y 69 de proceso, evidencia documental o aun no aplicables (huella de carbono, contenido reciclado, diligencia debida).<br><br>
+          Ninguno sustituye al otro: el primero dice <em>que exige la ley</em>, el segundo <em>como lo lee el registro</em>, el tercero <em>como lo codifica la industria</em> y el cuarto <em>como se recoge y se acredita</em>.
+        </p>
+        <div class="doc-group">
+          <div class="doc-group-label" style="color:#6b21a8;">REFERENCIAS EXTERNAS:</div>
+          <div class="doc-group-links">
+            <a href="https://single-market-economy.ec.europa.eu/news/guidance-support-preparations-digital-batteries-passport-2026-08-21_en" class="doc-link doc-external" target="_blank">&#x1F517; Comision Europea &mdash; guia de apoyo al pasaporte de baterias (21 ago 2026)</a>
+            <a href="https://single-market-economy.ec.europa.eu/single-market/digital-product-passport/resources-documentation_en" class="doc-link doc-external" target="_blank">&#x1F517; Pagina de recursos de la Comision (guia de data points v3.2 y documentacion del registro)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x1F4CB;</div>
+      <div class="step-content">
+        <h3>Conocer el modelo tecnico del Battery Passport (DIN DKE SPEC 99100)</h3>
+        <p>Un escalon por debajo de la guia de la Comision. La DIN DKE SPEC 99100 es una especificacion tecnica desarrollada por el consorcio Battery Pass que interpreta los requisitos del reglamento y los convierte en un modelo de datos codificable, con atributos obligatorios y voluntarios (aprox. 80-90 campos segun categoria). Es la referencia de facto de la industria, no derecho vinculante, y no ha sido adoptada formalmente por CEN/CENELEC ni ISO/IEC. El <strong>Data Attribute Longlist v2.0</strong> y el <strong>Data Model v2.0</strong>, publicados por BatteryPass-Ready el <strong>27 de agosto de 2026</strong>, son la referencia vigente: sustituyen a la v1.3 de marzo de 2026 e incorporan las normas finales del JTC 24, el registro DPP y la guia de 71 data points de la Comision. Aviso practico: el repositorio publico BatteryPassDataModel en GitHub todavia muestra la release 1.2.0, asi que conviene descargar la v2.0 desde la web de BatteryPass-Ready. <strong>Desde el 30 oct 2026 el formato que lee el registro es el esquema oficial de la Comision</strong>: el modelo Battery Pass sigue sirviendo como referencia de contenido, pero sus nombres de campo no siempre coinciden y hay que convertirlos al exportar.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; DIN DKE SPEC 99100 (Battery Pass)</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Data Attribute Longlist v2.0 (27 ago 2026)</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Content Requirements (position paper &mdash; recomendaciones a la Comision)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x1F3D7;&#xFE0F;</div>
+      <div class="step-content">
+        <h3>Entender la arquitectura tecnica del DPP</h3>
+        <p>Como funciona el sistema: <strong>codigo QR</strong> (data carrier) &rarr; identificador unico &rarr; acceso al pasaporte &rarr; registro DPP de la Comision. Las referencias tecnicas habituales se dividen en tres categorias:</p>
+        <p style="margin-top:6px"><strong>Normas e identificadores:</strong> ISO/IEC 15459 (identificadores unicos de producto), GS1 Digital Link (data carrier URL). <strong>Marcos y modelos de datos:</strong> AAS (Asset Administration Shell), ECLASS (clasificacion de productos). <strong>Ecosistemas e iniciativas de referencia:</strong> Catena-X / Tractus-X (ecosistema de intercambio de datos industrial).</p>
+        <div style="margin-top:8px;padding:10px 12px;background:#ecfdf5;border:1px solid #6ee7b7;border-radius:8px;font-size:13px">
+          <strong>Normalizacion &mdash; JTC 24: ya publicada.</strong> El comite <strong>CEN/CLC/JTC 24 &laquo;Digital Product Passport &mdash; Framework and system&raquo;</strong> desarrollo la familia bajo el mandato <strong>M/604 + Amd 1</strong> (DPP horizontal, en apoyo del ESPR). Son <strong>ocho normas</strong>; seis se publicaron el <strong>27 de mayo de 2026</strong> y fueron citadas en el DOUE el <strong>15 de julio de 2026</strong>:
+          <table style="width:100%;border-collapse:collapse;font-size:12.5px;margin:10px 0 8px">
+            <thead><tr style="background:#f0fdf4"><th style="border:1px solid #a7f3d0;padding:5px 8px;text-align:left">Norma</th><th style="border:1px solid #a7f3d0;padding:5px 8px;text-align:left">Objeto</th><th style="border:1px solid #a7f3d0;padding:5px 8px;text-align:left">Citada en DOUE</th></tr></thead>
+            <tbody>
+              <tr><td style="border:1px solid #d1fae5;padding:4px 8px"><strong>EN 18216:2026</strong></td><td style="border:1px solid #d1fae5;padding:4px 8px">Protocolos de intercambio de datos</td><td style="border:1px solid #d1fae5;padding:4px 8px;color:var(--green)">&#x2713; Si</td></tr>
+              <tr><td style="border:1px solid #d1fae5;padding:4px 8px"><strong>EN 18219:2026</strong></td><td style="border:1px solid #d1fae5;padding:4px 8px">Identificadores unicos</td><td style="border:1px solid #d1fae5;padding:4px 8px;color:var(--green)">&#x2713; Si</td></tr>
+              <tr><td style="border:1px solid #d1fae5;padding:4px 8px"><strong>EN 18220:2026</strong></td><td style="border:1px solid #d1fae5;padding:4px 8px">Soportes de datos (data carriers)</td><td style="border:1px solid #d1fae5;padding:4px 8px;color:var(--green)">&#x2713; Si</td></tr>
+              <tr><td style="border:1px solid #d1fae5;padding:4px 8px"><strong>EN 18221:2026</strong></td><td style="border:1px solid #d1fae5;padding:4px 8px">Almacenamiento, archivo y persistencia de datos</td><td style="border:1px solid #d1fae5;padding:4px 8px;color:var(--green)">&#x2713; Si</td></tr>
+              <tr><td style="border:1px solid #d1fae5;padding:4px 8px"><strong>EN 18222:2026</strong></td><td style="border:1px solid #d1fae5;padding:4px 8px">API para la gestion del ciclo de vida y la capacidad de busqueda del pasaporte</td><td style="border:1px solid #d1fae5;padding:4px 8px;color:var(--green)">&#x2713; Si</td></tr>
+              <tr><td style="border:1px solid #d1fae5;padding:4px 8px"><strong>EN 18223:2026</strong></td><td style="border:1px solid #d1fae5;padding:4px 8px">Interoperabilidad del sistema</td><td style="border:1px solid #d1fae5;padding:4px 8px;color:var(--green)">&#x2713; Si</td></tr>
+              <tr><td style="border:1px solid #d1fae5;padding:4px 8px"><strong>EN 18239</strong></td><td style="border:1px solid #d1fae5;padding:4px 8px">Gestion de derechos de acceso, seguridad del sistema de informacion y confidencialidad comercial</td><td style="border:1px solid #d1fae5;padding:4px 8px;color:var(--amber)">Todavia no &middot; <em style="font-size:11px">pendiente de una segunda Decision de Ejecucion, prevista para finales de 2026</em></td></tr>
+              <tr><td style="border:1px solid #d1fae5;padding:4px 8px"><strong>EN 18246</strong></td><td style="border:1px solid #d1fae5;padding:4px 8px">Autenticacion, fiabilidad e integridad de los datos</td><td style="border:1px solid #d1fae5;padding:4px 8px;color:var(--amber)">Todavia no</td></tr>
+            </tbody>
+          </table>
+          Instrumento de citacion: <strong>Decision de Ejecucion (UE) 2026/1736 de la Comision, de 14 de julio de 2026</strong> (DOUE de 15 jul 2026). Aplicarlas es voluntario, pero otorga <strong>presuncion de conformidad</strong> con los requisitos de DPP de los <strong>arts. 10 y 11 del ESPR</strong>. Las dos que faltan son, precisamente, las de control de acceso e integridad del dato: quien las aplique hoy no obtiene presuncion de conformidad por esa via.<br><br>
+          <em>Que no cubren:</em> estas normas definen el <strong>sistema</strong> (identificar, transportar, almacenar, intercambiar y consultar el pasaporte), no el <strong>contenido</strong> sectorial de baterias, que sigue viniendo del Art. 77 + Anexo XIII del Reg. 2023/1542. El mandato <strong>M/579</strong> es el de baterias y se tramita por otros comites (CEN/TC 301, CLC/TC 21X, CLC/SR 35); no ha producido normas de pasaporte.
+        </div>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Technical Standard Stack (Battery Pass)</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Technical Guidance</a>
+          </div>
+        </div>
+        <div class="doc-group">
+          <div class="doc-group-label" style="color:#6b21a8;">REFERENCIAS EXTERNAS:</div>
+          <div class="doc-group-links">
+            <a href="https://catena-x.net/en/" class="doc-link doc-external" target="_blank">&#x1F517; Catena-X (ecosistema)</a>
+            <a href="https://industrialdigitaltwin.org/" class="doc-link doc-external" target="_blank">&#x1F517; AAS (Asset Administration Shell) &mdash; IDTA</a>
+            <span class="doc-link doc-external" style="cursor:default">ECLASS (clasificacion de productos)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x1F1EA;&#x1F1F8;</div>
+      <div class="step-content">
+        <h3>Espana: las normas del DPP ya estan en el catalogo UNE</h3>
+        <p>Las seis normas europeas citadas en el DOUE se ratificaron como normas espanolas mediante la <strong>Resolucion de 2 de agosto de 2026</strong> de la Direccion General de Estrategia Industrial y de la Pequena y Mediana Empresa (BOE de 13 de agosto de 2026, <strong>BOE-A-2026-17708</strong>):</p>
+        <table style="width:100%;border-collapse:collapse;font-size:13px;margin:10px 0">
+          <thead><tr style="background:#f7fafc"><th style="border:1px solid #e5e7eb;padding:6px 8px;text-align:left;font-size:12px;color:var(--blue)">Norma UNE</th><th style="border:1px solid #e5e7eb;padding:6px 8px;text-align:left;font-size:12px;color:var(--blue)">Titulo</th></tr></thead>
+          <tbody>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px"><strong>UNE-EN 18216:2026</strong></td><td style="border:1px solid #e5e7eb;padding:5px 8px">Pasaporte digital de producto. Protocolos de intercambio de datos</td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px"><strong>UNE-EN 18219:2026</strong></td><td style="border:1px solid #e5e7eb;padding:5px 8px">Pasaporte digital de producto. Identificadores unicos</td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px"><strong>UNE-EN 18220:2026</strong></td><td style="border:1px solid #e5e7eb;padding:5px 8px">Pasaporte digital de producto. Soportes de datos</td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px"><strong>UNE-EN 18221:2026</strong></td><td style="border:1px solid #e5e7eb;padding:5px 8px">Pasaporte digital de producto. Almacenamiento, archivo y persistencia de datos</td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px"><strong>UNE-EN 18222:2026</strong></td><td style="border:1px solid #e5e7eb;padding:5px 8px">Pasaporte digital de producto. Interfaces de programacion de aplicaciones (API) para la gestion del ciclo de vida y la capacidad de busqueda del pasaporte de producto</td></tr>
+            <tr><td style="border:1px solid #e5e7eb;padding:5px 8px"><strong>UNE-EN 18223:2026</strong></td><td style="border:1px solid #e5e7eb;padding:5px 8px">Pasaporte digital de producto. Interoperabilidad del sistema</td></tr>
+          </tbody>
+        </table>
+        <p style="padding:10px 12px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;font-size:13px">
+          <strong>Que significa y que no significa.</strong> Una UNE-EN no es una norma espanola distinta: es la misma norma europea adoptada al catalogo nacional y <strong>disponible en castellano</strong>. Sigue siendo, como toda norma armonizada, de <strong>aplicacion voluntaria</strong>: su ventaja juridica es dar <strong>presuncion de conformidad</strong> respecto de los requisitos que cubre. La obligacion de tener pasaporte nace del Reglamento (UE) 2023/1542, no de la norma UNE: la norma dice <em>como</em> hacerlo de forma reconocida, no <em>si</em> hay que hacerlo.<br><br>
+          El comite tecnico espanol es el <strong>CTN 333 &laquo;Pasaporte digital de producto. Marco y sistema&raquo;</strong>, comite espejo del CEN/CLC/JTC 24. Es el foro donde se sigue el desarrollo de las dos normas que faltan (EN 18239 y EN 18246) y donde se votan las posiciones espanolas.<br><br>
+          <strong>Aviso practico:</strong> las normas UNE no son de acceso libre, se adquieren en la tienda de UNE. Antes de comprar las seis conviene decidir cuales aplican de verdad a cada caso: para un fabricante que prepara datos, las mas relevantes suelen ser <strong>UNE-EN 18219</strong> (identificadores) y <strong>UNE-EN 18220</strong> (soportes de datos); las de API, intercambio, almacenamiento e interoperabilidad afectan sobre todo a quien construye o contrata la plataforma.
+        </p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY:</div>
+          <div class="doc-group-links">
+            <a href="https://www.boe.es/buscar/doc.php?id=DOUE-L-2026-81080" class="doc-link doc-normativa" target="_blank">&#x1F517; Decision de Ejecucion (UE) 2026/1736 &mdash; normas armonizadas DPP</a>
+            <a href="https://www.boe.es/boe/dias/2026/08/13/pdfs/BOE-A-2026-17708.pdf" class="doc-link doc-normativa" target="_blank">&#x1F517; Resolucion de 2 ago 2026 &mdash; normas UNE ratificadas (BOE)</a>
+            <a href="https://www.boe.es/buscar/doc.php?id=DOUE-L-2026-81091" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. de Ejecucion (UE) 2026/1778 &mdash; registro DPP</a>
+          </div>
+        </div>
+        <div class="doc-group">
+          <div class="doc-group-label" style="color:#6b21a8;">REFERENCIAS EXTERNAS:</div>
+          <div class="doc-group-links">
+            <a href="https://www.une.org/encuentra-tu-norma/comites-tecnicos-de-normalizacion/comite?c=CTN+333" class="doc-link doc-external" target="_blank">&#x1F517; UNE &mdash; comite CTN 333</a>
+            <a href="https://www.cencenelec.eu/news-events/news/2026/en-in-the-spotlight/2026-07-15-dpp/" class="doc-link doc-external" target="_blank">&#x1F517; CEN-CENELEC &mdash; familia de normas DPP</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x1F512;</div>
+      <div class="step-content">
+        <h3>Capa de confianza: marco regulatorio y posicion de Trackline</h3>
+        <p>El Reglamento 2023/1542 reparte estas exigencias en tres sitios distintos: el <strong>Art. 77.4</strong> obliga a que la informacion sea <strong>precisa, exhaustiva y este actualizada</strong>; el <strong>Art. 77.5</strong> exige <strong>normas abiertas, formato interoperable, transferible por red abierta sin vinculacion a proveedor, de lectura mecanizada, estructurada y con capacidad de busqueda</strong>; y el <strong>Art. 78</strong> fija los requisitos esenciales de diseno tecnico, entre ellos que se garanticen la <strong>autenticacion, la fiabilidad y la integridad</strong> de los datos (letra g) y un <strong>elevado nivel de seguridad y privacidad, evitando el fraude</strong> (letra h). <em>No exigen una tecnologia concreta</em> (no &laquo;blockchain&raquo;, ni &laquo;firma cualificada obligatoria&raquo;). Existe un marco europeo de confianza digital al que un DPP puede acogerse para reforzar el valor probatorio del dato.</p>
+        <p style="margin-top:8px;padding:10px 12px;background:#f5f3ff;border:1px solid #e9d8fd;border-radius:8px;font-size:13px">
+          <strong>Marco regulatorio complementario que existe (no especifico del DPP de baterias):</strong><br><br>
+          <strong>eIDAS 2.0</strong> &mdash; <a href="https://eur-lex.europa.eu/eli/reg/2024/1183" target="_blank" style="color:var(--purple)">Reg. (UE) 2024/1183</a>: define las figuras tecnicas de confianza (<strong>firma electronica cualificada, Art. 25</strong>; <strong>sello electronico cualificado, Art. 35</strong>; <strong>sello de tiempo cualificado, Art. 41</strong>) y las <em>Qualified Electronic Attestations of Attributes (QEAA)</em>. Son <strong>herramientas voluntarias</strong> que aportan presuncion legal de integridad, origen y fecha cierta. La EUDI Wallet estara disponible en cada Estado miembro antes de finales de 2026.<br><br>
+          <strong>Cyber Resilience Act</strong> &mdash; <a href="https://eur-lex.europa.eu/eli/reg/2024/2847" target="_blank" style="color:var(--purple)">Reg. (UE) 2024/2847</a>: plena aplicacion <strong>11 dic 2027</strong>. Aplicable cuando la plataforma DPP, el software asociado o el <strong>BMS</strong> entran en el ambito de &laquo;producto con elementos digitales&raquo;. Reporting obligatorio de vulnerabilidades desde <strong>11 sep 2026</strong>.
+        </p>
+        <p style="margin-top:8px;padding:10px 12px;background:#ecfdf5;border:1px solid #6ee7b7;border-radius:8px;font-size:13px">
+          <strong>Posicion de Trackline / Code Contract a 10 nov 2026:</strong><br>
+          &#x2713; <strong>Operativo hoy:</strong> estructurado del dataset segun Anexo XIII, validacion interna pre-publicacion, trazabilidad de eventos (quien envia, quien recibe, quien valida, hora, dia, archivo) y <strong>hash interno del dataset</strong> como prueba de integridad propia generada desde la plataforma.<br><br>
+          &#x1F52E; <strong>Roadmap:</strong> Trackline aspira a integrarse con la capa eIDAS cualificada (firma Art. 25 + sello Art. 35 + timestamp Art. 41 + QEAA via EUDI Wallet) y con el registro DPP de la Comision, <strong>ya operativo desde el 20 jul 2026, con API y con su especificacion tecnica publicada el 30 oct 2026</strong>. Hoy <em>no aporta</em> sello de tiempo cualificado ni firma cualificada eIDAS &mdash; aporta hash propio, que es prueba de integridad valida para gobernanza interna pero no equivale legalmente a sello cualificado.
+        </p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY:</div>
+          <div class="doc-group-links">
+            <a href="https://eur-lex.europa.eu/eli/reg/2024/1183" class="doc-link doc-normativa" target="_blank">&#x1F517; eIDAS 2.0 &mdash; Reg. 2024/1183 (EUR-Lex)</a>
+            <a href="https://eur-lex.europa.eu/eli/reg/2024/2847" class="doc-link doc-normativa" target="_blank">&#x1F517; Cyber Resilience Act &mdash; Reg. 2024/2847 (EUR-Lex)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x1F4A1;</div>
+      <div class="step-content">
+        <h3>Entender el valor de negocio</h3>
+        <p>No solo es cumplimiento: el Battery Passport aporta ventaja competitiva, transparencia en la cadena de suministro y acceso al mercado EU.</p>
+        <p style="margin-top:8px;padding:10px 12px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;font-size:13px"><strong>Puente hacia construccion:</strong> el DPP de baterias es el <strong>laboratorio juridico-tecnico</strong> que la Comision esta usando para calibrar el DPP de otros sectores. El <a href="https://eur-lex.europa.eu/eli/reg/2024/3110" target="_blank" style="color:var(--blue)">Reg. (UE) 2024/3110</a> (nuevo CPR, en vigor desde enero 2025) crea el sistema de <em>Construction Digital Product Passport</em>. La Comision preve actualmente el <strong>acto delegado del sistema para el segundo trimestre de 2027</strong>, y su despliegue sera progresivo mediante desarrollos regulatorios posteriores. Arquitectura (DPPSPs, registro central, niveles de acceso), identificadores (ISO/IEC 15459 + GS1), credenciales verificables y ciberseguridad son comunes a ambos sectores. Dominar el DPP de baterias es prepararse para construccion.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Value Assessment (Battery Pass)</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Value Assessment &mdash; LMT Spotlight</a>
+          </div>
+        </div>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY:</div>
+          <div class="doc-group-links">
+            <a href="https://eur-lex.europa.eu/eli/reg/2024/3110" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2024/3110 — nuevo CPR (EUR-Lex)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FASE 2 -->
+<!-- ============================================================ -->
+<div class="phase phase-blue">
+  <div class="phase-header collapsed" onclick="toggle(this)">
+    <div class="phase-number">2</div>
+    <div class="phase-info">
+      <h2>Mapear tus datos actuales</h2>
+      <p>Identificar que datos ya tienes, cuales faltan, y quien los genera</p>
+    </div>
+    <span class="phase-deadline">Meses 1-2</span>
+    <span class="phase-chevron">&#x25BE;</span>
+  </div>
+  <div class="phase-body hidden">
+    <div class="step">
+      <div class="step-icon">&#x1F50D;</div>
+      <div class="step-content">
+        <h3>Auditoria de datos: las 7 secciones del Battery Passport</h3>
+        <p>Cruzar cada campo con tu informacion real, empezando por la matriz de 71 data points de la Comision y completando con el Longlist. Las 7 secciones del modelo tecnico son: <strong>General</strong>, <strong>Material Composition</strong>, <strong>Performance &amp; Durability</strong>, <strong>Carbon Footprint</strong>, <strong>Circularity</strong>, <strong>Compliance</strong>, <strong>Supply Chain</strong>. El numero exacto de campos varia segun categoria de bateria y version del modelo de datos (aprox. 80&ndash;90 atributos entre obligatorios y voluntarios).</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Content Guidance (Battery Pass)</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Content Guidance Q&amp;A</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Data Attribute Longlist v2.0 (27 ago 2026)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x1F4CA;</div>
+      <div class="step-content">
+        <h3>Clasificar cada campo por estado</h3>
+        <p>Marcar cada atributo como: <strong>Confirmado</strong> (dato verificado), <strong>Parcial</strong> (dato generico), <strong>Supuesto</strong> (coherente pero sin confirmar), <strong>Pendiente</strong> (sin dato), <strong>Dinamico</strong> (dato derivado del uso, normalmente procedente del BMS y sujeto a actualizacion durante el ciclo de vida).</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-solucion">SOLUCION PROPIA:</div>
+          <div class="doc-group-links">
+            <span class="doc-link doc-local">&#x1F4CA; Ejemplo: Mapping campos LMT/LFP (doc. interno)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x1F3ED;</div>
+      <div class="step-content">
+        <h3>Identificar responsables y fuentes por campo</h3>
+        <p>&iquest;Quien genera cada dato? Ingenieria, calidad, compras, laboratorio externo, proveedor Tier 1, BMS&hellip; Cada campo tiene un responsable y un documento fuente.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-solucion">SOLUCION PROPIA:</div>
+          <div class="doc-group-links">
+            <a href="mapping-trackline-dpp.html" class="doc-link doc-solucion" target="_blank">&#x1F4CA; Ejemplo: Mapping Trackline &#x2194; DPP</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SPEC-PACK-DPP R3: tarjeta-puente al mapping -->
+<a class="bridge-card" href="mapping-trackline-dpp.html" target="_blank">
+  <div class="bc-title">&#x1F4CA; Ver el mapping completo campo a campo &#x2192;</div>
+  <div class="bc-sub">166 datos &middot; 10 fases &middot; cada dato con su campo en el esquema oficial de la Comision (baterias 1.0.0), nivel de acceso, aplicabilidad y fuente (mapping v09, nov 2026)</div>
+</a>
+
+<!-- ============================================================ -->
+<!-- FASE 3 -->
+<!-- ============================================================ -->
+<div class="phase phase-amber">
+  <div class="phase-header collapsed" onclick="toggle(this)">
+    <div class="phase-number">3</div>
+    <div class="phase-info">
+      <h2>Completar los datos obligatorios</h2>
+      <p>Obtener certificaciones, ensayos, calculos LCA y datos de proveedores</p>
+    </div>
+    <span class="phase-deadline">Meses 3-8</span>
+    <span class="phase-chevron">&#x25BE;</span>
+  </div>
+  <div class="phase-body hidden">
+    <div class="step">
+      <div class="step-icon">&#x1F30D;</div>
+      <div class="step-content">
+        <h3>Huella de carbono (Carbon Footprint)</h3>
+        <p>Calcular la huella CO&#x2082; por kWh segun metodologia PEF. Desglosar por etapa del ciclo de vida: extraccion materias primas, fabricacion, distribucion, fin de vida. Aplicacion condicionada: fechas base <strong>18/02/2025 (EV)</strong>, <strong>18/02/2026 (industrial &gt;2 kWh almacenamiento interno)</strong>, <strong>18/08/2028 (LMT)</strong>, <strong>18/08/2030 (industrial almacenamiento externo)</strong> &mdash; <strong>o el numero de meses fijado tras la entrada en vigor del acto delegado de metodologia <em>o</em> del acto de ejecucion sobre el formato de la declaracion, lo que sea posterior</strong> (Art. 7 Reg. 2023/1542; +12 meses para EV, +18 meses para industrial y LMT). Ambos actos siguen en borrador.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY:</div>
+          <div class="doc-group-links">
+            <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2023/1542 Art. 7 (EUR-Lex)</a>
+          </div>
+        </div>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Carbon Footprint Rules (Battery Pass)</a>
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; End-of-Life Analysis (Battery Pass)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x2697;&#xFE0F;</div>
+      <div class="step-content">
+        <h3>Composicion de materiales y sustancias peligrosas</h3>
+        <p>Documentar quimica de la celda, materias primas criticas (litio, grafito, cobalto&hellip;), sustancias peligrosas (REACH), y contenido reciclado por material (litio, cobalto, niquel, plomo).</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY:</div>
+          <div class="doc-group-links">
+            <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2023/1542 Art. 8 (EUR-Lex)</a>
+          </div>
+        </div>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; DIN DKE SPEC 99100 &sect; Material Composition</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x26A1;</div>
+      <div class="step-content">
+        <h3>Rendimiento y durabilidad</h3>
+        <p>Datos tecnicos: capacidad nominal, voltaje, eficiencia round-trip, ciclos de vida esperados, umbral SoH. Preparar conexion BMS para datos dinamicos (SoC, ciclos completados, eventos negativos, temperaturas).</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Content Guidance &sect; Performance (Battery Pass)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x267B;&#xFE0F;</div>
+      <div class="step-content">
+        <h3>Circularidad y fin de vida</h3>
+        <p>Manual de desmontaje, contenido reciclado (pre/post consumidor), requisitos de seguridad, agentes extintores, informacion de segunda vida, red de recogida selectiva, piezas de recambio.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; End-of-Life Analysis (Battery Pass)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x1F517;</div>
+      <div class="step-content">
+        <h3>Due diligence en la cadena de suministro</h3>
+        <p>Politica de diligencia debida, informe anual de divulgacion (Art. 52) y trazabilidad de materias primas. Aplicable desde el <strong>18 de agosto de 2027</strong> (Arts. 48-53), tras el aplazamiento del <a href="https://eur-lex.europa.eu/eli/reg/2025/1561" target="_blank" style="color:var(--amber)">Reglamento (UE) 2025/1561</a>.</p>
+        <p style="margin-top:8px;padding:10px 12px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;font-size:13px"><strong>Dos precisiones que suelen darse por sentadas mal:</strong><br><br>&nbsp;&bull; <strong>No aplica a todo el mundo.</strong> El <strong>Art. 47</strong> excluye a los operadores economicos con un volumen de negocios neto <strong>inferior a 40 millones de euros</strong> en el ejercicio anterior al ultimo, salvo que formen parte de un grupo que supere ese umbral en base consolidada.<br><br>&nbsp;&bull; <strong>Quien verifica.</strong> El Art. 48.2 exige que las politicas de diligencia debida sean <strong>verificadas por un organismo notificado</strong> (&laquo;verificacion por terceros&raquo;) y auditadas periodicamente por el. Esquemas del sector como RMI o RMAP pueden servir de apoyo al cumplimiento, pero no son lo que exige literalmente la ley ni sustituyen esa verificacion.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY:</div>
+          <div class="doc-group-links">
+            <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2023/1542 Arts. 48-52 (EUR-Lex)</a>
+            <a href="https://eur-lex.europa.eu/eli/reg/2025/1561" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2025/1561 — aplazamiento due diligence (EUR-Lex)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x2705;</div>
+      <div class="step-content">
+        <h3>Conformidad y certificacion</h3>
+        <p>Declaracion de conformidad UE, informes de ensayo, simbolo de recogida separada, etiqueta de huella de carbono. La <strong>evaluacion de la conformidad</strong> se realiza conforme al <strong>Art. 17 y el Anexo VIII</strong> del Reglamento: <strong>Modulo A</strong> (control interno de la produccion), <strong>Modulo D1</strong> (aseguramiento de la calidad del proceso) o <strong>Modulo G</strong> (verificacion por unidad), segun se trate de fabricacion en serie o no, y con D1 o G obligatorios para los requisitos de los Arts. 7 y 8 (huella de carbono y contenido reciclado). Los documentos del Battery Pass pueden servir de apoyo tecnico, pero no sustituyen ese procedimiento.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Conformity Assessment (Battery Pass)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FASE 4 -->
+<!-- ============================================================ -->
+<div class="phase phase-purple">
+  <div class="phase-header collapsed" onclick="toggle(this)">
+    <div class="phase-number">4</div>
+    <div class="phase-info">
+      <h2>Digitalizar: construir el Battery Passport</h2>
+      <p>Estructurar los datos en formato estandar, generar el data carrier y preparar el registro</p>
+    </div>
+    <span class="phase-deadline">Meses 6-10</span>
+    <span class="phase-chevron">&#x25BE;</span>
+  </div>
+  <div class="phase-body hidden">
+    <div class="step">
+      <div class="step-icon">&#x1F5C2;&#xFE0F;</div>
+      <div class="step-content">
+        <h3>Estructurar los datos segun el esquema oficial de la Comision</h3>
+        <p>Convertir tus datos al <strong>formato JSON que lee el registro DPP</strong>: el esquema oficial de baterias (<strong>artefactos semanticos 1.0.0</strong>, publicados por la Comision el 30 oct 2026). Tiene un nucleo comun a todos los pasaportes y un subgrupo por categoria (EV, industrial, LMT), y cada dato lleva su nombre tecnico y su nivel de acceso (publico o restringido). El registro lee el JSON en la URL del identificador unico del pasaporte y lo valida, asi que el formato importa. El modelo de BatteryPass-Ready (Data Model v2.0, 27 ago 2026) sigue siendo una referencia util de contenido, pero sus nombres de campo no siempre coinciden con los oficiales.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://single-market-economy.ec.europa.eu/single-market/digital-product-passport/resources-documentation_en" class="doc-link doc-external" target="_blank">&#x1F517; Comision: guia semantica y artefactos del registro DPP (30 oct 2026)</a>
+            <a href="https://github.com/batterypass/BatteryPassDataModel" class="doc-link doc-external" target="_blank">&#x1F517; GitHub: BatteryPassDataModel (referencia)</a>
+          </div>
+        </div>
+        <div class="doc-group">
+          <div class="doc-group-label dg-solucion">SOLUCION PROPIA:</div>
+          <div class="doc-group-links">
+            <span class="doc-link doc-local">&#x1F4CA; Ejemplo: dpp.json LMT/LFP (doc. interno)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x1F510;</div>
+      <div class="step-content">
+        <h3>Implementar control de acceso por roles</h3>
+        <p>El Battery Passport tiene acceso diferenciado: datos publicos (consumidor), datos tecnicos (recicladores), datos confidenciales (autoridades). Definir que ve cada rol.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; Technical Guidance &sect; Access Control (Battery Pass)</a>
+          </div>
+        </div>
+        <div class="doc-group">
+          <div class="doc-group-label dg-solucion">SOLUCION PROPIA:</div>
+          <div class="doc-group-links">
+            <span class="doc-link doc-local">&#x1F4C4; Control de acceso por roles (doc. interno)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x1F4F2;</div>
+      <div class="step-content">
+        <h3>Generar data carrier (QR code u otro)</h3>
+        <p>El Art. 77.3 es explicito: <strong>el pasaporte para baterias sera accesible por medio del codigo QR</strong> a que se refiere el Art. 13.6, que enlazara con un identificador unico atribuido por el operador economico que introduce la bateria en el mercado. El QR y el identificador deben cumplir las normas <strong>ISO/IEC 15459</strong> (partes 1 a 6) o equivalentes. Es decir: <strong>hoy el QR es obligatorio</strong>. Data Matrix, NFC u otros soportes pueden anadirse como complemento, pero no lo sustituyen. La forma concreta de la URL (p. ej. GS1 Digital Link) si depende de la implementacion elegida.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY:</div>
+          <div class="doc-group-links">
+            <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2023/1542 Art. 77 (EUR-Lex)</a>
+          </div>
+        </div>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; DIN DKE SPEC 99100 &sect; Data Carrier</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x26D3;&#xFE0F;</div>
+      <div class="step-content">
+        <h3>Registrar evidencia (trazabilidad blockchain)</h3>
+        <p>Opcional: registrar datos verificados en blockchain para evidencia inmutable. No es un requisito legal, sino una capa adicional de confianza y trazabilidad.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-solucion">SOLUCION PROPIA:</div>
+          <div class="doc-group-links">
+            <a href="https://web.codecontractplattform.com/" class="doc-link doc-interno" target="_blank">&#x1F517; Trackline by Code Contract</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FASE 5 -->
+<!-- ============================================================ -->
+<div class="phase phase-red">
+  <div class="phase-header collapsed" onclick="toggle(this)">
+    <div class="phase-number">5</div>
+    <div class="phase-info">
+      <h2>Validar, registrar y poner en produccion</h2>
+      <p>Verificar conformidad, registrar el identificador unico del pasaporte y activarlo</p>
+    </div>
+    <span class="phase-deadline">Antes Feb 2027</span>
+    <span class="phase-chevron">&#x25BE;</span>
+  </div>
+  <div class="phase-body hidden">
+    <div class="step">
+      <div class="step-icon">&#x1F9EA;</div>
+      <div class="step-content">
+        <h3>Validar el JSON y probar en el test environment</h3>
+        <p>El entorno de pruebas de BatteryPass-Ready esta <strong>disponible desde el 24 de junio de 2026</strong> (liderado por Fraunhofer IPK). Permite <strong>probar estructuras, esquemas y escenarios alineados con el Reg. 2023/1542</strong> antes de ir a produccion, con casos para baterias de vehiculos electricos, industriales &gt;2 kWh y LMT. <strong>No certifica juridicamente la conformidad</strong>: es un entorno para evaluar soluciones, no un validador oficial. La conformidad legal se acredita por la via del Art. 17 y el Anexo VIII. El entorno se actualizo el 16 oct 2026, y el 29 oct BatteryPass-Ready publico ademas un modelo de empresa (roles y procesos para implantar el pasaporte).</p>
+        <p style="margin-top:8px;padding:10px 12px;background:#ecfdf5;border:1px solid #6ee7b7;border-radius:8px;font-size:13px"><strong>Validar contra el formato oficial ya es posible.</strong> Con los artefactos semanticos, la Comision publica un <strong>JSON Schema</strong>, reglas <strong>SHACL</strong> y ejemplos validos por categoria. Con ellos se comprueba que tu JSON cumple el esquema sin esperar al registro. La Comision avisa de que las funciones de prueba del propio registro se activaran de forma gradual antes de su entrada en produccion.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA:</div>
+          <div class="doc-group-links">
+            <a href="https://thebatterypass.eu/resources/" class="doc-link doc-guia" target="_blank">&#x1F517; BatteryPass-Ready (Battery Pass)</a>
+            <a href="https://thebatterypass.io" class="doc-link doc-external" target="_blank">&#x1F517; Demo Battery Pass</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x1F3DB;&#xFE0F;</div>
+      <div class="step-content">
+        <h3>Registrar el identificador unico del pasaporte en el registro DPP de la Comision</h3>
+        <p><strong>El registro ya existe y esta operativo desde el 20 de julio de 2026.</strong> Sus modalidades de aplicacion las fija el <strong>Reglamento de Ejecucion (UE) 2026/1778, de 16 de julio de 2026</strong>, cuyo articulo 1.1.b) cubre expresamente &laquo;las pilas y baterias a las que se aplica el articulo 77 del Reglamento (UE) 2023/1542&raquo;. El operador economico debe inscribir los <strong>identificadores unicos</strong> del producto y ciertos metadatos <strong>antes de la primera comercializacion</strong>; el contenido completo del DPP se aloja en su propio sistema (o el de un operador autorizado) y se accede via el data carrier. El acceso al registro es por interfaz segura o <strong>API</strong>, y hay entorno de pruebas disponible, asi que la integracion se puede preparar ya.</p>
+        <p style="margin-top:8px;padding:10px 12px;background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;font-size:13px"><strong>&#x26A0;&#xFE0F; A 10 nov 2026:</strong> la guia de usuario del registro (v1.03, 16 sep 2026) todavia indica que el alta de baterias no esta disponible. Cuando se abra, el registro leera el JSON publicado en la URL del identificador unico y lo validara contra el esquema oficial: si la URL no responde o el JSON no cumple, devuelve error. Por eso conviene tener el JSON validado antes.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY:</div>
+          <div class="doc-group-links">
+            <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. 2023/1542 Art. 77 (EUR-Lex)</a>
+            <a href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj" class="doc-link doc-normativa" target="_blank">&#x1F517; ESPR 2024/1781 Arts. 12-13 (EUR-Lex)</a>
+            <a href="https://www.boe.es/buscar/doc.php?id=DOUE-L-2026-81091" class="doc-link doc-normativa" target="_blank">&#x1F517; Reg. de Ejecucion (UE) 2026/1778 &mdash; registro DPP</a>
+          </div>
+        </div>
+        <div class="doc-group">
+          <div class="doc-group-label" style="color:#6b21a8;">REFERENCIAS EXTERNAS:</div>
+          <div class="doc-group-links">
+            <a href="https://single-market-economy.ec.europa.eu/news/digital-product-passport-registry-now-live-2026-07-20_en" class="doc-link doc-external" target="_blank">&#x1F517; Comision Europea &mdash; el registro DPP esta operativo</a>
+            <a href="https://single-market-economy.ec.europa.eu/single-market/digital-product-passport/resources-documentation_en" class="doc-link doc-external" target="_blank">&#x1F517; Comision Europea &mdash; guias tecnicas y de usuario del registro</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x1F504;</div>
+      <div class="step-content">
+        <h3>Mantener datos actualizados durante toda la vida util</h3>
+        <p>El Battery Passport es un documento vivo. Conviene distinguir dos obligaciones distintas: el <strong>Art. 14</strong> obliga a que el <strong>BMS</strong> mantenga actualizados determinados parametros de estado de salud y durabilidad (Anexo VII) y permita el acceso de solo lectura; y el <strong>Anexo XIII</strong> exige que el pasaporte incluya informacion derivada del uso de la bateria. El BMS es, por tanto, la <strong>fuente natural</strong> de esos datos dinamicos, pero el Reglamento no fija una cadencia concreta de actualizacion del pasaporte via BMS. Los datos de modelo se actualizan cuando cambian.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTADO -->
+<div class="result-box">
+  <h2>&#x1F3AF; Battery Passport operativo</h2>
+  <p>Tu bateria tiene un pasaporte digital completo, accesible via data carrier (QR), con su identificador unico registrado en el registro DPP de la Comision y los datos exactos, completos, actualizados, interoperables, integros y accesibles segun permisos.</p>
+  <div class="result-items">
+    <div class="result-item">&#x1F4F2; Data carrier (QR) en bateria</div>
+    <div class="result-item">&#x1F4CA; Los 71 data points de la Comision cubiertos</div>
+    <div class="result-item">&#x1F3DB;&#xFE0F; Identificador en registro DPP</div>
+    <div class="result-item">&#x1F504; Datos dinamicos BMS</div>
+    <div class="result-item">&#x1F510; Acceso por roles</div>
+  </div>
+</div>
+
+</div>
+
+
+<!-- ============================================================ -->
+<!-- OBLIGACION LEGAL VS APORTE TRACKLINE -->
+<!-- ============================================================ -->
+<div style="max-width:1100px;margin:30px auto;padding:0 20px;">
+  <h2 style="font-size:22px;color:var(--dark);margin-bottom:6px;">&iquest;Que exige la ley y que aporta Trackline hoy?</h2>
+  <p style="font-size:14px;color:var(--gray);margin-bottom:14px;">El Reglamento define el <em>que</em> (obligaciones funcionales). Trackline aporta el <em>como</em> operativo durante la fase de preparacion del DPP. La columna derecha distingue lo que esta operativo hoy (<strong style="color:var(--green);">&#x2713;</strong>), lo que esta en construccion (<strong style="color:#d97706;">&#x2699;</strong>) y lo que esta en roadmap pendiente del ecosistema (<strong style="color:#6b21a8;">&#x1F52E;</strong>). Trackline <strong>no emite hoy el DPP final publicable</strong>: gobierna la preparacion documental hasta que el ecosistema (registro central, FprEN, actos delegados) este operativo.</p>
+  <table style="width:100%;border-collapse:collapse;font-size:13px;background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+    <thead>
+      <tr style="background:#f8fafc;">
+        <th style="border:1px solid var(--border);padding:10px 12px;text-align:left;color:var(--blue);width:16%;">Elemento</th>
+        <th style="border:1px solid var(--border);padding:10px 12px;text-align:left;color:var(--blue);width:42%;">Exigencia legal (Reg. 2023/1542 + ESPR)</th>
+        <th style="border:1px solid var(--border);padding:10px 12px;text-align:left;color:var(--green);width:42%;">Aporte Trackline a 10 nov 2026</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">Datos del pasaporte</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;">Informacion precisa, exhaustiva y actualizada (Art. 77.4); formato interoperable, estructurado y de lectura mecanizada (Art. 77.5)</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;background:#f7fdf9;"><strong style="color:var(--green);">&#x2713;</strong> Estructurado del dataset segun Anexo XIII + DIN DKE SPEC 99100. Responsables por campo, fuente, evidencia y estado (confirmado/parcial/asumido/pendiente/dinamico).</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">Validacion</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;">Datos exactos y completos antes de poner en mercado</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;background:#f7fdf9;"><strong style="color:var(--green);">&#x2713;</strong> Validacion interna pre-publicacion: deteccion de campos faltantes, inconsistencias y contradicciones por persona autorizada.</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">Trazabilidad</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;">Autenticacion, fiabilidad e integridad del dato (Art. 78, letra g)</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;background:#f7fdf9;"><strong style="color:var(--green);">&#x2713;</strong> Cadena de eventos verificable: quien envia, quien recibe, quien valida, hora, dia, archivo. <strong>Hash interno del dataset</strong> generado desde Trackline como prueba de integridad propia (no es sello cualificado eIDAS).</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">Vista previa</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;">El operador economico debe poder revisar la informacion antes de su puesta a disposicion</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;background:#fff8eb;"><strong style="color:var(--green);">&#x2713;</strong> Vista previa parcial del DPP antes de publicacion. <strong style="color:#d97706;">&#x2699;</strong> Vista previa completa con segmentacion por audiencia (publico / autoridades / interes legitimo) en construccion.</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">Accesos por rol</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;">Acceso publico / autoridades + organismos notificados / interes legitimo segun permisos (Art. 78 + Anexo XIII)</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;background:#fff8eb;"><strong style="color:#d97706;">&#x2699;</strong> Diseno visual de roles listo (Administrador / Calidad / Produccion / Sostenibilidad / Organismo Notificado). Permisos granulares backend en desarrollo.</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">QR / publicacion</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;">QR (data carrier) e identificador unico conforme a ISO/IEC 15459 (Arts. 13.6 + 77.3); carga del identificador unico en el registro DPP (Art. 77.10, anadido por el ESPR, en relacion con el Art. 13 ESPR y el Reg. de Ejecucion (UE) 2026/1778)</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;background:#f5f3ff;"><strong style="color:#6b21a8;">&#x1F52E;</strong> Roadmap: emision del DPP final + QR fisico + conexion al registro DPP de la Comision, <strong>operativo desde el 20 jul 2026</strong>. Trackline esta siendo preparado para esa integracion.</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">Actualizacion</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;">Datos actualizados durante el ciclo de vida; informacion derivada del uso (Art. 14 + Anexo XIII, punto 4)</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;background:#f5f3ff;"><strong style="color:var(--green);">&#x2713;</strong> Actualizacion documental manual con historial fechado y trazado. <strong style="color:#6b21a8;">&#x1F52E;</strong> Integracion BMS en tiempo real en roadmap.</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid var(--border);padding:10px 12px;font-weight:600;">Capa eIDAS cualificada</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;">El Reglamento <em>no exige</em> firma/sello cualificado eIDAS, pero aporta valor probatorio reforzado para inspecciones, garantias y litigios</td>
+        <td style="border:1px solid var(--border);padding:10px 12px;background:#f5f3ff;"><strong style="color:#6b21a8;">&#x1F52E;</strong> Roadmap: firma electronica cualificada (Art. 25), sello electronico cualificado (Art. 35), sello de tiempo cualificado (Art. 41), QEAA via EUDI Wallet.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:11px;color:var(--gray);margin-top:8px;font-style:italic;">El Reglamento no exige una tecnologia concreta (blockchain, firma cualificada, etc.); exige resultados funcionales. Trackline gobierna la preparacion documental del DPP &mdash; estructurado, validado, trazable y con hash propio &mdash; hasta que el ecosistema permita la publicacion final. Las capacidades marcadas con <strong style="color:#d97706;">&#x2699;</strong> y <strong style="color:#6b21a8;">&#x1F52E;</strong> no estan operativas hoy.</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- PROXIMOS PASOS CON TRACKLINE -->
+<!-- ============================================================ -->
+
+<!-- ============================================================ -->
+<!-- SPEC-PACK-DPP G11: FAQ -->
+<!-- ============================================================ -->
+<div class="faq-box">
+  <div class="faq">
+    <div class="faq-title">&#x2753; Preguntas frecuentes sobre el Battery Passport</div>
+
+    <div class="faq-item">
+      <div class="faq-q collapsed" onclick="toggleFaq(this)"><span class="faq-icon">&#x1F4AC;</span> &iquest;El Battery Passport ya es obligatorio hoy? <span class="faq-chevron">&#x25BE;</span></div>
+      <div class="faq-a hidden">El marco juridico ya esta en vigor (Reg. 2023/1542), pero la obligacion del pasaporte digital con QR aplica desde el <strong>18 de febrero de 2027</strong> para baterias de vehiculos electricos, LMT e industriales con capacidad &gt;2 kWh, antes de su primera comercializacion. La recomendacion es prepararse ahora: la recogida de datos upstream (proveedores, ACV, ensayos) es el principal cuello de botella y consume meses.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q collapsed" onclick="toggleFaq(this)"><span class="faq-icon">&#x1F50B;</span> &iquest;A que baterias aplica y a cuales no? <span class="faq-chevron">&#x25BE;</span></div>
+      <div class="faq-a hidden">Conviene no confundir las dos cosas. <strong>El Reglamento (UE) 2023/1542 se aplica a todas las categorias de pilas y baterias</strong> (Art. 1.3): portatiles, SLI, LMT, de vehiculos electricos e industriales. La que solo alcanza a algunas es la <strong>obligacion de pasaporte</strong> del Art. 77.1: baterias LMT, industriales con capacidad &gt;2 kWh y de vehiculos electricos. Las portatiles y las SLI no llevan pasaporte, pero si estan sujetas al resto del Reglamento (etiquetado, contenido reciclado en SLI, removibilidad, restricciones de sustancias, recogida) y, ojo, <strong>tambien llevan codigo QR desde el 18 de febrero de 2027</strong>: el Art. 13.6 lo exige a todas las pilas y baterias. Lo que cambia es a donde lleva ese QR: al pasaporte en LMT, industriales &gt;2 kWh y EV; al etiquetado, la declaracion de conformidad y la informacion de residuos en las demas.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q collapsed" onclick="toggleFaq(this)"><span class="faq-icon">&#x1F4C4;</span> &iquest;Puedo limitarme a subir PDFs como pasaporte? <span class="faq-chevron">&#x25BE;</span></div>
+      <div class="faq-a hidden">No. El Art. 77.4 exige informacion precisa, exhaustiva y actualizada, y el <strong>Art. 77.5</strong> anade que se base en normas abiertas y tenga formato <strong>interoperable, de lectura mecanizada, estructurado y con capacidad de busqueda</strong>, transferible por una red abierta sin vinculacion a proveedor. Un PDF estatico no cumple esos resultados: el pasaporte requiere datos estructurados (el formato oficial es el esquema JSON de baterias publicado por la Comision el 30 oct 2026, que es lo que lee el registro).</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q collapsed" onclick="toggleFaq(this)"><span class="faq-icon">&#x23F3;</span> &iquest;Que hago si los actos delegados (p. ej. huella de carbono) siguen pendientes? <span class="faq-chevron">&#x25BE;</span></div>
+      <div class="faq-a hidden">Conviene separar dos planos. <strong>El nucleo de la infraestructura ya esta operativo:</strong> seis de las ocho normas armonizadas del DPP se publicaron en mayo de 2026 y se citaron en el DOUE en julio, y el registro de la Comision funciona desde el 20 de julio de 2026. Quedan las dos normas restantes. <strong>Lo que sigue pendiente es el contenido:</strong> huella de carbono, contenido reciclado, clases de rendimiento y, sobre todo, el acto de ejecucion de derechos de acceso del Art. 77.9, cuyo plazo vencio el 18 de agosto de 2026 (su borrador esta en consulta hasta el 16 de noviembre de 2026). Las fechas base condicionadas siguen su regla (adopcion del acto + un plazo posterior, p. ej. +12 meses para EV) y el sector opera mientras tanto con referencias de facto como el GBA GHG Rulebook. La estrategia correcta no cambia: estructurar ya el dataset y las evidencias para que, cuando salga el acto delegado, solo haya que ajustar la metodologia y no empezar de cero.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q collapsed" onclick="toggleFaq(this)"><span class="faq-icon">&#x1F4D0;</span> &iquest;Que normas tengo que aplicar, y cuales existen ya en espanol? <span class="faq-chevron">&#x25BE;</span></div>
+      <div class="faq-a hidden">Las normas del sistema DPP son las <strong>EN 18216, 18219, 18220, 18221, 18222 y 18223</strong>, citadas en el DOUE por la Decision de Ejecucion (UE) 2026/1736 y ya ratificadas en Espana como <strong>UNE-EN 182xx:2026</strong> (Resolucion de 2 de agosto de 2026, BOE del 13 de agosto). Quedan dos por citar, EN 18239 (derechos de acceso y seguridad) y EN 18246 (autenticacion e integridad). Aplicarlas es <strong>voluntario</strong>: dan presuncion de conformidad con los arts. 10 y 11 del ESPR, pero la obligacion de tener pasaporte nace del Reglamento (UE) 2023/1542, no de la norma. Ojo: definen el sistema (identificar, transportar, almacenar e intercambiar el pasaporte), no el contenido de baterias, que sigue viniendo del Art. 77 y el Anexo XIII. El comite espejo espanol es el <strong>CTN 333</strong>.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q collapsed" onclick="toggleFaq(this)"><span class="faq-icon">&#x1F4C5;</span> &iquest;Se ha retrasado el 18 de febrero de 2027? <span class="faq-chevron">&#x25BE;</span></div>
+      <div class="faq-a hidden">No. A septiembre de 2026 no existe ninguna propuesta ni acuerdo para aplazar el Art. 77. Lo que si se aplazo, y suele confundirse, es la <strong>diligencia debida</strong> de la cadena de suministro (arts. 48-53), que paso al 18 de agosto de 2027 por el Reg. (UE) 2025/1561. Tambien hay una propuesta abierta, el paquete de simplificacion ambiental COM(2025) 981, que aplazaria 18 meses la <strong>extraibilidad y sustituibilidad de packs LMT</strong>: es materia distinta del pasaporte y todavia es una propuesta, no derecho vigente.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q collapsed" onclick="toggleFaq(this)"><span class="faq-icon">&#x26D3;&#xFE0F;</span> &iquest;Es obligatorio usar blockchain o firma electronica cualificada? <span class="faq-chevron">&#x25BE;</span></div>
+      <div class="faq-a hidden">No. El Reglamento <strong>no exige una tecnologia concreta</strong>: exige resultados funcionales (autenticidad, fiabilidad, integridad, trazabilidad del dato). Blockchain, el sello cualificado eIDAS o el hash criptografico son medios voluntarios para reforzar el valor probatorio. Un hash interno del dataset es prueba de integridad para gobernanza interna, pero no equivale legalmente a un sello de tiempo cualificado eIDAS.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q collapsed" onclick="toggleFaq(this)"><span class="faq-icon">&#x1F3ED;</span> &iquest;Que gana una PYME si empieza ya? <span class="faq-chevron">&#x25BE;</span></div>
+      <div class="faq-a hidden">Tres cosas: (1) ordena documentacion que hoy ya necesita (DoC, ensayos, MSDS, REACH); (2) evita rehacer la recogida de datos cuando llegue el deadline de febrero de 2027, especialmente la de proveedores; y (3) compite mejor frente a OEMs y clientes que ya exigen trazabilidad de cadena de suministro y datos de huella. La PYME suele empezar con un modelo piloto y mas trabajo manual; la gran empresa, con integracion BMS/ERP.</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="cta-section">
+  <div class="cta-box">
+    <h2>&#x1F6E0;&#xFE0F; Proximos pasos: preparacion hoy &rarr; publicacion cuando el ecosistema lo permita</h2>
+    <p>Trackline es la plataforma de Code Contract para la <strong>fase de preparacion del DPP</strong>. Hoy gobierna estructurado, validacion, trazabilidad y previsualizacion interna. La publicacion final (QR fisico + inscripcion del identificador unico en el registro DPP) se incorporara conforme avance la integracion: el registro ya esta operativo desde julio de 2026, mientras que los actos delegados de contenido y de derechos de acceso siguen pendientes. El <strong>sellado cualificado eIDAS es una capa voluntaria</strong> que Trackline puede anadir para reforzar el valor probatorio: <em>no</em> existe obligacion legal de sellar cualificadamente cada pasaporte. El Reg. (UE) 2026/1778 si preve mecanismos eIDAS para verificar la identidad del operador que accede al registro, que es cosa distinta.</p>
+    <div class="cta-steps">
+      <div class="cta-step">
+        <div class="cta-step-num" style="background:var(--green);color:#fff;">Hoy &#x2713;</div>
+        <h4>Mapeo y estructurado del dataset</h4>
+        <p>Cargar los datos del DPP en Trackline segun el Anexo XIII y el esquema oficial de la Comision, asignar responsables internos y registrar la fuente de cada dato con su evidencia documental.</p>
+      </div>
+      <div class="cta-step">
+        <div class="cta-step-num" style="background:var(--green);color:#fff;">Hoy &#x2713;</div>
+        <h4>Trazabilidad y hash propio</h4>
+        <p>Cada dato se registra con su cadena de eventos: quien lo aporto, quien lo recibio, quien lo valido, dia y hora, archivo. Trackline genera un <strong>hash interno del dataset</strong> como prueba de integridad propia (no equivale a sello cualificado eIDAS).</p>
+      </div>
+      <div class="cta-step">
+        <div class="cta-step-num" style="background:#d97706;color:#fff;">En curso &#x2699;</div>
+        <h4>Vista previa y gobernanza por rol</h4>
+        <p>Vista previa del DPP por audiencia (publico / autoridades / interes legitimo) y permisos granulares por rol (Administrador, Calidad, Produccion, Sostenibilidad, Organismo Notificado). En construccion para llegar listo al deadline.</p>
+      </div>
+      <div class="cta-step">
+        <div class="cta-step-num" style="background:#6b21a8;color:#fff;">Roadmap &#x1F52E;</div>
+        <h4>Publicacion final cuando el ecosistema este listo</h4>
+        <p>Emision del JSON DPP definitivo, generacion del data carrier QR fisico, conexion al registro central DPP (operativo desde jul 2026), e integracion con la capa eIDAS cualificada. Trackline esta siendo preparado para activar esta fase cuando los actos delegados y normas armonizadas esten en vigor.</p>
+      </div>
+    </div>
+    <div class="cta-links">
+      <a href="https://web.codecontractplattform.com/" class="cta-link cta-link-primary" target="_blank">&#x1F517; Acceder a Trackline</a>
+      <a href="https://codecontract.io" class="cta-link cta-link-secondary" target="_blank">&#x1F517; Code Contract S.L.</a>
+      <a href="visor.html" class="cta-link cta-link-secondary">&#x1F517; Ver ejemplo en el Visor DPP Baterías</a>
+      <a href="mapping-trackline-dpp.html" class="cta-link cta-link-secondary" target="_blank">&#x1F4CA; Mapping Trackline &#x2194; DPP</a>
+      <a href="validador/" class="cta-link cta-link-secondary">&#x2705; Validador DPP Baterias</a>
+      <a href="https://www.linkedin.com/pulse/dpp-1-por-qu%C3%A9-el-pasaporte-digital-de-producto-eduardo-rico-stief/" class="cta-link cta-link-secondary" target="_blank">&#x1F4DD; &iquest;Por qu&eacute; el DPP? &mdash; Art&iacute;culo LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<footer class="pk-footer">
+  <strong>Fuentes oficiales de la UE:</strong>
+  <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng" target="_blank">Reg. (UE) 2023/1542</a> &middot;
+  <a href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj" target="_blank">ESPR (UE) 2024/1781</a> &middot;
+  <a href="https://www.boe.es/buscar/doc.php?id=DOUE-L-2026-81080" target="_blank">Decision (UE) 2026/1736 (normas armonizadas)</a> &middot;
+  <a href="https://www.boe.es/buscar/doc.php?id=DOUE-L-2026-81091" target="_blank">Reg. (UE) 2026/1778 (registro DPP)</a> &middot;
+  <a href="https://single-market-economy.ec.europa.eu/news/guidance-support-preparations-digital-batteries-passport-2026-08-21_en" target="_blank">Guia de la Comision (71 data points)</a> &middot;
+  <a href="https://single-market-economy.ec.europa.eu/single-market/digital-product-passport/resources-documentation_en" target="_blank">Documentacion tecnica del registro DPP</a><br>
+  <strong>Actos en tramitacion (portal &laquo;Have your say&raquo;):</strong>
+  <a href="https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/14858" target="_blank">14858 &mdash; contenido reciclado</a> &middot;
+  <a href="https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/16473" target="_blank">16473 &mdash; derechos de acceso (Art. 77.9)</a> &middot;
+  <a href="https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/14456" target="_blank">14456 &mdash; etiquetado (Art. 13.10)</a> &middot;
+  <a href="https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/13877" target="_blank">13877 &mdash; huella de carbono EV</a><br>
+  <strong>Normalizacion (organismos europeos y nacionales de normalizacion; sus normas no son legislacion por si mismas):</strong>
+  <a href="https://www.cencenelec.eu/" target="_blank">CEN-CENELEC</a> &middot;
+  <a href="https://www.une.org/encuentra-tu-norma/comites-tecnicos-de-normalizacion/comite?c=CTN+333" target="_blank">UNE &mdash; CTN 333</a><br>
+  <strong>Referencias tecnicas (consorciales, sin valor normativo):</strong>
+  <a href="https://thebatterypass.eu" target="_blank">BatteryPass-Ready / Battery Pass Consortium</a> &middot;
+  <a href="https://github.com/batterypass/BatteryPassDataModel" target="_blank">BatteryPassDataModel (GitHub)</a><br>
+</footer>
+<div class="pk-strip">
+  <strong>Pack DPP Baterías</strong> &mdash; Guía v1.2 &middot; Mapping v0.9.1 &middot; Visor v1.4 &middot; Validador v0.2 &middot; act. 10 noviembre 2026 &middot; <a href="https://web.codecontractplattform.com/" target="_blank" rel="noopener">Trackline</a> by <a href="https://codecontract.io" target="_blank" rel="noopener">Code Contract S.L.</a><br>
+  <em>Documentación y herramientas orientativas: no constituyen asesoramiento jurídico. Consulta siempre el texto oficial del Reglamento y de los actos vigentes.</em>
+</div>
+
+<script>
+
+function soonToggle(el,e){ if(e){e.preventDefault();e.stopPropagation();}
+  var was=el.classList.contains('open');
+  var a=document.querySelectorAll('.soon.open'); for(var i=0;i<a.length;i++){a[i].classList.remove('open');}
+  if(!was){el.classList.add('open');} }
+document.addEventListener('click',function(){var a=document.querySelectorAll('.soon.open');for(var i=0;i<a.length;i++){a[i].classList.remove('open');}});
+function toggleFaq(q){ q.classList.toggle("collapsed"); var a=q.nextElementSibling; if(a) a.classList.toggle("hidden"); }
+function toggle(header) {
+  header.classList.toggle('collapsed');
+  var body = header.nextElementSibling;
+  while (body && !body.classList.contains('phase-body')) body = body.nextElementSibling;
+  if (body) body.classList.toggle('hidden');
+}
+</script>
+</body>
+</html>

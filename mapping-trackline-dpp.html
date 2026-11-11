@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapping Trackline ↔ DPP Baterías · Code Contract</title>
+<link rel="canonical" href="https://dppbatteries.com/mapping-trackline-dpp.html">
+<meta name="description" content="Correspondencia dato a dato entre el flujo Trackline y el esquema oficial de la Comision para el pasaporte de baterias (baterias 1.0.0, 30 oct 2026). 166 datos, 10 fases.">
+<meta property="og:title" content="Mapping Trackline &harr; DPP Baterias">
+<meta property="og:description" content="Campo del esquema de la Comision, nivel de acceso, aplicabilidad y fuente de cada dato del Pasaporte Digital de Baterias.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dppbatteries.com/mapping-trackline-dpp.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Code Contract - DPP">
+<style>
+:root {
+  --dark: #1a1a2e;
+  --green: #2e7d4f;
+  --green-light: #e8f5ee;
+  --blue: #2563eb;
+  --blue-light: #eff6ff;
+  --amber: #d97706;
+  --amber-light: #fffbeb;
+  --red: #dc2626;
+  --red-light: #fef2f2;
+  --purple: #7c3aed;
+  --purple-light: #f5f3ff;
+  --gray: #6b7280;
+  --border: #e5e7eb;
+  --bg: #f8fafc;
+  --teal: #0d9488;
+  --teal-light: #ccfbf1;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: #1f2937; line-height: 1.6; }
+
+.header {
+  background: linear-gradient(135deg, #0d3b2e 0%, #1a5276 100%);
+  color: white; padding: 40px 20px 32px; text-align: center;
+}
+.header h1 { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
+.header p { font-size: 14px; opacity: 0.8; max-width: 700px; margin: 0 auto; }
+.header .reg-badge {
+  display: inline-block; margin-top: 16px;
+  background: rgba(255,255,255,0.15); padding: 6px 16px; border-radius: 20px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
+}
+.header .back-link {
+  display: inline-block; margin-top: 12px;
+  color: rgba(255,255,255,0.7); font-size: 12px; text-decoration: none;
+}
+.header .back-link:hover { color: white; }
+
+.intro-bar {
+  max-width: 1100px; margin: -20px auto 0; padding: 0 20px; position: relative; z-index: 2;
+}
+.intro-card {
+  background: white; border-radius: 12px; padding: 24px 28px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid var(--border);
+}
+.intro-card h2 { font-size: 16px; margin-bottom: 12px; color: var(--dark); }
+.workflow-steps {
+  display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+  font-size: 13px; color: var(--gray);
+}
+.wf-step {
+  background: var(--green-light); color: var(--green); padding: 4px 12px;
+  border-radius: 6px; font-weight: 600; font-size: 12px;
+}
+.wf-arrow { color: var(--border); font-size: 14px; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+/* Stats */
+.stats-bar {
+  display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
+}
+.stat-card {
+  flex: 1; min-width: 120px; background: white; border-radius: 10px;
+  padding: 16px; text-align: center; border: 1px solid var(--border);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.stat-card .num { font-size: 28px; font-weight: 800; }
+.stat-card .lbl { font-size: 11px; color: var(--gray); margin-top: 2px; }
+.stat-blue .num { color: var(--blue); }
+.stat-green .num { color: var(--green); }
+.stat-amber .num { color: var(--amber); }
+.stat-purple .num { color: var(--purple); }
+.stat-teal .num { color: var(--teal); }
+
+/* Filters */
+.filters {
+  display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; align-items: center;
+}
+.filter-btn {
+  font-size: 11px; padding: 5px 12px; border-radius: 6px;
+  border: 1px solid var(--border); background: white; cursor: pointer;
+  font-weight: 500; transition: all .15s;
+}
+.filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+.filter-btn.active { background: var(--dark); color: white; border-color: var(--dark); }
+.filter-search {
+  margin-left: auto; font-size: 12px; padding: 6px 12px;
+  border: 1px solid var(--border); border-radius: 6px; width: 200px;
+}
+
+/* Sections */
+.section {
+  background: white; border-radius: 12px; border: 1px solid var(--border);
+  margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); overflow: hidden;
+}
+.section-header {
+  display: flex; align-items: center; gap: 12px; padding: 16px 20px;
+  cursor: pointer; user-select: none;
+}
+.section-header:hover { background: #fafbfc; }
+.section-icon {
+  width: 40px; height: 40px; border-radius: 10px; display: flex;
+  align-items: center; justify-content: center; font-size: 18px;
+  flex-shrink: 0;
+}
+.section-header h2 { flex: 1; font-size: 15px; font-weight: 700; }
+.section-count {
+  font-size: 12px; color: var(--gray); background: #f3f4f6;
+  padding: 2px 10px; border-radius: 10px; font-weight: 600;
+}
+.section-chevron { font-size: 12px; color: var(--gray); transition: transform .2s; }
+.section-header.collapsed .section-chevron { transform: rotate(-90deg); }
+.section-body { border-top: 1px solid var(--border); }
+.section-body.hidden { display: none; }
+.section-subtitle {
+  padding: 12px 20px 0; font-size: 12px; color: var(--gray); font-style: italic;
+}
+
+/* Table */
+.map-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.map-table th {
+  text-align: left; padding: 8px 16px; font-size: 11px; font-weight: 700;
+  color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px;
+  background: #fafbfc; border-bottom: 1px solid var(--border);
+}
+.map-table td { padding: 10px 16px; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
+.map-table tr:hover { background: #f8fafc; }
+.map-table tr[data-hidden="true"] { display: none; }
+.field-name { font-weight: 600; color: var(--dark); font-size: 13px; }
+.field-desc { color: var(--gray); font-size: 11px; margin-top: 2px; }
+.field-num { font-size: 10px; color: var(--purple); font-weight: 600; }
+
+/* Badges */
+.source-badge, .prov-badge {
+  display: inline-block; font-size: 10px; padding: 2px 8px;
+  border-radius: 6px; font-weight: 600; margin: 1px 0;
+}
+.src-ficha { background: #dbeafe; color: #1e40af; }
+.src-bms { background: var(--teal-light); color: #065f46; border: 1px dashed var(--teal); }
+.src-erp { background: #ccfbf1; color: #115e59; }
+.src-lab { background: #fce7f3; color: #9d174d; }
+.src-supplier { background: #e9d5ff; color: #5b21b6; }
+.src-acv { background: #d1fae5; color: #065f46; }
+.src-manual { background: #f3f4f6; color: #374151; }
+.src-registro { background: #fef3c7; color: #92400e; }
+.src-trackline { background: #f5f3ff; color: #7c3aed; }
+
+.prov-fab { background: #dbeafe; color: #1e40af; }
+.prov-bms { background: var(--teal-light); color: #065f46; }
+.prov-supplier { background: #e9d5ff; color: #5b21b6; }
+.prov-lab { background: #fce7f3; color: #9d174d; }
+.prov-lca { background: #d1fae5; color: #065f46; }
+.prov-trackline { background: #f5f3ff; color: #7c3aed; }
+.prov-gestor { background: #fef3c7; color: #92400e; }
+
+/* Workflow mini */
+.tl-workflow { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+.tl-step {
+  font-size: 10px; background: var(--green-light); color: var(--green);
+  padding: 2px 6px; border-radius: 4px; font-weight: 600;
+}
+.tl-arrow { font-size: 10px; color: var(--border); }
+
+/* Footer */
+.footer {
+  max-width: 1100px; margin: 40px auto 0; padding: 24px 20px;
+  border-top: 1px solid var(--border); font-size: 12px; color: var(--gray);
+  text-align: center; line-height: 1.8;
+}
+.footer a { color: var(--blue); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+  .header h1 { font-size: 20px; }
+  .map-table th:nth-child(4), .map-table td:nth-child(4) { display: none; }
+  .filter-search { width: 100%; margin-left: 0; }
+}
+
+/* === SPEC-PACK-DPP: nav del pack === */
+.pack-nav { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; align-items:center;
+  background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:10px 16px;
+  max-width:880px; margin:-14px auto 22px; box-shadow:0 2px 6px rgba(0,0,0,.07); position:relative; z-index:2; }
+.pack-nav .pn-label { font-size:11px; font-weight:700; color:#94a3b8; letter-spacing:.07em; text-transform:uppercase; margin-right:6px; }
+.pack-nav a { font-size:13px; font-weight:600; color:#475569; text-decoration:none; padding:6px 14px; border-radius:8px; }
+.pack-nav a:hover { background:#f1f5f9; }
+.pack-nav a.active { background:#1a1a2e; color:#fff; }
+.soon { position:relative; cursor:default; }
+.soon .soon-bubble { display:none; position:absolute; left:50%; bottom:calc(100% + 10px); transform:translateX(-50%);
+  background:#1a1a2e; color:#fff; font-size:12px; font-weight:600; white-space:nowrap; padding:7px 12px;
+  border-radius:8px; box-shadow:0 6px 18px rgba(15,23,42,.22); z-index:60; letter-spacing:.01em; }
+.soon .soon-bubble::after { content:""; position:absolute; top:100%; left:50%; transform:translateX(-50%);
+  border:6px solid transparent; border-top-color:#1a1a2e; }
+.soon.open .soon-bubble { display:block; }
+.pn-soon { display:inline-block; font-size:13px; font-weight:600; color:#94a3b8; padding:6px 14px; border-radius:8px; }
+.pn-soon:hover { background:#f1f5f9; }
+
+/* === SPEC-PACK-DPP: como leer este mapping === */
+.howto-box { max-width:1180px; margin:0 auto 22px; padding:18px 24px; background:#fff;
+  border:1px solid #e5e7eb; border-left:4px solid #2563eb; border-radius:10px; font-size:13.5px; color:#374151; line-height:1.7; }
+.howto-box h3 { font-size:15px; margin-bottom:8px; color:#1f2937; }
+.howto-box ul { margin:8px 0 8px 18px; }
+.howto-box li { margin-bottom:5px; }
+
+/* === v0.9: esquema CE === */
+.tbl-wrap { overflow-x:auto; }
+.map-table td.ce code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:11.5px; color:#1e3a8a; background:#eff6ff; padding:1px 5px; border-radius:4px; word-break:break-all; }
+.map-table td.ce .none { color:#9ca3af; font-size:12px; }
+.tl-field { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:11px; color:var(--gray); word-break:break-all; }
+.st-badge { display:inline-block; font-size:10px; padding:2px 8px; border-radius:6px; font-weight:700; white-space:nowrap; }
+.st-coincide { background:#dcfce7; color:#166534; }
+.st-renombrar { background:#dbeafe; color:#1e40af; }
+.st-nuevo { background:#ede9fe; color:#5b21b6; }
+.st-ajustado { background:#fef3c7; color:#92400e; }
+.st-fuera { background:#f3f4f6; color:#4b5563; }
+.acc-badge { display:inline-block; font-size:10px; padding:2px 8px; border-radius:6px; font-weight:600; white-space:nowrap; }
+.acc-pub { background:#dcfce7; color:#166534; }
+.acc-res { background:#fee2e2; color:#991b1b; }
+.acc-nuc { background:#e0e7ff; color:#3730a3; }
+.acc-none { color:#9ca3af; font-size:12px; }
+.note-v09 { font-size:11px; color:var(--gray); margin-top:4px; line-height:1.45; }
+.appl { font-size:12px; color:#374151; }
+.filter-row { display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin-bottom:8px; }
+.filter-lbl { font-size:11px; font-weight:700; color:var(--gray); text-transform:uppercase; letter-spacing:.05em; margin-right:4px; min-width:58px; }
+.no-results { display:none; padding:20px; text-align:center; color:var(--gray); font-size:13px; }
+@media (max-width: 640px) { .map-table th:nth-child(4), .map-table td:nth-child(4) { display: table-cell; } .filter-lbl { min-width:0; width:100%; } }
+
+/* === PACK DPP BATERIAS: cabecera, menu y pie comunes (v nov-2026) === */
+.pk-header{background:linear-gradient(135deg,#0d3b2e 0%,#1a5276 100%);color:#fff;padding:36px 20px 46px;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.pk-header h1{font-size:28px;font-weight:800;margin:0 0 8px;line-height:1.25;color:#fff}
+.pk-header p{font-size:15px;opacity:.88;max-width:780px;margin:0 auto;line-height:1.55;color:#fff}
+.pk-badges{margin-top:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.pk-badges span{background:rgba(255,255,255,.15);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;color:#fff}
+.pk-version{margin-top:10px;font-size:12px;opacity:.85;color:#fff}
+.pk-nav{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:8px 14px;max-width:720px;margin:-22px auto 22px;box-shadow:0 2px 6px rgba(0,0,0,.08);position:relative;z-index:3;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.pk-nav .pk-label{font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:.07em;text-transform:uppercase;margin-right:6px}
+.pk-nav a{font-size:13px;font-weight:600;color:#475569;text-decoration:none;padding:6px 14px;border-radius:8px;line-height:1.4}
+.pk-nav a:hover{background:#f1f5f9}
+.pk-nav a.active{background:#1a1a2e;color:#fff}
+.pk-nav + .doc-status-bar,.pk-nav + .intro-bar{margin-top:0}
+.pk-footer{max-width:1100px;margin:40px auto 0;padding:24px 20px;border-top:1px solid #e5e7eb;font-size:12px;color:#6b7280;text-align:center;line-height:1.8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.pk-footer a{color:#2563eb;text-decoration:none}
+.pk-footer a:hover{text-decoration:underline}
+.pk-strip{text-align:center;padding:18px 12px;margin-top:20px;background:#f1f5f9;border-top:1px solid #cbd5e1;font-size:11px;color:#64748b;line-height:1.7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.pk-strip a{color:#475569}
+.pk-strip em{color:#94a3b8}
+@media(max-width:640px){.pk-header{padding:28px 16px 40px}.pk-header h1{font-size:21px}.pk-header p{font-size:14px}.pk-nav{margin:-20px 10px 18px;padding:8px 4px;gap:2px}.pk-nav .pk-label{width:100%;text-align:center;margin:0 0 2px}.pk-nav a{padding:5px 7px;font-size:12px}}
+@media print{.pk-nav,.pk-strip{display:none!important}}
+</style>
+</head>
+<body>
+
+<header class="pk-header">
+  <h1>Mapping Trackline &harr; DPP Baterías</h1>
+  <p>Cada dato que Trackline recoge para el pasaporte digital de baterías, con su campo en el esquema oficial de la Comisión, quién puede verlo y de dónde sale.</p>
+  <div class="pk-badges"><span>Reg. (UE) 2023/1542</span><span>Esquema de la Comisión: baterías 1.0.0 (30 oct 2026)</span><span>Basado en el mapping v09</span></div>
+  <div class="pk-version">Versión <strong>v0.9.1</strong> &middot; 10 noviembre 2026</div>
+</header>
+<nav class="pk-nav" aria-label="Pack DPP Baterías">
+  <span class="pk-label">Pack DPP Baterías</span>
+  <a href="index.html">&#x1F4D8; Guía</a>
+  <a href="mapping-trackline-dpp.html" class="active" aria-current="page">&#x1F5FA;&#xFE0F; Mapping</a>
+  <a href="visor.html">&#x1F441;&#xFE0F; Visor</a>
+  <a href="validador/">&#x2705; Validador</a>
+</nav>
+
+<div class="intro-bar">
+  <div class="intro-card">
+    <h2>&#x2699;&#xFE0F; &iquest;C&oacute;mo funciona Trackline para el DPP de Bater&iacute;as?</h2>
+    <div class="workflow-steps">
+      <span class="wf-step">1. Solicitar dato</span><span class="wf-arrow">&rarr;</span>
+      <span class="wf-step">2. Recibir de fuente</span><span class="wf-arrow">&rarr;</span>
+      <span class="wf-step">3. Extraer &amp; normalizar</span><span class="wf-arrow">&rarr;</span>
+      <span class="wf-step">4. Validar</span><span class="wf-arrow">&rarr;</span>
+      <span class="wf-step">5. Almacenar con evidencia</span><span class="wf-arrow">&rarr;</span>
+      <span class="wf-step">6. Exportar JSON (esquema CE)</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="stats-bar">
+  <div class="stat-card stat-blue"><span class="num">166</span><div class="lbl">Datos en el mapping</div></div>
+  <div class="stat-card stat-green"><span class="num">97</span><div class="lbl">Con campo en el esquema CE</div></div>
+  <div class="stat-card stat-amber"><span class="num">38</span><div class="lbl">Se renombran al exportar</div></div>
+  <div class="stat-card stat-purple"><span class="num">29</span><div class="lbl">Nuevos en v09</div></div>
+  <div class="stat-card stat-teal"><span class="num">28</span><div class="lbl">Datos del BMS</div></div>
+</div>
+
+<div style="margin:14px 0 18px 0;padding:12px 16px;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;font-size:13px;color:#334155;line-height:1.55;">
+  <strong>Qu&eacute; cambia en esta versi&oacute;n.</strong> El 30 de octubre de 2026 la Comisi&oacute;n public&oacute; el esquema oficial de datos del pasaporte de bater&iacute;as (artefactos sem&aacute;nticos: n&uacute;cleo 1.0.0 + bater&iacute;as 1.0.0, con subgrupos EV, industrial y LMT). Es el formato que lee y valida el registro DPP. Este mapping deja de basarse en el modelo de BatteryPass-Ready y se alinea con ese esquema: cada dato indica su nombre t&eacute;cnico oficial, su nivel de acceso y si aplica a las bater&iacute;as industriales.
+  <ul style="margin:8px 0 4px 18px;padding:0;">
+    <li><span class="st-badge st-coincide">Coincide</span> mismo dato y mismo nombre que en el esquema.</li>
+    <li><span class="st-badge st-renombrar">Renombrar al exportar</span> el dato existe, pero el esquema usa otro nombre t&eacute;cnico (se cambia al generar el JSON).</li>
+    <li><span class="st-badge st-nuevo">Nuevo en v09</span> dato que pide el esquema y que no ten&iacute;amos (granularidad, estado del pasaporte, fechas de actualizaci&oacute;n&hellip;).</li>
+    <li><span class="st-badge st-ajustado">Ajustado en v09</span> dato que hemos corregido para que encaje (por ejemplo, el peso es de la bater&iacute;a y no por m&oacute;dulo).</li>
+    <li><span class="st-badge st-fuera">Fuera del esquema CE</span> huella de carbono, contenido reciclado y diligencia debida (sus actos a&uacute;n no est&aacute;n adoptados) y datos de proceso, actores o evidencia que Trackline recoge para acreditar el pasaporte, pero que no viajan en el JSON.</li>
+  </ul>
+  <strong>Niveles de acceso.</strong> <span class="acc-badge acc-pub">P&uacute;blico</span> lo ve cualquiera que escanee el QR. <span class="acc-badge acc-res">Restringido 1, 2 y 3</span> son las vistas restringidas que define el esquema; qui&eacute;n accede a cada una lo concretar&aacute; el acto de ejecuci&oacute;n del Art. 77.9 (borrador en consulta hasta el 16 nov 2026). <span class="acc-badge acc-nuc">N&uacute;cleo</span> son los datos comunes a cualquier pasaporte digital.<br>
+  <strong>Aplicabilidad.</strong> La columna est&aacute; revisada para bater&iacute;as industriales (&gt;2 kWh). Para EV y LMT el esquema tiene sus propios subgrupos.
+  <br><br>&#x1F4D8; Para el contexto regulatorio completo y la ruta de implantaci&oacute;n, ver la <a href="index.html" target="_blank"><strong>Gu&iacute;a DPP Bater&iacute;as</strong></a>.
+</div>
+
+<div class="filters" style="display:block">
+  <div class="filter-row"><span class="filter-lbl">Estado</span><button class="filter-btn active" data-f="st" data-v="all">Todos (166)</button><button class="filter-btn" data-f="st" data-v="coincide">Coincide (16)</button><button class="filter-btn" data-f="st" data-v="renombrar">Renombrar al exportar (38)</button><button class="filter-btn" data-f="st" data-v="nuevo">Nuevo en v09 (29)</button><button class="filter-btn" data-f="st" data-v="ajustado">Ajustado en v09 (14)</button><button class="filter-btn" data-f="st" data-v="fuera">Fuera del esquema CE (69)</button></div>
+  <div class="filter-row"><span class="filter-lbl">Fuente</span><button class="filter-btn active" data-f="src" data-v="all">Todas</button><button class="filter-btn" data-f="src" data-v="doc">&#x1F4C4; Documento (112)</button><button class="filter-btn" data-f="src" data-v="bms">&#x1F4E1; BMS (28)</button><button class="filter-btn" data-f="src" data-v="manual">&#x270D;&#xFE0F; Manual (9)</button><button class="filter-btn" data-f="src" data-v="erp">&#x1F4BC; ERP (4)</button><button class="filter-btn" data-f="src" data-v="trackline">&#x1F517; Trackline (5)</button><button class="filter-btn" data-f="src" data-v="sistema">&#x2699;&#xFE0F; Sistema (4)</button><button class="filter-btn" data-f="src" data-v="registro">&#x1F3DB;&#xFE0F; Registro EU (4)</button>
+  <input class="filter-search" type="text" placeholder="&#x1F50D; Buscar dato o campo..." oninput="setQ(this.value)"></div>
+</div>
+<div class="no-results" id="noRes">Ning&uacute;n dato con esos filtros.</div>
+
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#dbeafe;color:#1e40af">&#x1F50B;</div>
+    <h2>Fase 01 &middot; Identificación y datos generales</h2>
+    <span class="section-count">38 datos &middot; 26 en el esquema CE</span>
+    <span class="section-chevron">&#x25BC;</span>
+  </div>
+  <p class="section-subtitle">Fabricante, modelo, identificadores unicos, fechas y datos de nucleo del pasaporte (estado, granularidad, especificacion)</p>
+  <div class="section-body"><div class="tbl-wrap">
+    <table class="map-table">
+      <thead><tr><th>Dato (Trackline)</th><th>Campo esquema CE (baterias 1.0.0)</th><th>Acceso CE</th><th>Aplicabilidad industrial (CE)</th><th>Fuente</th><th>Estado v09</th></tr></thead>
+      <tbody>
+        <tr data-source="trackline" data-st="renombrar"><td><div class="field-name">Identificador DPP</div><div class="tl-field">productPassportIdentifier</div><div class="field-num">#1 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>digitalProductPassportId</code></td><td><span class="acc-badge acc-nuc">Núcleo</span></td><td><span class="appl">Obligatorio (núcleo DPP)</span></td><td><span class="source-badge src-trackline">Trackline</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="erp" data-st="ajustado"><td><div class="field-name">Identificador de batería</div><div class="tl-field">batteryIdentifier</div><div class="field-num">#2 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>uniqueProductIdentifier</code></td><td><span class="acc-badge acc-nuc">Núcleo</span></td><td><span class="appl">Obligatorio (núcleo DPP)</span></td><td><span class="source-badge src-erp">ERP cliente</span></td><td><span class="st-badge st-ajustado">Ajustado en v09</span><div class="note-v09">En el registro, el UPI es la URL donde está publicado el pasaporte (EN 18219).</div></td></tr>
+        <tr data-source="erp" data-st="renombrar"><td><div class="field-name">Modelo de batería</div><div class="tl-field">batteryModelIdentifier</div><div class="field-num">#3 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>modelIdentifier</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-erp">ERP cliente</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span><div class="note-v09">Sub-campo de batteryIdentification.</div></td></tr>
+        <tr data-source="doc" data-st="ajustado"><td><div class="field-name">Planta de fabricación</div><div class="tl-field">manufacturingPlace</div><div class="field-num">#4 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>manufacturingPlace</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-ajustado">Ajustado en v09</span><div class="note-v09">Se desglosa en ciudad, región y país (datos nuevos).</div></td></tr>
+        <tr data-source="doc" data-st="coincide"><td><div class="field-name">Fecha de fabricación</div><div class="tl-field">manufacturingDate</div><div class="field-num">#5 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>manufacturingDate</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-coincide">Coincide</span></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Número de serie</div><div class="tl-field">batterySerialNumber</div><div class="field-num">#6 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>serialNumber</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span><div class="note-v09">Sub-campo de batteryIdentification.</div></td></tr>
+        <tr data-source="doc" data-st="coincide"><td><div class="field-name">Aplicación</div><div class="tl-field">batteryCategory</div><div class="field-num">#7 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>batteryCategory</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-coincide">Coincide</span><div class="note-v09">Lista cerrada de la Comisión (battery-category).</div></td></tr>
+        <tr data-source="doc" data-st="coincide"><td><div class="field-name">Estado del producto</div><div class="tl-field">batteryStatus</div><div class="field-num">#8 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>batteryStatus</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-coincide">Coincide</span><div class="note-v09">Lista cerrada de la Comisión (battery-status).</div></td></tr>
+        <tr data-source="doc" data-st="ajustado"><td><div class="field-name">Peso de la batería</div><div class="tl-field">batteryMass</div><div class="field-num">#9 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>batteryWeight</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-ajustado">Ajustado en v09</span><div class="note-v09">Antes «Peso por módulo»: la Comisión pide el peso de la batería.</div></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Garantía (meses)</div><div class="tl-field">warrantyPeriod</div><div class="field-num">#10 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>commercialWarrantyPeriod</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Si aplica (si hay garantía comercial)</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span><div class="note-v09">Duplicado con el #32 (en el JSON va una sola vez).</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Fecha de puesta en servicio</div><div class="tl-field">dateOfPuttingIntoService</div><div class="field-num">#11 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Dirección del domicilio social del fabricante</div><div class="tl-field">manufacturerIdentification.registeredAddress &rsaquo; .registeredAddress</div><div class="field-num">#12 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>manufacturerPostalAddress</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">VAT operador económico</div><div class="tl-field">uniqueEconomicOperatorIdentifier</div><div class="field-num">#13 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Va en la entrada del registro, no dentro del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Nombre legal del operador económico</div><div class="tl-field">economicOperator.name &rsaquo; .name</div><div class="field-num">#14 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>registrantIdentity</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span><div class="note-v09">Identidad de quien registra o responde del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">DUNS o GS1 fabricante</div><div class="tl-field">uniqueManufacturerIdentifier</div><div class="field-num">#15 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">GLN de planta</div><div class="tl-field">uniqueFacilityIdentifier</div><div class="field-num">#16 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Nombre legal del fabricante</div><div class="tl-field">manufacturerIdentification.name &rsaquo; .name</div><div class="field-num">#107 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>manufacturerName</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span><div class="note-v09">Sub-campo de manufacturerIdentification.</div></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Nombre comercial del fabricante</div><div class="tl-field">manufacturerIdentification.tradeName &rsaquo; .tradeName</div><div class="field-num">#108 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>manufacturerTradeName</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span><div class="note-v09">Sub-campo de manufacturerIdentification.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">País del fabricante (ISO)</div><div class="tl-field">manufacturerIdentification.country &rsaquo; .country</div><div class="field-num">#109 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Inscripción Reg. Mercantil del fabricante</div><div class="tl-field">manufacturerIdentification.registry &rsaquo; .registry</div><div class="field-num">#110 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Web del fabricante</div><div class="tl-field">manufacturerIdentification.website &rsaquo; .website</div><div class="field-num">#111 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>manufacturerWebsite</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Opcional, si el dato está disponible</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span><div class="note-v09">Sub-campo de manufacturerContactDetails.</div></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Email del fabricante</div><div class="tl-field">manufacturerIdentification.email &rsaquo; .email</div><div class="field-num">#112 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>manufacturerEmail</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Opcional, si el dato está disponible</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span><div class="note-v09">Sub-campo de manufacturerContactDetails.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Teléfono del fabricante</div><div class="tl-field">manufacturerIdentification.phone &rsaquo; .phone</div><div class="field-num">#113 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Persona de contacto del fabricante</div><div class="tl-field">manufacturerIdentification.contactPerson &rsaquo; .contactPerson</div><div class="field-num">#114 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Dirección del operador económico</div><div class="tl-field">economicOperator.address &rsaquo; .address</div><div class="field-num">#115 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">País del operador económico (ISO)</div><div class="tl-field">economicOperator.country &rsaquo; .country</div><div class="field-num">#116 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Tipo de operador económico</div><div class="tl-field">economicOperator.type &rsaquo; .type</div><div class="field-num">#117 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Inscripción Reg. Mercantil del operador económico</div><div class="tl-field">economicOperator.registry &rsaquo; .registry</div><div class="field-num">#118 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="sistema" data-st="nuevo"><td><div class="field-name">Granularidad del pasaporte</div><div class="tl-field">granularity</div><div class="field-num">#138 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>granularity</code></td><td><span class="acc-badge acc-nuc">Núcleo</span></td><td><span class="appl">Obligatorio (núcleo DPP)</span></td><td><span class="source-badge src-trackline">Sistema</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span><div class="note-v09">Para baterías el registro solo admite «item» (unidad).</div></td></tr>
+        <tr data-source="sistema" data-st="nuevo"><td><div class="field-name">Estado del pasaporte</div><div class="tl-field">dppStatus</div><div class="field-num">#139 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>dppStatus</code></td><td><span class="acc-badge acc-nuc">Núcleo</span></td><td><span class="appl">Obligatorio (núcleo DPP)</span></td><td><span class="source-badge src-trackline">Sistema</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span><div class="note-v09">Lista cerrada (instance-status): activo, archivado… Distinto del estado de la batería.</div></td></tr>
+        <tr data-source="sistema" data-st="nuevo"><td><div class="field-name">Especificaciones de contenido aplicadas</div><div class="tl-field">contentSpecificationIds</div><div class="field-num">#140 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>contentSpecificationIds</code></td><td><span class="acc-badge acc-nuc">Núcleo</span></td><td><span class="appl">Obligatorio (núcleo DPP)</span></td><td><span class="source-badge src-trackline">Sistema</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span><div class="note-v09">Versión del esquema usado (p. ej. baterías 1.0.0, subgrupo industrial). La genera el sistema.</div></td></tr>
+        <tr data-source="sistema" data-st="nuevo"><td><div class="field-name">Fecha de última actualización del pasaporte</div><div class="tl-field">lastUpdate</div><div class="field-num">#141 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>lastUpdate</code></td><td><span class="acc-badge acc-nuc">Núcleo</span></td><td><span class="appl">Obligatorio (núcleo DPP)</span></td><td><span class="source-badge src-trackline">Sistema</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span><div class="note-v09">Fecha y hora ISO 8601.</div></td></tr>
+        <tr data-source="erp" data-st="nuevo"><td><div class="field-name">Número de lote</div><div class="tl-field">batteryIdentification.batchNumber &rsaquo; .batchNumber</div><div class="field-num">#142 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><code>batchNumber</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-erp">ERP cliente</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span><div class="note-v09">Al menos uno de los elementos de identificación.</div></td></tr>
+        <tr data-source="erp" data-st="nuevo"><td><div class="field-name">Número de producto</div><div class="tl-field">batteryIdentification.productNumber &rsaquo; .productNumber</div><div class="field-num">#143 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><code>productNumber</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-erp">ERP cliente</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span></td></tr>
+        <tr data-source="doc" data-st="nuevo"><td><div class="field-name">Ciudad de fabricación</div><div class="tl-field">manufacturingPlace.manufacturingCity &rsaquo; .manufacturingCity</div><div class="field-num">#144 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>manufacturingCity</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span></td></tr>
+        <tr data-source="doc" data-st="nuevo"><td><div class="field-name">Región de fabricación</div><div class="tl-field">manufacturingPlace.manufacturingRegion &rsaquo; .manufacturingRegion</div><div class="field-num">#145 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>manufacturingRegion</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span></td></tr>
+        <tr data-source="doc" data-st="nuevo"><td><div class="field-name">País de fabricación</div><div class="tl-field">manufacturingPlace.manufacturingCountry &rsaquo; .manufacturingCountry</div><div class="field-num">#146 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>manufacturingCountry</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span></td></tr>
+        <tr data-source="doc" data-st="nuevo"><td><div class="field-name">Marca registrada del fabricante</div><div class="tl-field">manufacturerIdentification.manufacturerTrademark &rsaquo; .manufacturerTrademark</div><div class="field-num">#166 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><code>manufacturerTrademark</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span><div class="note-v09">Basta con uno de: nombre, nombre comercial o marca registrada.</div></td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</div>
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#e9d5ff;color:#5b21b6">&#x2697;&#xFE0F;</div>
+    <h2>Fase 02 &middot; Composición de materiales</h2>
+    <span class="section-count">6 datos &middot; 6 en el esquema CE</span>
+    <span class="section-chevron">&#x25BC;</span>
+  </div>
+  <p class="section-subtitle">Quimica, materias primas criticas y sustancias peligrosas</p>
+  <div class="section-body"><div class="tbl-wrap">
+    <table class="map-table">
+      <thead><tr><th>Dato (Trackline)</th><th>Campo esquema CE (baterias 1.0.0)</th><th>Acceso CE</th><th>Aplicabilidad industrial (CE)</th><th>Fuente</th><th>Estado v09</th></tr></thead>
+      <tbody>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Tecnología / química</div><div class="tl-field">productChemistry</div><div class="field-num">#17 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>batteryChemistry</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span><div class="note-v09">Lista cerrada de la Comisión (battery-chemistry).</div></td></tr>
+        <tr data-source="doc" data-st="coincide"><td><div class="field-name">Materias primas críticas</div><div class="tl-field">criticalRawMaterials</div><div class="field-num">#18 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>criticalRawMaterials</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-coincide">Coincide</span><div class="note-v09">Lista cerrada de la Comisión (critical-raw-material).</div></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Composición detallada (BOM)</div><div class="tl-field">batteryMaterials</div><div class="field-num">#19 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>detailedComposition</code></td><td><span class="acc-badge acc-res">Restringido 1</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Impacto de sustancias</div><div class="tl-field">impactOfSubstances</div><div class="field-num">#20 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>batterySubstancesImpact</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span><div class="note-v09">Sub-campo de wasteBatteryPreventionManagementInfo.</div></td></tr>
+        <tr data-source="doc" data-st="coincide"><td><div class="field-name">Sustancias peligrosas</div><div class="tl-field">hazardousSubstances</div><div class="field-num">#21 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>hazardousSubstances</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-coincide">Coincide</span></td></tr>
+        <tr data-source="doc" data-st="nuevo"><td><div class="field-name">Agente extintor utilizable</div><div class="tl-field">extinguishingAgent</div><div class="field-num">#147 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>extinguishingAgent</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span><div class="note-v09">Se obtiene de la sección 5 de la SDS.</div></td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</div>
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#fef3c7;color:#92400e">&#x26A1;</div>
+    <h2>Fase 03 &middot; Rendimiento y durabilidad</h2>
+    <span class="section-count">24 datos &middot; 19 en el esquema CE</span>
+    <span class="section-chevron">&#x25BC;</span>
+  </div>
+  <p class="section-subtitle">Capacidad, potencia, resistencia, vida util y temperaturas declaradas por el fabricante</p>
+  <div class="section-body"><div class="tbl-wrap">
+    <table class="map-table">
+      <thead><tr><th>Dato (Trackline)</th><th>Campo esquema CE (baterias 1.0.0)</th><th>Acceso CE</th><th>Aplicabilidad industrial (CE)</th><th>Fuente</th><th>Estado v09</th></tr></thead>
+      <tbody>
+        <tr data-source="doc" data-st="coincide"><td><div class="field-name">Capacidad nominal</div><div class="tl-field">ratedCapacity</div><div class="field-num">#22 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>ratedCapacity</code> <code>batteryCapacity</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Igual que la capacidad; solo recargables</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-coincide">Coincide</span><div class="note-v09">Capacidad nominal; la Comisión la usa como capacidad de la batería y como dato dinámico.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Capacidad útil</div><div class="tl-field">certifiedUsableBatteryEnergy</div><div class="field-num">#23 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">No aparece en el esquema industrial.</div></td></tr>
+        <tr data-source="doc" data-st="coincide"><td><div class="field-name">Voltaje nominal</div><div class="tl-field">nominalVoltage</div><div class="field-num">#24 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>nominalVoltage</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-coincide">Coincide</span></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Voltaje mínimo</div><div class="tl-field">minimumVoltage</div><div class="field-num">#25 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>minimalVoltage</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="doc" data-st="coincide"><td><div class="field-name">Voltaje máximo</div><div class="tl-field">maximumVoltage</div><div class="field-num">#26 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>maximumVoltage</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-coincide">Coincide</span></td></tr>
+        <tr data-source="doc" data-st="coincide"><td><div class="field-name">Potencia original</div><div class="tl-field">originalPowerCapability</div><div class="field-num">#27 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>originalPowerCapability</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-coincide">Coincide</span></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Potencia máxima permitida</div><div class="tl-field">maximumPermittedBatteryPower</div><div class="field-num">#28 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>powerLimit</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">C-rate</div><div class="tl-field">powerCapabilityRatio</div><div class="field-num">#29 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">No aparece en el esquema industrial 1.0.0.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Autodescarga inicial</div><div class="tl-field">initialSelfDischargingRate</div><div class="field-num">#30 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">No aparece en el esquema industrial 1.0.0.</div></td></tr>
+        <tr data-source="doc" data-st="coincide"><td><div class="field-name">Vida útil (años)</div><div class="tl-field">expectedLifetimeYears</div><div class="field-num">#31 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>expectedLifetimeYears</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Solo baterías recargables</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-coincide">Coincide</span></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Garantía (meses) — vida útil</div><div class="tl-field">warrantyPeriod_lifetime</div><div class="field-num">#32 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>commercialWarrantyPeriod</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Si aplica (si hay garantía comercial)</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span><div class="note-v09">Duplicado con el #10 (en el JSON va una sola vez).</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Umbral fin de vida</div><div class="tl-field">capacityThresholdExhaustion</div><div class="field-num">#33 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">En el esquema de la Comisión solo existe para EV y LMT.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Información de temperatura</div><div class="tl-field">temperatureInformation</div><div class="field-num">#34 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">No aparece en el esquema industrial 1.0.0.</div></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Rango de temperatura en reposo</div><div class="tl-field">temperatureRangeIdleState</div><div class="field-num">#35 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>notInUseTemperatureRange</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span><div class="note-v09">Añadido el ensayo de referencia del rango (dato nuevo).</div></td></tr>
+        <tr data-source="doc" data-st="coincide"><td><div class="field-name">Eficiencia round-trip inicial</div><div class="tl-field">initialRoundTripEnergyEfficiency</div><div class="field-num">#36 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>initialRoundTripEnergyEfficiency</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Solo para algunas baterías industriales</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-coincide">Coincide</span></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Eficiencia round-trip 50% vida</div><div class="tl-field">roundTripEfficiencyAt50PercentCycleLife</div><div class="field-num">#37 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>roundTripEfficiencyAtHalfCycleLife</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Solo para algunas baterías industriales</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Resistencia interna inicial</div><div class="tl-field">initialInternalResistancePack</div><div class="field-num">#38 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>internalPackResistance</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Ciclos hasta 80% SoH</div><div class="tl-field">expectedNumberOfCycles</div><div class="field-num">#39 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>expectedLifetimeCycles</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Solo para baterías industriales cuya vida útil se expresa en ciclos</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="doc" data-st="coincide"><td><div class="field-name">Ensayo referencia</div><div class="tl-field">cycleLifeReferenceTest</div><div class="field-num">#40 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>cycleLifeReferenceTest</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Solo para baterías industriales cuya vida útil se expresa en ciclos</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-coincide">Coincide</span></td></tr>
+        <tr data-source="doc" data-st="ajustado"><td><div class="field-name">C-rate de carga del ensayo de ciclos</div><div class="tl-field">cRateOfRelevantCycleLifeTest</div><div class="field-num">#41 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>cycleLifeChargeCRate</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Solo para algunas baterías industriales</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-ajustado">Ajustado en v09</span><div class="note-v09">Antes «C-rate del ensayo»: ahora es el de carga; el de descarga va en un dato nuevo.</div></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">URL informe accidentes</div><div class="tl-field">informationOnAccidents</div><div class="field-num">#42 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>negativeEvents</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Aplicable desde que la batería empieza a usarse</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span><div class="note-v09">La Comisión agrupa los eventos negativos en un campo.</div></td></tr>
+        <tr data-source="doc" data-st="nuevo"><td><div class="field-name">Ensayo de referencia del rango de temperatura sin uso</div><div class="tl-field">notInUseTemperatureRange.notInUseTemperatureRangeTest &rsaquo; .notInUseTemperatureRangeTest</div><div class="field-num">#148 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>notInUseTemperatureRangeTest</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span></td></tr>
+        <tr data-source="doc" data-st="nuevo"><td><div class="field-name">Resistencia interna de celda</div><div class="tl-field">internalCellResistance</div><div class="field-num">#149 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>internalCellResistance</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span><div class="note-v09">Informe de laboratorio.</div></td></tr>
+        <tr data-source="doc" data-st="nuevo"><td><div class="field-name">C-rate de descarga del ensayo de ciclos</div><div class="tl-field">cycleLifeDischargeCRate</div><div class="field-num">#150 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><code>cycleLifeDischargeCRate</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Opcional</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span><div class="note-v09">Opcional para industriales.</div></td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</div>
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#ccfbf1;color:#065f46">&#x1F4E1;</div>
+    <h2>Fase 03 &middot; Rendimiento y durabilidad (datos del BMS)</h2>
+    <span class="section-count">29 datos &middot; 24 en el esquema CE</span>
+    <span class="section-chevron">&#x25BC;</span>
+  </div>
+  <p class="section-subtitle">Datos dinamicos que se actualizan desde el sistema de gestion de la bateria (BMS) durante el uso</p>
+  <div class="section-body"><div class="tbl-wrap">
+    <table class="map-table">
+      <thead><tr><th>Dato (Trackline)</th><th>Campo esquema CE (baterias 1.0.0)</th><th>Acceso CE</th><th>Aplicabilidad industrial (CE)</th><th>Fuente</th><th>Estado v09</th></tr></thead>
+      <tbody>
+        <tr data-source="bms" data-st="coincide"><td><div class="field-name">Capacidad restante</div><div class="tl-field">remainingCapacity</div><div class="field-num">#43 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><code>remainingCapacity</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Solo almacenamiento estacionario con sistema de gestión (BMS)</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-coincide">Coincide</span></td></tr>
+        <tr data-source="bms" data-st="coincide"><td><div class="field-name">Capacity fade</div><div class="tl-field">capacityFade</div><div class="field-num">#44 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><code>capacityFade</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Solo baterías recargables</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-coincide">Coincide</span></td></tr>
+        <tr data-source="bms" data-st="fuera"><td><div class="field-name">Energía utilizable restante</div><div class="tl-field">remainingUsableBatteryEnergy</div><div class="field-num">#45 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">No aparece en el esquema industrial 1.0.0.</div></td></tr>
+        <tr data-source="bms" data-st="ajustado"><td><div class="field-name">State of Charge</div><div class="tl-field">stateOfCharge</div><div class="field-num">#46 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><code>stateOfChargeHistogram</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Aplicable desde que la batería empieza a usarse</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-ajustado">Ajustado en v09</span><div class="note-v09">La Comisión pide histograma periódico de SoC.</div></td></tr>
+        <tr data-source="bms" data-st="fuera"><td><div class="field-name">State of Certified Energy</div><div class="tl-field">stateOfCertifiedEnergy</div><div class="field-num">#47 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">En el esquema de la Comisión solo existe para EV y LMT.</div></td></tr>
+        <tr data-source="bms" data-st="renombrar"><td><div class="field-name">Eficiencia round-trip actual</div><div class="tl-field">remainingRoundTripEnergyEfficiency</div><div class="field-num">#48 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><code>remainingRoundTripEfficiency</code> <code>roundTripEnergyEfficiency</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Solo almacenamiento estacionario con sistema de gestión (BMS)</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Round-trip efficiency fade</div><div class="tl-field">energyRoundTripEfficiencyFade</div><div class="field-num">#49 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>roundTripEnergyEfficiencyFade</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Solo recargables, si aplica</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="bms" data-st="renombrar"><td><div class="field-name">Autodescarga actual</div><div class="tl-field">currentSelfDischargingRate</div><div class="field-num">#50 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><code>selfDischargingRateSet</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Solo almacenamiento estacionario con sistema de gestión (BMS)</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="bms" data-st="renombrar"><td><div class="field-name">Evolución autodescarga</div><div class="tl-field">evolutionOfSelfDischargeRates</div><div class="field-num">#51 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><code>selfDischargingRateSet</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Solo almacenamiento estacionario con sistema de gestión (BMS)</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="bms" data-st="coincide"><td><div class="field-name">Potencia restante</div><div class="tl-field">remainingPowerCapability</div><div class="field-num">#52 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><code>remainingPowerCapability</code> <code>powerCapability</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Solo almacenamiento estacionario con sistema de gestión (BMS)</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-coincide">Coincide</span></td></tr>
+        <tr data-source="bms" data-st="coincide"><td><div class="field-name">Power fade</div><div class="tl-field">powerFade</div><div class="field-num">#53 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><code>powerFade</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Solo baterías recargables</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-coincide">Coincide</span></td></tr>
+        <tr data-source="bms" data-st="renombrar"><td><div class="field-name">Resistencia interna actual</div><div class="tl-field">currentInternalResistancePack</div><div class="field-num">#54 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><code>internalResistance</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Solo baterías recargables</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="bms" data-st="ajustado"><td><div class="field-name">Nº ciclos completos</div><div class="tl-field">numberOfFullCycles</div><div class="field-num">#55 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><code>numberOfChargingCycles</code> <code>numberOfDischargingCycles</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Aplicable desde que la batería empieza a usarse</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-ajustado">Ajustado en v09</span><div class="note-v09">La Comisión separa ciclos de carga y de descarga (datos nuevos).</div></td></tr>
+        <tr data-source="bms" data-st="fuera"><td><div class="field-name">Capacity throughput</div><div class="tl-field">capacityThroughput</div><div class="field-num">#56 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">No aparece en el esquema industrial 1.0.0.</div></td></tr>
+        <tr data-source="bms" data-st="fuera"><td><div class="field-name">Energy throughput</div><div class="tl-field">energyThroughput</div><div class="field-num">#57 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">No aparece en el esquema industrial 1.0.0.</div></td></tr>
+        <tr data-source="bms" data-st="fuera"><td><div class="field-name">Puesta en servicio (BMS)</div><div class="tl-field">putIntoService</div><div class="field-num">#58 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">No aparece en el esquema industrial 1.0.0.</div></td></tr>
+        <tr data-source="bms" data-st="ajustado"><td><div class="field-name">Tiempo a T extrema alta</div><div class="tl-field">timeExtremeHighTemp</div><div class="field-num">#59 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><code>environmentalConditionHistogramSet</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Aplicable desde que la batería empieza a usarse</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-ajustado">Ajustado en v09</span><div class="note-v09">La Comisión pide histograma periódico de condiciones ambientales.</div></td></tr>
+        <tr data-source="bms" data-st="ajustado"><td><div class="field-name">Tiempo a T extrema baja</div><div class="tl-field">timeExtremeLowTemp</div><div class="field-num">#60 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><code>environmentalConditionHistogramSet</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Aplicable desde que la batería empieza a usarse</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-ajustado">Ajustado en v09</span></td></tr>
+        <tr data-source="bms" data-st="ajustado"><td><div class="field-name">Tiempo cargando T alta</div><div class="tl-field">timeChargingExtremeHighTemp</div><div class="field-num">#61 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><code>environmentalConditionHistogramSet</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Aplicable desde que la batería empieza a usarse</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-ajustado">Ajustado en v09</span></td></tr>
+        <tr data-source="bms" data-st="ajustado"><td><div class="field-name">Tiempo cargando T baja</div><div class="tl-field">timeChargingExtremeLowTemp</div><div class="field-num">#62 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><code>environmentalConditionHistogramSet</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Aplicable desde que la batería empieza a usarse</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-ajustado">Ajustado en v09</span></td></tr>
+        <tr data-source="bms" data-st="renombrar"><td><div class="field-name">Eventos descarga profunda</div><div class="tl-field">numberOfDeepDischargeEvents</div><div class="field-num">#63 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><code>negativeEvents</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Aplicable desde que la batería empieza a usarse</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="bms" data-st="renombrar"><td><div class="field-name">Eventos sobrecarga</div><div class="tl-field">numberOfOverchargeEvents</div><div class="field-num">#64 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Industrial · EV · LMT</div></td><td class="ce"><code>negativeEvents</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Aplicable desde que la batería empieza a usarse</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="bms" data-st="nuevo"><td><div class="field-name">Histograma de estado de carga (SoC)</div><div class="tl-field">stateOfChargeHistogram</div><div class="field-num">#151 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><code>stateOfChargeHistogram</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Aplicable desde que la batería empieza a usarse</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span><div class="note-v09">Registro periódico.</div></td></tr>
+        <tr data-source="bms" data-st="nuevo"><td><div class="field-name">Aumento de resistencia interna</div><div class="tl-field">internalResistanceIncrease</div><div class="field-num">#152 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Industrial</div></td><td class="ce"><code>internalResistanceIncrease</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Solo baterías recargables</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span><div class="note-v09">Solo recargables; dato dinámico.</div></td></tr>
+        <tr data-source="bms" data-st="nuevo"><td><div class="field-name">Resistencia óhmica</div><div class="tl-field">ohmicResistance</div><div class="field-num">#153 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Industrial</div></td><td class="ce"><code>ohmicResistance</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Solo almacenamiento estacionario con sistema de gestión (BMS)</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span><div class="note-v09">Solo almacenamiento estacionario con BMS.</div></td></tr>
+        <tr data-source="bms" data-st="nuevo"><td><div class="field-name">Número de ciclos de carga</div><div class="tl-field">numberOfChargingCycles</div><div class="field-num">#154 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><code>numberOfChargingCycles</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Aplicable desde que la batería empieza a usarse</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span><div class="note-v09">Desde que la batería empieza a usarse.</div></td></tr>
+        <tr data-source="bms" data-st="nuevo"><td><div class="field-name">Número de ciclos de descarga</div><div class="tl-field">numberOfDischargingCycles</div><div class="field-num">#155 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><code>numberOfDischargingCycles</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Aplicable desde que la batería empieza a usarse</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span><div class="note-v09">Desde que la batería empieza a usarse.</div></td></tr>
+        <tr data-source="bms" data-st="nuevo"><td><div class="field-name">Ciclos de vida restantes esperados</div><div class="tl-field">expectedLifetimeCyclesRest</div><div class="field-num">#156 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Industrial</div></td><td class="ce"><code>expectedLifetimeCyclesRest</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Solo recargables, excepto aplicaciones sin ciclos</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span><div class="note-v09">Solo recargables y excepto aplicaciones sin ciclos.</div></td></tr>
+        <tr data-source="bms" data-st="nuevo"><td><div class="field-name">Histograma de condiciones ambientales</div><div class="tl-field">environmentalConditionHistogramSet</div><div class="field-num">#157 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><code>environmentalConditionHistogramSet</code></td><td><span class="acc-badge acc-res">Restringido 3</span></td><td><span class="appl">Aplicable desde que la batería empieza a usarse</span></td><td><span class="source-badge src-bms">BMS</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span><div class="note-v09">Registro periódico.</div></td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</div>
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#d1fae5;color:#065f46">&#x1F331;</div>
+    <h2>Fase 04 &middot; Huella de carbono</h2>
+    <span class="section-count">5 datos &middot; 0 en el esquema CE</span>
+    <span class="section-chevron">&#x25BC;</span>
+  </div>
+  <p class="section-subtitle">Huella de carbono: el acto delegado de metodologia no esta adoptado, por eso estos datos aun no estan en el esquema</p>
+  <div class="section-body"><div class="tbl-wrap">
+    <table class="map-table">
+      <thead><tr><th>Dato (Trackline)</th><th>Campo esquema CE (baterias 1.0.0)</th><th>Acceso CE</th><th>Aplicabilidad industrial (CE)</th><th>Fuente</th><th>Estado v09</th></tr></thead>
+      <tbody>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Huella absoluta</div><div class="tl-field">absoluteBatteryCarbonFootprint</div><div class="field-num">#65 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Huella de carbono: sin método aprobado; vacío en feb-2027.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Huella por kWh entregado</div><div class="tl-field">batteryCarbonFootprint</div><div class="field-num">#66 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Huella de carbono: sin método aprobado.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Clase de huella</div><div class="tl-field">carbonFootprintPerformanceClass</div><div class="field-num">#67 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Huella de carbono: sin método aprobado.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">URL del estudio</div><div class="tl-field">carbonFootprintStudy</div><div class="field-num">#68 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Huella de carbono: sin método aprobado.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Huella por fase ciclo de vida</div><div class="tl-field">carbonFootprintPerLifecycleStage</div><div class="field-num">#69 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Huella de carbono: sin método aprobado.</div></td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</div>
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#fce7f3;color:#9d174d">&#x267B;&#xFE0F;</div>
+    <h2>Fase 05 &middot; Circularidad y fin de vida</h2>
+    <span class="section-count">14 datos &middot; 13 en el esquema CE</span>
+    <span class="section-chevron">&#x25BC;</span>
+  </div>
+  <p class="section-subtitle">Contenido reciclado, desmontaje, piezas de repuesto, seguridad y fin de vida</p>
+  <div class="section-body"><div class="tbl-wrap">
+    <table class="map-table">
+      <thead><tr><th>Dato (Trackline)</th><th>Campo esquema CE (baterias 1.0.0)</th><th>Acceso CE</th><th>Aplicabilidad industrial (CE)</th><th>Fuente</th><th>Estado v09</th></tr></thead>
+      <tbody>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Contenido reciclado</div><div class="tl-field">recycledContent</div><div class="field-num">#70 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Contenido reciclado: método pendiente.</div></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Contenido renovable en fabricación</div><div class="tl-field">renewableContent</div><div class="field-num">#71 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>renewableContentShare</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Requisitos de seguridad</div><div class="tl-field">safetyRequirements</div><div class="field-num">#72 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>safetyMeasures</code></td><td><span class="acc-badge acc-res">Restringido 1</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">URL manual desmontaje</div><div class="tl-field">dismantlingAndRemovalInformation</div><div class="field-num">#73 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>dismantlingInformation</code></td><td><span class="acc-badge acc-res">Restringido 1</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Fuente de repuestos</div><div class="tl-field">sourceForSpareParts</div><div class="field-num">#74 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>sparePartReplacementDetails</code></td><td><span class="acc-badge acc-res">Restringido 1</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="doc" data-st="ajustado"><td><div class="field-name">URL contrato gestor</div><div class="tl-field">endOfLifeInformation</div><div class="field-num">#75 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>wasteBatteryPreventionManagementInfo</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-ajustado">Ajustado en v09</span><div class="note-v09">Se completa con los sub-campos de gestión de residuos (datos nuevos).</div></td></tr>
+        <tr data-source="doc" data-st="nuevo"><td><div class="field-name">Papel del usuario final en la prevención de residuos</div><div class="tl-field">wasteBatteryPreventionManagementInfo.endUserRoleInWastePrevention &rsaquo; .endUserRoleInWastePrevention</div><div class="field-num">#158 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>endUserRoleInWastePrevention</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span></td></tr>
+        <tr data-source="doc" data-st="nuevo"><td><div class="field-name">Papel del usuario final en la recogida selectiva</div><div class="tl-field">wasteBatteryPreventionManagementInfo.endUserRoleInSeparateCollection &rsaquo; .endUserRoleInSeparateCollection</div><div class="field-num">#159 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>endUserRoleInSeparateCollection</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span></td></tr>
+        <tr data-source="doc" data-st="nuevo"><td><div class="field-name">Puntos de recogida selectiva</div><div class="tl-field">wasteBatteryPreventionManagementInfo.separateCollectionPoints &rsaquo; .separateCollectionPoints</div><div class="field-num">#160 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>separateCollectionPoints</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span></td></tr>
+        <tr data-source="doc" data-st="nuevo"><td><div class="field-name">Puntos de recogida por devolución</div><div class="tl-field">wasteBatteryPreventionManagementInfo.takeBackCollectionPoints &rsaquo; .takeBackCollectionPoints</div><div class="field-num">#161 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>takeBackCollectionPoints</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span></td></tr>
+        <tr data-source="doc" data-st="nuevo"><td><div class="field-name">Instalaciones de preparación para la reutilización</div><div class="tl-field">wasteBatteryPreventionManagementInfo.preparationForReuseFacilities &rsaquo; .preparationForReuseFacilities</div><div class="field-num">#162 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>preparationForReuseFacilities</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span></td></tr>
+        <tr data-source="doc" data-st="nuevo"><td><div class="field-name">Instalaciones de preparación para la reconversión</div><div class="tl-field">wasteBatteryPreventionManagementInfo.preparationForRepurposingFacilities &rsaquo; .preparationForRepurposingFacilities</div><div class="field-num">#163 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>preparationForRepurposingFacilities</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span></td></tr>
+        <tr data-source="doc" data-st="nuevo"><td><div class="field-name">Instalaciones de tratamiento de baterías residuales</div><div class="tl-field">wasteBatteryPreventionManagementInfo.wasteBatteryTreatmentFacilities &rsaquo; .wasteBatteryTreatmentFacilities</div><div class="field-num">#164 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>wasteBatteryTreatmentFacilities</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span></td></tr>
+        <tr data-source="doc" data-st="nuevo"><td><div class="field-name">Instrucciones de seguridad para baterías residuales</div><div class="tl-field">wasteBatteryPreventionManagementInfo.wasteBatterySafetyInstructions &rsaquo; .wasteBatterySafetyInstructions</div><div class="field-num">#165 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>wasteBatterySafetyInstructions</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-nuevo">Nuevo en v09</span></td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</div>
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#fee2e2;color:#991b1b">&#x1F3F7;&#xFE0F;</div>
+    <h2>Fase 06 &middot; Etiquetas y conformidad</h2>
+    <span class="section-count">7 datos &middot; 6 en el esquema CE</span>
+    <span class="section-chevron">&#x25BC;</span>
+  </div>
+  <p class="section-subtitle">Marcado CE, declaracion de conformidad, etiquetas y simbolos</p>
+  <div class="section-body"><div class="tbl-wrap">
+    <table class="map-table">
+      <thead><tr><th>Dato (Trackline)</th><th>Campo esquema CE (baterias 1.0.0)</th><th>Acceso CE</th><th>Aplicabilidad industrial (CE)</th><th>Fuente</th><th>Estado v09</th></tr></thead>
+      <tbody>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Nº DoC EU</div><div class="tl-field">euDeclarationOfConformityId</div><div class="field-num">#76 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>euDeclarationOfConformity</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">URL DoC</div><div class="tl-field">declarationOfConformity</div><div class="field-num">#77 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>euDeclarationOfConformity</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Resultados ensayos normativos</div><div class="tl-field">resultOfTestReport</div><div class="field-num">#78 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>complianceTestReportResults</code></td><td><span class="acc-badge acc-res">Restringido 2</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">Recogida selectiva (WEEE)</div><div class="tl-field">separateCollection</div><div class="field-num">#79 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>separateCollectionSymbol</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="doc" data-st="ajustado"><td><div class="field-name">Símbolos de material</div><div class="tl-field">materialSymbols</div><div class="field-num">#80 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>chemicalSymbol</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Símbolo de cadmio o plomo, si aplica</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-ajustado">Ajustado en v09</span><div class="note-v09">La Comisión solo pide el símbolo de cadmio o plomo, si aplica.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Etiqueta CFP</div><div class="tl-field">carbonFootprintLabel</div><div class="field-num">#81 &middot; Obligatorio (Reg.): No &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Etiqueta de huella: sin método aprobado.</div></td></tr>
+        <tr data-source="doc" data-st="renombrar"><td><div class="field-name">URL manual de usuario</div><div class="tl-field">meaningOfLabelsAndSymbols</div><div class="field-num">#82 &middot; Obligatorio (Reg.): No &middot; Categoria: Todas</div></td><td class="ce"><code>batteryLabelSymbolMeaning</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span><div class="note-v09">Sub-campo de wasteBatteryPreventionManagementInfo.</div></td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</div>
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#ffedd5;color:#9a3412">&#x1F517;</div>
+    <h2>Fase 07 &middot; Cadena de suministro y due diligence</h2>
+    <span class="section-count">3 datos &middot; 0 en el esquema CE</span>
+    <span class="section-chevron">&#x25BC;</span>
+  </div>
+  <p class="section-subtitle">Diligencia debida en la cadena de suministro (aplicable desde el 18 ago 2027)</p>
+  <div class="section-body"><div class="tbl-wrap">
+    <table class="map-table">
+      <thead><tr><th>Dato (Trackline)</th><th>Campo esquema CE (baterias 1.0.0)</th><th>Acceso CE</th><th>Aplicabilidad industrial (CE)</th><th>Fuente</th><th>Estado v09</th></tr></thead>
+      <tbody>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">URL informe OECD</div><div class="tl-field">dueDiligenceReport</div><div class="field-num">#83 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Diligencia debida: desde 18/08/2027.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Certificados de terceros</div><div class="tl-field">thirdPartyAssurances</div><div class="field-num">#84 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Diligencia debida: desde 18/08/2027.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Índice cadena suministro</div><div class="tl-field">supplyChainIndices</div><div class="field-num">#85 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Diligencia debida: desde 18/08/2027.</div></td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</div>
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#e0f2fe;color:#075985">&#x1F4F1;</div>
+    <h2>Fase 08 &middot; Trazabilidad y data carrier</h2>
+    <span class="section-count">9 datos &middot; 2 en el esquema CE</span>
+    <span class="section-chevron">&#x25BC;</span>
+  </div>
+  <p class="section-subtitle">QR, enlace al pasaporte y trazabilidad</p>
+  <div class="section-body"><div class="tbl-wrap">
+    <table class="map-table">
+      <thead><tr><th>Dato (Trackline)</th><th>Campo esquema CE (baterias 1.0.0)</th><th>Acceso CE</th><th>Aplicabilidad industrial (CE)</th><th>Fuente</th><th>Estado v09</th></tr></thead>
+      <tbody>
+        <tr data-source="trackline" data-st="fuera"><td><div class="field-name">Hash Trackline</div><div class="tl-field">trackline_hash</div><div class="field-num">#86 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-trackline">Trackline</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="trackline" data-st="ajustado"><td><div class="field-name">Timestamp ISO 8601</div><div class="tl-field">timestamp_iso8601</div><div class="field-num">#87 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>lastUpdate</code></td><td><span class="acc-badge acc-nuc">Núcleo</span></td><td><span class="appl">Obligatorio (núcleo DPP)</span></td><td><span class="source-badge src-trackline">Trackline</span></td><td><span class="st-badge st-ajustado">Ajustado en v09</span><div class="note-v09">Ver el dato nuevo «Fecha de última actualización del pasaporte».</div></td></tr>
+        <tr data-source="trackline" data-st="fuera"><td><div class="field-name">Token eIDAS TSA</div><div class="tl-field">eidas_tsa_token</div><div class="field-num">#88 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-trackline">Trackline</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="trackline" data-st="ajustado"><td><div class="field-name">URL del QR</div><div class="tl-field">qr_payload_url</div><div class="field-num">#89 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>uniqueProductIdentifier</code></td><td><span class="acc-badge acc-nuc">Núcleo</span></td><td><span class="appl">Obligatorio (núcleo DPP)</span></td><td><span class="source-badge src-trackline">Trackline</span></td><td><span class="st-badge st-ajustado">Ajustado en v09</span><div class="note-v09">La URL del QR y el UPI deben coincidir con la dirección donde se publica el pasaporte.</div></td></tr>
+        <tr data-source="manual" data-st="fuera"><td><div class="field-name">Tipo data carrier</div><div class="tl-field">data_carrier</div><div class="field-num">#90 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-manual">Manual (operador)</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="manual" data-st="fuera"><td><div class="field-name">Ubicación data carrier</div><div class="tl-field">data_carrier_location</div><div class="field-num">#91 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-manual">Manual (operador)</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="manual" data-st="fuera"><td><div class="field-name">Alta GS1 Digital Link</div><div class="tl-field">gs1_digital_link</div><div class="field-num">#92 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-manual">Manual (operador)</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="manual" data-st="fuera"><td><div class="field-name">Hosting de datos</div><div class="tl-field">data_hosting</div><div class="field-num">#93 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-manual">Manual (operador)</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="manual" data-st="fuera"><td><div class="field-name">Formato de datos</div><div class="tl-field">data_format</div><div class="field-num">#94 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-manual">Manual (operador)</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</div>
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#f5f3ff;color:#6d28d9">&#x1F465;</div>
+    <h2>Fase 09 &middot; Actores y operadores económicos</h2>
+    <span class="section-count">27 datos &middot; 1 en el esquema CE</span>
+    <span class="section-chevron">&#x25BC;</span>
+  </div>
+  <p class="section-subtitle">Operadores economicos y otros actores (importador, distribuidor, gestores)</p>
+  <div class="section-body"><div class="tbl-wrap">
+    <table class="map-table">
+      <thead><tr><th>Dato (Trackline)</th><th>Campo esquema CE (baterias 1.0.0)</th><th>Acceso CE</th><th>Aplicabilidad industrial (CE)</th><th>Fuente</th><th>Estado v09</th></tr></thead>
+      <tbody>
+        <tr data-source="manual" data-st="renombrar"><td><div class="field-name">Operador responsable</div><div class="tl-field">operator_responsible</div><div class="field-num">#95 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><code>registrantIdentity</code></td><td><span class="acc-badge acc-pub">Público</span></td><td><span class="appl">Obligatorio</span></td><td><span class="source-badge src-manual">Manual (operador)</span></td><td><span class="st-badge st-renombrar">Renombrar al exportar</span></td></tr>
+        <tr data-source="manual" data-st="fuera"><td><div class="field-name">Fabricante</div><div class="tl-field">manufacturer</div><div class="field-num">#96 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-manual">Manual (operador)</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Nombre legal del representante UE</div><div class="tl-field">authorized_representative_eu.name &rsaquo; .name</div><div class="field-num">#97 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Nombre legal del distribuidor</div><div class="tl-field">distributor.name &rsaquo; .name</div><div class="field-num">#98 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Nombre del usuario final</div><div class="tl-field">end_user.name &rsaquo; .name</div><div class="field-num">#99 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Nombre legal del gestor de residuos</div><div class="tl-field">recycler.name &rsaquo; .name</div><div class="field-num">#100 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="manual" data-st="fuera"><td><div class="field-name">Autoridad de vigilancia</div><div class="tl-field">market_surveillance_authority</div><div class="field-num">#101 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-manual">Manual (operador)</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="manual" data-st="fuera"><td><div class="field-name">Proveedor DPP</div><div class="tl-field">dpp_service_provider</div><div class="field-num">#102 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-manual">Manual (operador)</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Dirección del distribuidor</div><div class="tl-field">distributor.address &rsaquo; .address</div><div class="field-num">#119 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">País del distribuidor (ISO)</div><div class="tl-field">distributor.country &rsaquo; .country</div><div class="field-num">#120 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Persona de contacto del distribuidor</div><div class="tl-field">distributor.contactPerson &rsaquo; .contactPerson</div><div class="field-num">#121 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Email del distribuidor</div><div class="tl-field">distributor.email &rsaquo; .email</div><div class="field-num">#122 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Teléfono del distribuidor</div><div class="tl-field">distributor.phone &rsaquo; .phone</div><div class="field-num">#123 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Nº contrato distribución</div><div class="tl-field">distributor.contractRef &rsaquo; .contractRef</div><div class="field-num">#124 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Dirección del representante UE</div><div class="tl-field">authorized_representative_eu.address &rsaquo; .address</div><div class="field-num">#125 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">País del representante UE (ISO)</div><div class="tl-field">authorized_representative_eu.country &rsaquo; .country</div><div class="field-num">#126 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Persona de contacto del representante UE</div><div class="tl-field">authorized_representative_eu.contactPerson &rsaquo; .contactPerson</div><div class="field-num">#127 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Nº contrato representación UE</div><div class="tl-field">authorized_representative_eu.contractRef &rsaquo; .contractRef</div><div class="field-num">#128 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Dirección del gestor de residuos</div><div class="tl-field">recycler.address &rsaquo; .address</div><div class="field-num">#129 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">País del gestor de residuos (ISO)</div><div class="tl-field">recycler.country &rsaquo; .country</div><div class="field-num">#130 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Nº autorización SCRAP</div><div class="tl-field">recycler.authorization &rsaquo; .authorization</div><div class="field-num">#131 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Nº contrato gestión residuos</div><div class="tl-field">recycler.contractRef &rsaquo; .contractRef</div><div class="field-num">#132 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">DNI / NIE del usuario final</div><div class="tl-field">end_user.identifier &rsaquo; .identifier</div><div class="field-num">#133 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Domicilio de instalación del usuario final</div><div class="tl-field">end_user.location &rsaquo; .location</div><div class="field-num">#134 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Email del usuario final</div><div class="tl-field">end_user.email &rsaquo; .email</div><div class="field-num">#135 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Fecha de venta al usuario final</div><div class="tl-field">end_user.saleDate &rsaquo; .saleDate</div><div class="field-num">#136 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="doc" data-st="fuera"><td><div class="field-name">Consentimiento GDPR</div><div class="tl-field">end_user.gdprConsent &rsaquo; .gdprConsent</div><div class="field-num">#137 &middot; Obligatorio (Reg.): Condicional &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-ficha">Documento</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</div>
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="section-icon" style="background:#e0e7ff;color:#3730a3">&#x1F3DB;&#xFE0F;</div>
+    <h2>Fase 10 &middot; Registro central EU</h2>
+    <span class="section-count">4 datos &middot; 0 en el esquema CE</span>
+    <span class="section-chevron">&#x25BC;</span>
+  </div>
+  <p class="section-subtitle">Datos que se inscriben en el registro DPP de la Comision</p>
+  <div class="section-body"><div class="tbl-wrap">
+    <table class="map-table">
+      <thead><tr><th>Dato (Trackline)</th><th>Campo esquema CE (baterias 1.0.0)</th><th>Acceso CE</th><th>Aplicabilidad industrial (CE)</th><th>Fuente</th><th>Estado v09</th></tr></thead>
+      <tbody>
+        <tr data-source="registro" data-st="fuera"><td><div class="field-name">Estado del registro</div><div class="tl-field">registry_status</div><div class="field-num">#103 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-registro">Registro EU</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="registro" data-st="fuera"><td><div class="field-name">Campos precargados</div><div class="tl-field">registry_fields_preloaded</div><div class="field-num">#104 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-registro">Registro EU</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="registro" data-st="fuera"><td><div class="field-name">Deadline apertura</div><div class="tl-field">registry_deadline</div><div class="field-num">#105 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-registro">Registro EU</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+        <tr data-source="registro" data-st="fuera"><td><div class="field-name">Deadline DPP obligatorio</div><div class="tl-field">battery_passport_deadline</div><div class="field-num">#106 &middot; Obligatorio (Reg.): Sí &middot; Categoria: Todas</div></td><td class="ce"><span class="none">&mdash; no esta en el esquema</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="acc-none">&mdash;</span></td><td><span class="source-badge src-registro">Registro EU</span></td><td><span class="st-badge st-fuera">Fuera del esquema CE</span><div class="note-v09">Dato de proceso, de actores o del registro: no forma parte del contenido del pasaporte.</div></td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</div>
+
+</div><!-- /container -->
+
+<footer class="pk-footer">
+  <strong>Basado en:</strong>
+  <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj" target="_blank">Reg. (UE) 2023/1542</a> &middot;
+  <a href="https://eur-lex.europa.eu/eli/reg_impl/2026/1778/oj" target="_blank">Reg. de Ejecuci&oacute;n (UE) 2026/1778 (registro DPP)</a> &middot;
+  <a href="https://single-market-economy.ec.europa.eu/single-market/digital-product-passport/resources-documentation_en" target="_blank">Comisi&oacute;n: gu&iacute;a sem&aacute;ntica y artefactos (30 oct 2026)</a> &middot;
+  <a href="https://single-market-economy.ec.europa.eu/single-market/digital-product-passport/resources-documentation_en" target="_blank">Gu&iacute;a de data points v3.2 (19 oct 2026)</a><br>
+  <em>Documento de referencia t&eacute;cnica. El esquema de la Comisi&oacute;n es documentaci&oacute;n t&eacute;cnica, no un acto jur&iacute;dico, y puede tener nuevas versiones.</em>
+</footer>
+
+<script>
+function soonToggle(el,e){ if(e){e.preventDefault();e.stopPropagation();}
+  var was=el.classList.contains('open');
+  var a=document.querySelectorAll('.soon.open'); for(var i=0;i<a.length;i++){a[i].classList.remove('open');}
+  if(!was){el.classList.add('open');} }
+document.addEventListener('click',function(){var a=document.querySelectorAll('.soon.open');for(var i=0;i<a.length;i++){a[i].classList.remove('open');}});
+function toggleSection(header) {
+  header.classList.toggle('collapsed');
+  var body = header.nextElementSibling;
+  while (body && !body.classList.contains('section-body')) body = body.nextElementSibling;
+  if (body) body.classList.toggle('hidden');
+}
+var F = {st:'all', src:'all', q:''};
+function apply() {
+  var shown = 0;
+  document.querySelectorAll('.section').forEach(function(sec) {
+    var n = 0;
+    sec.querySelectorAll('tr[data-source]').forEach(function(row) {
+      var ok = (F.st==='all' || row.getAttribute('data-st')===F.st) &&
+               (F.src==='all' || row.getAttribute('data-source')===F.src) &&
+               (!F.q || row.textContent.toLowerCase().indexOf(F.q) >= 0);
+      row.style.display = ok ? '' : 'none'; row.setAttribute('data-hidden', ok ? 'false' : 'true');
+      if (ok) n++;
+    });
+    sec.style.display = n ? '' : 'none'; shown += n;
+  });
+  document.getElementById('noRes').style.display = shown ? 'none' : 'block';
+}
+document.querySelectorAll('.filter-btn').forEach(function(b) {
+  b.addEventListener('click', function() {
+    var f = b.getAttribute('data-f');
+    document.querySelectorAll('.filter-btn[data-f="'+f+'"]').forEach(function(x){ x.classList.remove('active'); });
+    b.classList.add('active'); F[f] = b.getAttribute('data-v'); apply();
+  });
+});
+function setQ(v) { F.q = v.toLowerCase().trim(); apply(); }
+</script>
+
+<div class="pk-strip">
+  <strong>Pack DPP Baterías</strong> &mdash; Guía v1.2 &middot; Mapping v0.9.1 &middot; Visor v1.4 &middot; Validador v0.2 &middot; act. 10 noviembre 2026 &middot; <a href="https://web.codecontractplattform.com/" target="_blank" rel="noopener">Trackline</a> by <a href="https://codecontract.io" target="_blank" rel="noopener">Code Contract S.L.</a><br>
+  <em>Documentación y herramientas orientativas: no constituyen asesoramiento jurídico. Consulta siempre el texto oficial del Reglamento y de los actos vigentes.</em>
+</div>
+</body>
+</html>

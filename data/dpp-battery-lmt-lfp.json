@@ -1,0 +1,207 @@
+{
+  "digitalProductPassportId": "https://dppbatteries.com/01/09506000134352/21/D001",
+  "uniqueProductIdentifier": "https://dppbatteries.com/01/09506000134352/21/D001",
+  "granularity": "https://repository.product-passport.ec.europa.eu/core/vocabs/granularity-level#item",
+  "dppStatus": "https://repository.product-passport.ec.europa.eu/core/vocabs/instance-status#validStatus",
+  "lastUpdate": "2027-03-02T09:00:00Z",
+  "contentSpecificationIds": [
+    "https://repository.product-passport.ec.europa.eu/product/batteries/1.0.0",
+    "https://repository.product-passport.ec.europa.eu/core/1.0.0",
+    "https://repository.product-passport.ec.europa.eu/product/batteries/subgroup/lmt/1.0.0"
+  ],
+  "registrantIdentity": "urn:uuid:00000000-0000-4000-8000-000000000000",
+  "manufacturerIdentification": {
+    "manufacturerName": "Fabricante Ficticio de Baterías, S.L.",
+    "manufacturerTradeName": "EJEMPLO"
+  },
+  "manufacturerPostalAddress": "Calle Inventada 0, 00000 Ciudad Ficticia, España",
+  "manufacturerContactDetails": {
+    "manufacturerWebsite": "https://www.example.com",
+    "manufacturerEmail": "mailto:contacto@example.com"
+  },
+  "batteryCategory": "https://repository.product-passport.ec.europa.eu/product/batteries/vocabs/battery-category#lightMeansOfTransportBattery",
+  "batteryIdentification": {
+    "modelIdentifier": "DEMO-LMT48-40",
+    "batchNumber": "DEMO-LOTE-0001",
+    "serialNumber": "D001"
+  },
+  "manufacturingPlace": {
+    "manufacturingCity": "Ciudad Ficticia",
+    "manufacturingCountry": "ESP"
+  },
+  "manufacturingDate": "2027-02",
+  "batteryWeight": {
+    "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#kilogram",
+    "value": 14
+  },
+  "batteryCapacity": {
+    "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#ampereHour",
+    "value": 40
+  },
+  "batteryChemistry": [
+    "https://repository.product-passport.ec.europa.eu/product/batteries/vocabs/battery-chemistry#lithiumIonLFP"
+  ],
+  "hazardousSubstances": [
+    "Hexafluorofosfato de litio (LiPF6), CAS 21324-40-3, en el electrolito",
+    "Carbonato de dimetilo, CAS 616-38-6, en el electrolito"
+  ],
+  "extinguishingAgent": {
+    "es-ES": "Agua en abundancia para refrigerar la batería desde una distancia segura. Para un fuego en el entorno, extintor de CO2 o de polvo ABC. Avisar a los bomberos de que se trata de una batería de litio-ferrofosfato."
+  },
+  "criticalRawMaterials": [
+    "https://repository.product-passport.ec.europa.eu/core/vocabs/critical-raw-material#lithium",
+    "https://repository.product-passport.ec.europa.eu/core/vocabs/critical-raw-material#graphite",
+    "https://repository.product-passport.ec.europa.eu/core/vocabs/critical-raw-material#phosphorus",
+    "https://repository.product-passport.ec.europa.eu/core/vocabs/critical-raw-material#copper",
+    "https://repository.product-passport.ec.europa.eu/core/vocabs/critical-raw-material#bauxiteAluminaAluminium"
+  ],
+  "renewableContentShare": {
+    "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#percent",
+    "value": 0
+  },
+  "minimalVoltage": {
+    "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#volt",
+    "value": 37.5,
+    "valueRange": {
+      "observedCharacteristic": "https://repository.product-passport.ec.europa.eu/core/vocabs/observed-characteristic#temperature",
+      "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#degreeCelsius",
+      "lowerBound": -20,
+      "upperBound": 55
+    }
+  },
+  "nominalVoltage": {
+    "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#volt",
+    "value": 48,
+    "valueRange": {
+      "observedCharacteristic": "https://repository.product-passport.ec.europa.eu/core/vocabs/observed-characteristic#temperature",
+      "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#degreeCelsius",
+      "lowerBound": -20,
+      "upperBound": 55
+    }
+  },
+  "maximumVoltage": {
+    "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#volt",
+    "value": 54.75,
+    "valueRange": {
+      "observedCharacteristic": "https://repository.product-passport.ec.europa.eu/core/vocabs/observed-characteristic#temperature",
+      "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#degreeCelsius",
+      "lowerBound": -20,
+      "upperBound": 55
+    }
+  },
+  "originalPowerCapability": {
+    "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#watt",
+    "value": 2000
+  },
+  "powerLimit": [
+    {
+      "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#watt",
+      "value": 1000,
+      "valueRange": {
+        "observedCharacteristic": "https://repository.product-passport.ec.europa.eu/core/vocabs/observed-characteristic#temperature",
+        "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#degreeCelsius",
+        "lowerBound": -20,
+        "upperBound": 0
+      }
+    },
+    {
+      "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#watt",
+      "value": 3000,
+      "valueRange": {
+        "observedCharacteristic": "https://repository.product-passport.ec.europa.eu/core/vocabs/observed-characteristic#temperature",
+        "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#degreeCelsius",
+        "lowerBound": 0,
+        "upperBound": 45
+      }
+    },
+    {
+      "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#watt",
+      "value": 1500,
+      "valueRange": {
+        "observedCharacteristic": "https://repository.product-passport.ec.europa.eu/core/vocabs/observed-characteristic#temperature",
+        "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#degreeCelsius",
+        "lowerBound": 45,
+        "upperBound": 55
+      }
+    }
+  ],
+  "notInUseTemperatureRange": {
+    "notInUseTemperatureRangeTest": {
+      "es-ES": "Almacenamiento durante 30 días al 50 % de carga a la temperatura indicada, con pérdida de capacidad inferior al 3 % (ensayo ficticio)."
+    },
+    "valueRange": {
+      "observedCharacteristic": "https://repository.product-passport.ec.europa.eu/core/vocabs/observed-characteristic#temperature",
+      "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#degreeCelsius",
+      "lowerBound": -20,
+      "upperBound": 45
+    }
+  },
+  "commercialWarrantyPeriod": 36,
+  "internalCellResistance": {
+    "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#ohm",
+    "value": 0.0008
+  },
+  "internalPackResistance": {
+    "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#ohm",
+    "value": 0.018
+  },
+  "cycleLifeDischargeCRate": {
+    "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#reciprocalHour",
+    "value": 0.5
+  },
+  "separateCollectionSymbol": true,
+  "euDeclarationOfConformity": {
+    "resourceTitle": "Declaración UE de conformidad (documento ficticio)",
+    "contentType": "application/pdf",
+    "url": "https://www.example.com/docs/DEMO-LMT48-40-declaracion-UE-conformidad.pdf",
+    "language": "es-ES"
+  },
+  "wasteBatteryPreventionManagementInfo": {
+    "endUserRoleInWastePrevention": {
+      "es-ES": "Use y cargue la batería según el manual, evite golpes y temperaturas extremas, y llévela al servicio técnico si se daña: así dura más y se generan menos residuos."
+    },
+    "endUserRoleInSeparateCollection": {
+      "es-ES": "No la tire a la basura ni al contenedor de residuos domésticos. Entréguela en un punto de recogida de baterías o al distribuidor."
+    },
+    "separateCollectionPoints": {
+      "es-ES": "Puntos de recogida del sistema colectivo de responsabilidad ampliada al que está adherido el fabricante (en este ejemplo, ficticio) y puntos limpios municipales."
+    },
+    "takeBackCollectionPoints": {
+      "es-ES": "Cualquier distribuidor de baterías para medios de transporte ligeros la recoge sin coste para el usuario final."
+    },
+    "preparationForReuseFacilities": {
+      "es-ES": "Centro de preparación para la reutilización autorizado (ficticio en este ejemplo)."
+    },
+    "preparationForRepurposingFacilities": {
+      "es-ES": "Centro autorizado de adaptación para segunda vida (ficticio en este ejemplo)."
+    },
+    "wasteBatteryTreatmentFacilities": {
+      "es-ES": "Gestor autorizado de residuos de baterías de litio (ficticio en este ejemplo)."
+    },
+    "wasteBatterySafetyInstructions": {
+      "es-ES": "Si la batería está dañada, hinchada o caliente, no la cargue. Guárdela en un lugar seco, ventilado y lejos de materiales inflamables, y avise al punto de recogida."
+    },
+    "batteryLabelSymbolMeaning": {
+      "es-ES": "Contenedor tachado: recogida separada obligatoria. CE: la batería cumple la legislación de la UE que le aplica, según su declaración UE de conformidad. QR: acceso a este pasaporte."
+    },
+    "batterySubstancesImpact": {
+      "es-ES": "Si se desecha mal, el electrolito puede liberar compuestos de flúor y disolventes inflamables, y los metales pueden contaminar suelo y agua."
+    }
+  },
+  "expectedLifetimeCycles": 2000,
+  "cycleLifeReferenceTest": {
+    "es-ES": "Ciclos a 25 °C con carga y descarga a 0,5C y 100 % de profundidad de descarga, hasta el 80 % de la capacidad inicial (ensayo ficticio)."
+  },
+  "initialRoundTripEnergyEfficiency": {
+    "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#percent",
+    "value": 95
+  },
+  "roundTripEfficiencyAtHalfCycleLife": {
+    "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#percent",
+    "value": 92
+  },
+  "cycleLifeChargeCRate": {
+    "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#reciprocalHour",
+    "value": 0.5
+  }
+}

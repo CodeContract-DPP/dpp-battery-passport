@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pasaporte digital de batería · Demostración con datos ficticios</title>
+<link rel="canonical" href="https://dppbatteries.com/visor.html">
+<meta name="description" content="Demostración de un pasaporte digital de batería (Reglamento (UE) 2023/1542) con datos ficticios, en el formato oficial de la Comisión Europea.">
+<meta property="og:title" content="Pasaporte digital de batería · Demostración">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dppbatteries.com/visor.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Code Contract · DPP Baterías">
+<style>
+:root{--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--bg:#f6f7f9;--card:#fff;--brand:#0d3b2e;--brand2:#1a5276;--ok:#047857;--ok-soft:#e8f5ee;--amb:#92400e;--amb-soft:#fffbeb;--vio:#5b21b6;--vio-soft:#f5f3ff;--blu:#1d4ed8;--blu-soft:#eff6ff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-size:15px}
+a{color:var(--blu)}
+.wrap{max-width:780px;margin:0 auto;padding:12px 14px 40px}
+.top{background:linear-gradient(135deg,var(--brand) 0%,var(--brand2) 100%);color:#fff;padding:10px 14px}
+.top .in{max-width:780px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px}
+.top b{font-size:14px}
+.demo{background:#fde68a;color:#78350f;font-weight:700;font-size:12px;padding:3px 10px;border-radius:12px;white-space:nowrap}
+.hero{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:12px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.hero .eyebrow{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.hero h1{font-size:22px;line-height:1.25;margin:4px 0 6px}
+.hero .sub{color:var(--muted);font-size:14px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0 10px}
+.kpi{background:var(--bg);border-radius:10px;padding:8px 10px;text-align:center}
+.kpi .n{font-size:18px;font-weight:800}
+.kpi .l{font-size:11px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{font-size:12px;font-weight:600;padding:4px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--line)}
+.chip.ok{background:var(--ok-soft);border-color:#a7f3d0;color:var(--ok)}
+.uid{margin-top:10px;font-size:12px;color:var(--muted);word-break:break-all}
+.uid code{font-family:ui-monospace,Consolas,monospace;color:var(--ink);background:var(--bg);padding:2px 6px;border-radius:6px}
+.profiles{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+.profiles .q{font-size:13px;font-weight:700;margin-bottom:8px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.seg button{font:inherit;font-size:13px;font-weight:700;padding:9px 6px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;line-height:1.25}
+.seg button small{display:block;font-weight:500;font-size:11px}
+.seg button.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.pnote{font-size:12px;color:var(--muted);margin-top:8px}
+.sec{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-top:12px;overflow:hidden}
+.sec>summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sec>summary::-webkit-details-marker{display:none}
+.sec>summary h2{font-size:16px;line-height:1.3}
+.sec>summary .who{font-size:11px;font-weight:700;padding:3px 9px;border-radius:10px;white-space:nowrap}
+.who.pub{background:var(--ok-soft);color:var(--ok)}
+.who.leg{background:var(--blu-soft);color:var(--blu)}
+.who.aut{background:var(--vio-soft);color:var(--vio)}
+.who.nye{background:var(--amb-soft);color:var(--amb)}
+.sec>summary::after{content:'▾';color:var(--muted);font-size:14px;margin-left:4px}
+.sec[open]>summary::after{content:'▴'}
+.sec .body{padding:0 16px 12px}
+.sec .intro{font-size:12.5px;color:var(--muted);margin:-4px 0 8px}
+.row{padding:10px 0;border-top:1px solid #f1f2f4}
+.row .k{font-size:12.5px;color:var(--muted);font-weight:600}
+.row .v{font-size:15px;margin-top:1px}
+.row .src{font-size:11.5px;color:var(--muted);margin-top:3px}
+.row .src b{color:#374151;font-weight:600}
+.row .src .dyn{color:var(--blu);font-weight:700}
+.row .ref{font-size:11px;color:#9ca3af}
+table.t{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:4px}
+table.t td,table.t th{border-bottom:1px solid #f1f2f4;padding:5px 4px;text-align:left}
+table.t th{font-size:11.5px;color:var(--muted);font-weight:600}
+ul.l{padding-left:18px;margin-top:2px}
+ul.l li{margin:2px 0}
+.nye{font-weight:700;color:var(--amb)}
+.box{border-radius:12px;padding:12px 14px;font-size:13.5px;margin-top:12px}
+.box.info{background:var(--blu-soft);border:1px solid #bfdbfe}
+.box.sim{background:var(--amb-soft);border:1px solid #fcd34d}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.btn{font:inherit;font-size:14px;font-weight:700;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);text-decoration:none;cursor:pointer;display:inline-block}
+.btn.pri{background:var(--brand);border-color:var(--brand);color:#fff}
+.contact{background:var(--brand);color:#fff;border-radius:16px;padding:18px;margin-top:16px;text-align:center}
+.contact h2{font-size:18px;margin-bottom:6px}
+.contact p{font-size:14px;opacity:.9}
+.contact a.btn{margin-top:12px;background:#fff;color:var(--brand);border-color:#fff}
+.pk-nav{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:18px;font-size:13px}
+.pk-nav a{background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 12px;text-decoration:none;color:#475569;font-weight:600}
+.pk-nav a.active{background:#1a1a2e;color:#fff;border-color:#1a1a2e}
+.foot{font-size:11.5px;color:var(--muted);text-align:center;margin-top:16px;line-height:1.7}
+.hidden{display:none!important}
+.err{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:12px;padding:12px;margin-top:12px;font-size:14px}
+@media(max-width:560px){.kpis{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:20px}.seg button{font-size:12px}}
+@media print{.profiles,.actions,.contact,.pk-nav,.top .demo{display:none!important}.sec{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="in"><b>Pasaporte digital de batería</b><span class="demo">Demostración · datos ficticios</span></div></div>
+
+<div class="wrap">
+<div id="err" class="err hidden"></div>
+
+<section class="hero" id="hero">
+  <div class="eyebrow" id="h-cat">Batería para medios de transporte ligeros</div>
+  <h1 id="h-title">Cargando el pasaporte…</h1>
+  <div class="sub" id="h-sub"></div>
+  <div class="kpis" id="h-kpis"></div>
+  <div class="chips" id="h-chips"></div>
+  <div class="uid">Identificador único (GS1 Digital Link con el código de ejemplo de GS1): <a id="h-uidl" href="#"><code id="h-uid"></code></a></div>
+</section>
+
+<section class="profiles">
+  <div class="q">¿Quién consulta el pasaporte?</div>
+  <div class="seg" role="tablist">
+    <button class="on" data-p="pub" role="tab">Público<small>cualquiera con el QR</small></button>
+    <button data-p="leg" role="tab">Interés legítimo<small>talleres, recicladores, segunda vida</small></button>
+    <button data-p="aut" role="tab">Autoridades<small>vigilancia, organismos notificados, Comisión</small></button>
+  </div>
+  <p class="pnote" id="p-note"></p>
+</section>
+
+<div id="sections"></div>
+
+<div class="box info">
+  <b>Sobre el QR.</b> El QR de esta demostración lleva siempre a esta página. En una batería real, el QR enlaza con el identificador único de esa unidad (art. 77.3 del Reglamento (UE) 2023/1542) y tiene que seguir abriendo su pasaporte aunque se actualice un dato o cambie el alojamiento. El pasaporte debe seguir disponible aunque el operador económico deje de existir o cese su actividad en la UE (art. 78 e).
+</div>
+<div class="box info">
+  <b>Registro europeo.</b> En un pasaporte real, el operador económico verificado inscribe en el registro DPP de la Comisión (Reglamento de Ejecución (UE) 2026/1778) el identificador único, su identidad, la fecha y hora y el hash de la versión. El registro no guarda el pasaporte: este sigue alojado por el operador o su proveedor. A 11 de noviembre de 2026, la Comisión no ha confirmado todavía que el registro de baterías esté activo.
+</div>
+
+<div class="actions">
+  <a class="btn pri" id="dl" href="data/dpp-battery-lmt-lfp.json" download>Descargar JSON (vista pública, formato oficial)</a>
+  <a class="btn" href="validador/">Comprobarlo en el validador</a>
+</div>
+<p class="pnote">El JSON sigue el esquema oficial de la Comisión para baterías LMT (artefactos semánticos 1.0.0, 30-oct-2026, vista pública <code>pub-lmt</code>) y se ha validado contra él. Solo contiene los datos públicos.</p>
+
+<section class="contact">
+  <h2>¿Quieres ver cómo quedaría el pasaporte de tus baterías?</h2>
+  <p>Lo vemos en 20 minutos con tus propios datos y documentos.</p>
+  <a class="btn" href="mailto:eduardo@codecontract.io?subject=Pasaporte%20digital%20de%20bater%C3%ADas">eduardo@codecontract.io</a>
+</section>
+
+<nav class="pk-nav" aria-label="Pack DPP Baterías">
+  <a href="index.html">Guía</a>
+  <a href="mapping-trackline-dpp.html">Mapping</a>
+  <a href="visor.html" class="active" aria-current="page">Visor</a>
+  <a href="validador/">Validador</a>
+</nav>
+<p class="foot">
+  Demostración con datos ficticios: el fabricante, la batería, los documentos y las personas no existen.<br>
+  Base legal: <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj" target="_blank" rel="noopener">Reglamento (UE) 2023/1542</a> (art. 77, 78 y anexo XIII) · <a href="https://eur-lex.europa.eu/eli/reg_impl/2026/1778/oj" target="_blank" rel="noopener">Reglamento de Ejecución (UE) 2026/1778</a> · Formato: artefactos semánticos del Registro DPP 1.0.0 (Comisión Europea, 30-oct-2026).<br>
+  Pack DPP Baterías · Visor v2.0 · 11 noviembre 2026 · <a href="https://web.codecontractplattform.com/" target="_blank" rel="noopener">Trackline</a> by <a href="https://codecontract.io" target="_blank" rel="noopener">Code Contract S.L.</a> · No constituye asesoramiento jurídico.
+</p>
+</div>
+
+<!-- Copia de respaldo de la vista pública, para abrir la página en local sin servidor. La fuente es data/dpp-battery-lmt-lfp.json -->
+<script type="application/json" id="pub-fallback">{"digitalProductPassportId": "https://dppbatteries.com/01/09506000134352/21/D001", "uniqueProductIdentifier": "https://dppbatteries.com/01/09506000134352/21/D001", "granularity": "https://repository.product-passport.ec.europa.eu/core/vocabs/granularity-level#item", "dppStatus": "https://repository.product-passport.ec.europa.eu/core/vocabs/instance-status#validStatus", "lastUpdate": "2027-03-02T09:00:00Z", "contentSpecificationIds": ["https://repository.product-passport.ec.europa.eu/product/batteries/1.0.0", "https://repository.product-passport.ec.europa.eu/core/1.0.0", "https://repository.product-passport.ec.europa.eu/product/batteries/subgroup/lmt/1.0.0"], "registrantIdentity": "urn:uuid:00000000-0000-4000-8000-000000000000", "manufacturerIdentification": {"manufacturerName": "Fabricante Ficticio de Baterías, S.L.", "manufacturerTradeName": "EJEMPLO"}, "manufacturerPostalAddress": "Calle Inventada 0, 00000 Ciudad Ficticia, España", "manufacturerContactDetails": {"manufacturerWebsite": "https://www.example.com", "manufacturerEmail": "mailto:contacto@example.com"}, "batteryCategory": "https://repository.product-passport.ec.europa.eu/product/batteries/vocabs/battery-category#lightMeansOfTransportBattery", "batteryIdentification": {"modelIdentifier": "DEMO-LMT48-40", "batchNumber": "DEMO-LOTE-0001", "serialNumber": "D001"}, "manufacturingPlace": {"manufacturingCity": "Ciudad Ficticia", "manufacturingCountry": "ESP"}, "manufacturingDate": "2027-02", "batteryWeight": {"unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#kilogram", "value": 14}, "batteryCapacity": {"unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#ampereHour", "value": 40}, "batteryChemistry": ["https://repository.product-passport.ec.europa.eu/product/batteries/vocabs/battery-chemistry#lithiumIonLFP"], "hazardousSubstances": ["Hexafluorofosfato de litio (LiPF6), CAS 21324-40-3, en el electrolito", "Carbonato de dimetilo, CAS 616-38-6, en el electrolito"], "extinguishingAgent": {"es-ES": "Agua en abundancia para refrigerar la batería desde una distancia segura. Para un fuego en el entorno, extintor de CO2 o de polvo ABC. Avisar a los bomberos de que se trata de una batería de litio-ferrofosfato."}, "criticalRawMaterials": ["https://repository.product-passport.ec.europa.eu/core/vocabs/critical-raw-material#lithium", "https://repository.product-passport.ec.europa.eu/core/vocabs/critical-raw-material#graphite", "https://repository.product-passport.ec.europa.eu/core/vocabs/critical-raw-material#phosphorus", "https://repository.product-passport.ec.europa.eu/core/vocabs/critical-raw-material#copper", "https://repository.product-passport.ec.europa.eu/core/vocabs/critical-raw-material#bauxiteAluminaAluminium"], "renewableContentShare": {"unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#percent", "value": 0}, "minimalVoltage": {"unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#volt", "value": 37.5, "valueRange": {"observedCharacteristic": "https://repository.product-passport.ec.europa.eu/core/vocabs/observed-characteristic#temperature", "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#degreeCelsius", "lowerBound": -20, "upperBound": 55}}, "nominalVoltage": {"unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#volt", "value": 48, "valueRange": {"observedCharacteristic": "https://repository.product-passport.ec.europa.eu/core/vocabs/observed-characteristic#temperature", "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#degreeCelsius", "lowerBound": -20, "upperBound": 55}}, "maximumVoltage": {"unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#volt", "value": 54.75, "valueRange": {"observedCharacteristic": "https://repository.product-passport.ec.europa.eu/core/vocabs/observed-characteristic#temperature", "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#degreeCelsius", "lowerBound": -20, "upperBound": 55}}, "originalPowerCapability": {"unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#watt", "value": 2000}, "powerLimit": [{"unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#watt", "value": 1000, "valueRange": {"observedCharacteristic": "https://repository.product-passport.ec.europa.eu/core/vocabs/observed-characteristic#temperature", "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#degreeCelsius", "lowerBound": -20, "upperBound": 0}}, {"unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#watt", "value": 3000, "valueRange": {"observedCharacteristic": "https://repository.product-passport.ec.europa.eu/core/vocabs/observed-characteristic#temperature", "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#degreeCelsius", "lowerBound": 0, "upperBound": 45}}, {"unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#watt", "value": 1500, "valueRange": {"observedCharacteristic": "https://repository.product-passport.ec.europa.eu/core/vocabs/observed-characteristic#temperature", "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#degreeCelsius", "lowerBound": 45, "upperBound": 55}}], "notInUseTemperatureRange": {"notInUseTemperatureRangeTest": {"es-ES": "Almacenamiento durante 30 días al 50 % de carga a la temperatura indicada, con pérdida de capacidad inferior al 3 % (ensayo ficticio)."}, "valueRange": {"observedCharacteristic": "https://repository.product-passport.ec.europa.eu/core/vocabs/observed-characteristic#temperature", "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#degreeCelsius", "lowerBound": -20, "upperBound": 45}}, "commercialWarrantyPeriod": 36, "internalCellResistance": {"unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#ohm", "value": 0.0008}, "internalPackResistance": {"unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#ohm", "value": 0.018}, "cycleLifeDischargeCRate": {"unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#reciprocalHour", "value": 0.5}, "separateCollectionSymbol": true, "euDeclarationOfConformity": {"resourceTitle": "Declaración UE de conformidad (documento ficticio)", "contentType": "application/pdf", "url": "https://www.example.com/docs/DEMO-LMT48-40-declaracion-UE-conformidad.pdf", "language": "es-ES"}, "wasteBatteryPreventionManagementInfo": {"endUserRoleInWastePrevention": {"es-ES": "Use y cargue la batería según el manual, evite golpes y temperaturas extremas, y llévela al servicio técnico si se daña: así dura más y se generan menos residuos."}, "endUserRoleInSeparateCollection": {"es-ES": "No la tire a la basura ni al contenedor de residuos domésticos. Entréguela en un punto de recogida de baterías o al distribuidor."}, "separateCollectionPoints": {"es-ES": "Puntos de recogida del sistema colectivo de responsabilidad ampliada al que está adherido el fabricante (en este ejemplo, ficticio) y puntos limpios municipales."}, "takeBackCollectionPoints": {"es-ES": "Cualquier distribuidor de baterías para medios de transporte ligeros la recoge sin coste para el usuario final."}, "preparationForReuseFacilities": {"es-ES": "Centro de preparación para la reutilización autorizado (ficticio en este ejemplo)."}, "preparationForRepurposingFacilities": {"es-ES": "Centro autorizado de adaptación para segunda vida (ficticio en este ejemplo)."}, "wasteBatteryTreatmentFacilities": {"es-ES": "Gestor autorizado de residuos de baterías de litio (ficticio en este ejemplo)."}, "wasteBatterySafetyInstructions": {"es-ES": "Si la batería está dañada, hinchada o caliente, no la cargue. Guárdela en un lugar seco, ventilado y lejos de materiales inflamables, y avise al punto de recogida."}, "batteryLabelSymbolMeaning": {"es-ES": "Contenedor tachado: recogida separada obligatoria. CE: la batería cumple la legislación de la UE que le aplica, según su declaración UE de conformidad. QR: acceso a este pasaporte."}, "batterySubstancesImpact": {"es-ES": "Si se desecha mal, el electrolito puede liberar compuestos de flúor y disolventes inflamables, y los metales pueden contaminar suelo y agua."}}, "expectedLifetimeCycles": 2000, "cycleLifeReferenceTest": {"es-ES": "Ciclos a 25 °C con carga y descarga a 0,5C y 100 % de profundidad de descarga, hasta el 80 % de la capacidad inicial (ensayo ficticio)."}, "initialRoundTripEnergyEfficiency": {"unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#percent", "value": 95}, "roundTripEfficiencyAtHalfCycleLife": {"unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#percent", "value": 92}, "cycleLifeChargeCRate": {"unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#reciprocalHour", "value": 0.5}}</script>
+
+<script>
+/* ===================================================================
+   SIMULACIÓN DE LAS VISTAS RESTRINGIDAS (datos ficticios)
+   En un pasaporte real estos datos NO se envían al navegador sin que la
+   persona se identifique y el servidor compruebe su perfil de acceso
+   (art. 78 f del Reglamento y acto de ejecución del art. 77.9).
+   Formato: vistas res1, res2 y res3 del esquema oficial LMT 1.0.0,
+   validadas contra él.
+   =================================================================== */
+const RESTRICTED_DEMO = {
+ "res1": {
+  "contentSpecificationIds": [
+   "https://repository.product-passport.ec.europa.eu/product/batteries/1.0.0",
+   "https://repository.product-passport.ec.europa.eu/core/1.0.0",
+   "https://repository.product-passport.ec.europa.eu/product/batteries/subgroup/lmt/1.0.0"
+  ],
+  "detailedComposition": {
+   "es-ES": "Cátodo: fosfato de hierro y litio (LiFePO4), 30 % del peso del pack. Ánodo: grafito natural, 15 %. Electrolito: LiPF6 en carbonatos orgánicos, 10 %. Colectores y conexiones de cobre, 9 %. Aluminio (colectores y carcasa), 20 %. Acero, plásticos, BMS y cableado, 16 %. Datos ficticios."
+  },
+  "sparePartReplacementDetails": {
+   "resourceTitle": "Piezas de recambio y contacto (documento ficticio)",
+   "contentType": "application/pdf",
+   "url": "https://www.example.com/docs/DEMO-LMT48-40-recambios.pdf",
+   "language": "es-ES"
+  },
+  "dismantlingInformation": {
+   "resourceTitle": "Información de desmontaje: diagrama, secuencia, sujeciones, herramientas, 15 celdas (documento ficticio)",
+   "contentType": "application/pdf",
+   "url": "https://www.example.com/docs/DEMO-LMT48-40-desmontaje.pdf",
+   "language": "es-ES"
+  },
+  "safetyMeasures": {
+   "resourceTitle": "Medidas de seguridad (documento ficticio)",
+   "contentType": "application/pdf",
+   "url": "https://www.example.com/docs/DEMO-LMT48-40-seguridad.pdf",
+   "language": "es-ES"
+  }
+ },
+ "res2": {
+  "contentSpecificationIds": [
+   "https://repository.product-passport.ec.europa.eu/product/batteries/1.0.0",
+   "https://repository.product-passport.ec.europa.eu/core/1.0.0",
+   "https://repository.product-passport.ec.europa.eu/product/batteries/subgroup/lmt/1.0.0"
+  ],
+  "complianceTestReportResults": {
+   "resourceTitle": "Resultados de los informes de ensayo de cumplimiento (documento ficticio)",
+   "contentType": "application/pdf",
+   "url": "https://www.example.com/docs/DEMO-LMT48-40-informes-ensayo.pdf",
+   "language": "es-ES"
+  }
+ },
+ "res3": {
+  "contentSpecificationIds": [
+   "https://repository.product-passport.ec.europa.eu/product/batteries/1.0.0",
+   "https://repository.product-passport.ec.europa.eu/core/1.0.0",
+   "https://repository.product-passport.ec.europa.eu/product/batteries/subgroup/lmt/1.0.0"
+  ],
+  "batteryStatus": "https://repository.product-passport.ec.europa.eu/product/batteries/vocabs/battery-status#original",
+  "ratedCapacity": {
+   "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#ampereHour",
+   "value": 40
+  },
+  "remainingCapacity": {
+   "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#ampereHour",
+   "value": 39.6
+  },
+  "capacityFade": {
+   "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#percent",
+   "value": 1
+  },
+  "powerCapability": {
+   "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#watt",
+   "value": 2000
+  },
+  "remainingPowerCapability": {
+   "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#watt",
+   "value": 1985
+  },
+  "powerFade": {
+   "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#percent",
+   "value": 0.75
+  },
+  "internalResistance": {
+   "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#ohm",
+   "value": 0.018
+  },
+  "internalResistanceIncrease": {
+   "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#percent",
+   "value": 1.5
+  },
+  "roundTripEnergyEfficiency": {
+   "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#percent",
+   "value": 95
+  },
+  "roundTripEnergyEfficiencyFade": {
+   "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#percent",
+   "value": 0.2
+  },
+  "remainingRoundTripEfficiency": {
+   "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#percent",
+   "value": 94.8
+  },
+  "numberOfChargingCycles": [
+   38
+  ],
+  "numberOfDischargingCycles": [
+   37
+  ],
+  "expectedLifetimeCyclesRest": 1962,
+  "expectedLifetimeYears": 8,
+  "selfDischargingRateSet": {
+   "selfDischargingRate": [
+    {
+     "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#percent",
+     "value": 2
+    }
+   ],
+   "recordedTime": "2027-03-01T22:14:00Z"
+  },
+  "negativeEvents": {
+   "es-ES": "Ninguno registrado."
+  },
+  "ohmicResistance": {
+   "unit": "https://repository.product-passport.ec.europa.eu/core/vocabs/measurement-unit#ohm",
+   "value": 0.0183
+  }
+ }
+};
+
+/* Fuente y validación de cada bloque (ficticio): lo que Trackline guarda de cada dato */
+const SRC = {
+  ident:  {doc:'Registro mercantil y ficha de empresa', ver:'v1', fecha:'08-01-2027', quien:'Administración'},
+  ficha:  {doc:'Ficha técnica del modelo DEMO-LMT48-40', ver:'v3', fecha:'12-01-2027', quien:'Calidad'},
+  fds:    {doc:'Fichas de datos de seguridad del electrolito y de la celda', ver:'v2', fecha:'15-01-2027', quien:'Seguridad y medio ambiente'},
+  bom:    {doc:'Lista de materiales (BOM) del modelo', ver:'v5', fecha:'20-01-2027', quien:'Ingeniería'},
+  ensayo: {doc:'Informe de ensayo de ciclo de vida y rendimiento', ver:'v1', fecha:'28-01-2027', quien:'Laboratorio de ensayos (ficticio)'},
+  doc:    {doc:'Declaración UE de conformidad firmada', ver:'v1', fecha:'05-02-2027', quien:'Dirección técnica'},
+  raee:   {doc:'Contrato con el sistema colectivo de responsabilidad ampliada', ver:'v1', fecha:'10-01-2027', quien:'Administración'},
+  serie:  {doc:'Registro de fabricación de la unidad', ver:'v1', fecha:'18-02-2027', quien:'Producción'},
+  bms:    {dyn:true, doc:'lectura del BMS', fecha:'01-03-2027 22:14'}
+};
+
+const VOC = {
+  lightMeansOfTransportBattery:'Batería para medios de transporte ligeros (LMT)', electricVehicleBattery:'Batería para vehículos eléctricos', industrialBattery:'Batería industrial',
+  lithiumIonLFP:'Litio-ferrofosfato (LFP)', lithiumIonNMC:'Litio NMC', lithiumIonNCA:'Litio NCA', lithiumIonLCO:'Litio LCO', lithiumIonLMO:'Litio LMO', sodiumIon:'Ion sodio', leadAcid:'Plomo-ácido', nickelMetalHydride:'Níquel-hidruro metálico', nickelCadmium:'Níquel-cadmio', lithiumMetal:'Litio metal',
+  lithium:'Litio', graphite:'Grafito natural', phosphorus:'Fósforo', copper:'Cobre', bauxiteAluminaAluminium:'Aluminio (bauxita, alúmina y aluminio)', cobalt:'Cobalto', nickelBatteryGrade:'Níquel para baterías', manganese:'Manganeso',
+  validStatus:'Válido', item:'Por unidad (cada batería tiene su pasaporte)', batch:'Por lote', model:'Por modelo',
+  original:'Original', reused:'Reutilizada', repurposed:'Adaptada para segunda vida', remanufactured:'Remanufacturada', waste:'Residuo',
+  kilogram:'kg', gram:'g', ampereHour:'Ah', milliampereHour:'mAh', volt:'V', watt:'W', ohm:'Ω', percent:'%', degreeCelsius:'°C', reciprocalHour:'h⁻¹', hour:'h'
+};
+const voc = u => { const k=String(u||'').split('#')[1]; return VOC[k]||k||String(u||''); };
+const nf = (n,d) => (typeof n==='number') ? n.toLocaleString('es-ES',{maximumFractionDigits:d==null?4:d}) : String(n);
+const uv = o => o ? nf(o.value)+' '+voc(o.unit) : '';
+const ohm = o => o ? (o.value<1 ? nf(o.value*1000,2)+' mΩ' : nf(o.value)+' Ω') : '';
+const rng = r => r ? nf(r.lowerBound)+' a '+nf(r.upperBound)+' '+voc(r.unit) : '';
+const ml = o => o ? (o['es-ES']||o['es-ES'.toLowerCase()]||Object.values(o)[0]||'') : '';
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmtDate = s => { if(!s) return ''; const m=String(s).match(/^(\d{4})-(\d{2})(?:-(\d{2}))?/); return m ? (m[3]?m[3]+'-':'')+m[2]+'-'+m[1] : s; };
+const MES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+const mesAno = s => { const m=String(s||'').match(/^(\d{4})-(\d{2})/); return m ? MES[+m[2]-1]+' de '+m[1] : s; };
+const crate = o => o ? nf(o.value,2)+'C' : '';
+
+function src(key){
+  const s=SRC[key]; if(!s) return '';
+  if(s.dyn) return `<div class="src"><span class="dyn">Dato de uso</span> · ${esc(s.doc)} · última actualización <b>${esc(s.fecha)}</b></div>`;
+  return `<div class="src">Fuente: <b>${esc(s.doc)}</b> ${esc(s.ver)} · ${esc(s.fecha)} · validado por ${esc(s.quien)}</div>`;
+}
+function row(k,v,srcKey,ref){ if(v===''||v==null) return ''; return `<div class="row"><div class="k">${esc(k)}${ref?` <span class="ref">${esc(ref)}</span>`:''}</div><div class="v">${v}</div>${src(srcKey)}</div>`; }
+function sec(id,title,who,whoTxt,intro,body,open){ return `<details class="sec" id="s-${id}" ${open?'open':''}><summary><h2>${esc(title)}</h2><span class="who ${who}">${esc(whoTxt)}</span></summary><div class="body">${intro?`<p class="intro">${intro}</p>`:''}${body}</div></details>`; }
+function doc(r){ return r ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.resourceTitle||r.url)}</a>` : ''; }
+
+let PUB=null, PROFILE='pub', IS_DEMO=true;
+
+function render(){
+  const d=PUB, r=RESTRICTED_DEMO;
+  const name=(d.manufacturerIdentification||{}).manufacturerTradeName||(d.manufacturerIdentification||{}).manufacturerName||'';
+  const id=d.batteryIdentification||{};
+  const v=d.nominalVoltage&&d.nominalVoltage.value, ah=d.batteryCapacity&&d.batteryCapacity.value;
+  const kwh=(v&&ah)? v*ah/1000 : null;
+  document.getElementById('h-cat').textContent=voc(d.batteryCategory);
+  document.getElementById('h-title').textContent=`Batería ${name} ${id.modelIdentifier||''}`.trim();
+  document.getElementById('h-sub').textContent=`${(d.batteryChemistry||[]).map(voc).join(', ')} · fabricada por ${(d.manufacturerIdentification||{}).manufacturerName||''} en ${mesAno(d.manufacturingDate)}`;
+  document.getElementById('h-kpis').innerHTML=[
+    [nf(v)+' V','Tensión nominal'],[nf(ah)+' Ah','Capacidad'],[kwh?nf(kwh,2)+' kWh':'','Energía'],[uv(d.batteryWeight),'Peso']
+  ].map(([n,l])=>`<div class="kpi"><div class="n">${esc(n)}</div><div class="l">${esc(l)}</div></div>`).join('');
+  document.getElementById('h-chips').innerHTML=[
+    ['ok','Pasaporte '+voc(d.dppStatus).toLowerCase()],['','Una batería: nº de serie '+(id.serialNumber||'')+' (ficticio)'],['','Actualizado el '+fmtDate(d.lastUpdate)]
+  ].map(([c,t])=>`<span class="chip ${c}">${esc(t)}</span>`).join('');
+  document.getElementById('h-uid').textContent=d.uniqueProductIdentifier; document.getElementById('h-uidl').href=d.uniqueProductIdentifier;
+
+  const showLeg = IS_DEMO && PROFILE==='leg', showAut = IS_DEMO && PROFILE==='aut';
+  let h='';
+  // 1. Identificación
+  h+=sec('id','Identificación y fabricante','pub','Público','Anexo VI, parte A, y anexo XIII, punto 1, del Reglamento.',
+    row('Fabricante',esc(d.manufacturerIdentification.manufacturerName)+(d.manufacturerIdentification.manufacturerTradeName?` (marca ${esc(d.manufacturerIdentification.manufacturerTradeName)})`:''),'ident')+
+    row('Dirección postal',esc(d.manufacturerPostalAddress),'ident')+
+    row('Contacto',[d.manufacturerContactDetails&&d.manufacturerContactDetails.manufacturerWebsite,d.manufacturerContactDetails&&d.manufacturerContactDetails.manufacturerEmail].filter(Boolean).map(u=>`<a href="${esc(u)}">${esc(String(u).replace('mailto:',''))}</a>`).join(' · '),'ident')+
+    row('Categoría',esc(voc(d.batteryCategory)),'ficha',/lightMeans/.test(d.batteryCategory)?'art. 3.11: sellada y de 25 kg como máximo':'')+
+    row('Modelo, lote y número de serie',`${esc(id.modelIdentifier||'')} · lote ${esc(id.batchNumber||'')} · serie ${esc(id.serialNumber||'')}`,'serie')+
+    row('Lugar y fecha de fabricación',`${esc((d.manufacturingPlace||{}).manufacturingCity||'')}, ${esc((d.manufacturingPlace||{}).manufacturingCountry||'')} · ${mesAno(d.manufacturingDate)}`,'serie')+
+    row('Peso',esc(uv(d.batteryWeight)),'ficha')+
+    row('Nivel del pasaporte',esc(voc(d.granularity)),'serie'), true);
+  // 2. Composición
+  h+=sec('comp','Composición','pub','Público','',
+    row('Química',esc((d.batteryChemistry||[]).map(voc).join(', ')),'ficha','anexo XIII.1.b')+
+    row('Sustancias peligrosas (distintas de mercurio, cadmio y plomo)',`<ul class="l">${(d.hazardousSubstances||[]).map(s=>`<li>${esc(s)}</li>`).join('')}</ul>`,'fds','anexo XIII.1.b')+
+    row('Materias primas fundamentales',esc((d.criticalRawMaterials||[]).map(voc).join(', ')),'bom','anexo XIII.1.b')+
+    row('Contenido renovable',esc(uv(d.renewableContentShare)),'bom','anexo XIII.1.f'), false);
+  // 3. Rendimiento
+  const pl=(d.powerLimit||[]).map(p=>`<tr><td>${esc(rng(p.valueRange))}</td><td>${esc(nf(p.value))} W</td></tr>`).join('');
+  h+=sec('perf','Rendimiento y durabilidad','pub','Público','Valores del modelo cuando se introduce en el mercado.',
+    row('Capacidad asignada',esc(uv(d.batteryCapacity)),'ficha','anexo XIII.1.g')+
+    row('Tensión mínima, nominal y máxima',`${esc(uv(d.minimalVoltage))} · ${esc(uv(d.nominalVoltage))} · ${esc(uv(d.maximumVoltage))} <span class="ref">(de ${esc(rng(d.nominalVoltage&&d.nominalVoltage.valueRange))})</span>`,'ficha','anexo XIII.1.h')+
+    row('Capacidad de potencia original',esc(uv(d.originalPowerCapability)),'ensayo','anexo XIII.1.i')+
+    (pl?row('Límites de potencia por temperatura',`<table class="t"><tr><th>Temperatura</th><th>Potencia máxima</th></tr>${pl}</table>`,'ensayo','anexo XIII.1.i'):'')+
+    row('Vida útil prevista',`${esc(nf(d.expectedLifetimeCycles))} ciclos`,'ensayo','anexo XIII.1.j')+
+    row('Prueba de referencia',esc(ml(d.cycleLifeReferenceTest)),'ensayo','anexo XIII.1.j')+
+    row('Ritmo de carga y de descarga de la prueba',`${esc(crate(d.cycleLifeChargeCRate))} de carga${d.cycleLifeDischargeCRate?` · ${esc(crate(d.cycleLifeDischargeCRate))} de descarga`:''}`,'ensayo','anexo XIII.1.p')+
+    row('Temperatura soportada sin uso',`${esc(rng(d.notInUseTemperatureRange&&d.notInUseTemperatureRange.valueRange))}<div class="ref">${esc(ml(d.notInUseTemperatureRange&&d.notInUseTemperatureRange.notInUseTemperatureRangeTest))}</div>`,'ensayo','anexo XIII.1.l')+
+    (d.commercialWarrantyPeriod!=null?row('Garantía comercial de vida útil',`${esc(d.commercialWarrantyPeriod)} meses`,'ficha','anexo XIII.1.m'):'')+
+    row('Eficiencia energética de ida y vuelta',`${esc(uv(d.initialRoundTripEnergyEfficiency))} inicial · ${esc(uv(d.roundTripEfficiencyAtHalfCycleLife))} al 50 % de la vida`,'ensayo','anexo XIII.1.n')+
+    row('Resistencia interna',`celda ${esc(ohm(d.internalCellResistance))} · conjunto ${esc(ohm(d.internalPackResistance))}`,'ensayo','anexo XIII.1.o'), false);
+  // 4. Seguridad, marcado y fin de vida
+  const w=d.wasteBatteryPreventionManagementInfo||{};
+  const WL=[['endUserRoleInWastePrevention','Cómo alargar su vida'],['endUserRoleInSeparateCollection','Qué hacer al final'],['separateCollectionPoints','Puntos de recogida separada'],['takeBackCollectionPoints','Devolución al distribuidor'],['preparationForReuseFacilities','Reutilización'],['preparationForRepurposingFacilities','Segunda vida'],['wasteBatteryTreatmentFacilities','Tratamiento del residuo'],['wasteBatterySafetyInstructions','Si está dañada'],['batteryLabelSymbolMeaning','Qué significan los símbolos'],['batterySubstancesImpact','Por qué no tirarla']];
+  h+=sec('seg','Seguridad, marcado y fin de vida','pub','Público','',
+    row('Agente extintor',esc(ml(d.extinguishingAgent)),'fds','anexo VI.A')+
+    row('Marcado',`${d.separateCollectionSymbol?'Contenedor tachado (recogida separada)':''} · CE`,'doc','art. 13.3 y 13.4')+
+    row('Declaración UE de conformidad',doc(d.euDeclarationOfConformity),'doc','art. 18')+
+    WL.filter(([k])=>w[k]).map(([k,l])=>row(l,esc(ml(w[k])),'raee','art. 74.1')).join(''), false);
+  // 5. Aún no exigible
+  const NYE=[['Huella de carbono (declaración, clase de rendimiento y etiqueta)','Depende de los actos del art. 7 para cada categoría, aún no adoptados.'],['Contenido reciclado (cobalto, litio, níquel y plomo)','Depende del acto del art. 8.1, aún no adoptado; para LMT, la documentación se exige más adelante.'],['Abastecimiento responsable (diligencia debida)','Obligación aplazada al 18-08-2027 (Reglamento (UE) 2025/1561).']];
+  h+=sec('nye','Datos que aún no se exigen','nye','Aún no exigible','La guía de la Comisión (data points v3.2, 19-oct-2026) los marca como «no cumplimentar ni mostrar» en febrero de 2027, y el formato oficial 1.0.0 no los incluye todavía. Trackline ya puede ir recogiendo los documentos que los alimentarán.',
+    NYE.map(([k,v])=>`<div class="row"><div class="k">${esc(k)}</div><div class="v nye">Aún no exigible (pendiente de acto)</div><div class="src">${esc(v)}</div></div>`).join(''), false);
+
+  // Restringidos (simulación)
+  const simNote='<div class="box sim" style="margin-top:0"><b>Simulación con datos ficticios.</b> En un pasaporte real esta parte solo se entrega tras identificarse y comprobar el perfil de acceso.</div>';
+  if(showLeg||showAut){
+    const a=r.res1;
+    h+=sec('r1','Información restringida del modelo','leg', showAut?'Comisión':'Interés legítimo','Anexo XIII, punto 2: personas con un interés legítimo y la Comisión.',
+      simNote+row('Composición detallada (cátodo, ánodo y electrolito)',esc(ml(a.detailedComposition)),'bom')+
+      row('Piezas de recambio y contacto',doc(a.sparePartReplacementDetails),'ficha')+
+      row('Información de desmontaje',doc(a.dismantlingInformation),'ficha')+
+      row('Medidas de seguridad',doc(a.safetyMeasures),'fds'), true);
+  }
+  if(showLeg){
+    const b=r.res3;
+    h+=sec('r3','Esta batería en uso','leg','Interés legítimo','Anexo XIII, punto 4: datos de esta unidad concreta, con la fecha de su última actualización. La frecuencia de actualización depende del dato y del uso previsto.',
+      simNote+row('Estado de la batería',esc(voc(b.batteryStatus)),'serie')+
+      row('Capacidad restante',`${esc(uv(b.remainingCapacity))} de ${esc(uv(b.ratedCapacity))} (pérdida ${esc(uv(b.capacityFade))})`,'bms')+
+      row('Potencia disponible',`${esc(uv(b.remainingPowerCapability))} de ${esc(uv(b.powerCapability))} (pérdida ${esc(uv(b.powerFade))})`,'bms')+
+      row('Resistencia interna',`${esc(ohm(b.internalResistance))} (aumento ${esc(uv(b.internalResistanceIncrease))}) · óhmica ${esc(ohm(b.ohmicResistance))}`,'bms')+
+      row('Eficiencia de ida y vuelta',`${esc(uv(b.remainingRoundTripEfficiency))} (pérdida ${esc(uv(b.roundTripEnergyEfficiencyFade))})`,'bms')+
+      row('Ciclos de carga y de descarga',`${esc((b.numberOfChargingCycles||[]).join(', '))} · ${esc((b.numberOfDischargingCycles||[]).join(', '))}`,'bms')+
+      row('Vida restante estimada',`${esc(nf(b.expectedLifetimeCyclesRest))} ciclos · ${esc(b.expectedLifetimeYears)} años`,'bms')+
+      row('Autodescarga',`${esc(((b.selfDischargingRateSet||{}).selfDischargingRate||[]).map(uv).join(', '))}`,'bms')+
+      row('Incidentes registrados',esc(ml(b.negativeEvents)),'bms'), true);
+  }
+  if(showAut){
+    h+=sec('r2','Informes de ensayo','aut','Autoridades','Anexo XIII, punto 3: solo organismos notificados, autoridades de vigilancia del mercado y la Comisión.',
+      simNote+row('Resultados de los informes de ensayo que demuestran el cumplimiento',doc(r.res2.complianceTestReportResults),'ensayo'), true);
+  }
+  document.getElementById('sections').innerHTML=h;
+  const NOTES={pub:'Vista pública: lo que ve cualquiera al escanear el QR (anexo XIII, punto 1).',
+    leg:'Interés legítimo: añade la información restringida del modelo (punto 2) y los datos de uso de esta batería (punto 4). Quién tiene interés legítimo lo concretará el acto de ejecución del art. 77.9, en consulta hasta el 16-11-2026.',
+    aut:'Autoridades: añade los resultados de los informes de ensayo (punto 3) y, para la Comisión, la información restringida del modelo (punto 2).'};
+  document.getElementById('p-note').textContent=NOTES[PROFILE];
+}
+
+document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.seg button').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  PROFILE=b.dataset.p; render();
+}));
+
+(async function(){
+  const prm=new URLSearchParams(location.search);
+  const product=(prm.get('product')||'dpp-battery-lmt-lfp').replace(/[^a-z0-9\-_]/gi,'');
+  const path='data/'+product+'.json';
+  let data=null;
+  try{ const res=await fetch(path,{cache:'no-cache'}); if(res.ok) data=await res.json(); }catch(e){}
+  if(!data && product==='dpp-battery-lmt-lfp'){ try{ data=JSON.parse(document.getElementById('pub-fallback').textContent); }catch(e){} }
+  if(!data || !data.uniqueProductIdentifier){
+    const e=document.getElementById('err'); e.classList.remove('hidden');
+    e.textContent='No se ha encontrado un pasaporte con ese nombre en formato oficial. Se muestra la demostración.';
+    data=JSON.parse(document.getElementById('pub-fallback').textContent);
+  } else if(product!=='dpp-battery-lmt-lfp'){ document.getElementById('dl').href=path; IS_DEMO=false; document.querySelectorAll('.seg button[data-p=leg],.seg button[data-p=aut]').forEach(b=>{b.disabled=true;b.title='Solo disponible en la demostración';}); }
+  PUB=data; render();
+})();
+</script>
+</body>
+</html>
